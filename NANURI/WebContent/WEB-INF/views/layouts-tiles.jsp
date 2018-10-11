@@ -14,10 +14,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- css 상속 -->
+<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+
 </head>
 <body>
 
-<table border="1" style="width: 100%; height: 100%; border-color: Gray" >
+<%-- <table border="1" style="width: 100%; height: 100%; border-color: Gray" >
 	<tr align="center">
 		<td height="10%" colspan="2">
 			<!-- 위쪽의 위치설정 (header).. (name에따라서 동작시키게 만듬)-->
@@ -38,13 +42,20 @@
 	</tr>
 	
 
-</table>
+</table> --%>
 
 
+<div class="header">
+<tiles:insertAttribute name="header"/>
+</div>
+<div class="content">
+<tiles:insertAttribute name="content"/>
+</div>
+<div class="footer">
+<tiles:insertAttribute name="footer"/>
+</div>
 
 
-
-</table>
 
 
 
