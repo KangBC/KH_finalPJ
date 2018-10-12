@@ -15,7 +15,23 @@ public class adminController {
 	private static final Logger logger = LoggerFactory.getLogger(controller.class);
 	
 	@RequestMapping(value="admin.do",method = RequestMethod.GET)
-	public String test(Model model) throws Exception{
+	public String admin(Model model) throws Exception{
 		return "adminMain.tiles";
 	}
+	
+	@RequestMapping(value="manageMember.do",method = RequestMethod.GET)
+	public String manageMember(Model model) throws Exception{
+		return "memberList.tiles";
+	}
+	
+	@RequestMapping(value="manageStock.do",method = RequestMethod.GET)
+	public String manageStock(Model model) throws Exception{
+		return "stock.tiles";
+	}
+	
+	@RequestMapping(value="goodsApply.do",method = RequestMethod.GET)
+	public String goodsApply(Model model) throws Exception{
+		return "goodsApply.tiles";
+	}
+	
 }
