@@ -15,8 +15,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+   <!-- 제이쿼리 -->
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   
+
+<!-- 부트스트랩 -->
+   <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css" />
+   <script src="resources/bootstrap/js/bootstrap.js"></script>
+   <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+   
+
 <!-- css 상속 -->
-<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+   
 
 </head>
 <body>
@@ -49,6 +60,7 @@
 <tiles:insertAttribute name="header"/>
 </div>
 <div class="content">
+<tiles:insertAttribute name="leftmenu"/>
 <tiles:insertAttribute name="content"/>
 </div>
 <div class="footer">
