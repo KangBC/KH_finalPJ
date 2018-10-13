@@ -9,4 +9,4 @@
 <body>
 <%response.sendRedirect("test.do"); %>
 </body>
-</html> 
+</html>

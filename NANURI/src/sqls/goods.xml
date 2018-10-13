@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+<!-- getlist -->
+<select id="getbbs" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
+	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+    ON A.G_CODE = B.G_CODE
+</select>
+
+<!--  <select id="getbbs" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
+	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+    ON A.G_CODE = B.G_CODE
+    WHERE A.TITLE = #{title}
+</select>  -->
+
+</mapper>
