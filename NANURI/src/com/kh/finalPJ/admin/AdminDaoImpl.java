@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.finalPJ.member.memberDto;
 
 @Repository
-public class adminDaoImpl implements adminDao{
+public class AdminDaoImpl implements AdminDao{
 	
 	@Autowired
 	SqlSession sqlSession;

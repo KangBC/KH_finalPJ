@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.kh.finalPJ.member.memberDto;
 
 @Service
-public class adminServieceImpl implements adminServiece{
+public class AdminServieceImpl implements AdminServiece{
 
 	@Autowired
-	adminDao adminDao;
+	AdminDao adminDao;
 	
 	public List<memberDto> getMemberList() {
 		return adminDao.getMemberList();

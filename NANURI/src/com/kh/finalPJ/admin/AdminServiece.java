@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.kh.finalPJ.member.memberDto;
 
-public interface adminDao {
+public interface AdminServiece {
 	public List<memberDto> getMemberList(); 
 }

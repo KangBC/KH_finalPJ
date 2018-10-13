@@ -14,12 +14,12 @@ import com.kh.finalPJ.common.controller;
 import com.kh.finalPJ.member.memberDto;
 
 @Controller
-public class adminController {
+public class AdminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(controller.class);
 	
 	@Autowired
-	adminServiece adminserviece;
+	AdminServiece adminserviece;
 	
 	@RequestMapping(value="admin.do",method = RequestMethod.GET)
 	public String admin(Model model) throws Exception{
