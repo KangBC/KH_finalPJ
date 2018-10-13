@@ -1,5 +1,9 @@
 package com.kh.finalPJ.admin;
 
-public interface adminDao {
+import java.util.List;
 
+import com.kh.finalPJ.member.memberDto;
+
+public interface adminDao {
+	public List<memberDto> getMemberList(); 
 }

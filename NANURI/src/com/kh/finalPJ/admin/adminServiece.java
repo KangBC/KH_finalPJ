@@ -1,5 +1,9 @@
 package com.kh.finalPJ.admin;
 
-public interface adminServiece {
+import java.util.List;
 
+import com.kh.finalPJ.member.memberDto;
+
+public interface adminServiece {
+	public List<memberDto> getMemberList(); 
 }
