@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="membersqls">
+
+	<select id="login"
+		parameterType="com.kh.finalPJ.member.memberDto"
+		resultType="com.kh.finalPJ.member.memberDto">
+		SELECT * FROM NA_MEMBER
+		WHERE ID=#{id} AND PWD=#{pwd}
+	</select>
+
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		SELECT
+		COUNT(*) FROM MEMBER WHERE ID = #{id}
+	</select>
+
+	<select id="emailCheck" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE EMAIL = #{email}
+	</select>
+
+	<select id="nickCheck" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE NICKNAME =
+		#{nickname}
+	</select>
+
+	<insert id="addMember"
+		parameterType="com.kh.finalPJ.member.memberDto">
+		INSERT INTO MEMBER VALUES(#{id}, #{pwd}, #{nickname},
+		#{email}, #{phone}, #{address}, #{name}, 0)
+	</insert>
+
+</mapper>
