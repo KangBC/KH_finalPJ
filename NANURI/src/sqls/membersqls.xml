@@ -8,7 +8,7 @@
 	<select id="login"
 		parameterType="com.kh.finalPJ.member.memberDto"
 		resultType="com.kh.finalPJ.member.memberDto">
-		SELECT * FROM NA_MEMBER
+		SELECT * FROM MEMBER
 		WHERE ID=#{id} AND PWD=#{pwd}
 	</select>
 
