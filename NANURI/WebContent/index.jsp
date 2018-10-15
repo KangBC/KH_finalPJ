@@ -7,6 +7,6 @@
 <title>index</title>
 </head>
 <body>
-<%response.sendRedirect("test.do"); %>
+<%response.sendRedirect("main.do"); %>
 </body>
 </html>

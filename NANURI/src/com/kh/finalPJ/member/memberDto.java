@@ -1,6 +1,6 @@
 package com.kh.finalPJ.member;
 
-//DROP TABLE NA_MEMBER
+//DROP TABLE MEMBER
 //CASCADE CONSTRAINTS;
 //
 //CREATE TABLE MEMBER (

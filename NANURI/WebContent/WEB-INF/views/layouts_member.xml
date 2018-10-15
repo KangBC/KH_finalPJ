@@ -17,16 +17,14 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="rentallist.tiles" extends="main.tiles">
-
+	<definition name="login.tiles" extends="main.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/rental/rentallist.jsp" />
+			value="/WEB-INF/views/member/login.jsp" />
 	</definition>
 	
-	<definition name="rentaldetaile.tiles" extends="test.tiles">
+	<definition name="regist.tiles" extends="main.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/rental/rentaldetaile.jsp" />
-
+			value="/WEB-INF/views/member/regist.jsp" />
 	</definition>
 	
 	
