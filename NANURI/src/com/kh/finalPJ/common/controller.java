@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class controller {
 	private static final Logger logger = LoggerFactory.getLogger(controller.class);
 	
-	@RequestMapping(value="test.do",method = RequestMethod.GET)
+	@RequestMapping(value="main.do",method = RequestMethod.GET)
 	public String test(Model model) throws Exception{
-		return "test.tiles";
+		return "main.tiles";
 	}
 }
