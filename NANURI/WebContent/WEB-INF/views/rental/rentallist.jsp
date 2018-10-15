@@ -49,11 +49,9 @@
 		</span>
 		
 		<div>
-			<input type="text" id="id">
-			<button id="findname">asasa</button>
+			<input type="text" id="findtitle" onkeyup="findtitle_btn()">
+			<button onclick="findtitle_btn()">asasa</button>
 			
-			
-			<div id="test123"></div>
 		</div>
 		
 	</div>
@@ -63,11 +61,11 @@
 </div>
 <hr style="height: 1px;background: #333">
 
-	<div class="goodsbox" id="asd">
+	<div class="goodsbox" id="goodsbox">
 		<%
 			for(int i=0; i < bbslist.size(); i++){
 		%>
-		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>" class="goods">
+		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
 			<div class="goods_img"></div>
 			<p class="goods_title"><%=bbslist.get(i).getTitle() %></p>
 			<p class="goods_content"><%=bbslist.get(i).getContent() %></p>
@@ -79,6 +77,15 @@
 	</div>
 
 
+	
+
+
+
+</div>
+
+
+
+
 
 
 
@@ -87,15 +94,7 @@
 
 
 
-
-
-
-
-
-</div>
-
-
-<button onclick="test()">asdfasdfa</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
 
@@ -113,67 +112,57 @@ if(nodes.length > 4 ){
 
 </script>
 
-
-<script type="text/javascript">/* 
-$("#findname").bind("click",function(){
-	var id = $("#id").val();
-    $.ajax({
-        url : "goodsselect.do",
-        dataType:'json',
-        type: "get",
-        contentType:"application/json;charset=utf8",
-        data : { "id" : $("#id").val() },
-        success : function(result){
-           alert(result);
-           $("#test123").html(result);
-        },
-        error: function() {
-            alert("ㅋㅋ바보");
-        }
-    });
-}); */
-
-
-/* $("#findname").bind("click",function(){
-	//var id = $("#id").val();
-    $.ajax({
-        url : "goodsselect.do",
-       // dataType:'json',
-        //type: "get",
-       // contentType:"application/json;charset=utf8",
-       // data : id,
-        success : function(result){
-           alert(result);
-           //$("#test123").html(result);
-        },
-        error: function() {
-            alert("ㅋㅋ바보");
-        }
-    });
-});  */
-
-
-
-
-</script>
-
 <script type="text/javascript">
-
-$(document).ready(function(){
 	
-	$("#findname").on("click",function(){
-	    $.ajax({
-	        url : "goodstest.do",
-	        success : function(result){
-	           alert(result);
-	        },
-	        error: function() {
-	            alert("ㅋㅋ바보");
-	        }
-	    });
-	}); 
 	
-});
+		
+		
+		function findtitle_btn(){
+		var title = $("#findtitle").val();
+		
+$.ajax({
+	url : "findtitle.do",
+	type : "POST",
+	data : "title=" + title,
+	async: false,
+	success : function(data) {
+			
+		
+		
+		   if(!data.title){
+			//alert("값이 없습니다.");
+		}else if(title == ""){
+			$('.goodsbox').children('.goods').show();
+		}
+		else{
+		$('.goodsbox').children('.goods').hide();
+		
+		$('.goodsbox').children('.goods'+data.seq).show(); 
+		
 
+		
+		
+		
+		
+	/* 	
+		$.each(data, function(k, v){ 
+			$('.goodsbox').children('.goods'+data.seq).show();
+			alert(k+ "   " + v.S);
+			});
+		 */
+		
+		
+		//$('.goodsbox').append('<a href="goodsdetail.do?seq='+data.seq+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+data.title+'</p><p class="goods_content">'+data.content+'</p><p class="goods_price">₩ '+data.g_price+'</p></a>');
+		
+		} 
+		
+	},
+	error : function(xhr, status) {
+		alert("ㅋㅋ넌못해");
+	}
+})
+		}
 
+	
 </script>
+

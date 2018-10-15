@@ -14,7 +14,7 @@ import com.kh.finalPJ.common.controller;
 import com.kh.finalPJ.member.memberDto;
 
 @Controller
-public class AdminController {
+public class adminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(controller.class);
 	

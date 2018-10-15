@@ -1,6 +1,7 @@
 package com.kh.finalPJ.goods;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -48,29 +49,63 @@ public class goodsController {
 		return "rentaldetaile.tiles";
 	}
 	
-/*	@RequestMapping(value = "/goodsselect.do", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> searchGet(goodsBbsDto vo) throws Exception {
+	@ResponseBody
+	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
+	public List<goodsBbsDto> findtitle(String title) throws Exception {
 		
-		goodsBbsDto dd = vo;
+		Map<Object, Object> map = new HashMap<>();
+		List<goodsBbsDto> list = goodsService.findgoods(title);
+		System.out.println(list.size());
 		
-		 Map<String, Object> map = new HashMap<String, Object>();
-		    map.put("id", vo);
-		    map.put("age", 26);
+		
+		
+		/*for (int i = 0; i < list.size(); i++) {
+			map.put("seq", list.get(i).getSeq());
+			map.put("g_code", list.get(i).getG_code());
+			map.put("title", list.get(i).getTitle());
+			map.put("content", list.get(i).getContent());
+			map.put("r_date", list.get(i).getR_date());
+			map.put("g_price", list.get(i).getG_price());
+		}*/
+		
+		
+		
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getTitle());
+		}
+		 
 
 
-		
-		
-		System.out.println(vo);
-		
-		return map;
-	}*/
-	
-	@RequestMapping(value="/goodstest.do")
-	public String searchGet(){
 
 		
-		return "asdf";
+		/*Iterator<Object> keys = map.keySet().iterator();
+		if(keys.hasNext()) {
+			Object key = keys.next();
+	        System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
+		}*/
+		
+		
+		
+		
+	  /*  for (Object mapkey : map.keySet()){
+	        System.out.println("key:"+mapkey+",value:"+map.get(mapkey) +  "  ");
+	    }*/
+
+
+		return list;		
+		
 	}
+	
+	
+	/*@ResponseBody
+	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
+	public String findtitle(String title) throws Exception {
+		
+		
+		
+		return title;		
+		
+	}*/
 
 }
 

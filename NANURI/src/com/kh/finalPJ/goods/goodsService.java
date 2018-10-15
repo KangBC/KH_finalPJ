@@ -6,5 +6,5 @@ public interface goodsService {
 	
     /* bbsList */
 	List<goodsBbsDto> getbbs() throws Exception;
-	List<goodsBbsDto> findgoods(goodsBbsDto title) throws Exception;
+	List<goodsBbsDto> findgoods(String title) throws Exception;
 }

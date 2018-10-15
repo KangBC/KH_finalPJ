@@ -21,7 +21,7 @@ public class goodsServiceImpl implements goodsService {
 
 
 	@Override
-	public List<goodsBbsDto> findgoods(goodsBbsDto title) {
+	public List<goodsBbsDto> findgoods(String title) {
 		return goodsDao.findgoods(title);
 	}
 	

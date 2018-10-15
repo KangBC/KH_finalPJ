@@ -24,10 +24,11 @@ public class goodsDaoImpl implements goodsDao {
 		return list;
 	}
 
+	/* AJAX 검색 */
 	@Override
-	public List<goodsBbsDto> findgoods(goodsBbsDto title) {
+	public List<goodsBbsDto> findgoods(String title) {
 		
-		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbs", title);
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "findgoods", title + "%");
 		
 		return list;
 	}

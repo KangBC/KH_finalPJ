@@ -7,5 +7,5 @@ public interface goodsDao {
 	 /* bbsList */
 	List<goodsBbsDto> getbbs();
 	
-	List<goodsBbsDto> findgoods(goodsBbsDto g_name);
+	List<goodsBbsDto> findgoods(String g_name);
 }

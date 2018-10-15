@@ -30,4 +30,24 @@
 	</definition>
 	
 	
+	<definition name="login.tiles" extends="test.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/login.jsp" />
+
+	</definition>
+	
+	<definition name="mypages.tiles" extends="test.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/mypages.jsp" />
+
+	</definition>
+	
+	<definition name="regist.tiles" extends="test.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/regist.jsp" />
+
+	</definition>
+	
+
+	
 </tiles-definitions>
