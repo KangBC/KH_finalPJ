@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.member.secessionDto;
 
 @Repository
 public class AdminDaoImpl implements AdminDao{
@@ -20,4 +21,11 @@ public class AdminDaoImpl implements AdminDao{
 		List<memberDto> memberlist = sqlSession.selectList(namespace + "getmemberlist");
 		return memberlist;
 	}
+
+	@Override
+	public List<secessionDto> getSecessionList() {
+		List<secessionDto> memberlist = sqlSession.selectList(namespace + "getmemberlist");
+		return memberlist;
+	}
+	
 }

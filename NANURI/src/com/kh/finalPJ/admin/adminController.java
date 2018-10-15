@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.finalPJ.common.controller;
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.member.secessionDto;
 
 @Controller
 public class AdminController {
@@ -32,6 +33,14 @@ public class AdminController {
 		model.addAttribute("memberlist",memberlist);
 		
 		return "memberList.tiles";
+	}
+	
+	@RequestMapping(value="approve.do",method = RequestMethod.GET)
+	public String approve(Model model) throws Exception{
+		List<secessionDto> sececssionList = adminserviece.getSecessionList();
+		model.addAttribute("sececssionList",sececssionList);
+		
+		return "approve.tiles";
 	}
 	
 	@RequestMapping(value="manageStock.do",method = RequestMethod.GET)

@@ -5,6 +5,7 @@
 <div>
   <ul>
     <li><a href="manageMember.do">회원 관리</a></li><br>
+    <li><a href="approve.do">탈퇴 승인</a></li><br>
     <li><a href="goodsApply.do">상품 등록</a></li><br>
     <li><a href="manageStock.do">재고 관리</a></li><br>
   </ul>
