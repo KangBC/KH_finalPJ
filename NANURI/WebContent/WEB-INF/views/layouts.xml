@@ -21,8 +21,12 @@
 
 		<put-attribute name="content"
 			value="/WEB-INF/views/rental/rentallist.jsp" />
+	</definition>
+	
+	<definition name="rentaldetaile.tiles" extends="test.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/rental/rentaldetaile.jsp" />
 
-		
 	</definition>
 	
 	

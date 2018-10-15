@@ -20,7 +20,8 @@
 	<bean id="tilesConfig" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/views/layouts_bit.xml</value> <!-- 위치를 선정하는 부분	 -->
+				<!-- <value>/WEB-INF/views/layouts.xml</value>  --><!-- 위치를 선정하는 부분	 -->
+				<value>/WEB-INF/views/goods.xml</value> 
 			</list>
 		</property>
 	</bean>
