@@ -24,7 +24,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public List<secessionDto> getSecessionList() {
-		List<secessionDto> memberlist = sqlSession.selectList(namespace + "getmemberlist");
+		List<secessionDto> memberlist = sqlSession.selectList(namespace + "secessionlist");
 		return memberlist;
 	}
 	

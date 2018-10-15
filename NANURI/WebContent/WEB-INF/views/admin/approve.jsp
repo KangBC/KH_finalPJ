@@ -11,10 +11,10 @@
     <colgroup>
       <col width="150px">
       <col width="150px">
-      <col width="150px">
       <col width="200px">
       <col width="200px">
-      <col width="400px">
+      <col width="250px">
+      <col width="100px">
     </colgroup>
 	<tr>
 	  <td>ID</td>
@@ -22,14 +22,17 @@
   	  <td>탈퇴 신청</td>
   	  <td>탈퇴 수행</td>
   	  <td>상태</td>
+  	  <td>탈퇴 승인</td>
+  	  
 	</tr>
-    <c:forEach var="member" items="${sececssionList}" varStatus="memberS">
+    <c:forEach var="sececssion" items="${sececssionList}" varStatus="sececssionS">
 	  <tr>
-	  	<td>${member.id}</td>
-	  	<td>${member.reason}</td>
-	  	<td>${member.sdate}</td>
-	  	<td>${member.edate}</td>
-	  	<td>${member.status}</td>
+	  	<td>${sececssion.del_id}</td>
+	  	<td>${sececssion.del_reason}</td>
+	  	<td>${sececssion.del_sdate.toString().substring(0,16)}</td>
+	  	<td>${sececssion.del_edate.toString().substring(0,16)}</td>
+	  	<td>${sececssion.status}</td>
+	  	<td><button onclick="">승인</button></td>
 	  </tr>
     </c:forEach>
   </table>

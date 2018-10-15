@@ -15,7 +15,7 @@ import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.member.secessionDto;
 
 @Controller
-public class adminController {
+public class AdminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(controller.class);
 	
