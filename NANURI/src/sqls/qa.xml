@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KhQa">
+	<select id="getQaList" resultType="com.kh.finalPJ.qa.qaDto">
+		SELECT SEQ, ID, TITLE, CONTENT, WDATE, REF, DEL, G_CODE, SECRET
+		FROM NA_QA
+		ORDER BY REF DESC, SEQ DESC
+	</select>	
+	
+	<insert parameterType="com.kh.finalPJ.qa.qaDto" id="QaWrite">
+		INSERT INTO NA_QA(SEQ, ID, TITLE, CONTENT, WDATE, REF, DEL, G_CODE, SECRET)
+		VALUES(NA_SEQ_QA.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, (SELECT NVL(MAX(REF),0)+1 FROM NA_QA), 0, NULL, #{secret})
+	</insert>
+	
+</mapper>
