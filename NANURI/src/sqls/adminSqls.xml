@@ -9,5 +9,21 @@
 	SELECT * FROM MEMBER
 	WHERE NOT AUTH=1
 </select>
+<!-- 
+<select id="secessionlist" resultType="com.kh.finalPJ.member.secessionDto">
+	SELECT * FROM SECESSION
+</select>
 
+<select id="goodslist" resultType="com.kh.finalPJ.goods.goodsDto">
+	SELECT * FROM GOODS
+</select>
+
+<INSERT id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
+	INSERT INTO GOODS VALUES(#{},#{},#{},#{})
+</INSERT>
+
+<UPDATE id="goodsUpdate" parameterType="com.kh.finalPJ.goods.goodsDto">
+	UPDATE GOODS SET =#{}, =#{}, =#{}, =#{}
+</UPDATE>
+ -->
 </mapper>
