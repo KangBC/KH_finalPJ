@@ -21,7 +21,11 @@
 		<property name="definitions">
 			<list>
 				<!-- <value>/WEB-INF/views/layouts.xml</value>  --><!-- 위치를 선정하는 부분	 -->
-				<value>/WEB-INF/views/goods.xml</value> 
+				<!-- <value>/WEB-INF/views/layouts_review.xml</value>  -->
+				<!-- <value>/WEB-INF/views/layouts_member.xml</value>  -->
+				<!-- <value>/WEB-INF/views/layouts_qa.xml</value>  -->
+				<!-- <value>/WEB-INF/views/goods.xml</value>  -->
+				<!-- <value>/WEB-INF/views/layouts_bit.xml</value> --> 
 			</list>
 		</property>
 	</bean>
