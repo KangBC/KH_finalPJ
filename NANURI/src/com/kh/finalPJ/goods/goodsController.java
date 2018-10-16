@@ -1,5 +1,6 @@
 package com.kh.finalPJ.goods;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -51,29 +52,26 @@ public class goodsController {
 	
 	@ResponseBody
 	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
-	public List<goodsBbsDto> findtitle(String title) throws Exception {
+	public Map<Object, Object> findtitle(String title) throws Exception {
 		
 		Map<Object, Object> map = new HashMap<>();
 		List<goodsBbsDto> list = goodsService.findgoods(title);
 		System.out.println(list.size());
 		
 		
-		
-		/*for (int i = 0; i < list.size(); i++) {
+	/*	
+		for (int i = 0; i < list.size(); i++) {
 			map.put("seq", list.get(i).getSeq());
 			map.put("g_code", list.get(i).getG_code());
 			map.put("title", list.get(i).getTitle());
 			map.put("content", list.get(i).getContent());
 			map.put("r_date", list.get(i).getR_date());
 			map.put("g_price", list.get(i).getG_price());
-		}*/
-		
-		
-		
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getTitle());
 		}
-		 
+		*/
+		
+		
+		map.put("list", list);
 
 
 
@@ -92,7 +90,7 @@ public class goodsController {
 	    }*/
 
 
-		return list;		
+		return map;		
 		
 	}
 	
