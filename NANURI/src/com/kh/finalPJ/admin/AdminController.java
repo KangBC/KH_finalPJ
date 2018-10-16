@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.finalPJ.common.controller;
+import com.kh.finalPJ.goods.goodsDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.member.secessionDto;
 
@@ -45,6 +46,9 @@ public class AdminController {
 	
 	@RequestMapping(value="manageStock.do",method = RequestMethod.GET)
 	public String manageStock(Model model) throws Exception{
+		List<goodsDto> goodsList = adminserviece.getGoodsList();
+		model.addAttribute("goodsList",goodsList);
+		
 		return "stock.tiles";
 	}
 	
@@ -52,5 +56,6 @@ public class AdminController {
 	public String goodsApply(Model model) throws Exception{
 		return "goodsApply.tiles";
 	}
+	
 	
 }

@@ -5,19 +5,18 @@
 
 <mapper namespace="adminSqls">
 
-<select id="getmemberlist" resultType="com.kh.finalPJ.member.memberDto">
+<select id="getMemberList" resultType="com.kh.finalPJ.member.memberDto">
 	SELECT * FROM MEMBER
 	WHERE NOT AUTH=1
 </select>
  
-<select id="secessionlist" resultType="com.kh.finalPJ.member.secessionDto">
+<select id="getSecessionList" resultType="com.kh.finalPJ.member.secessionDto">
 	SELECT * FROM SECESSION
 </select>
-<!--
-<select id="goodslist" resultType="com.kh.finalPJ.goods.goodsDto">
-	SELECT * FROM GOODS
+<select id="getGoodsList" resultType="com.kh.finalPJ.goods.goodsDto">
+	SELECT * FROM STOCK FULL OUTER JOIN GOODS USING (G_CODE) 
 </select>
-
+<!-- 
 <INSERT id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
 	INSERT INTO GOODS VALUES(#{},#{},#{},#{})
 </INSERT>
