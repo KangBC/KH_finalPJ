@@ -28,36 +28,38 @@
 	<div class="selectbox">
 		
 		<span class="check_c">
-		<input type="checkbox" id="ck1">
+		<input type="checkbox" id="ck1" name="goodsname" value="asd" onclick="ck_btn()">
 		<label for="ck1">가전제품</label>
 		</span>
 		<span class="check_c">
-		<input type="checkbox" id="ck2">
+		<input type="checkbox" id="ck2" name="goodsname" onclick="ck_btn()">
 		<label for="ck2">가전제품</label>
 		</span>
 		<span class="check_c">
-		<input type="checkbox" id="ck3">
+		<input type="checkbox" id="ck3" name="goodsname" onclick="ck_btn()">
 		<label for="ck3">가전제품</label>
 		</span>
 		<span class="check_c">
-		<input type="checkbox" id="ck4">
+		<input type="checkbox" id="ck4" name="goodsname" onclick="ck_btn()">
 		<label for="ck4">가전제품</label>
 		</span>
 		<span class="check_c">
-		<input type="checkbox" id="ck5">
+		<input type="checkbox" id="ck5" name="goodsname"onclick="ck_btn()">
 		<label for="ck5">가전제품</label>
 		</span>
 		
+		<button id="asd">asd</button>
+		
 		<div>
-			<input type="text" id="findtitle" onkeyup="findtitle_btn()">
-			<button onclick="findtitle_btn()">asasa</button>
+			<input type="text" id="findtitle" >
+			<button onclick="findtitle_btn()">검색</button>
 			
 		</div>
 		
 	</div>
 
 <div class="goodsbox_h">
-<p>총  <%=bbslist.size() %> 개 의 상품이 있습니다.</p>
+<p>총  <span id="goods_count"></span> 개 의 상품이 있습니다.</p>
 </div>
 <hr style="height: 1px;background: #333">
 
@@ -77,7 +79,7 @@
 	</div>
 
 
-	
+	<div id="tess"></div>
 
 
 
@@ -112,56 +114,91 @@ if(nodes.length > 4 ){
 
 </script>
 
+
 <script type="text/javascript">
+
+function ck_btn(){
+
+	var lists = [];
+	$("input[name=goodsname]:checked").each(function() {
+
+		
+		 lists.push($(this).val());
+		 
+		 /* var value = $(this).val();
+		$("#tess").append(value); */
+		/* alert(value); */
+
+	});
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+	$(document).ready(function() {
+	//총데이터 갯수
+	var node = $('.goodsbox').children();
+	$("#goods_count").html(node.length);
+		
+	});
+		
+		
+		
+function findtitle_btn(){
 	
 	
+	
+	var lists = [];
+	$("input[name=goodsname]:checked").each(function() {
+
 		
-		
-		function findtitle_btn(){
-		var title = $("#findtitle").val();
-		
+		 lists.push($(this).val());
+	
+
+	});
+	
+	
+	
+var title = $("#findtitle").val();
 $.ajax({
 	url : "findtitle.do",
 	type : "POST",
 	data : "title=" + title,
-	async: false,
+	async: true,
 	success : function(data) {
 			
 		
-		
-		   if(!data.title){
-			//alert("값이 없습니다.");
-		}else if(title == ""){
-			$('.goodsbox').children('.goods').show();
-		}
-		else{
-		$('.goodsbox').children('.goods').hide();
-		
-		$('.goodsbox').children('.goods'+data.seq).show(); 
-		
-
-		
-		
-		
-		
-	/* 	
-		$.each(data, function(k, v){ 
-			$('.goodsbox').children('.goods'+data.seq).show();
-			alert(k+ "   " + v.S);
-			});
-		 */
-		
-		
-		//$('.goodsbox').append('<a href="goodsdetail.do?seq='+data.seq+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+data.title+'</p><p class="goods_content">'+data.content+'</p><p class="goods_price">₩ '+data.g_price+'</p></a>');
-		
-		} 
+		 $('.goodsbox').children('.goods').remove();
+		 	var node = $('.goodsbox').children();
+			$("#goods_count").html(node.length);
+			
+			
+	 	 $.each(data.list, function(key, value){ 
+	 		 
+	 		if(value.title != null){
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			 var node = $('.goodsbox').children();
+	 			$("#goods_count").html(node.length); 
+		 		 
+	 		}
+	 		
+			 });
+		  
+	
 		
 	},
 	error : function(xhr, status) {
 		alert("ㅋㅋ넌못해");
 	}
 })
-		}
+
+
+
+}
 
 	
 </script>
