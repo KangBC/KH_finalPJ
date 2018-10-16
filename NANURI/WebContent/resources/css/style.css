@@ -27,3 +27,15 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .goods .goods_content{color: #777;font-size: 14px;}
 .goods .goods_price{font-size: 16px;color: #cd1965;font-weight: bold;font-family: 'Spoqa Han Sans';
     letter-spacing: 0; margin-top: 4px;}
+    
+/* 후기 css*/
+.review{width: 100%; display: table; padding: 0; border-top: 1px solid #999;}
+.review li{height: 140px; padding: 10px;    border-bottom: 1px solid #999;    padding-top: 25px;}
+.review .img{float: left; background: blue; width: 90px;height:90px;border-radius: 65%;margin-right: 10px;}
+.review .text_view{float: left;     width: 810px;height: 100%;    padding: 11px;}
+.review .text_view .title{margin: 0; font-weight: bold;font-size: 12px;width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.review .text_view .content{font-size: 12px;    margin-top: 5px; width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+.review .idbox{float: left; width: 120px;height: 100%;text-align: center; padding-top: 30px;}
+.review .idbox .id{font-weight: bold;}
+.review .idbox .date{font-size: 12px; color: #999;}

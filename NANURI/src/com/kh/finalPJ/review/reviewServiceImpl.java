@@ -17,6 +17,27 @@ public class reviewServiceImpl implements reviewService {
 		
 		return reviewDao.getreview();
 	}
+
+	/*글 쓰기*/
+	@Override
+	public boolean writeReview(reviewDto dto) throws Exception {
+		
+		return reviewDao.writeReview(dto);
+	}
+
+	/*디테일보기*/
+	@Override
+	public reviewDto detailreview(int seq) throws Exception {
+		
+		return reviewDao.detailreview(seq);
+	}
+
+	/*글삭제*/
+	@Override
+	public void deleterev(int seq) throws Exception {
+		
+		reviewDao.deleterev(seq);
+	}
 	
 	
 	

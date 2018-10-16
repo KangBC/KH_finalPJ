@@ -22,6 +22,36 @@ public class reviewDaoImpl implements reviewDao {
 	
 		return list;
 	}
+
+	/*글 쓰기*/
+	@Override
+	public boolean writeReview(reviewDto dto) throws Exception {
+		
+		sqlSession.insert(namespace + "writeReview", dto);
+		
+		//System.out.println(dto.getContent());
+		//System.out.println(dto.getId());
+		//System.out.println(dto.getTitle());
+		
+		return true;
+	}
+
+	/*디테일보기*/
+	@Override
+	public reviewDto detailreview(int seq) throws Exception {
+		
+		return sqlSession.selectOne(namespace + "detailreview", seq);
+	}
+
+	/*글삭제*/
+	@Override
+	public void deleterev(int seq) throws Exception {
+		
+		sqlSession.update(namespace + "deleterev", seq);
+		
+	}
+
 	
+
 	
 }
