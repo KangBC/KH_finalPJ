@@ -23,6 +23,12 @@ public class memberController {
 		return "login.tiles";
 	}
 
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(HttpServletRequest req) {
+		req.getSession().invalidate();
+		return "login.tiles";
+	}
+
 	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
 	public String signUp() {
 		return "regist.tiles";
@@ -36,7 +42,7 @@ public class memberController {
 
 		if (login != null && !login.getId().equals("")) {
 			req.getSession().setAttribute("login", login);
-			return "redirect:/test.do";
+			return "redirect:/main.do";
 		} else {
 			req.getSession().invalidate();
 			return "redirect:/login.do";
@@ -84,5 +90,10 @@ public class memberController {
 			map.put("cnt", 0);
 		}
 		return map;
+	}
+	
+	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
+	public String mypage() {
+		return "mypage.tiles";
 	}
 }
