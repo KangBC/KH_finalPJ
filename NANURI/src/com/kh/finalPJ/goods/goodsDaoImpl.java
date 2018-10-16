@@ -1,6 +1,9 @@
 package com.kh.finalPJ.goods;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,17 @@ public class goodsDaoImpl implements goodsDao {
 	@Override
 	public List<goodsBbsDto> findgoods(String title) {
 		
-		List<goodsBbsDto> list = sqlSession.selectList(namespace + "findgoods", title + "%");
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "findgoods", title);
+		
+		return list;
+	}
+
+	@Override
+	public List<goodsBbsDto> findchecked(String[] lists) {
+		
+
+		
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "findchecked", lists);
 		
 		return list;
 	}
