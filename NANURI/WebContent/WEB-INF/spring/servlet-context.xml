@@ -30,7 +30,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/*.do" />
-			<bean class="org.webproject.team2.common.LoginInterceptor"></bean>
+			<bean class="com.kh.finalPJ.common.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
