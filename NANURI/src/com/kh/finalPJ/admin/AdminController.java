@@ -1,5 +1,6 @@
 package com.kh.finalPJ.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -38,10 +39,19 @@ public class AdminController {
 	
 	@RequestMapping(value="approve.do",method = RequestMethod.GET)
 	public String approve(Model model) throws Exception{
-		List<secessionDto> sececssionList = adminserviece.getSecessionList();
-		model.addAttribute("sececssionList",sececssionList);
+		List<secessionDto> secessionList = adminserviece.getSecessionList();
+		model.addAttribute("secessionList",secessionList);
 		
 		return "approve.tiles";
+	}
+	
+	@RequestMapping(value="finalSecession.do",method = RequestMethod.GET)
+	public String finalSecession(String id,Model model) throws Exception{
+		if(adminserviece.finalSecession(id)) {
+			logger.info(id + " 회원 탈퇴 성공!" + new Date());
+		}
+		
+		return "redirect:/approve.do";
 	}
 	
 	@RequestMapping(value="manageStock.do",method = RequestMethod.GET)

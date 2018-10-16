@@ -10,4 +10,7 @@ public interface AdminDao {
 	public List<memberDto> getMemberList(); 
 	public List<secessionDto> getSecessionList(); 
 	public List<goodsDto> getGoodsList(); 
+	
+	public boolean finalSecession(String id);
+	public boolean secessionUpdate(String id);
 }

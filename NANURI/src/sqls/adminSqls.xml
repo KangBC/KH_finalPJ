@@ -13,9 +13,20 @@
 <select id="getSecessionList" resultType="com.kh.finalPJ.member.secessionDto">
 	SELECT * FROM SECESSION
 </select>
+
 <select id="getGoodsList" resultType="com.kh.finalPJ.goods.goodsDto">
 	SELECT * FROM STOCK FULL OUTER JOIN GOODS USING (G_CODE) 
 </select>
+
+<delete id="finalSecession" parameterType="string">
+	DELETE FROM MEMBER WHERE ID=#{id}
+</delete>
+<update id="secessionUpdate" parameterType="string">
+	UPDATE SECESSION SET STATUS=1 WHERE DEL_ID=#{id} AND STATUS=0
+</update>
+
+
+
 <!-- 
 <INSERT id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
 	INSERT INTO GOODS VALUES(#{},#{},#{},#{})

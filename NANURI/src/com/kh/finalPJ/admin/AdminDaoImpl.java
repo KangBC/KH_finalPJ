@@ -34,7 +34,15 @@ public class AdminDaoImpl implements AdminDao{
 		List<goodsDto> goodsList = sqlSession.selectList(namespace + "getGoodsList");
 		return goodsList;
 	}
-	
-	
+
+	@Override
+	public boolean finalSecession(String id) {
+		return sqlSession.delete(namespace + "finalSecession",id)>0? true:false;
+	}
+
+	@Override
+	public boolean secessionUpdate(String id) {
+		return sqlSession.update(namespace + "secessionUpdate",id)>0? true:false;
+	}
 	
 }
