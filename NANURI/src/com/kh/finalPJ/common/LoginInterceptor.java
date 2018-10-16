@@ -44,7 +44,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		} else if (requestURI.indexOf("/regiAf.do") > -1) {
 			return true;
-		} else {
+		}else if (requestURI.indexOf("/rentallist.do") > -1) {
+			return true;
+		}else if (requestURI.indexOf("/goodsdetail.do") > -1) {
+			return true;
+		}else if (requestURI.indexOf("/findtitle.do") > -1) {
+			return true;
+		}else if (requestURI.indexOf("/findchecked.do") > -1) {
+			return true;
+		}else {
 			// 위의 예외페이지 외에는 세션값을 체크해서 있으면 그냥 페이지표시
 			if (userInfo != null && !userInfo.getId().equals("")) {
 				return true;

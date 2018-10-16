@@ -27,12 +27,12 @@
 	</bean>
 	
 	<!-- interceptors 설정 -->
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/*.do" />
 			<bean class="com.kh.finalPJ.common.LoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 	
 	<!-- viewResolver 설정 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">

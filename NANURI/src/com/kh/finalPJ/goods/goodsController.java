@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -37,6 +38,10 @@ public class goodsController {
 		model.addAttribute("bbslist",list);
 		
 		return "rentallist.tiles";
+		
+		
+	
+		
 	}
 	
 	
@@ -58,52 +63,52 @@ public class goodsController {
 		List<goodsBbsDto> list = goodsService.findgoods(title);
 		System.out.println(list.size());
 		
+		map.put("list", list);
+		return map;		
 		
-	/*	
-		for (int i = 0; i < list.size(); i++) {
-			map.put("seq", list.get(i).getSeq());
-			map.put("g_code", list.get(i).getG_code());
-			map.put("title", list.get(i).getTitle());
-			map.put("content", list.get(i).getContent());
-			map.put("r_date", list.get(i).getR_date());
-			map.put("g_price", list.get(i).getG_price());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "findchecked.do", method = RequestMethod.POST)
+	public Map<Object, Object> findchecked(String[] lists) throws Exception {
+		
+		
+		Map<Object, Object> map = new HashMap<>();
+		
+		List<goodsBbsDto> list = goodsService.findchecked(lists);
+		
+		map.put("checklist", list);
+		
+	/*	for(int i = 0 ; i < list.length; i++) {
+			map.put(i+"", list[i]);
 		}
 		*/
 		
 		
-		map.put("list", list);
-
-
-
 		
-		/*Iterator<Object> keys = map.keySet().iterator();
-		if(keys.hasNext()) {
-			Object key = keys.next();
-	        System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
-		}*/
+		System.out.println( lists.length );
 		
 		
 		
+		for(int i = 0 ; i < lists.length; i++) {
+			System.out.println( lists[i] );
+		}
 		
-	  /*  for (Object mapkey : map.keySet()){
-	        System.out.println("key:"+mapkey+",value:"+map.get(mapkey) +  "  ");
-	    }*/
+		/*
+		
+        for( Object key : map.keySet() ){
+            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
+        }*/
 
 
+		
+		
+		
 		return map;		
 		
 	}
 	
 	
-	/*@ResponseBody
-	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
-	public String findtitle(String title) throws Exception {
-		
-		
-		
-		return title;		
-		
-	}*/
 
 }
 

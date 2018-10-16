@@ -1,5 +1,6 @@
 package com.kh.finalPJ.goods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class goodsServiceImpl implements goodsService {
 	@Override
 	public List<goodsBbsDto> findgoods(String title) {
 		return goodsDao.findgoods(title);
+	}
+
+
+	@Override
+	public List<goodsBbsDto> findchecked(String[] lists) throws Exception {
+		return goodsDao.findchecked(lists);
 	}
 	
 	
