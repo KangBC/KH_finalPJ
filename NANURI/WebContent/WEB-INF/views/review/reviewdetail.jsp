@@ -49,7 +49,7 @@ String str = dto.getContent();
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
 		
-			 <input type="button" value="글 수정" onclick="location.href='reviewupdate.do'">
+			 <input type="button" value="글 수정" onclick="location.href='reviewupdate.do?seq=<%=dto.getSeq()%>'">
 			 <input type="button" value="글 삭제" onclick="deletereview('<%=dto.getSeq() %>')">
 			 <input type="button" value="목록으로" onclick="location.href='reviewlist.do'">
 

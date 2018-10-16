@@ -24,4 +24,10 @@
 	DELETE REVIEW
 	WHERE SEQ=#{seq}
 </update>
+
+<update id="reviewupdate" parameterType="com.kh.finalPJ.review.reviewDto">
+	UPDATE REVIEW
+	SET TITLE=#{title}, CONTENT=#{content}, WDATE=SYSDATE
+	WHERE SEQ=#{seq}
+</update>
 </mapper>

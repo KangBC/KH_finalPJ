@@ -38,6 +38,14 @@ public class reviewServiceImpl implements reviewService {
 		
 		reviewDao.deleterev(seq);
 	}
+
+	/*글 수정*/
+	@Override
+	public void reviewupdate(reviewDto dto, int seq) throws Exception {
+		
+		reviewDao.reviewupdate(dto, seq);
+		
+	}
 	
 	
 	

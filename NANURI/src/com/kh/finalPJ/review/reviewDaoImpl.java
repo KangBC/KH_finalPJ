@@ -51,6 +51,13 @@ public class reviewDaoImpl implements reviewDao {
 		
 	}
 
+	/*글 수정*/
+	@Override
+	public void reviewupdate(reviewDto dto, int seq) throws Exception {
+		sqlSession.update(namespace + "reviewupdate", dto);
+		
+	}
+
 	
 
 	
