@@ -53,16 +53,16 @@ List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
        </div>
        <div class="text_view">
           <div>
-             <a href="" class="title"><%=list.get(i).getTitle() %></a>
+             <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              <div class="star">ㅇㅇㅇㅇㅇ</div>
           </div>
           
-          <p class="content"><a href=""><%=list.get(i).getContent() %></a></p>
+          <p class="content"><a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>"><%=list.get(i).getContent() %></a></p>
           
        </div>
        <div class="idbox">
           <p class="id"><%=list.get(i).getId() %></p>
-          <p class="date"><%=list.get(i).getWdate() %></p>
+          <p class="wdate"><%=list.get(i).getWdate().substring(0,16) %></p>
        </div>
    </li>
 
@@ -76,16 +76,6 @@ List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
 </div>
 <br>
 
-
-<script type="text/javascript">
-
-$("#_btnSearch").click(function() {
-	alert('search');						
-	$("#_frmFormSearch").attr({ "target":"_self", "action":"reviewlist.do" }).submit();
-	
-});
-
-</script>
 
 </body>
 </html>

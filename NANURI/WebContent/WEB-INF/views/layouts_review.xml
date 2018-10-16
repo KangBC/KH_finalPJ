@@ -37,6 +37,12 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/review/reviewwrite.jsp" />
 	</definition>
+	
+	<!--detail뷰 -->
+	<definition name="reviewdetail.tiles" extends="test.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewdetail.jsp" />
+	</definition>
 
 
 </tiles-definitions>

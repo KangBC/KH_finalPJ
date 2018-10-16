@@ -6,6 +6,22 @@
 
 <select id="getreview" resultType="com.kh.finalPJ.review.reviewDto">
 	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
-	FROM NA_REVIEW
+	FROM REVIEW
 </select>
+
+<insert id="writeReview" parameterType="com.kh.finalPJ.review.reviewDto">
+	INSERT INTO REVIEW
+	VALUES(SEQ_R.NEXTVAL, '123', #{title}, #{content}, SYSDATE, 0, '1')
+</insert>
+
+<select id = "detailreview" parameterType="java.lang.Integer" resultType="com.kh.finalPJ.review.reviewDto">
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
+	FROM REVIEW
+	WHERE SEQ=#{seq}
+</select>
+
+<update id="deleterev"  parameterType="java.lang.Integer">
+	DELETE REVIEW
+	WHERE SEQ=#{seq}
+</update>
 </mapper>
