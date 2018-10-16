@@ -51,13 +51,12 @@ List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
        <div class="img">
           <!-- <img alt="" src=""> -->
        </div>
-       <div class="text_view">
+       <div class="text_view" onclick="location.href='reviewdetail.do?seq=<%=list.get(i).getSeq()%>'" style="cursor: pointer;">
           <div>
              <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              <div class="star">ㅇㅇㅇㅇㅇ</div>
           </div>
-          
-          <p class="content"><a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>"><%=list.get(i).getContent() %></a></p>
+         
           
        </div>
        <div class="idbox">
@@ -71,7 +70,7 @@ List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
 }
 %>
 
-<button type="button" onclick="location.href= 'reviewwrite.do'">글쓰기</button>
+<button type="button" onclick="location.href='reviewwrite.do'">글쓰기</button>
 
 </div>
 <br>

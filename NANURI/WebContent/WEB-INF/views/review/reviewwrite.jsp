@@ -30,12 +30,6 @@
 	</td>
 </tr>
 
-<tr>
-	<th>파일업로드</th>
-	<td>
-		<input type="file" name="fileload" style=" width : 400px;">
-	</td>
-</tr>
 </table>
 
 <!-- 스마트에디터 & 확인 취소버튼 -->

@@ -16,4 +16,6 @@ public interface reviewService {
 	/*글삭제*/
 	public void deleterev(int seq) throws Exception;
 	
+	/*글 수정*/
+	public void reviewupdate(reviewDto dto, int seq)throws Exception;
 }
