@@ -34,4 +34,9 @@ public class memberServiceImpl implements memberService {
 		return memberdao.addMember(mem);
 	}
 
+	@Override
+	public boolean userUpdateAf(memberDto mem) throws Exception {
+		return memberdao.userUpdateAf(mem);
+	}
+
 }

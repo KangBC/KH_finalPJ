@@ -34,6 +34,20 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/member/mypages.jsp" />
 	</definition>
+	
+	<!-- userUpdate뷰 -->
+	<definition name="userUpdate.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/userUpdate.jsp" />
+	</definition>
+	
+	<!-- secession뷰 -->
+	<definition name="secession.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/secession.jsp" />
+	</definition>
+	
+	<!-- ____________________________________________________ -->
 
 	<!--list뷰 -->
 	<definition name="reviewlist.tiles" extends="main.tiles">

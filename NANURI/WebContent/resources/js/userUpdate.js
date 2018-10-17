@@ -44,46 +44,7 @@ function sample6_execDaumPostcode() {
 	}).open();
 }
 
-// 회원가입 정규식
-var idok = "false";
-var nickcheck = "false";
 var passwordcheck = "false";
-var emailcheck = "false";
-
-function idcheck() {
-	var idRule = /^[A-Za-z0-9]{6,12}$/;
-	var id = $("#bf_id").val();
-
-	if (id.trim().length < 1) {
-		alert("아이디를 입력하세요.");
-		return;
-	} else if (!idRule.test(id)) {
-		alert("아이디는 영어와 숫자를 이용하여 6-12자리로 입력해 주세요.");
-		$("#bf_id").val("");
-		return;
-	}
-
-	$.ajax({
-		url : "idCheck.do",
-		type : "POST",
-		data : "id=" + id,
-		success : function(data) {
-			if (data.cnt > 0) {
-				alert("아이디가 중복됩니다.");
-				$("#bf_id").val("");
-				idok = "false";
-			} else {
-				alert("사용 할 수 있는 아이디입니다.");
-				$("#idCK").val("*사용가능 ID : " + id).css("color", "green");
-				$("#id").val(id);
-				idok = "true";
-			}
-		},
-		error : function(xhr, status) {
-			alert(xhr + " : " + status)
-		}
-	})
-}
 
 function nickCheck() {
 	var nicknameRule = /^[가-힣a-zA-Z]+$/;
@@ -105,12 +66,9 @@ function nickCheck() {
 					if (data.cnt > 0) {
 						$("#nicknameCK").val("*이미 존재하는 닉네임입니다").css("color",
 								"red");
-						nickcheck = "false";
 					} else {
 						$("#nicknameCK").val("*사용 할 수 있는 닉네임입니다").css("color",
 								"green");
-						$("#nickname").val(bf_nickname);
-						nickcheck = "true";
 					}
 				},
 				error : function(xhr, status) {
@@ -120,33 +78,38 @@ function nickCheck() {
 }
 
 function regiAf() {
+	if ($("#address_num").val() != "") {
+		var address = $("#address_num").val() + "-" + $("#address_main").val()
+				+ "-" + $("#address_detail").val();
+		$("#address").val(address);
+	}
 
-	// 주소를 합쳐주기
-	var address = $("#address_num").val() + "-" + $("#address_main").val()
-			+ "-" + $("#address_detail").val();
-	$("#address").val(address);
-
-	if (idok == "false") {
-		alert("ID체크를 하세요");
-		return;
-	} else if (passwordcheck == "false") {
+	if (passwordcheck == "false") {
 		alert("비밀번호 체크를 하세요");
 		return;
-	} else if (emailcheck == "false") {
-		alert("email을 확인하세요");
-		return;
-	} else if (nickcheck == "false") {
-		alert("nickname을 확인하세요");
-		return;
-	} else if ($("#name").val().trim().length < 1) {
-		alert("이름을 확인하세요");
-		return;
-	} else if ($("#phone").val().trim().length < 1) {
-		alert("전화번호를 확인하세요");
-		return;
-	} else if ($("#address").val().trim().length < 1) {
-		alert("주소를 확인하세요");
-		return;
+	}
+
+	if ($("#pwd1").val() != "" && $("#pwd1").val() != $("#pwd").val()) {
+		$("#pwd").val($("#pwd1").val());
+	}
+
+	if ($("#bf_name").val() != "" && $("#bf_name").val() != null
+			&& $("#bf_name").val() != $("#name").val()) {
+		alert("Bf " + $("#bf_name").val() + " / Ori " + $("#name").val());
+		$("#name").val($("#bf_name").val());
+	}
+
+	if ($("#bf_nickname").val() != ""
+			&& $("#bf_nickname").val() != $("#nickname").val()) {
+		$("#nickname").val($("#bf_nickname").val());
+	}
+
+	if ($("#bf_email").val() != "" && $("#bf_email").val() != $("#email").val()) {
+		$("#email").val($("#bf_email").val());
+	}
+
+	if ($("#bf_phone").val() != "" && $("#bf_phone").val() != $("#phone").val()) {
+		$("#phone").val($("#bf_phone").val());
 	}
 
 	var data = {
@@ -162,28 +125,29 @@ function regiAf() {
 
 	$.ajax({
 		dataType : 'json',
-		url : "regiAf.do",
+		url : "userUpdateAf.do",
 		type : "POST",
 		data : data,
 		async : true,
 		success : function(data) {
 			if (data.cnt > 0) {
-				alert("회원가입에 성공하였습니다");
-				location.href = 'login.do';
+				alert("회원정보 수정에 성공하였습니다");
+				location.href = 'mypage.do';
 			} else {
 				alert("regi : error");
-				location.href = 'login.do';
+				location.href = 'mypage.do';
 			}
 		},
 		error : function(xhr, status) {
 			alert(xhr + " : " + status);
 		}
 	});
+
 }
 
 function pwcheck() {
 	var pwRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-	var pw1 = $("#pwd").val();
+	var pw1 = $("#pwd1").val();
 	var pw2 = $("#pwd2").val();
 
 	if (pw1 == pw2 && pw1 != "") {
@@ -220,11 +184,8 @@ function emailCheck() {
 		success : function(data) {
 			if (data.cnt > 0) {
 				$("#emailCK").val("*이미 존재하는 이메일입니다").css("color", "red");
-				emailcheck = "false";
 			} else {
 				$("#emailCK").val("*사용 할 수 있는 이메일입니다").css("color", "green");
-				$("#email").val(bf_email);
-				emailcheck = "true";
 			}
 		},
 		error : function(xhr, status) {

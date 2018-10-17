@@ -11,8 +11,7 @@
 		<div class="row">
 			<div style="width: 220px;">
 				<div style="margin-top: 70px; border: 1px solid; margin-right: 30px">
-					<a href="userInfo.do">개인정보 수정</a><br> <a href="secession.do">주문내역</a><br>
-					<a href="secession.do">회원탈퇴</a><br>
+					<jsp:include page="mypage_leftbar.jsp"/>
 				</div>
 			</div>
 

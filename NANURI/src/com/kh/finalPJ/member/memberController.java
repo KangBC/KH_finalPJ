@@ -91,9 +91,41 @@ public class memberController {
 		}
 		return map;
 	}
-	
+
 	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
 	public String mypage() {
 		return "mypage.tiles";
+	}
+
+	@RequestMapping(value = "userUpdate.do", method = RequestMethod.GET)
+	public String userUpdate() {
+		return "userUpdate.tiles";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "userUpdateAf.do", method = RequestMethod.POST)
+	public Map<String, Integer> userUpdateAf(memberDto mem, HttpServletRequest req) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		System.out.println(mem.toString());
+		boolean isS = memberservice.userUpdateAf(mem);
+		if (isS) {
+			req.getSession().invalidate();
+			memberDto login = null;
+			login = memberservice.login(mem);
+			if (login != null && !login.getId().equals("")) {
+				req.getSession().setAttribute("login", login);
+			} else {
+				req.getSession().invalidate();
+			}
+			map.put("cnt", 1);
+		} else {
+			map.put("cnt", 0);
+		}
+		return map;
+	}
+	
+	@RequestMapping(value = "secession.do", method = RequestMethod.GET)
+	public String secession() {
+		return "secession.tiles";
 	}
 }

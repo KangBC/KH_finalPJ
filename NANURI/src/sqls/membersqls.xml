@@ -34,4 +34,10 @@
 		#{email}, #{phone}, #{address}, #{name}, 0)
 	</insert>
 
+	<update id="userUpdateAf"
+		parameterType="com.kh.finalPJ.member.memberDto">
+		UPDATE MEMBER SET PWD=#{pwd}, NICKNAME=#{nickname},
+		EMAIL=#{email}, PHONE=#{phone}, ADDRESS=#{address}, NAME=#{name}, AUTH=0 WHERE ID=#{id}
+	</update>
+
 </mapper>

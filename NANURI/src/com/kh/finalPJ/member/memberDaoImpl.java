@@ -38,4 +38,10 @@ public class memberDaoImpl implements memberDao {
 		return n > 0 ? true : false;
 	}
 
+	@Override
+	public boolean userUpdateAf(memberDto mem) throws Exception {
+		int n = sqlsession.update(namespace + "userUpdateAf", mem);
+		return n > 0 ? true : false;
+	}
+
 }
