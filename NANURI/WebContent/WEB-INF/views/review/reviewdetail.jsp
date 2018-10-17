@@ -42,7 +42,7 @@ String str = dto.getContent();
 		<th>내용</th>
 		<!-- 만약 textarea처럼 나타내고 싶은 경우 -->
 		<td>
-		<div contentEditable="true" id="content" name="content" style="border:1px solid; width:766px; height:412px; "></div>
+			<div contentEditable="true" id="content" name="content" style="border:1px solid; width:766px; height:412px; "></div>
 		</td>
 
 	</tr>

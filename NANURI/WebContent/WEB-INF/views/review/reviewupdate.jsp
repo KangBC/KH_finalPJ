@@ -27,7 +27,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" name="id" readonly="readonly" value="아이디" size="50">
+		<input type="text" name="id" readonly="readonly" value="<%=dto.getId() %>" size="50">
 	</td>
 </tr>
 
