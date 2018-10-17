@@ -18,18 +18,22 @@ public class qaDaoImpl implements qaDao {
 	public List<qaDto> getQaList() {
 		List<qaDto> list = sqlSession.selectList(namespace + "getQaList");
 		return list;
+<<<<<<< HEAD
 	}	
 
 	@Override
 	public List<qaDto> getAdminQaList() {
 		List<qaDto> adminlist = sqlSession.selectList(namespace + "getAdminQaList");		
 		return adminlist;
+=======
+>>>>>>> 07c51705499b17948845aa34181a558d602af929
 	}
 
 	@Override
 	public boolean QaWrite(qaDto dto) {
 		int n = sqlSession.insert(namespace + "QaWrite", dto);
 		return n>0?true:false;
+<<<<<<< HEAD
 	}	
 
 	@Override
@@ -50,6 +54,9 @@ public class qaDaoImpl implements qaDao {
 		return n>0?true:false;
 	}
 
+=======
+	}
+>>>>>>> 07c51705499b17948845aa34181a558d602af929
 }
 
 

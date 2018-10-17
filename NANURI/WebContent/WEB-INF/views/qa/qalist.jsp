@@ -1,4 +1,6 @@
+
 <%@page import="com.kh.finalPJ.member.memberDto"%>
+
 <%@page import="java.util.List"%>
 <%@page import="com.kh.finalPJ.qa.qaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8" />
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,18 +29,19 @@
 
 </style>
 
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resources/css/qa.css" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 
 </head>
 <body>
-
 <%List<qaDto> qalist = (List<qaDto>) request.getAttribute("qalist");%>
+
 <%List<qaDto> adminlist = (List<qaDto>) request.getAttribute("adminlist");%>
 
 <!-- 로그인 세션값 헤더에서 받아오기 -->
@@ -135,11 +139,11 @@
     });
 </script>
 
-
-
-
 </body>
 </html>
+
+
+
 
 
 

@@ -29,11 +29,16 @@ public class qaController {
 		logger.info("qaController getQaList" + new Date());
 
 		List<qaDto> qalist = QaService.getQaList();
+<<<<<<< HEAD
 		List<qaDto> adminlist = QaService.getAdminQaList();
 		
 		model.addAttribute("qalist", qalist);
 		model.addAttribute("adminlist", adminlist);
 		
+=======
+		model.addAttribute("qalist", qalist);
+
+>>>>>>> 07c51705499b17948845aa34181a558d602af929
 		return "qalist.tiles";
 	}
 	
@@ -50,6 +55,7 @@ public class qaController {
 		
 		logger.info("qaController qaWriteAf" + new Date());
 		
+<<<<<<< HEAD
 		boolean c = dto.isCheck(); // 체크박스 체크여부확인
 		
 		if(c) {
@@ -115,6 +121,15 @@ public class qaController {
 		}else {
 			return "redirect:/qaAdminWriteAf.do";
 		}
+=======
+		String b = req.getParameter("secret");
+		
+		logger.info("qaController qaWriteAf" + b);
+		
+		
+		
+		return "qalist.tiles";
+>>>>>>> 07c51705499b17948845aa34181a558d602af929
 	}
 }
 

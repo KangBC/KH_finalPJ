@@ -17,6 +17,7 @@ public class qaServiceImpl implements qaService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<qaDto> getAdminQaList() {
 		return QaDao.getAdminQaList();
 	}	
@@ -45,4 +46,9 @@ public class qaServiceImpl implements qaService {
 
 
 
+=======
+	public boolean QaWrite(qaDto dto) {
+		return QaDao.QaWrite(dto);
+	} 
+>>>>>>> 07c51705499b17948845aa34181a558d602af929
 }
