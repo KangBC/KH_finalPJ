@@ -79,6 +79,12 @@ public class reviewDto implements Serializable{
 	public void setG_code(String g_code) {
 		this.g_code = g_code;
 	}
+
+	@Override
+	public String toString() {
+		return "reviewDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", wdate=" + wdate
+				+ ", del=" + del + ", g_code=" + g_code + "]";
+	}
 	
 	
 }

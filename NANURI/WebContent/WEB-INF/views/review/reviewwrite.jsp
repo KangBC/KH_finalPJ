@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -7,6 +8,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <body>
+
+
+
 <div align="center">
 <form name="frmForm" id="_frmForm" action="reviewwriteAf.do" method="post">
 <table>
@@ -19,7 +23,7 @@
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" name="id" readonly="readonly" value="아이디" size="50">
+		<input type="text" name="id" readonly="readonly" value="${login.id }" size="50">
 	</td>
 </tr>
 
@@ -38,7 +42,7 @@
      
 <tr>
 	<td colspan="2">
-		<textarea style="height: 600px; width: 1000px" name="content" id="content" ></textarea>      
+		<textarea style="height: 600px; width: 1000px" name="content" id="content"></textarea>      
 	</td>
         
 </tr>

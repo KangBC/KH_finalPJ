@@ -13,13 +13,22 @@ public class reviewDaoImpl implements reviewDao {
 	SqlSession sqlSession;
 	
 	private String namespace = "review.";
-
+	
 	/*글 목록*/
 	@Override
 	public List<reviewDto> getreview() {
 		
 	List<reviewDto> list = sqlSession.selectList(namespace + "getreview");
 	
+		return list;
+	}
+	
+	/*페이징리스트*/
+	@Override
+	public List<reviewDto> getrevPagingList(reviewParam param) throws Exception {
+		
+		List<reviewDto> list = sqlSession.selectList(namespace + "getrevPagingList", param);
+		
 		return list;
 	}
 
@@ -57,8 +66,6 @@ public class reviewDaoImpl implements reviewDao {
 		sqlSession.update(namespace + "reviewupdate", dto);
 		
 	}
-
-	
 
 	
 }

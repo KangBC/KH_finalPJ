@@ -7,6 +7,9 @@ public interface reviewDao {
 	/*글 목록*/
 	List<reviewDto> getreview();
 	
+	/*페이징리스트*/
+	List<reviewDto> getrevPagingList(reviewParam param) throws Exception;
+	
 	/*글 쓰기*/
 	boolean writeReview(reviewDto dto) throws Exception;
 	
@@ -19,4 +22,6 @@ public interface reviewDao {
 	/*글 수정*/
 	public void reviewupdate(reviewDto dto, int seq)throws Exception;
 
+	/*페이징*/
+	//public int getcountlist ();
 }

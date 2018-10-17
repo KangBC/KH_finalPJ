@@ -25,7 +25,12 @@
 
 	</definition>
 
-
+	<!-- login뷰 -->
+	<definition name="login.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/login.jsp" />
+	</definition>
+	
 	<!--list뷰 -->
 	<definition name="reviewlist.tiles" extends="main.tiles">
 		<put-attribute name="content"
