@@ -10,14 +10,16 @@
 			<!--Body-->
 			<div class="modal-body">
 				<i class="fa fa-bell fa-4x animated rotateIn mb-4"></i>
-				<p>정말로 회원탈퇴를 진행하시겠습니까?</p>
+				<p id="msg">정말로 회원탈퇴를 진행하시겠습니까?</p>
 			</div>
 
 			<!--Footer-->
 			<div style="padding: 10px">
-				<a href="javascript:secessionAf()" class="btn btn-primary ">확인</a> <a
-					type="button" class="btn btn-outline-primary waves-effect"
-					data-dismiss="modal">취소</a>
+				<a href="javascript:secessionAf()" id="btn_Y"
+					class="btn btn-primary">확인</a> <a
+					class="btn btn-outline-primary waves-effect" id="btn_N"
+					data-dismiss="modal">취소</a> <a href="javascript:afterAction()"
+					id="btn_C" class="btn btn-primary" style="display: none;">닫기</a>
 			</div>
 		</div>
 		<!--/.Content-->

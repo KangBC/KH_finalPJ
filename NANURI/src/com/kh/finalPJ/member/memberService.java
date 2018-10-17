@@ -13,5 +13,7 @@ public interface memberService {
 	boolean addMember(memberDto mem) throws Exception;
 	
 	boolean userUpdateAf(memberDto mem) throws Exception;
+	
+	boolean secessionAf(secessionDto sec) throws Exception;
 
 }

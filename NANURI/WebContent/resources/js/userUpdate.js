@@ -95,7 +95,6 @@ function regiAf() {
 
 	if ($("#bf_name").val() != "" && $("#bf_name").val() != null
 			&& $("#bf_name").val() != $("#name").val()) {
-		alert("Bf " + $("#bf_name").val() + " / Ori " + $("#name").val());
 		$("#name").val($("#bf_name").val());
 	}
 

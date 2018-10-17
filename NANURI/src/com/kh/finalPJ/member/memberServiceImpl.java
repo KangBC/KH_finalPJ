@@ -39,4 +39,10 @@ public class memberServiceImpl implements memberService {
 		return memberdao.userUpdateAf(mem);
 	}
 
+	@Override
+	public boolean secessionAf(secessionDto sec) throws Exception {
+		memberdao.delUpdateAf(sec);
+		return memberdao.secessionAf(sec);
+	}
+
 }

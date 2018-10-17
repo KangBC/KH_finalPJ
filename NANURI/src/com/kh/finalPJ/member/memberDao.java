@@ -13,5 +13,8 @@ public interface memberDao {
 	boolean addMember(memberDto mem) throws Exception;
 	
 	boolean userUpdateAf(memberDto mem) throws Exception;
-
+	
+	boolean secessionAf(secessionDto sec) throws Exception;
+	
+	void delUpdateAf(secessionDto sec) throws Exception;
 }

@@ -123,9 +123,23 @@ public class memberController {
 		}
 		return map;
 	}
-	
+
 	@RequestMapping(value = "secession.do", method = RequestMethod.GET)
 	public String secession() {
 		return "secession.tiles";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "secessionAf.do", method = RequestMethod.POST)
+	public Map<String, Integer> secessionAf(secessionDto sec, HttpServletRequest req) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		boolean isS = memberservice.secessionAf(sec);
+		if (isS) {
+			req.getSession().invalidate();
+			map.put("cnt", 1);
+		} else {
+			map.put("cnt", 0);
+		}
+		return map;
 	}
 }

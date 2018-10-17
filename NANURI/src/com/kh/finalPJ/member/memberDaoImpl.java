@@ -44,4 +44,15 @@ public class memberDaoImpl implements memberDao {
 		return n > 0 ? true : false;
 	}
 
+	@Override
+	public boolean secessionAf(secessionDto sec) throws Exception {
+		int n = sqlsession.insert(namespace + "secessionAf", sec);
+		return n > 0 ? true : false;
+	}
+
+	@Override
+	public void delUpdateAf(secessionDto sec) throws Exception {
+		sqlsession.update(namespace + "delUpdateAf", sec);
+	}
+
 }

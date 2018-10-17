@@ -37,7 +37,21 @@
 	<update id="userUpdateAf"
 		parameterType="com.kh.finalPJ.member.memberDto">
 		UPDATE MEMBER SET PWD=#{pwd}, NICKNAME=#{nickname},
-		EMAIL=#{email}, PHONE=#{phone}, ADDRESS=#{address}, NAME=#{name}, AUTH=0 WHERE ID=#{id}
+		EMAIL=#{email}, PHONE=#{phone}, ADDRESS=#{address}, NAME=#{name},
+		AUTH=0 WHERE ID=#{id}
 	</update>
+	
+	<update id="delUpdateAf"
+		parameterType="com.kh.finalPJ.member.secessionDto">
+		UPDATE MEMBER SET AUTH=1 WHERE ID=#{del_id}
+	</update>
+
+	<insert id="secessionAf"
+		parameterType="com.kh.finalPJ.member.secessionDto">
+		INSERT INTO SECESSION
+		VALUES(SEQ_SECESSION.NEXTVAL,
+		#{del_id}, #{del_reason}, SYSDATE,
+		SYSDATE+7,0)
+	</insert>
 
 </mapper>
