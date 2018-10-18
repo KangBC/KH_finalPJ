@@ -28,7 +28,12 @@ public class AdminServieceImpl implements AdminServiece{
 	public List<goodsDto> getGoodsList(){
 		return adminDao.getGoodsList();
 	}
-	
+
+	@Override
+	public boolean goodsRegist(goodsDto goods) {
+		return adminDao.goodsRegist(goods);
+	}
+
 	@Override
 	public boolean finalSecession(String id) {
 		boolean updCk = adminDao.secessionUpdate(id);

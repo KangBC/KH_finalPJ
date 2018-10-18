@@ -4,6 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
+<div class="admin_box">
 
 <h1>탈퇴승인</h1>
 <div>
@@ -69,4 +70,5 @@
 	}
   } 
 </script>   
+</div>
 </div>

@@ -11,5 +11,6 @@ public interface AdminServiece {
 	public List<secessionDto> getSecessionList();
 	public List<goodsDto> getGoodsList();
 	
+	public boolean goodsRegist(goodsDto goods);
 	public boolean finalSecession(String id);
 }

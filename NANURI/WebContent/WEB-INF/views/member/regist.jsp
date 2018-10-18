@@ -64,7 +64,7 @@
 				<!-- Material input password confirm message -->
 				<div class="md-form row" style="margin-top: 0px;">
 					<input type="text" id="pwdResult" class="form-control" value=""
-						placeholder="*비밀번호 (영어,특수문자,숫자를 포함한 8~15자)" disabled
+						placeholder="*비밀번호 (영어,숫자를 포함한 8~15자)" disabled
 						style="border-bottom: none">
 				</div>
 

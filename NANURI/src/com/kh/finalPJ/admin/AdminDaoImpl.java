@@ -18,6 +18,7 @@ public class AdminDaoImpl implements AdminDao{
 	
 	String namespace = "adminSqls.";
 	
+	@Override
 	public List<memberDto> getMemberList(){
 		List<memberDto> memberlist = sqlSession.selectList(namespace + "getMemberList");
 		return memberlist;
@@ -33,6 +34,11 @@ public class AdminDaoImpl implements AdminDao{
 	public List<goodsDto> getGoodsList() {
 		List<goodsDto> goodsList = sqlSession.selectList(namespace + "getGoodsList");
 		return goodsList;
+	}
+	
+	@Override
+	public boolean goodsRegist(goodsDto goods) {
+		return sqlSession.insert(namespace + "goodsRegist",goods)>0 ? true : false;
 	}
 
 	@Override

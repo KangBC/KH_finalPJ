@@ -11,6 +11,7 @@ public interface AdminDao {
 	public List<secessionDto> getSecessionList(); 
 	public List<goodsDto> getGoodsList(); 
 	
+	public boolean goodsRegist(goodsDto goods);
 	public boolean finalSecession(String id);
 	public boolean secessionUpdate(String id);
 }

@@ -37,16 +37,16 @@
 			value="/WEB-INF/views/member/mypages.jsp" />
 	</definition>
 
-	<!--list뷰 -->
-	<definition name="reviewlist.tiles" extends="main.tiles">
+	<!-- userUpdate뷰 -->
+	<definition name="userUpdate.tiles" extends="main.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/review/reviewlist.jsp" />
+			value="/WEB-INF/views/member/userUpdate.jsp" />
 	</definition>
-
-	<!--write뷰 -->
-	<definition name="reviewwrite.tiles" extends="main.tiles">
+	
+	<!-- secession뷰 -->
+	<definition name="secession.tiles" extends="main.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/review/reviewwrite.jsp" />
+			value="/WEB-INF/views/member/secession.jsp" />
 	</definition>
 	
 	<!-- Goods====================================================================================== -->
@@ -73,7 +73,7 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/review/reviewwrite.jsp" />
 	</definition>
-	
+
 	<!-- detail뷰 -->
 	<definition name="reviewdetail.tiles" extends="main.tiles">
 		<put-attribute name="content"

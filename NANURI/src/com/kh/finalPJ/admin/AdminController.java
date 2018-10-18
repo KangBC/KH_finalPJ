@@ -3,6 +3,8 @@ package com.kh.finalPJ.admin;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.finalPJ.common.controller;
 import com.kh.finalPJ.goods.goodsDto;
@@ -61,11 +64,41 @@ public class AdminController {
 		
 		return "stock.tiles";
 	}
+
+	@RequestMapping(value="goodsRegist.do",method = RequestMethod.GET)
+	public String goodsRegist(goodsDto goods, Model model) throws Exception{
+		
+		adminserviece.goodsRegist(goods);
+		
+		List<goodsDto> goodsList = adminserviece.getGoodsList();
+		model.addAttribute("goodsList",goodsList);
+
+		return "stock.tiles";
+	}
+
+	@ResponseBody
+	@RequestMapping(value="stockUpdate.do",method = RequestMethod.GET)
+	public String stockUpdate(String g_code,int change,String changeAf,Model model) throws Exception{
+		logger.info(g_code);
+		logger.info(changeAf);
+		logger.info(change+"");
+		switch (change) {
+			case 1:
+				break;
+			case 3:
+				break;
+			case 5:
+				break;
+			case 7:
+				break;
+			case 9:
+				break;
+		}
+		return "true";
+	}
 	
 	@RequestMapping(value="goodsApply.do",method = RequestMethod.GET)
 	public String goodsApply(Model model) throws Exception{
 		return "goodsApply.tiles";
 	}
-	
-	
 }

@@ -7,7 +7,7 @@
 
 <select id="getMemberList" resultType="com.kh.finalPJ.member.memberDto">
 	SELECT * FROM MEMBER
-	WHERE NOT AUTH=1
+	WHERE NOT AUTH=2
 </select>
  
 <select id="getSecessionList" resultType="com.kh.finalPJ.member.secessionDto">
@@ -25,15 +25,16 @@
 	UPDATE SECESSION SET STATUS=1 WHERE DEL_ID=#{id} AND STATUS=0
 </update>
 
-
+<insert id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
+	INSERT INTO GOODS VALUES(#{g_name},#{g_code},null,#{g_quantity})
+</insert>
 
 <!-- 
-<INSERT id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
-	INSERT INTO GOODS VALUES(#{},#{},#{},#{})
-</INSERT>
-
 <UPDATE id="goodsUpdate" parameterType="com.kh.finalPJ.goods.goodsDto">
-	UPDATE GOODS SET =#{}, =#{}, =#{}, =#{}
+	UPDATE GOODS SET =#{}, =#{}, =#{}, =#{} WHERE 
+	<if test="">
+	
+	</if>
 </UPDATE>
  -->
 </mapper>
