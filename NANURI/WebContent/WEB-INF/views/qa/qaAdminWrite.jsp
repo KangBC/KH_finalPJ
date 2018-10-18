@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.qa.qaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,10 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<%memberDto mem = (memberDto)session.getAttribute("login"); %>
 <div class="startdiv">
 	<form action="qaAdminWriteAf.do" id="_frmForm" method="post">
 		<label>아이디</label>
-		<input type="text" name="id"><br> <!-- 나중에 로그인 세션값으로 수정 readonly-->
+		<input type="text" name="id" value="<%=mem.getId()%>" readonly="readonly"><br> <!-- 나중에 로그인 세션값으로 수정 readonly-->
 		<label>제목</label>
 		<input type="text" name="title"><br>	
 		<label>내용</label>

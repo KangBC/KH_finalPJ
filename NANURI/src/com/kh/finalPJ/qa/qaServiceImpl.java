@@ -17,7 +17,6 @@ public class qaServiceImpl implements qaService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<qaDto> getAdminQaList() {
 		return QaDao.getAdminQaList();
 	}	
@@ -44,11 +43,31 @@ public class qaServiceImpl implements qaService {
 		return QaDao.qaAdminWrite(dto);
 	}
 
+	@Override
+	public boolean qaDelete(int ref) {
+		return QaDao.qaDelete(ref);
+	}
+
+	@Override
+	public List<Integer> getRef(String id) {
+		return QaDao.getRef(id);
+	}
+
+	@Override
+	public List<Integer> AllgetRef() {
+		return QaDao.AllgetRef();
+	}
+
+	@Override
+	public int getBbsCount(qaParam param) throws Exception {
+		return QaDao.getBbsCount(param);
+	}
+
+	@Override
+	public List<qaDto> getBbsPagingList(qaParam param) throws Exception {
+		return QaDao.getBbsPagingList(param);
+	}
 
 
-=======
-	public boolean QaWrite(qaDto dto) {
-		return QaDao.QaWrite(dto);
-	} 
->>>>>>> 07c51705499b17948845aa34181a558d602af929
+
 }

@@ -1,41 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions
- PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!DOCTYPE tiles-definitions SYSTEM "http://tiles.apache.org/dtds/tiles-config_3_0.dtd" PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN">
+
+
 <tiles-definitions>
-	<definition name="test.tiles"
-		template="/WEB-INF/views/layouts-tiles.jsp"> <!-- 기본 형태 -->
+
+
+	
+	<definition template="/WEB-INF/views/layouts-tiles.jsp"
+		name="test.tiles">
+
+		<!-- 기본 형태 -->
+
 
 		<put-attribute name="header"
-			value="/WEB-INF/views/common/header.jsp" /> <!-- 어디서 불러올 것인지 설정해주는 곳 -->
+			value="/WEB-INF/views/common/header.jsp" />
+
+		<!-- 어디서 불러올 것인지 설정해주는 곳 -->
+
 
 		<put-attribute name="leftmenu"
-			value="/WEB-INF/views/common/leftmenu.jsp" />	
+			value="/WEB-INF/views/common/leftmenu.jsp" />
+
 		<put-attribute name="content"
 			value="/WEB-INF/views/common/test.jsp" />
 
 		<put-attribute name="footer"
 			value="/WEB-INF/views/common/footer.jsp" />
+
 	</definition>
+
+
+	
+	<definition name="login.tiles" extends="test.tiles">
+
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/login.jsp" />
+
+	</definition>
+
+
+	
+	<definition name="regist.tiles" extends="test.tiles">
+
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/regist.jsp" />
+
+	</definition>
+
+
 	
 	<definition name="qalist.tiles" extends="test.tiles">
+
 		<put-attribute name="content"
-			value="/WEB-INF/views/qa/qalist.jsp" />		
+			value="/WEB-INF/views/qa/qalist.jsp" />
+
 	</definition>
+
+
 	
 	<definition name="qaWrite.tiles" extends="test.tiles">
+
 		<put-attribute name="content"
-			value="/WEB-INF/views/qa/qaWrite.jsp" />		
+			value="/WEB-INF/views/qa/qaWrite.jsp" />
+
 	</definition>
+
+
 	
 	<definition name="ansWrite.tiles" extends="test.tiles">
+
 		<put-attribute name="content"
-			value="/WEB-INF/views/qa/ansWrite.jsp" />		
+			value="/WEB-INF/views/qa/ansWrite.jsp" />
+
 	</definition>
-		
+
+
+	
 	<definition name="qaAdminWrite.tiles" extends="test.tiles">
+
 		<put-attribute name="content"
-			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />		
+			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />
+
 	</definition>
-	
-	
+
 </tiles-definitions>

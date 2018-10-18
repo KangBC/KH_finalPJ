@@ -18,22 +18,18 @@ public class qaDaoImpl implements qaDao {
 	public List<qaDto> getQaList() {
 		List<qaDto> list = sqlSession.selectList(namespace + "getQaList");
 		return list;
-<<<<<<< HEAD
 	}	
 
 	@Override
 	public List<qaDto> getAdminQaList() {
 		List<qaDto> adminlist = sqlSession.selectList(namespace + "getAdminQaList");		
 		return adminlist;
-=======
->>>>>>> 07c51705499b17948845aa34181a558d602af929
 	}
 
 	@Override
 	public boolean QaWrite(qaDto dto) {
 		int n = sqlSession.insert(namespace + "QaWrite", dto);
 		return n>0?true:false;
-<<<<<<< HEAD
 	}	
 
 	@Override
@@ -54,9 +50,37 @@ public class qaDaoImpl implements qaDao {
 		return n>0?true:false;
 	}
 
-=======
+	@Override
+	public boolean qaDelete(int ref) {
+		int n = sqlSession.delete(namespace + "qaDelete", ref);
+		return n>0?true:false;
 	}
->>>>>>> 07c51705499b17948845aa34181a558d602af929
+
+	@Override
+	public List<Integer> getRef(String id) {
+		List<Integer> ref = sqlSession.selectList(namespace + "getRef", id);
+		return ref;
+	}
+
+	@Override
+	public List<Integer> AllgetRef() {
+		List<Integer> ref = sqlSession.selectList(namespace + "AllgetRef");
+		return ref;
+	}
+
+	@Override
+	public int getBbsCount(qaParam param) throws Exception {
+		int num = 0;
+		num = sqlSession.selectOne(namespace + "getBbsCount", param); 
+		return num;
+	}
+
+	@Override
+	public List<qaDto> getBbsPagingList(qaParam param) throws Exception {
+		List<qaDto> list = sqlSession.selectList(namespace + "getBbsPagingList", param);
+		return list;
+	}
+
 }
 
 

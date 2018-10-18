@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.qa.qaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,6 +16,7 @@
 <body>
 
 <%qaDto ansdto =(qaDto) request.getAttribute("ansdto");%>
+<%memberDto mem = (memberDto)session.getAttribute("login"); %>
 
 <div class="startdiv">
 	<form action="ansWriteAf.do" id="_frmForm" method="post">
@@ -28,7 +30,8 @@
 		<input type="submit" value="작성완료">
 		<input type="hidden" name="ref" value="<%=ansdto.getRef()%>">
 		<input type="hidden" name="g_code" value="<%=ansdto.getG_code()%>">
-		<%-- 로그인뷰랑 합치면 주석 풀기 <input type="hidden" name="id" value="<%=mem.login.getId()%>"> --%>
+		<input type="hidden" name="secret" value="<%=ansdto.getSecret()%>">
+		<input type="hidden" name="id" value="<%=mem.getId()%>">
 	</form>	
 </div>
 

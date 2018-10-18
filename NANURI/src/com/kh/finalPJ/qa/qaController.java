@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.kh.finalPJ.member.memberDto;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,27 +21,45 @@ import org.slf4j.LoggerFactory;
 public class qaController {
 
 	private static final Logger logger = LoggerFactory.getLogger(qaController.class);
-
 	
 	@Autowired
-	qaService QaService;
+	qaService QaService;	
 
 	@RequestMapping(value = "qnalist.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getQaList(Model model) {
+	public String getQaList(qaParam param,HttpServletRequest req, Model model) throws Exception {
 		
-		logger.info("qaController getQaList" + new Date());
-
-		List<qaDto> qalist = QaService.getQaList();
-<<<<<<< HEAD
-		List<qaDto> adminlist = QaService.getAdminQaList();
+		logger.info("qaController getQaList" + new Date());		
 		
+		// paging 처리
+		int sn = param.getPageNumber();
+		int start = (sn) * param.getRecordCountPerPage() + 1;
+		int end = (sn+1) * param.getRecordCountPerPage();
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		// 글의 갯수 
+		int totalRecordCount = QaService.getBbsCount(param);
+		
+		memberDto mem =(memberDto) req.getSession().getAttribute("login");
+		
+		String id = mem.getId();
+		
+		List<Integer> allref = QaService.AllgetRef();
+		List<Integer> reflist = QaService.getRef(id);	
+		List<qaDto> qalist = QaService.getBbsPagingList(param);		
+		List<qaDto> adminlist = QaService.getAdminQaList();	
+		
+		model.addAttribute("allref", allref);
+		model.addAttribute("reflist", reflist);
 		model.addAttribute("qalist", qalist);
-		model.addAttribute("adminlist", adminlist);
-		
-=======
-		model.addAttribute("qalist", qalist);
+		model.addAttribute("adminlist", adminlist);			
 
->>>>>>> 07c51705499b17948845aa34181a558d602af929
+		model.addAttribute("pageNumber", sn);
+		model.addAttribute("pageCountPerScreen", 10);
+		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
+		model.addAttribute("totalRecordCount", totalRecordCount);
+					
 		return "qalist.tiles";
 	}
 	
@@ -55,7 +76,6 @@ public class qaController {
 		
 		logger.info("qaController qaWriteAf" + new Date());
 		
-<<<<<<< HEAD
 		boolean c = dto.isCheck(); // 체크박스 체크여부확인
 		
 		if(c) {
@@ -76,11 +96,11 @@ public class qaController {
 	
 	// 디테일 후기 할때도 이함수 사용하면됨
 	@RequestMapping(value = "ansWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ansWrite(int ref,String g_code,Model model) {
+	public String ansWrite(int ref,String g_code, int secret, Model model) {
 		
 		logger.info("qaController ansWrite" + new Date());
 		
-		qaDto ansdto = new qaDto(ref, g_code);
+		qaDto ansdto = new qaDto(ref, g_code, secret);
 		model.addAttribute("ansdto", ansdto);
 		
 		return "ansWrite.tiles";
@@ -121,15 +141,20 @@ public class qaController {
 		}else {
 			return "redirect:/qaAdminWriteAf.do";
 		}
-=======
-		String b = req.getParameter("secret");
+	}
+	
+	@RequestMapping(value = "delete.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String delete(int ref, Model model) {
 		
-		logger.info("qaController qaWriteAf" + b);
+		logger.info("qaController delete" + new Date());
 		
+		boolean b = QaService.qaDelete(ref);
 		
-		
-		return "qalist.tiles";
->>>>>>> 07c51705499b17948845aa34181a558d602af929
+		if(b) {		
+			return "redirect:/qnalist.do";
+		}else {
+			return "redirect:/delete.do";
+		}
 	}
 }
 
