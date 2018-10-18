@@ -5,15 +5,15 @@
 <mapper namespace="review">
 
 <select id="getreview" resultType="com.kh.finalPJ.review.reviewDto">
-	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE, RATING
 	FROM REVIEW
 	ORDER BY WDATE DESC
 </select>
 
 <select id="getrevPagingList" resultType="com.kh.finalPJ.review.reviewDto" parameterType="com.kh.finalPJ.review.reviewParam">
 	
-	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
-	FROM (SELECT ROW_NUMBER() OVER(ORDER BY seq DESC) AS RNUM, SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE, RATING
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY seq DESC) AS RNUM, SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE, RATING
 	FROM REVIEW
 	WHERE 1=1
 	<if test="s_category != '' and s_category != null 
@@ -54,11 +54,11 @@
 
 <insert id="writeReview" parameterType="com.kh.finalPJ.review.reviewDto">
 	INSERT INTO REVIEW
-	VALUES(SEQ_R.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, 0, '1')
+	VALUES(SEQ_R.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, 0, '1', #{rating})
 </insert>
 
 <select id = "detailreview" parameterType="java.lang.Integer" resultType="com.kh.finalPJ.review.reviewDto">
-	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE, RATING
 	FROM REVIEW
 	WHERE SEQ=#{seq}
 </select>
@@ -70,7 +70,7 @@
 
 <update id="reviewupdate" parameterType="com.kh.finalPJ.review.reviewDto">
 	UPDATE REVIEW
-	SET TITLE=#{title}, CONTENT=#{content}, WDATE=SYSDATE
+	SET TITLE=#{title}, CONTENT=#{content}, WDATE=SYSDATE, RATING=#{rating}
 	WHERE SEQ=#{seq}
 </update>
 

@@ -85,14 +85,18 @@ public class reviewController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String wdate = request.getParameter("wdate");
+		int rating = Integer.parseInt(request.getParameter("rating"));
 		
-		logger.info("----------------------글쓰기 "+ id);
+		logger.info("----------------------글쓰기 "+ content);
 		
 		reviewDto revdto = new reviewDto();
 		revdto.setId(id);
 		revdto.setTitle(title);
 		revdto.setContent(content);
 		revdto.setWdate(wdate);
+		revdto.setRating(rating);
+		
+		logger.info("----------------------글쓰기 "+ rating);
 		
 		if(revdto.getContent().equals("<p>&nbsp;</p>") || revdto.getTitle().equals("")) {
 			
@@ -156,6 +160,7 @@ public class reviewController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String wdate = request.getParameter("wdate");
+		int rating = Integer.parseInt(request.getParameter("rating"));
 
 		reviewDto revdto = new reviewDto();
 		revdto.setSeq(seq);
@@ -163,6 +168,7 @@ public class reviewController {
 		revdto.setTitle(title);
 		revdto.setContent(content);
 		revdto.setWdate(wdate);
+		revdto.setRating(rating);
 
 		reviewSrevice.reviewupdate(revdto, seq);
 		

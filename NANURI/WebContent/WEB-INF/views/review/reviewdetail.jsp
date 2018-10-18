@@ -34,6 +34,10 @@ String str = dto.getContent();
 		<th>제목</th>
 		<td style="text-align: left"><%=dto.getTitle() %></td>
 	</tr>
+		<tr>
+		<th>★★별점★★</th>
+		<td style="text-align: left"><%=dto.getRating() %></td>
+	</tr>
 	<tr>
 		<th>작성일</th>
 		<td style="text-align: left"><%=dto.getWdate().substring(0,16) %></td>
