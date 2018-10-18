@@ -9,13 +9,65 @@
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
 	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
     ON A.G_CODE = B.G_CODE
+    ORDER BY R_DATE DESC
 </select>
 
   <select id="findgoods" parameterType="String" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
 	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
     ON A.G_CODE = B.G_CODE
-    WHERE A.TITLE LIKE #{title}
+    INNER JOIN NA_STAR C
+    ON A.G_CODE = C.G_CODE
+    WHERE A.TITLE LIKE #{title}|| '%'
   </select> 
+  
+  
+   <select id="findgoodsAll" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
+	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+    ON A.G_CODE = B.G_CODE
+    INNER JOIN NA_STAR C
+    ON A.G_CODE = C.G_CODE
+    WHERE A.TITLE LIKE #{title}|| '%'
+    ORDER BY 
+    <if test="lists == 'G_PRICE'">
+	    	${lists} ASC
+	</if>
+	    	
+	 <if test="lists != 'G_PRICE'">
+	    	${lists} DESC
+	</if>
+    
+  </select> 
+
+
+ <select id="findchecked" parameterType="java.util.HashMap" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+ 
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
+	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+    ON A.G_CODE = B.G_CODE
+    INNER JOIN NA_STAR C
+    ON A.G_CODE = C.G_CODE
+    
+    <if test="arraylist != null or arraylist == ''">
+    	ORDER BY 
+    	
+    	<foreach collection="arraylist" item="item" index="index"  separator=",">
+    	
+	    	<if test="item == 'G_PRICE'">
+	    	${item} ASC
+	    	</if>
+	    	
+	    	<if test="item != 'G_PRICE'">
+	    	${item} DESC
+	    	</if>
+	    	
+    	</foreach>
+ 	</if>
+    
+ </select> 
+ 
+
+
 
 </mapper>

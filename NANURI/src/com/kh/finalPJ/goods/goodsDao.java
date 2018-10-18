@@ -8,7 +8,7 @@ public interface goodsDao {
 	 /* bbsList */
 	List<goodsBbsDto> getbbs();
 	
-	List<goodsBbsDto> findgoods(String g_name);
+	List<goodsBbsDto> findgoods(String title,String lists);
 	
-	List<goodsBbsDto> findchecked(String[] lists);
+	List<goodsBbsDto> findchecked(String lists);
 }
