@@ -18,29 +18,30 @@ String category = (String)request.getAttribute("s_category");
 if(category == null) category = "";
 %>
 
-<script type="text/javascript">
-
-/* 검색 카테고리를 유지 start */
-var str='<%=category %>';
-$(document).ready(function(){	
-	document.frmForm1.s_category.value = str;
-	
-	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
-	if($("#_s_keyword").val().trim() == ""){
-		document.frmForm1.s_category.value = "";
-	}	
-}); 
-
-</script>
 
 <div class="startdiv">
 
 <h2>후기</h2>
-<form action="frmForm1" id="_frmFormSearch" method="post" action="">
+<form action="frmForm1" id="_frmFormSearch" method="get" action="">
 
 <!-- 페이징 -->
 <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>						
 <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?5:recordCountPerPage}"/>
+
+
+<!--검색부분 -->
+<div align="center">
+		<select id="_s_category" name="s_category">
+			<option value="" selected="selected">선택</option>
+			<option value="title">제목</option>
+			<option value="contents">내용</option>
+			<option value="userid">작성자</option>
+		</select>
+
+		<input type="text" id="_s_keyword" name="s_keyword" value="${s_keyword}"/>
+
+		<button type="button" id="_btnSearch"> 검색 </button>
+</div>
 
 </form>
 <br>
@@ -78,19 +79,7 @@ $(document).ready(function(){
 }
 %>
 
-<!--검색부분 -->
-<div align="center">
-		<select id="_s_category" name="s_category">
-			<option value="" selected="selected">선택</option>
-			<option value="title">제목</option>
-			<option value="contents">내용</option>
-			<option value="userid">작성자</option>
-		</select>
 
-		<input type="text" id="_s_keyword" name="s_keyword" value="${s_keyword}"/>
-
-		<button type="button" id="_btnSearch"> 검색 </button>
-</div>
 
 <button type="button" onclick="location.href='reviewwrite.do'">글쓰기</button>
 
@@ -117,6 +106,19 @@ $("#_btnSearch").click(function() {
 	$("#_frmFormSearch").attr({ "target":"_self", "action":"reviewlist.do" }).submit();
 	
 });
+
+/* 검색 카테고리를 유지 start */
+var str='<%=category%>';
+$(document).ready(function(){	
+	//document.frmForm1.s_category.value = str;
+	$("#_s_category").val(str);
+	
+	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
+ 	if($("#_s_keyword").val().trim() == ""){
+ 		//document.frmForm1.s_category.value = "";
+		$("#_s_category").val("");
+	}
+}); 
 
 </script>
 
