@@ -31,6 +31,14 @@ public class reviewDaoImpl implements reviewDao {
 		
 		return list;
 	}
+	
+
+	@Override
+	public int getrevCount(reviewParam param) throws Exception {
+		int num = 0;
+		num = sqlSession.selectOne(namespace + "getrevCount", param);
+		return num;
+	}
 
 	/*글 쓰기*/
 	@Override
