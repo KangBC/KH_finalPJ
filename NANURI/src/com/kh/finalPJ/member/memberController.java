@@ -33,20 +33,21 @@ public class memberController {
 	public String signUp() {
 		return "regist.tiles";
 	}
-
+	
+	@ResponseBody
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
-	public String loginAf(HttpServletRequest req, memberDto mem) throws Exception {
-
+	public  Map<Object, Object> loginAf(HttpServletRequest req, memberDto mem) throws Exception {
+		Map<Object, Object> map = new HashMap<>();
 		memberDto login = null;
 		login = memberservice.login(mem);
-
 		if (login != null && !login.getId().equals("")) {
 			req.getSession().setAttribute("login", login);
-			return "redirect:/main.do";
+			map.put("cnt", 1);
 		} else {
 			req.getSession().invalidate();
-			return "redirect:/login.do";
+			map.put("cnt", 0);
 		}
+		return map;
 	}
 
 	@ResponseBody
