@@ -6,10 +6,14 @@ import java.util.List;
 public interface goodsService {
 	
     /* bbsList */
-	List<goodsBbsDto> getbbs() throws Exception;
-	/* findgoods */
-	List<goodsBbsDto> findgoods(String title,String lists) throws Exception;
-	/* findchecked */
-	List<goodsBbsDto> findchecked(String lists) throws Exception;
+	public List<goodsBbsDto> getbbs() throws Exception;
 	
+	/* findgoods */
+	public List<goodsBbsDto> findgoods(String title,String lists) throws Exception;
+
+	/* readcount */
+	public void readcount(int seq) throws Exception;
+	
+	/*getgoodsdetail*/
+	public goodsBbsDto getgoodsdetail(int seq) throws Exception;
 }
