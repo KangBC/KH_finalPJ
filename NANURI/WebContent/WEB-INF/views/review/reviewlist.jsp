@@ -11,6 +11,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 별css -->
+<style type="text/css">
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+</style>
+
 <%
 List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
 
@@ -62,8 +86,23 @@ if(category == null) category = "";
              <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              	
              	<!-- 별점 -->
-             	<div class="star">ㅇㅇㅇㅇㅇ</div>
-      			
+             	<div class="star">별점수: <%=list.get(i).getRating() %></div>
+<!-- =======별이다======= -->
+<tr>
+	<td class="starRev">
+ 		 <span class="starR1">1</span>
+ 		 <span class="starR2">2</span>
+ 		 <span class="starR1">3</span>
+ 		 <span class="starR2">4</span>
+ 		 <span class="starR1">5</span>
+ 		 <span class="starR2">6</span>
+ 		 <span class="starR1">7</span>
+		 <span class="starR2">8</span>
+ 		 <span class="starR1">9</span>
+ 		 <span class="starR2">10</span>
+	</td>
+<tr>
+<input type="hidden" name="rating" id="rating" value="0">
       			
       			</div>
       			<!-- 별점 끝 -->
@@ -78,8 +117,6 @@ if(category == null) category = "";
 <%
 }
 %>
-
-
 
 <button type="button" onclick="location.href='reviewwrite.do'">글쓰기</button>
 
@@ -119,6 +156,21 @@ $(document).ready(function(){
 		$("#_s_category").val("");
 	}
 }); 
+
+/* 
+별점작동
+$('.starRev span').click(function(){
+	  $(this).parent().children('span').removeClass('on');
+	  $(this).addClass('on').prevAll('span').addClass('on');
+	  
+	  grade = $(this).text();
+	  $("#grade").html("&nbsp;&nbsp;" + $(this).text());
+	  
+	  $("#rating").val(grade);
+	  alert(grade);
+	  
+	  return false;
+}); */
 
 </script>
 

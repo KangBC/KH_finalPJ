@@ -8,7 +8,28 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <body>
-
+<style type="text/css">
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+</style>
 <%
 reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 %>
@@ -37,6 +58,24 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 		<input type="text" name='title' value="<%=dto.getTitle() %>" size="50"/>
 	</td>
 </tr>
+<!-- =======별이다======= -->
+<tr>
+	<th>별점</th>
+	<td class="starRev">
+ 		 <span class="starR1">1</span>
+ 		 <span class="starR2">2</span>
+ 		 <span class="starR1">3</span>
+ 		 <span class="starR2">4</span>
+ 		 <span class="starR1">5</span>
+ 		 <span class="starR2">6</span>
+ 		 <span class="starR1">7</span>
+		 <span class="starR2">8</span>
+ 		 <span class="starR1">9</span>
+ 		 <span class="starR2">10</span>
+ 		 <h3 id="grade">&nbsp;&nbsp;0</h3>
+	</td>
+<tr>
+<input type="hidden" name="rating" id="rating" value="0">
 
 </table>
 
@@ -107,6 +146,19 @@ $(document).ready(function () {
 	})	
 })
 
+/* 별점작동 */
+$('.starRev span').click(function(){
+	  $(this).parent().children('span').removeClass('on');
+	  $(this).addClass('on').prevAll('span').addClass('on');
+	  
+	  grade = $(this).text();
+	  $("#grade").html("&nbsp;&nbsp;" + $(this).text());
+	  
+	  $("#rating").val(grade);
+	  alert(grade);
+	  
+	  return false;
+});
 </script>
 
 </body>
