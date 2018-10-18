@@ -23,45 +23,53 @@
 <hr>
 </div>
 
-<div class="page-b">
+<div class="page-b" >
 
 	<div class="selectbox">
+		<!-- 
+		<span class="check_c">
+		<input type="checkbox" id="ck1" name="goodsname" value="R_DATE">
+		<label for="ck1">최신순</label>
+		</span>
+		<span class="check_c">
+		<input type="checkbox" id="ck4" name="goodsname" value="G_PRICE" >
+		<label for="ck4">낮은가격순</label>
+		</span>
+		<span class="check_c">
+		<input type="checkbox" id="ck2" name="goodsname" value="SEQ">
+		<label for="ck2">조회순</label>
+		</span>
+		<span class="check_c">
+		<input type="checkbox" id="ck3" name="goodsname" value="STARDOT" >
+		<label for="ck3">별점순</label>
+		</span>
+		 -->
+		<span class="check_c">
 		
-		<span class="check_c">
-		<input type="checkbox" id="ck1" name="goodsname" value="asd" onclick="ck_btn()">
-		<label for="ck1">가전제품</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck2" name="goodsname" onclick="ck_btn()">
-		<label for="ck2">가전제품</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck3" name="goodsname" onclick="ck_btn()">
-		<label for="ck3">가전제품</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck4" name="goodsname" onclick="ck_btn()">
-		<label for="ck4">가전제품</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck5" name="goodsname"onclick="ck_btn()">
-		<label for="ck5">가전제품</label>
 		</span>
 		
-		<button id="asd">asd</button>
+		<!-- <button onclick="ck_btn()">제발좀 ㅡㅡ</button> -->
 		
 		<div>
 			<input type="text" id="findtitle" >
-			<button onclick="findtitle_btn()">검색</button>
+			<button id="findtitle_btn" onclick="findtitle_btn()">검색</button>
 			
 		</div>
 		
 	</div>
 
 <div class="goodsbox_h">
-<p>총  <span id="goods_count"></span> 개 의 상품이 있습니다.</p>
+<p class="goods_countbox">총  <span id="goods_count"></span> 개 의 상품이 있습니다.</p>
+	<div class="goods_select">
+		<select id="goods_select" onchange="findtitle_btn()">
+			<option value="R_DATE" selected="selected">최신순</option>
+			<option value="G_PRICE">낮은가격순</option>
+			<option value="READCOUNT">조회순</option>
+			<option value="STARDOT">별점순</option>
+		</select>
+	</div>
 </div>
-<hr style="height: 1px;background: #333">
+<hr style="height: 1px;background: #333;margin: 0;">
 
 	<div class="goodsbox" id="goodsbox">
 		<%
@@ -117,57 +125,31 @@ if(nodes.length > 4 ){
 
 <script type="text/javascript">
 
-function ck_btn(){
-
-	var lists = [];
-	$("input[name=goodsname]:checked").each(function() {
-
-		
-		 lists.push($(this).val());
-		 
-		 /* var value = $(this).val();
-		$("#tess").append(value); */
-		/* alert(value); */
-
-	});
-}
-
-</script>
-
-
-
-<script type="text/javascript">
-
-
-	$(document).ready(function() {
 	//총데이터 갯수
+	$(document).ready(function() {
 	var node = $('.goodsbox').children();
 	$("#goods_count").html(node.length);
 		
 	});
 		
 		
-		
 function findtitle_btn(){
 	
+	var title = $("#findtitle").val();	
+	var lists = $("#goods_select").val();
+	
+	//alert(lists);
+	
+	var list = {
+			"title" : title,
+			"lists" : lists,
+			};
 	
 	
-	var lists = [];
-	$("input[name=goodsname]:checked").each(function() {
-
-		
-		 lists.push($(this).val());
-	
-
-	});
-	
-	
-	
-var title = $("#findtitle").val();
 $.ajax({
 	url : "findtitle.do",
 	type : "POST",
-	data : "title=" + title,
+	data : list,
 	async: true,
 	success : function(data) {
 			
@@ -176,7 +158,7 @@ $.ajax({
 		 	var node = $('.goodsbox').children();
 			$("#goods_count").html(node.length);
 			
-			
+			console.log(data.list);
 	 	 $.each(data.list, function(key, value){ 
 	 		 
 	 		if(value.title != null){
@@ -200,6 +182,16 @@ $.ajax({
 
 }
 
+
+
+
+
+
 	
+</script>
+
+
+<script type="text/javascript">
+
 </script>
 

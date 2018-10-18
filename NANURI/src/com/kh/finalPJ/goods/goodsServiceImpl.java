@@ -22,13 +22,13 @@ public class goodsServiceImpl implements goodsService {
 
 
 	@Override
-	public List<goodsBbsDto> findgoods(String title) {
-		return goodsDao.findgoods(title);
+	public List<goodsBbsDto> findgoods(String title,String lists) {
+		return goodsDao.findgoods(title,lists);
 	}
 
 
 	@Override
-	public List<goodsBbsDto> findchecked(String[] lists) throws Exception {
+	public List<goodsBbsDto> findchecked(String lists) throws Exception {
 		return goodsDao.findchecked(lists);
 	}
 	

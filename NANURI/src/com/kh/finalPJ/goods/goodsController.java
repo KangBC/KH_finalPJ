@@ -49,61 +49,64 @@ public class goodsController {
 	@RequestMapping(value="goodsdetail.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String goodsdetaile(Model model,int seq) throws Exception{
 		
-
-		model.addAttribute("seq",seq);
+			
+		//List<goodsBbsDto> list = goodsService.readcount();
 		
+		model.addAttribute("seq",seq);
 		return "rentaldetaile.tiles";
 	}
 	
+	/*이름검색*/
 	@ResponseBody
 	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
-	public Map<Object, Object> findtitle(String title) throws Exception {
+	public Map<Object, Object> findtitle(HttpServletRequest req) throws Exception {
+		
+		String title = req.getParameter("title");
+		String lists = req.getParameter("lists");
 		
 		Map<Object, Object> map = new HashMap<>();
-		List<goodsBbsDto> list = goodsService.findgoods(title);
-		System.out.println(list.size());
+		
+		List<goodsBbsDto> list = goodsService.findgoods(title,lists);
+		
+		
+		
+		
+		
+		System.out.println(title);
+		System.out.println(lists);
 		
 		map.put("list", list);
+		
+		
 		return map;		
 		
 	}
 	
+	
+	
+	/*SELECT 박스 검색*/
 	@ResponseBody
 	@RequestMapping(value = "findchecked.do", method = RequestMethod.POST)
-	public Map<Object, Object> findchecked(String[] lists) throws Exception {
+	public Map<Object, Object> findchecked(String lists) throws Exception {
 		
 		
 		Map<Object, Object> map = new HashMap<>();
+		/*System.out.println(lists);*/
+	/*
+		// 들어온 벨류값 확인
+		for(int i = 0 ; i < lists.length; i++) {
+			System.out.println(lists[i]);
+			}
 		
+*/
 		List<goodsBbsDto> list = goodsService.findchecked(lists);
 		
+		/*for(int i = 0 ; i < list.size(); i++) {
+			System.out.println(list.get(i).getG_price());
+			}*/
+		
 		map.put("checklist", list);
-		
-	/*	for(int i = 0 ; i < list.length; i++) {
-			map.put(i+"", list[i]);
-		}
-		*/
-		
-		
-		
-		System.out.println( lists.length );
-		
-		
-		
-		for(int i = 0 ; i < lists.length; i++) {
-			System.out.println( lists[i] );
-		}
-		
-		/*
-		
-        for( Object key : map.keySet() ){
-            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
-        }*/
-
-
-		
-		
-		
+	
 		return map;		
 		
 	}

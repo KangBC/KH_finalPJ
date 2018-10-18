@@ -8,8 +8,8 @@ public interface goodsService {
     /* bbsList */
 	List<goodsBbsDto> getbbs() throws Exception;
 	/* findgoods */
-	List<goodsBbsDto> findgoods(String title) throws Exception;
+	List<goodsBbsDto> findgoods(String title,String lists) throws Exception;
 	/* findchecked */
-	List<goodsBbsDto> findchecked(String[] lists) throws Exception;
+	List<goodsBbsDto> findchecked(String lists) throws Exception;
 	
 }
