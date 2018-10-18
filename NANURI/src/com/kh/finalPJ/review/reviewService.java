@@ -9,6 +9,7 @@ public interface reviewService {
 	
 	/*페이징리스트*/
 	public List<reviewDto> getrevPagingList(reviewParam param) throws Exception;
+	public int getrevCount(reviewParam param) throws Exception;
 	
 	/*글 쓰기*/
 	public boolean writeReview(reviewDto dto) throws Exception;

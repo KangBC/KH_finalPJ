@@ -32,7 +32,7 @@ public class reviewController {
 		logger.info("Welcome reviewController revlist!! "+ new Date());
 		
 		List<reviewDto> list = reviewSrevice.getreview();
-		model.addAttribute("reviewlist", list);
+		//model.addAttribute("reviewlist", list);
 		
 		//paging 처리
 		int sn = param.getPageNumber();
@@ -42,18 +42,19 @@ public class reviewController {
 		param.setStart(start);
 		param.setEnd(end);
 			
-		int totalRecordCount = list.size();		// 전체 글수
+		//int totalRecordCount = list.size();		// 전체 글수
+		
+		//글의 갯수
+		int totalRecordCount = reviewSrevice.getrevCount(param);
+		List<reviewDto> revlist = reviewSrevice.getrevPagingList(param);
+		model.addAttribute("reviewlist", revlist);
 		
 		model.addAttribute("pageNumber", sn);
 		model.addAttribute("pageCountPerScreen", 5);
 		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
 		model.addAttribute("totalRecordCount", totalRecordCount);
 		
-		//글의 갯수
-		List<reviewDto> revlist = reviewSrevice.getrevPagingList(param);
-		model.addAttribute("reviewlist", revlist);
-		
-		
+	
 		// 선택한 카테고리와 검색한 단어를 설정 
 		model.addAttribute("s_category", param.getS_category());
 		model.addAttribute("s_keyword", param.getS_keyword());

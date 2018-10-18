@@ -24,6 +24,12 @@ public class reviewServiceImpl implements reviewService {
 		return reviewDao.getrevPagingList(param);
 	}
 	
+	@Override
+	public int getrevCount(reviewParam param) throws Exception {
+		
+		return reviewDao.getrevCount(param);
+	}
+
 	/*글 쓰기*/
 	@Override
 	public boolean writeReview(reviewDto dto) throws Exception {
