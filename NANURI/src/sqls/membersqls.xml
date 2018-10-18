@@ -9,7 +9,7 @@
 		parameterType="com.kh.finalPJ.member.memberDto"
 		resultType="com.kh.finalPJ.member.memberDto">
 		SELECT * FROM MEMBER
-		WHERE ID=#{id} AND PWD=#{pwd} AND AUTH=0 AND AUTH=2
+		WHERE ID=#{id} AND PWD=#{pwd} AND AUTH IN (0, 2)
 	</select>
 
 	<select id="idCheck" parameterType="String" resultType="Integer">
