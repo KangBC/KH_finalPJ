@@ -10,8 +10,7 @@
 	ORDER BY WDATE DESC
 </select>
 
-<select id="getrevPagingList" resultType="com.kh.finalPJ.review.reviewDto"
-	parameterType="com.kh.finalPJ.review.reviewParam">
+<select id="getrevPagingList" resultType="com.kh.finalPJ.review.reviewDto" parameterType="com.kh.finalPJ.review.reviewParam">
 	
 	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
 	FROM (SELECT ROW_NUMBER() OVER(ORDER BY seq DESC) AS RNUM, SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE
@@ -31,7 +30,25 @@
 		  		</if>	  		
 	</if>) A
 	WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
 
+<select id="getrevCount" resultType="java.lang.Integer"	parameterType="com.kh.finalPJ.review.reviewParam">
+	
+	SELECT NVL(COUNT(*), 0) AS CNT
+	FROM REVIEW
+	WHERE 1=1
+	<if test="s_category != '' and s_category != null 
+		  		and s_keyword != '' and s_keyword != null">		  		
+  		<if test="s_category == 'title'">
+  			AND TITLE LIKE '%'||#{s_keyword}||'%'  
+  		</if>		  		
+  		<if test="s_category == 'contents'">
+  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+  		</if>	
+  		<if test="s_category == 'userid'">
+		  	AND CONTENT LIKE '%'||#{s_keyword}||'%'
+		  </if>	  		
+    </if>
 </select>
 
 
