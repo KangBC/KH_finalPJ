@@ -5,10 +5,11 @@ import java.util.List;
 
 public interface goodsDao {
 
-	 /* bbsList */
 	List<goodsBbsDto> getbbs();
 	
 	List<goodsBbsDto> findgoods(String title,String lists);
 	
-	List<goodsBbsDto> findchecked(String lists);
+	void readcount(int seq);
+	
+	goodsBbsDto getgoodsdetail(int seq);
 }

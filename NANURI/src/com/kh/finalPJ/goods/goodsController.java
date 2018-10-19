@@ -39,9 +39,6 @@ public class goodsController {
 		
 		return "rentallist.tiles";
 		
-		
-	
-		
 	}
 	
 	
@@ -49,14 +46,16 @@ public class goodsController {
 	@RequestMapping(value="goodsdetail.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String goodsdetaile(Model model,int seq) throws Exception{
 		
-			
-		//List<goodsBbsDto> list = goodsService.readcount();
+		// readcount
+		goodsService.readcount(seq);
+		// getdetaile
+		goodsBbsDto dto = goodsService.getgoodsdetail(seq);
 		
-		model.addAttribute("seq",seq);
+		model.addAttribute("detail",dto);
 		return "rentaldetaile.tiles";
 	}
 	
-	/*이름검색*/
+	/* 이름 + SELECTBOX 검색 */
 	@ResponseBody
 	@RequestMapping(value = "findtitle.do", method = RequestMethod.POST)
 	public Map<Object, Object> findtitle(HttpServletRequest req) throws Exception {
@@ -69,12 +68,6 @@ public class goodsController {
 		List<goodsBbsDto> list = goodsService.findgoods(title,lists);
 		
 		
-		
-		
-		
-		System.out.println(title);
-		System.out.println(lists);
-		
 		map.put("list", list);
 		
 		
@@ -83,33 +76,6 @@ public class goodsController {
 	}
 	
 	
-	
-	/*SELECT 박스 검색*/
-	@ResponseBody
-	@RequestMapping(value = "findchecked.do", method = RequestMethod.POST)
-	public Map<Object, Object> findchecked(String lists) throws Exception {
-		
-		
-		Map<Object, Object> map = new HashMap<>();
-		/*System.out.println(lists);*/
-	/*
-		// 들어온 벨류값 확인
-		for(int i = 0 ; i < lists.length; i++) {
-			System.out.println(lists[i]);
-			}
-		
-*/
-		List<goodsBbsDto> list = goodsService.findchecked(lists);
-		
-		/*for(int i = 0 ; i < list.size(); i++) {
-			System.out.println(list.get(i).getG_price());
-			}*/
-		
-		map.put("checklist", list);
-	
-		return map;		
-		
-	}
 	
 	
 

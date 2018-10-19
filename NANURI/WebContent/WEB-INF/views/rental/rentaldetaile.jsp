@@ -1,3 +1,5 @@
+<%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,7 +8,7 @@
 
 
 
-	int seq = (int)request.getAttribute("seq");
+	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
 
 	
 
@@ -26,7 +28,7 @@
 		</p>
 		
 		<p class="goods_title">
-		요요 플러스 6+ A형(기본형)_블랙프레임
+		<%=bbslist.getTitle() %>
 		</p>
 		
 	</div>
@@ -42,16 +44,15 @@
 				<div class="price_box">
 					<ul>
 						<li>렌탈</li>
-						<li>₩ 39,000원</li>
-						<li>₩ 39,000원</li>
-						<li>보증금 : ₩ 39,000원</li>
+						<li>₩ <%=bbslist.getG_price() %> 원</li>
+						
 					</ul>
 				</div>
 			
 			</div>
 		<div class="option_box">
 			<div class="option">
-				제품옵션선택은 여기서 넣기로하고
+				여기다 제품 선택 옵션 넣고
 			
 			</div>	
 	
@@ -60,7 +61,7 @@
 		
 		<div class="goods_info">
 		
-			제품설명
+			<%=bbslist.getContent() %>
 		
 		</div>
 	

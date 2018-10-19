@@ -13,7 +13,6 @@ public class goodsServiceImpl implements goodsService {
 	goodsDao goodsDao;
 
 	
-	 /* bbsList */
 	@Override
 	public List<goodsBbsDto> getbbs() {
 		
@@ -28,8 +27,15 @@ public class goodsServiceImpl implements goodsService {
 
 
 	@Override
-	public List<goodsBbsDto> findchecked(String lists) throws Exception {
-		return goodsDao.findchecked(lists);
+	public void readcount(int seq) {
+		goodsDao.readcount(seq);
+	}
+
+
+	@Override
+	public goodsBbsDto getgoodsdetail(int seq) throws Exception {
+		
+		return goodsDao.getgoodsdetail(seq);
 	}
 	
 	
