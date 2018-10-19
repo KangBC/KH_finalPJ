@@ -85,28 +85,44 @@ if(category == null) category = "";
        	<div>
              <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              	
-             	<!-- 별점 -->
-             	<div class="star">별점수: <%=list.get(i).getRating() %></div>
+             	<!-- 별점 점수 -->
+             	<div class="star">별점수: <%=list.get(i).getRating() %>&nbsp;점</div>
 <!-- =======별이다======= -->
 <tr>
-	<td class="starRev">
- 		 <span class="starR1">1</span>
- 		 <span class="starR2">2</span>
- 		 <span class="starR1">3</span>
- 		 <span class="starR2">4</span>
- 		 <span class="starR1">5</span>
- 		 <span class="starR2">6</span>
- 		 <span class="starR1">7</span>
-		 <span class="starR2">8</span>
- 		 <span class="starR1">9</span>
- 		 <span class="starR2">10</span>
-	</td>
+	<div class="starRev">
+ 		<%
+			for(int j = 1 ; j<=10 ; j++){ 
+				if(j%2==1){
+					if(j <= (int)list.get(i).getRating()){
+		%>
+				  		<span class="starR1 on"></span>
+					  <%
+						}else{
+					  %>
+					  		<span class="starR1"></span>
+				  		<%
+				  			}
+						}else if(j%2==0){
+							if(j <= (int)list.get(i).getRating()){
+						%>
+		  						<span class="starR2 on"></span>
+							<% 
+								}else{
+							%>
+								<span class="starR2"></span>
+							<%
+								}
+							}
+						}
+						%>	
+	</div>
 <tr>
-<input type="hidden" name="rating" id="rating" value="0">
+<input type="hidden" name="rating" id="rating" value="<%=list.get(i).getRating() %>">
       			
-      			</div>
-      			<!-- 별점 끝 -->
-    	</div>
+      </div>
+<!-- 별점 끝 -->
+
+   </div>
        <div class="idbox">
           <p class="id"><%=list.get(i).getId() %></p>
           <p class="wdate"><%=list.get(i).getWdate().substring(0,16) %></p>
@@ -149,7 +165,7 @@ var str='<%=category%>';
 $(document).ready(function(){	
 	//document.frmForm1.s_category.value = str;
 	$("#_s_category").val(str);
-	
+
 	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
  	if($("#_s_keyword").val().trim() == ""){
  		//document.frmForm1.s_category.value = "";
@@ -157,24 +173,7 @@ $(document).ready(function(){
 	}
 }); 
 
-/* 
-별점작동
-$('.starRev span').click(function(){
-	  $(this).parent().children('span').removeClass('on');
-	  $(this).addClass('on').prevAll('span').addClass('on');
-	  
-	  grade = $(this).text();
-	  $("#grade").html("&nbsp;&nbsp;" + $(this).text());
-	  
-	  $("#rating").val(grade);
-	  alert(grade);
-	  
-	  return false;
-}); */
-
 </script>
-
-
 
 </body>
 </html>

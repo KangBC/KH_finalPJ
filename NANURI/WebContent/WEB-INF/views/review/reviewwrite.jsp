@@ -68,7 +68,7 @@
 		 <span class="starR2">8</span>
  		 <span class="starR1">9</span>
  		 <span class="starR2">10</span>
- 		 <h3 id="grade">&nbsp;&nbsp;0</h3>
+ 		 <h5 id="grade">&nbsp;&nbsp;0점</h5>
 	</td>
 <tr>
 <input type="hidden" name="rating" id="rating" value="0">
@@ -153,7 +153,7 @@ $('.starRev span').click(function(){
 	  $("#grade").html("&nbsp;&nbsp;" + $(this).text());
 	  
 	  $("#rating").val(grade);
-	  alert(grade);
+	  //alert(grade);
 	  
 	  return false;
 });
