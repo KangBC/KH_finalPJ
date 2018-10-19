@@ -7,27 +7,31 @@
 <!-- getlist -->
 <select id="getbbs" resultType="com.kh.finalPJ.goods.goodsBbsDto">
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
-	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
     ORDER BY R_DATE DESC
 </select>
 
-  <select id="findgoods" parameterType="String" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
-	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+  
+  <update id="readcount" parameterType="java.lang.Integer">
+  	UPDATE R_BBS
+    SET READCOUNT = READCOUNT+1
+    WHERE SEQ = #{seq}
+  </update>
+  
+  <select id="getgoodsdetail" parameterType="java.lang.Integer"  resultType="com.kh.finalPJ.goods.goodsBbsDto">
+ 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT,B.G_IMG
+	FROM R_BBS A INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    INNER JOIN NA_STAR C
-    ON A.G_CODE = C.G_CODE
-    WHERE A.TITLE LIKE #{title}|| '%'
-  </select> 
+  	WHERE SEQ = #{seq}
+  </select>
   
   
    <select id="findgoodsAll" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
-	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT
+	FROM R_BBS A INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    INNER JOIN NA_STAR C
-    ON A.G_CODE = C.G_CODE
     WHERE A.TITLE LIKE #{title}|| '%'
     ORDER BY 
     <if test="lists == 'G_PRICE'">
@@ -43,11 +47,9 @@
 
  <select id="findchecked" parameterType="java.util.HashMap" resultType="com.kh.finalPJ.goods.goodsBbsDto">
  
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,C.STARDOT,A.READCOUNT
-	FROM NA_R_BBS A INNER JOIN NA_GOODS B 
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT
+	FROM R_BBS A INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    INNER JOIN NA_STAR C
-    ON A.G_CODE = C.G_CODE
     
     <if test="arraylist != null or arraylist == ''">
     	ORDER BY 

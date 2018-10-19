@@ -51,7 +51,7 @@
 		<!-- <button onclick="ck_btn()">제발좀 ㅡㅡ</button> -->
 		
 		<div>
-			<input type="text" id="findtitle" >
+			<input type="text" id="findtitle" onkeyup="findtitle_btn()">
 			<button id="findtitle_btn" onclick="findtitle_btn()">검색</button>
 			
 		</div>
@@ -65,7 +65,7 @@
 			<option value="R_DATE" selected="selected">최신순</option>
 			<option value="G_PRICE">낮은가격순</option>
 			<option value="READCOUNT">조회순</option>
-			<option value="STARDOT">별점순</option>
+			
 		</select>
 	</div>
 </div>

@@ -26,13 +26,34 @@ public class goodsDaoImpl implements goodsDao {
 		return list;
 	}
 
-	/* AJAX 검색 */
+	
+	/* readcount */
+	@Override
+	public void readcount(int seq) {
+		
+		sqlSession.update(namespace + "readcount", seq);
+		
+		System.out.println(seq);
+		
+	}
+
+	/* getgoodsdetail */
+	@Override
+	public goodsBbsDto getgoodsdetail(int seq) {
+		
+		goodsBbsDto dto = sqlSession.selectOne(namespace + "getgoodsdetail", seq);
+		
+		return dto;
+	}
+
+	
+	
+	/* AJAX 검색 (title + selectbox) */
 	@Override
 	public List<goodsBbsDto> findgoods(String title,String lists) {
 		
 		
 		List<goodsBbsDto> list = null;
-		//List<goodsBbsDto> list = sqlSession.selectList(namespace + "findgoods", title);
 
 		if(title.equals("")) {
 			// 타이틀의 값이 없을때
@@ -47,6 +68,7 @@ public class goodsDaoImpl implements goodsDao {
 			list = sqlSession.selectList(namespace + "findchecked", maplist);
 			
 			System.out.println("들어옴");
+			
 		}else {
 			// 값이 있을때 
 			// LIKE 랑 ORDER BY 같이 돌려줌
@@ -65,21 +87,6 @@ public class goodsDaoImpl implements goodsDao {
 		return list;
 	}
 
-	@Override
-	public List<goodsBbsDto> findchecked(String lists) {
-		
-		
-		ArrayList<String> arraylist = new ArrayList<>();
-		arraylist.add(lists);
-		
-		HashMap<String , Object> maplist = new HashMap<String , Object>();
-		maplist.put("arraylist", arraylist);
-		
-		List<goodsBbsDto> list = sqlSession.selectList(namespace + "findchecked", maplist);
-	
-		
-		return list;
-	}
 
 	
 	
