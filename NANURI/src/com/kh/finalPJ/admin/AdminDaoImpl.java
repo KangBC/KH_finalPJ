@@ -1,6 +1,7 @@
 package com.kh.finalPJ.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,16 @@ public class AdminDaoImpl implements AdminDao{
 		return sqlSession.insert(namespace + "stockRegist",g_code)>0 ? true : false;
 	}
 	
+	@Override
+	public boolean stockUpdate(Map<String, Object> map) {
+		return sqlSession.update(namespace + "stockUpdate",map)>0 ? true : false;
+	}
+
+	@Override
+	public boolean quantityUpdate(Map<String, Object> map) {
+		return sqlSession.update(namespace + "quantityUpdate",map)>0 ? true : false;
+	}
+
 	@Override
 	public boolean finalSecession(String id) {
 		return sqlSession.delete(namespace + "finalSecession",id)>0? true:false;

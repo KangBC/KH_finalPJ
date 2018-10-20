@@ -1,6 +1,7 @@
 package com.kh.finalPJ.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.finalPJ.goods.goodsDto;
 import com.kh.finalPJ.member.memberDto;
@@ -12,5 +13,8 @@ public interface AdminServiece {
 	public List<goodsDto> getGoodsList();
 	
 	public boolean goodsRegist(goodsDto goods);
+	public boolean stockUpdate(Map<String, Object> map);
+	public boolean quantityUpdate(Map<String, Object> map);
 	public boolean finalSecession(String id);
+	
 }

@@ -107,12 +107,19 @@ public class AdminController {
 
 	@ResponseBody
 	@RequestMapping(value="stockUpdate.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String stockUpdate(@RequestBody Map<String, Object> map) throws Exception{
-		logger.info(map.get("g_code")+"");
-		logger.info(map.get("change")+"");
-		logger.info(map.get("changeAf")+"");
+	public Boolean stockUpdate(@RequestBody Map<String, Object> map) throws Exception{
+		System.out.println(map.get("g_code"));
+		System.out.println(map.get("change"));
+		System.out.println(map.get("changeAf"));
+		boolean b = false;
+		if(map.get("change").equals("g_quantity")) {
+			b = adminserviece.quantityUpdate(map);
+		}
+		else{
+			b = adminserviece.stockUpdate(map);
+		}
 
-		return "true";
+		return b;
 	}
 	
 	@RequestMapping(value="goodsApply.do",method = RequestMethod.GET)

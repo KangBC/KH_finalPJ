@@ -4,13 +4,15 @@ $("document").ready(function() {
 	var changeAf;
 	var change;
 	
+	// 엔터 입력시 포커스 해제
 	$("td").keypress(function(event) {
 		if(event.keyCode==13){
 			event.preventDefault();
-			event.target.nextSibling.nextSibling.focus();
+			event.target.blur();
 		}
 	});
 	
+	// 여기부터 테이블 변경값 저장 및 전송
 	$(".stock_col td").focus(function(event){
 		g_code=event.target.parentNode.children[0].innerHTML;
 		changeBf = event.target.innerHTML;
@@ -19,6 +21,7 @@ $("document").ready(function() {
 	$(".stock_col td").blur(function(event){
 	  changeAf=event.target.innerHTML;
 	  changeAf=changeAf.replace("&nbsp;","");
+	  changeAf=changeAf.replace("<br>","");
 	  
 	  
 	  if(!(changeAf==changeBf)){

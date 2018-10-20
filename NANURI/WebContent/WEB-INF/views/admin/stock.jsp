@@ -29,7 +29,7 @@
 	</tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="goodsS">
 	  <tr class="stock_col">
-	  	<td id="g_code" contenteditable="true">${goods.g_code}</td>
+	  	<td id="g_code">${goods.g_code}</td>
 	  	<td id="g_name" contenteditable="true">${goods.g_name}</td>
 	  	<td id="g_price" contenteditable="true">${goods.g_price}</td>
 	  	<c:choose>

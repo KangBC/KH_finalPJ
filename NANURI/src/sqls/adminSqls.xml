@@ -18,19 +18,26 @@
 	SELECT * FROM STOCK FULL OUTER JOIN GOODS USING (G_CODE) 
 </select>
 
-<delete id="finalSecession" parameterType="string">
-	DELETE FROM MEMBER WHERE ID=#{id}
-</delete>
-<update id="secessionUpdate" parameterType="string">
-	UPDATE SECESSION SET STATUS=1 WHERE DEL_ID=#{id} AND STATUS=0
-</update>
-
 <insert id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
 	INSERT INTO GOODS VALUES(#{g_name},#{g_code},#{g_img},#{g_price})
 </insert>
 <insert id="stockRegist" parameterType="string">
 	INSERT INTO STOCK VALUES(#{g_code},0)
 </insert>
+
+<update id="stockUpdate" parameterType="map">
+	UPDATE GOODS SET ${change}='${changeAf}' WHERE G_CODE='${g_code}'
+</update>
+<update id="quantityUpdate" parameterType="map">
+	UPDATE STOCK SET G_QUANTITY='${changeAf}' WHERE G_CODE='${g_code}'
+</update>
+
+<delete id="finalSecession" parameterType="string">
+	DELETE FROM MEMBER WHERE ID=#{id}
+</delete>
+<update id="secessionUpdate" parameterType="string">
+	UPDATE SECESSION SET STATUS=1 WHERE DEL_ID=#{id} AND STATUS=0
+</update>
 
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.kh.finalPJ.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,16 @@ public class AdminServieceImpl implements AdminServiece{
 		return insCk01 && insCk02;
 	}
 	
+	@Override
+	public boolean stockUpdate(Map<String, Object> map) {
+		return adminDao.stockUpdate(map);
+	}
+	
+	@Override
+	public boolean quantityUpdate(Map<String, Object> map) {
+		return adminDao.quantityUpdate(map);
+	}
+
 	@Override
 	public boolean finalSecession(String id) {
 		boolean updCk = adminDao.secessionUpdate(id);
