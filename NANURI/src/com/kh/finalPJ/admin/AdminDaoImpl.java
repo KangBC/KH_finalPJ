@@ -42,6 +42,11 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
+	public boolean stockRegist(String g_code) {
+		return sqlSession.insert(namespace + "stockRegist",g_code)>0 ? true : false;
+	}
+	
+	@Override
 	public boolean finalSecession(String id) {
 		return sqlSession.delete(namespace + "finalSecession",id)>0? true:false;
 	}

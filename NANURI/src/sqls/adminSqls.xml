@@ -26,15 +26,11 @@
 </update>
 
 <insert id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
-	INSERT INTO GOODS VALUES(#{g_name},#{g_code},null,#{g_quantity})
+	INSERT INTO GOODS VALUES(#{g_name},#{g_code},#{g_img},#{g_price})
+</insert>
+<insert id="stockRegist" parameterType="string">
+	INSERT INTO STOCK VALUES(#{g_code},0)
 </insert>
 
-<!-- 
-<UPDATE id="goodsUpdate" parameterType="com.kh.finalPJ.goods.goodsDto">
-	UPDATE GOODS SET =#{}, =#{}, =#{}, =#{} WHERE 
-	<if test="">
-	
-	</if>
-</UPDATE>
- -->
+
 </mapper>

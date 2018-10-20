@@ -31,14 +31,17 @@ public class AdminServieceImpl implements AdminServiece{
 
 	@Override
 	public boolean goodsRegist(goodsDto goods) {
-		return adminDao.goodsRegist(goods);
-	}
+		boolean insCk01 = adminDao.goodsRegist(goods);
+		boolean insCk02 = adminDao.stockRegist(goods.getG_code());
 
+		return insCk01 && insCk02;
+	}
+	
 	@Override
 	public boolean finalSecession(String id) {
 		boolean updCk = adminDao.secessionUpdate(id);
 		boolean delCk = adminDao.finalSecession(id);
 		
-		return (delCk&&updCk);
+		return delCk && updCk;
 	}
 }

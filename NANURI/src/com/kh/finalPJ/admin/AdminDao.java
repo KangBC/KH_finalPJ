@@ -12,6 +12,8 @@ public interface AdminDao {
 	public List<goodsDto> getGoodsList(); 
 	
 	public boolean goodsRegist(goodsDto goods);
+	public boolean stockRegist(String g_code);
+	
 	public boolean finalSecession(String id);
 	public boolean secessionUpdate(String id);
 }
