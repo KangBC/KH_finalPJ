@@ -2,6 +2,8 @@ package com.kh.finalPJ.admin;
 
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.finalPJ.common.controller;
 import com.kh.finalPJ.goods.goodsDto;
@@ -105,13 +109,12 @@ public class AdminController {
 		return "stock.tiles";
 	}
 
+	// 재고 관리 : 상품 내용 변경하는 부분
 	@ResponseBody
 	@RequestMapping(value="stockUpdate.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public Boolean stockUpdate(@RequestBody Map<String, Object> map) throws Exception{
-		System.out.println(map.get("g_code"));
-		System.out.println(map.get("change"));
-		System.out.println(map.get("changeAf"));
 		boolean b = false;
+
 		if(map.get("change").equals("g_quantity")) {
 			b = adminserviece.quantityUpdate(map);
 		}
@@ -121,9 +124,49 @@ public class AdminController {
 
 		return b;
 	}
+
+	@ResponseBody
+	@RequestMapping(value="changeFile.do",method = {RequestMethod.GET, RequestMethod.POST})
+	public String changeFile(MultipartHttpServletRequest req,String g_code, Model model) throws Exception{
+		logger.info(g_code);
+		logger.info(req.getFile("g_imgF").getOriginalFilename());
+		
+		String fpost= ".jpg";
+		
+		if(req.getFile("g_imgF").getOriginalFilename().indexOf(".") >=0) {
+			fpost = req.getFile("g_imgF").getOriginalFilename().substring( req.getFile("g_imgF").getOriginalFilename().indexOf(".") );
+		}
+		
+		String filename = g_code + "Main" + fpost;
+		String fupload = req.getServletContext().getRealPath("/resources/img/main_img");
+		
+		try {
+			File file = new File(fupload + "/" + filename);
+			FileUtils.writeByteArrayToFile(file, req.getFile("g_imgF").getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, Object> map = new HashMap();
+		map.put("g_code", g_code);
+		map.put("filename", filename);
+		
+		boolean b = adminserviece.upImgOnly(map);
+		
+		if(b) {
+			return filename;
+		}else {
+			return "false";
+		}
+	}
+	
+	
 	
 	@RequestMapping(value="goodsApply.do",method = RequestMethod.GET)
 	public String goodsApply(Model model) throws Exception{
+		List<String> codeList = adminserviece.getGCodes();
+		model.addAttribute("codeList",codeList);
+		
 		return "goodsApply.tiles";
 	}
 }

@@ -11,12 +11,17 @@
 </select>
  
 <select id="getSecessionList" resultType="com.kh.finalPJ.member.secessionDto">
-	SELECT * FROM SECESSION
+	SELECT * FROM SECESSION ORDER BY DEL_SDATE ASC
 </select>
 
 <select id="getGoodsList" resultType="com.kh.finalPJ.goods.goodsDto">
 	SELECT * FROM STOCK FULL OUTER JOIN GOODS USING (G_CODE) 
 </select>
+
+<select id="getGCodes" resultType="string">
+	SELECT G_CODE FROM GOODS 
+</select>
+
 
 <insert id="goodsRegist" parameterType="com.kh.finalPJ.goods.goodsDto">
 	INSERT INTO GOODS VALUES(#{g_name},#{g_code},#{g_img},#{g_price})
@@ -25,11 +30,20 @@
 	INSERT INTO STOCK VALUES(#{g_code},0)
 </insert>
 
+<insert id="goodsBbsRegist" parameterType="com.kh.finalPJ.goods.goodsBbsDto">
+	INSERT INTO R_BBS VALUES(SEQ_R_BBS.NEXTVAL,#{g_code},#{title},#{content},SYSDATE,0)
+</insert>
+
+
 <update id="stockUpdate" parameterType="map">
 	UPDATE GOODS SET ${change}='${changeAf}' WHERE G_CODE='${g_code}'
 </update>
 <update id="quantityUpdate" parameterType="map">
 	UPDATE STOCK SET G_QUANTITY='${changeAf}' WHERE G_CODE='${g_code}'
+</update>
+
+<update id="upImgOnly" parameterType="map">
+	UPDATE GOODS SET G_IMG='${filename}' WHERE G_CODE='${g_code}'
 </update>
 
 <delete id="finalSecession" parameterType="string">

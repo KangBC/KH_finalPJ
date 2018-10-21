@@ -34,7 +34,7 @@
 	  	<td id="g_price" contenteditable="true">${goods.g_price}</td>
 	  	<c:choose>
 	  	  <c:when test="${goods.g_img eq null}">
-        	<td><input name="g_img" type="file" style="width: 0px"></td>
+        	<td><form style="display: inline"><input name="change_imgF" type="file" style="width: 0px"></form></td>
 	  	  </c:when>
 	  	  <c:otherwise>
     		<td id="g_img">${goods.g_img}</td>

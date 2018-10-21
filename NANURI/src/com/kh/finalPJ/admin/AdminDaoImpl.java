@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.finalPJ.goods.goodsDto;
 import com.kh.finalPJ.member.memberDto;
@@ -38,6 +39,12 @@ public class AdminDaoImpl implements AdminDao{
 	}
 	
 	@Override
+	public List<String> getGCodes() {
+		List<String> codeList = sqlSession.selectList(namespace + "getGCodes");
+		return codeList;
+	}
+
+	@Override
 	public boolean goodsRegist(goodsDto goods) {
 		return sqlSession.insert(namespace + "goodsRegist",goods)>0 ? true : false;
 	}
@@ -55,6 +62,11 @@ public class AdminDaoImpl implements AdminDao{
 	@Override
 	public boolean quantityUpdate(Map<String, Object> map) {
 		return sqlSession.update(namespace + "quantityUpdate",map)>0 ? true : false;
+	}
+	
+	@Override
+	public boolean upImgOnly(Map<String, Object> map) {
+		return sqlSession.update(namespace + "upImgOnly",map)>0 ? true : false;
 	}
 
 	@Override
