@@ -24,5 +24,6 @@ public interface AdminServiece {
 	public boolean goodsApply(Map<String, Object> map);
 	
 	public boolean finalSecession(String id);
+	public boolean restoreMember(String id);
 	
 }

@@ -83,5 +83,15 @@ public class AdminDaoImpl implements AdminDao{
 	public boolean secessionUpdate(String id) {
 		return sqlSession.update(namespace + "secessionUpdate",id)>0? true:false;
 	}
+
+	@Override
+	public boolean secessionCancle(String id) {
+		return sqlSession.update(namespace + "secessionCancle",id)>0? true:false;
+	}
+
+	@Override
+	public boolean restoreMember(String id) {
+		return sqlSession.delete(namespace + "restoreMember",id)>0? true:false;
+	}
 	
 }

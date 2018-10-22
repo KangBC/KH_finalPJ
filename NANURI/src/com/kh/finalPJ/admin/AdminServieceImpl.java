@@ -71,4 +71,12 @@ public class AdminServieceImpl implements AdminServiece{
 		
 		return delCk && updCk;
 	}
+
+	@Override
+	public boolean restoreMember(String id) {
+		boolean updCk = adminDao.secessionCancle(id);
+		boolean delCk = adminDao.restoreMember(id);
+		
+		return delCk && updCk;
+	}
 }

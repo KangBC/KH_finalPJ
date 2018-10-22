@@ -26,4 +26,7 @@ public interface AdminDao {
 	
 	public boolean finalSecession(String id);
 	public boolean secessionUpdate(String id);
+	public boolean secessionCancle(String id);
+	public boolean restoreMember(String id);
+	
 }

@@ -70,6 +70,17 @@ public class AdminController {
 		return "redirect:/approve.do";
 	}
 	
+	@RequestMapping(value="restoreMember.do",method = RequestMethod.GET)
+	public String restoreMember(String id,Model model) throws Exception{
+		if(adminserviece.restoreMember(id)) {
+			logger.info(id + " 회원 복구 성공!" + new Date());
+		}
+		
+		return "redirect:/approve.do";
+	}
+	
+	
+	
 	// 재고 관리 뷰
 	@RequestMapping(value="manageStock.do",method = RequestMethod.GET)
 	public String manageStock(Model model) throws Exception{
