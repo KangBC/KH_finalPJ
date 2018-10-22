@@ -22,6 +22,8 @@ public interface AdminDao {
 	public boolean quantityUpdate(Map<String, Object> map);
 	public boolean upImgOnly(Map<String, Object> map);
 	
+	public boolean goodsApply(Map<String, Object> map);
+	
 	public boolean finalSecession(String id);
 	public boolean secessionUpdate(String id);
 }

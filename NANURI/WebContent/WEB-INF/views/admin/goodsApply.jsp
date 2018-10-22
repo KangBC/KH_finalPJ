@@ -8,7 +8,7 @@
     
 <div>
   <h1>GoodsApply</h1>
-  <form enctype="multipart/form-data" method="post">
+  <form action="goodsApplyAf.do" enctype="multipart/form-data" method="post">
     <table>
       <tr>
         <td>goods:</td> 
@@ -35,10 +35,11 @@
       
       <tr>
 	    <td>내용:</td>
-        <td><input name="content" type="file"></td>
+        <td><input name="content_img" type="file"></td>
       <tr>
       
     </table>
+    <input type="submit">
   </form>
 </div>
 <script type="text/javascript" src="resources/js/goodsApply.js"></script>

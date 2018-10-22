@@ -46,6 +46,16 @@
 	UPDATE GOODS SET G_IMG='${filename}' WHERE G_CODE='${g_code}'
 </update>
 
+<insert id="goodsApply" parameterType="map">
+	INSERT INTO R_BBS VALUES(
+		SEQ_R_BBS.NEXTVAL,'${g_code}','${title}','${content}',SYSDATE,0,
+		<foreach collection="sub_imgs" item="sub_img" open="'" close="'" separator=",">
+${sub_img}
+		</foreach>
+	)
+	
+</insert>
+
 <delete id="finalSecession" parameterType="string">
 	DELETE FROM MEMBER WHERE ID=#{id}
 </delete>

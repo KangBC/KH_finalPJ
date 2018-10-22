@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.finalPJ.common.controller;
+import com.kh.finalPJ.goods.goodsBbsDto;
 import com.kh.finalPJ.goods.goodsDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.member.secessionDto;
@@ -83,12 +84,7 @@ public class AdminController {
 	@RequestMapping(value="goodsRegist.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String goodsRegist(HttpServletRequest req,goodsDto goods, Model model) throws Exception{
 		
-		String fpost= ".jpg";
-		if(goods.getG_imgF().getOriginalFilename().indexOf(".") >=0) {
-			fpost = goods.getG_imgF().getOriginalFilename().substring( goods.getG_imgF().getOriginalFilename().indexOf(".") );
-		}
-		
-		String filename = goods.getG_code() + "Main" + fpost;
+		String filename = ChangeFileName.changeMainImgN(goods.getG_code(),goods.getG_imgF());
 		String fupload = req.getServletContext().getRealPath("/resources/img/main_img");
 		
 		try {
@@ -131,13 +127,7 @@ public class AdminController {
 		logger.info(g_code);
 		logger.info(req.getFile("g_imgF").getOriginalFilename());
 		
-		String fpost= ".jpg";
-		
-		if(req.getFile("g_imgF").getOriginalFilename().indexOf(".") >=0) {
-			fpost = req.getFile("g_imgF").getOriginalFilename().substring( req.getFile("g_imgF").getOriginalFilename().indexOf(".") );
-		}
-		
-		String filename = g_code + "Main" + fpost;
+		String filename = ChangeFileName.changeMainImgN(g_code,req.getFile("g_imgF"));
 		String fupload = req.getServletContext().getRealPath("/resources/img/main_img");
 		
 		try {
@@ -147,7 +137,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		
-		Map<String, Object> map = new HashMap();
+		Map<String, Object> map = new HashMap<>();
 		map.put("g_code", g_code);
 		map.put("filename", filename);
 		
@@ -160,13 +150,51 @@ public class AdminController {
 		}
 	}
 	
-	
-	
 	@RequestMapping(value="goodsApply.do",method = RequestMethod.GET)
 	public String goodsApply(Model model) throws Exception{
 		List<String> codeList = adminserviece.getGCodes();
 		model.addAttribute("codeList",codeList);
 		
+		return "goodsApply.tiles";
+	}
+
+	@RequestMapping(value="goodsApplyAf.do",method = {RequestMethod.GET,RequestMethod.POST})
+	public String goodsApplyAf(MultipartHttpServletRequest req, goodsBbsDto bbsDto, Model model) throws Exception{
+		List<MultipartFile> sub_imgs = req.getFiles("sub_imgs");
+		MultipartFile content = req.getFile("content_img");
+		
+		List<String> sub_filenames = ChangeFileName.changeSubImgN(bbsDto.getG_code(), sub_imgs);
+		String content_filename = ChangeFileName.changeContentImgN(bbsDto.getG_code(), content);
+		
+		String sub_fupload = req.getServletContext().getRealPath("/resources/img/sub_imgs");
+		String content_fupload = req.getServletContext().getRealPath("/resources/img/rental_content");
+		File newFile = null;
+		
+		try {
+			
+			for(int i = 0; i<sub_filenames.size(); i++) {
+				newFile = new File(sub_fupload + "/" + sub_filenames.get(i));
+				FileUtils.writeByteArrayToFile(newFile, sub_imgs.get(i).getBytes());
+				newFile = null;
+			}
+			
+			newFile = new File(content_fupload + "/" + content_filename);
+			FileUtils.writeByteArrayToFile(newFile, content.getBytes());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Map<String,Object> map = new HashMap<>();
+		map.put("g_code", bbsDto.getG_code());
+		map.put("title", bbsDto.getTitle());
+		map.put("sub_imgs", sub_filenames);
+		map.put("content", content_filename);
+		
+		adminserviece.goodsApply(map);
+		
+		List<String> codeList = adminserviece.getGCodes();
+		model.addAttribute("codeList",codeList);
 		return "goodsApply.tiles";
 	}
 }

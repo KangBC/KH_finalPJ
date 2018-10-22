@@ -60,6 +60,11 @@ public class AdminServieceImpl implements AdminServiece{
 	}
 
 	@Override
+	public boolean goodsApply(Map<String, Object> map) {
+		return adminDao.goodsApply(map);
+	}
+
+	@Override
 	public boolean finalSecession(String id) {
 		boolean updCk = adminDao.secessionUpdate(id);
 		boolean delCk = adminDao.finalSecession(id);

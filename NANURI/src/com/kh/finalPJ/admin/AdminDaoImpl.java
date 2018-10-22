@@ -70,6 +70,11 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
+	public boolean goodsApply(Map<String, Object> map) {
+		return sqlSession.insert(namespace + "goodsApply",map)>0 ? true : false;
+	}
+
+	@Override
 	public boolean finalSecession(String id) {
 		return sqlSession.delete(namespace + "finalSecession",id)>0? true:false;
 	}
