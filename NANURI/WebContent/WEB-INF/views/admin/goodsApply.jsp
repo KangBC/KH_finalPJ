@@ -37,8 +37,10 @@
 	    <td>내용:</td>
         <td><input name="content_img" type="file"></td>
       <tr>
-      
     </table>
+	  <fieldset><legend>내용 미리보기</legend>
+ 	  <img id="preview" src=""/>
+	  </fieldset>
     <input type="submit">
   </form>
 </div>
