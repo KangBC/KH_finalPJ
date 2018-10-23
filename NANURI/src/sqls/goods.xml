@@ -5,14 +5,20 @@
 <mapper namespace="goods">
 
 <!-- getlist -->
-<select id="getbbs" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+<select id="getbbslength" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    ORDER BY R_DATE DESC
 </select>
 
+<select id="getbbs" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
+    ON A.G_CODE = B.G_CODE
+  	WHERE SEQ >= #{startindex} <![CDATA[  AND SEQ < #{endindex} ]]>
+</select>
   
   <update id="readcount" parameterType="java.lang.Integer">
   	UPDATE R_BBS
@@ -27,6 +33,14 @@
   	WHERE SEQ = #{seq}
   </select>
   
+  
+  <select id="getreview_qna"  parameterType="String" resultType="com.kh.finalPJ.review.reviewDto">
+  	
+  	 SELECT SEQ,ID,TITLE,CONTENT,WDATE,DEL,G_CODE,RATING
+    FROM review
+    WHERE G_CODE = #{g_code}
+  
+  </select>
   
    <select id="findgoodsAll" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT
@@ -70,6 +84,7 @@
  </select> 
  
 
+	
 
 
 </mapper>

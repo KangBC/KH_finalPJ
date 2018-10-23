@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalPJ.review.reviewDto;
+
 @Service
 public class goodsServiceImpl implements goodsService {
 
@@ -14,10 +16,18 @@ public class goodsServiceImpl implements goodsService {
 
 	
 	@Override
-	public List<goodsBbsDto> getbbs() {
+	public List<goodsBbsDto> getbbs(String startindex, String endindex) {
 		
-		return goodsDao.getbbs();
+		return goodsDao.getbbs(startindex,endindex);
 	}
+
+	
+
+	@Override
+	public List<goodsBbsDto> getbbslength() throws Exception {
+		return goodsDao.getbbslength();
+	}
+
 
 
 	@Override
@@ -36,6 +46,12 @@ public class goodsServiceImpl implements goodsService {
 	public goodsBbsDto getgoodsdetail(int seq) throws Exception {
 		
 		return goodsDao.getgoodsdetail(seq);
+	}
+
+
+	@Override
+	public List<reviewDto> getreview_qna(String g_code) throws Exception {
+		return goodsDao.getreview_qna(g_code);
 	}
 	
 	

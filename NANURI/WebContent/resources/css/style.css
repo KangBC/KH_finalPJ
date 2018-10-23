@@ -24,6 +24,7 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .goodsbox_h p {color:#999; font-size: 12px; margin: 0; margin-top: 11px;}
 .goods_countbox{float: left;}
 .goods_select{float: right;     margin: 10px;}
+#goods_select{    height: 30px; vertical-align: bottom;}
 .goodsbox{display:table; margin-top: 40px;}
 .goods{ width: 240px; height: 350px; float: left;margin: 5px 15px;}
 .goods p {margin: 0}
@@ -36,16 +37,32 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 
 /* 렌탈detail css */
 
+.detail_wrap{display: table;}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
 .detail_head .goods_title{font-size: 32px; color:#333;}
+.detail_body {width: 780px;    float: left;}
 .detail_body .top_box{display: table;}
 .detail_body .top_box .goods_img{width: 300px; height: 400px; background: #333; float: left;} 
-.detail_body .top_box .goods_priceinfo{width: 500px; float: left; border: 1px solid #333;}
+.detail_body .top_box .goods_priceinfo{width: 470px; float: left; border: 1px solid #333;}
 .detail_body .goods_info{width: 100%; height: 1000px; border: 1px solid #333;}
 
-.option_box{width: 240px; height: 300px; border: 1px solid #333; float: left; position: relative;}
-.option_box .option{position: absolute;}
-.scrollfixed{position: fixed !important; top:0;}
+.option_box{float:left;float: left; position: relative;}
+.option_box .option{position: absolute;    width: 250px; height: 500px; border: 1px solid #333;}
+.option_box .option .top{width: 100%; height:10%; font-size: 14px; padding: 20px; border-bottom: 1px solid #333; text-align: center;}
+.option_box .option .middle{height:60%;}
+.option_box .option .bottom{height: 30%;}
+.option_box .option .bottom .priceview{height: 100px; background-color: #ccc; padding: 10px;}
+.option_box .option .bottom .btnbox {text-align: center;}
+.option_box .option .bottom .btnbox .pricebtn{width: 40%; height: 50px; border: 1px solid; padding: 10px; display: inline-block;}
+.amountbtn{    width: 35px;height: 35px;}
+
+.scrollfixed{position: fixed !important; top:50;}
+.tab_title{display: table;  width: 100%; padding: 0; padding-top: 20px;}
+.tab_title li{float: left; width: 33.33333%; height: 40px; border: 1px solid #333; text-align: center; cursor: pointer;}
+.tab_title .active{background-color: #aaa;}
+.tab_contant{width: 100%; padding: 0;}
+.tab_contant #tab01 {display: block;}
+.tab_contant > li {width: 100%;border: 1px solid #333; height: 800px; display: none;}
 
 
 /* 후기 */
