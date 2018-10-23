@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
@@ -11,6 +12,7 @@
 
 	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
 	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
+	memberDto id = (memberDto)request.getSession().getAttribute("login");
 	
 
 %>
@@ -58,8 +60,10 @@
 		</div>
 		
 		<div class="goods_info">
-		
-			<%=bbslist.getContent() %>
+
+			<img alt="" src="resources/img/rental_content/<%=bbslist.getContent()%>" width="100%">
+			 
+			
 		
 		</div>
 	
@@ -173,16 +177,28 @@
 				<div class="middle">
 				
 					<div>
-					<button class="amountbtn minusbtn" title="수량줄이기">-</button>
+					<p>갯수</p>
+					<button class="monthbtn minusbtn" title="수량줄이기">-</button>
 					<input class="number_box" type="number" value="1" disabled="disabled" >
-					<button class="amountbtn plusbtn" title="수량늘이기">+</button>
+					<button class="monthbtn plusbtn" title="수량늘이기">+</button>
+					</div>
+					
+					<div>
+					<p>기간</p>
+					<button class="monthbtn minusbtn" title="수량줄이기">-</button>
+					<input class="month_box" type="number" value="1" disabled="disabled" >
+					<button class="monthbtn plusbtn" title="수량늘이기">+</button>
 					</div>
 					
 				</div>
 				<div class="bottom">
 					<div class="priceview">
-						<input id="price" type="hidden" value="4000" disabled="disabled" >
-						<input class="price" type="number" value="4000" disabled="disabled" >
+						<input id="pricehidden" type="hidden" value="<%=bbslist.getG_price() %>" disabled="disabled" >
+						<input class="price" type="number" value="<%=bbslist.getG_price() %>" disabled="disabled" >
+						
+						<p id="monthnum" style="margin: 0;">1</p>
+					
+						<input id="resultnum" value="<%=bbslist.getG_price() %>" disabled="disabled">
 					</div>
 					<div class="btnbox">
 						<a class="pricebtn">장바구니</a>
@@ -203,9 +219,21 @@
 </div>
 
 
+<div class="topbtn" style="width: 10px; height: 10px; background-color: blue; position: fixed; bottom: 30; right: 30; cursor: pointer;	">
+	TOP
+</div>
+
 <script type="text/javascript">
 
 
+//topbtn
+$(".topbtn").click(function(){
+	 $('html, body').animate({
+         scrollTop : 0
+     }, 400);
+});	
+
+// 옵션박스
 $(window).scroll(function(){
 	
 	var scrollPosition = ($(".option_box").offset().top - 50);
@@ -218,7 +246,7 @@ $(window).scroll(function(){
 });
 
 
-
+// 하단 탭메뉴
 $(".tab_title li").click(function(){
 	$(".tab_title li").removeClass('active');
 	$(this).addClass('active');
@@ -234,34 +262,46 @@ $(".tab_title li").click(function(){
 	
 });
 
-
+// 플러스 버튼
 $(".plusbtn").click(function(){
-	var number = parseInt($(".number_box").attr('value'));
+	var number = parseInt($(this).prev().attr('value'));
 	var numberplus = number + 1;
-	$(".number_box").attr('value',numberplus);
+	$(this).prev().attr('value',numberplus);
 	
-	var price = parseInt($("#price").attr('value'));
+	var price = parseInt($("#pricehidden").attr('value'));
 	var amount = parseInt($(".number_box").attr('value'));
 	
 	var result = price * amount;
 	$(".price").attr('value',result);
 	
-});
-$(".minusbtn").click(function(){
-	var number = parseInt($(".number_box").attr('value'));
+	var month_box = parseInt($(".month_box").attr('value'));
+	$("#monthnum").html(month_box);
 	
+	$("#resultnum").attr('value',month_box * result);
+	
+});
+// 마이너스버튼
+$(".minusbtn").click(function(){
+	var number = parseInt($(this).next().attr('value'));
 	if(number != 1){
 	var numberplus = number - 1;
-	$(".number_box").attr('value',numberplus);
+	$(this).next().attr('value',numberplus);
 	
-	var price = parseInt($("#price").attr('value'));
+	var price = parseInt($("#pricehidden").attr('value'));
 	var pricebox = $(".price").attr('value');
 	var result = pricebox - price;
 	$(".price").attr('value',result);
 	
+	var month_box = parseInt($(".month_box").attr('value'));
+	$("#monthnum").html(month_box);
+	
+	$("#resultnum").attr('value',month_box * result);
+	
 	}
 });
 
-	
+
+
+
 
 </script>

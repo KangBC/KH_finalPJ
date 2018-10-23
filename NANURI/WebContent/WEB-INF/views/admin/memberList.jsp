@@ -6,6 +6,8 @@
 
 <div class="admin_box">
 
+<div>
+
 <h1>회원정보</h1>
 <div>
   <table>
@@ -39,5 +41,5 @@
   
   <p>검색 결과 : ${fn:length(memberlist)} </p>
 </div>
-
+</div>	
 </div>

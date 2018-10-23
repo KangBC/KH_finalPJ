@@ -38,8 +38,8 @@
         <td><input name="content_img" type="file"></td>
       <tr>
     </table>
-	  <fieldset><legend>내용 미리보기</legend>
- 	  <img id="preview" src=""/>
+	  <fieldset style="width: 500px;"><legend>내용 미리보기</legend>
+ 	  <img id="preview" src=""/ style="width: 100%; ">
 	  </fieldset>
     <input type="submit">
   </form>

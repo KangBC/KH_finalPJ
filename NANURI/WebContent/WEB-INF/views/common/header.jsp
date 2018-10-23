@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="head">
-	<div class="row">
+	<div class="row" style="width: 100%">
 		<div class="col-md-6" style="text-align: left;">
 			<ul>
 				<li><a href="main.do">HOME</a></li>

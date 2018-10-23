@@ -46,7 +46,7 @@ public class goodsController {
 	
 	// goodsdetaile view
 	@RequestMapping(value="goodsdetail.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String goodsdetaile(Model model,int seq,String g_code) throws Exception{
+	public String goodsdetaile(Model model,int seq,String g_code,HttpServletRequest req) throws Exception{
 		
 		// readcount
 		goodsService.readcount(seq);
@@ -54,6 +54,7 @@ public class goodsController {
 		goodsBbsDto dto = goodsService.getgoodsdetail(seq);
 		// g_code 연결(rivew,qna)
 		List<reviewDto> code = goodsService.getreview_qna(g_code);
+		
 		
 		for (int i = 0; i < code.size(); i++) {
 			System.out.println(code.get(i));
