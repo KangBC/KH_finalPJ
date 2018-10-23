@@ -1,6 +1,7 @@
 package com.kh.finalPJ.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,10 +34,10 @@ public class memberController {
 	public String signUp() {
 		return "regist.tiles";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
-	public  Map<Object, Object> loginAf(HttpServletRequest req, memberDto mem) throws Exception {
+	public Map<Object, Object> loginAf(HttpServletRequest req, memberDto mem) throws Exception {
 		Map<Object, Object> map = new HashMap<>();
 		memberDto login = null;
 		login = memberservice.login(mem);
@@ -143,14 +144,22 @@ public class memberController {
 		}
 		return map;
 	}
-	
-	@RequestMapping(value = "basketList.do", method = RequestMethod.GET)
-	public String basketList() {
-		return "basketList.tiles";
-	}
-	
+
 	@RequestMapping(value = "rentalList.do", method = RequestMethod.GET)
 	public String rentalList() {
 		return "rentalList.tiles";
+	}
+
+	@RequestMapping(value = "basketList.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String basketList(HttpServletRequest req, Model model) throws Exception {
+		memberDto mem = (memberDto) req.getSession().getAttribute("login");
+		String id = mem.getId();
+		List<basketListDto> list = memberservice.getBasketList(id);
+		if (list.size() < 1) {
+			System.out.println("장바구니 리스트를 가져올 수 없습니다");
+			model.addAttribute("basketList", 0);
+		}
+		model.addAttribute("list", list);
+		return "basketList.tiles";
 	}
 }

@@ -9,7 +9,8 @@
 		parameterType="com.kh.finalPJ.member.memberDto"
 		resultType="com.kh.finalPJ.member.memberDto">
 		SELECT * FROM MEMBER
-		WHERE ID=#{id} AND PWD=#{pwd} AND AUTH IN (0, 2)
+		WHERE ID=#{id} AND PWD=#{pwd} AND AUTH
+		IN (0, 2)
 	</select>
 
 	<select id="idCheck" parameterType="String" resultType="Integer">
@@ -40,7 +41,7 @@
 		EMAIL=#{email}, PHONE=#{phone}, ADDRESS=#{address}, NAME=#{name},
 		AUTH=0 WHERE ID=#{id}
 	</update>
-	
+
 	<update id="delUpdateAf"
 		parameterType="com.kh.finalPJ.member.secessionDto">
 		UPDATE MEMBER SET AUTH=1 WHERE ID=#{del_id}
@@ -53,5 +54,11 @@
 		#{del_id}, #{del_reason}, SYSDATE,
 		SYSDATE+7,0)
 	</insert>
+
+	<select id="getBasketList"
+		parameterType="string"
+		resultType="com.kh.finalPJ.member.basketListDto">
+		SELECT SEQ, ID, G_IMG, G_NAME, AMOUNT, MONTH, G_PRICE FROM BASKET, GOODS WHERE BASKET.G_CODE = GOODS.G_CODE AND ID=#{id}
+	</select>
 
 </mapper>

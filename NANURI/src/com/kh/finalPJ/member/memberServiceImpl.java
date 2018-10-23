@@ -1,5 +1,7 @@
 package com.kh.finalPJ.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,11 @@ public class memberServiceImpl implements memberService {
 	public boolean secessionAf(secessionDto sec) throws Exception {
 		memberdao.delUpdateAf(sec);
 		return memberdao.secessionAf(sec);
+	}
+
+	@Override
+	public List<basketListDto> getBasketList(String id) throws Exception {
+		return memberdao.getBasketList(id);
 	}
 
 }
