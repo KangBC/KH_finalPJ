@@ -152,7 +152,7 @@ $.ajax({
 	 		 
 	 		if(value.title != null){
 	 			
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
 
 	 			
 	 		}
@@ -194,7 +194,7 @@ function indexup(){
 		 		 
 		 		if(value.title != null){
 
-		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
 		 			
 		 			/* 더보기 박스 hide */
 		 			var node = $('.goodsbox').children();	 		
@@ -265,7 +265,7 @@ $.ajax({
 	 	 $.each(data.list, function(key, value){ 
 	 		
 	 		if(value.title != null){
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
 	 			 var node = $('.goodsbox').children();
 	 			$("#goods_count").html(node.length); 
 	 			$("#pageingbtn").hide();
@@ -279,6 +279,7 @@ $.ajax({
 		// 공백일때 페이지 새로고침
 		else{
 			location.reload();
+			//$("#findtitle").focus();
 		}
 		
 	},
