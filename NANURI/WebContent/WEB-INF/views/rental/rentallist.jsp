@@ -15,7 +15,7 @@
 	
 
 %>
-
+ 
 <div class="startdiv">
 
 <div class="page-h">
@@ -50,32 +50,38 @@
 		
 		<!-- <button onclick="ck_btn()">제발좀 ㅡㅡ</button> -->
 		
-		<div>
-			<input type="text" id="findtitle" onkeyup="findtitle_btn()">
-			<button id="findtitle_btn" onclick="findtitle_btn()">검색</button>
-			
-		</div>
+	
 		
 	</div>
 
 <div class="goodsbox_h">
-<p class="goods_countbox">총  <span id="goods_count"></span> 개 의 상품이 있습니다.</p>
+
+<p class="goods_countbox">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p>
 	<div class="goods_select">
+	
+			
+	
+	
 		<select id="goods_select" onchange="findtitle_btn()">
 			<option value="R_DATE" selected="selected">최신순</option>
 			<option value="G_PRICE">낮은가격순</option>
 			<option value="READCOUNT">조회순</option>
-			
 		</select>
+		
+		<input type="text" id="findtitle" onkeyup="findtitle_btn()" placeholder="제목을 검색해주세요">
+			<!-- <button id="findtitle_btn" onclick="findtitle_btn()">검색</button> -->
+		
 	</div>
 </div>
 <hr style="height: 1px;background: #333;margin: 0;">
 
 	<div class="goodsbox" id="goodsbox">
+	
+	<%-- 	
 		<%
-			for(int i=0; i < bbslist.size(); i++){
+			for(int i=0; i < 5; i++){
 		%>
-		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
+		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>&g_code=<%=bbslist.get(i).getG_code() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
 			<div class="goods_img"></div>
 			<p class="goods_title"><%=bbslist.get(i).getTitle() %></p>
 			<p class="goods_content"><%=bbslist.get(i).getContent() %></p>
@@ -84,15 +90,17 @@
 	<% 
 			}
 	%>
+	
+	 --%>
 	</div>
 
 
-	<div id="tess"></div>
-
+	<div>
+		<button onclick="indexup()" id="pageingbtn" style="display: none;">눌러눌러</button>
+	</div>
 
 
 </div>
-
 
 
 
@@ -108,31 +116,115 @@
 
 <script type="text/javascript">
 
-function test(){
-var page = document.getElementById("asd");
-var nodes = page.getElementsByClassName("goods");
+/* 더보기 박스 */
+$(document).ready(function() {
+	var node = $('.goodsbox').children();	 		
+	var length = $("#goods_count").html();
 
-if(nodes.length > 4 ){
-	alert("asdfasdf");
-}
+	if(length != node.length){
+		$("#pageingbtn").show();
+	}
+});
+	
+	
+	/* 리스트 가져오기 */
+	var startindex = 0;
+	var endindex = 5;
+ 
+	var list = {
+			"startindex" : startindex,
+			"endindex" : endindex,
+			};
+	
+$.ajax({
+	url : "findlist.do",
+	type : "POST",
+	data : list,
+	async: true,
+	success : function(data) {
+			
+		
+		 $('.goodsbox').children('.goods').remove();
+		
+ 			 			
+			
+	 	 $.each(data.list, function(key, value){ 
+	 		 
+	 		if(value.title != null){
+	 			
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
 
- //alert("자식 노드 개수는? "+ nodes.length);
+	 			
+	 		}
+	 		
 
-}
+	 		
+			 });
+		  
+	
+		
+	},
+	error : function(xhr, status) {
+		alert("ㅋㅋ넌못해");
+	}
+})
 
+	
+
+
+/* 더보기버튼 페이징 */
+function indexup(){
+	
+		startindex = endindex;
+		endindex = endindex + 4; 
+		
+		var list = {
+				"startindex" : startindex,
+				"endindex" : endindex,
+				};
+		
+	$.ajax({
+		url : "findlist.do",
+		type : "POST",
+		data : list,
+		async: true,
+		success : function(data) {
+
+		 	 $.each(data.list, function(key, value){ 
+		 		 
+		 		if(value.title != null){
+
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+		 			
+		 			/* 더보기 박스 hide */
+		 			var node = $('.goodsbox').children();	 		
+		 			var length = $("#goods_count").html();
+
+		 			if(length == node.length){
+		 				$("#pageingbtn").hide();
+		 			}
+		 			
+		 		}
+		 		
+				 });
+			  
+		
+			
+		},
+		error : function(xhr, status) {
+			alert("ㅋㅋ넌못해");
+		}
+	})
+		
+		
+	}
 </script>
+
 
 
 <script type="text/javascript">
 
-	//총데이터 갯수
-	$(document).ready(function() {
-	var node = $('.goodsbox').children();
-	$("#goods_count").html(node.length);
-		
-	});
-		
-		
+		/* title + select box 검색 */
 function findtitle_btn(){
 	
 	var title = $("#findtitle").val();	
@@ -152,25 +244,42 @@ $.ajax({
 	data : list,
 	async: true,
 	success : function(data) {
-			
 		
+		/* 검색 결과 없을시 */
+		if(data.list.length == 0){
+ 			$("#pageingbtn").hide();
+ 		}
+		
+		/* 검색 결과 있을시 */
+		if(title != ""){
+			
 		 $('.goodsbox').children('.goods').remove();
 		 	var node = $('.goodsbox').children();
-			$("#goods_count").html(node.length);
+ 			$("#goods_count").html(node.length); 
+ 			
+ 			//alert(data.list.length);
+ 			
+		 	console.log(data.list.title);
 			
-			console.log(data.list);
+			
 	 	 $.each(data.list, function(key, value){ 
-	 		 
+	 		
 	 		if(value.title != null){
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_content">'+value.content+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
 	 			 var node = $('.goodsbox').children();
 	 			$("#goods_count").html(node.length); 
-		 		 
+	 			$("#pageingbtn").hide();
 	 		}
 	 		
+	 		
 			 });
-		  
-	
+		}
+		
+		
+		// 공백일때 페이지 새로고침
+		else{
+			location.reload();
+		}
 		
 	},
 	error : function(xhr, status) {
@@ -192,6 +301,14 @@ $.ajax({
 
 
 <script type="text/javascript">
-
+var page = 1;
+/* 
+$(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      console.log(++page);
+      $("#goodsbox").append("<h1>Page " + page + "</h1><BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~");
+      
+    }
+}); */
 </script>
 

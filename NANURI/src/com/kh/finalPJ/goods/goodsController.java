@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.finalPJ.review.reviewDto;
+
 
 @Controller
 public class goodsController {
@@ -31,10 +33,10 @@ public class goodsController {
 	
 	// getList
 	@RequestMapping(value="rentallist.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String getList(Model model) throws Exception{
+	public String getList(Model model,HttpServletRequest request) throws Exception{
 		
-		List<goodsBbsDto> list = goodsService.getbbs();
-
+		List<goodsBbsDto> list = goodsService.getbbslength();
+		
 		model.addAttribute("bbslist",list);
 		
 		return "rentallist.tiles";
@@ -44,14 +46,23 @@ public class goodsController {
 	
 	// goodsdetaile view
 	@RequestMapping(value="goodsdetail.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String goodsdetaile(Model model,int seq) throws Exception{
+	public String goodsdetaile(Model model,int seq,String g_code) throws Exception{
 		
 		// readcount
 		goodsService.readcount(seq);
 		// getdetaile
 		goodsBbsDto dto = goodsService.getgoodsdetail(seq);
+		// g_code 연결(rivew,qna)
+		List<reviewDto> code = goodsService.getreview_qna(g_code);
+		
+		for (int i = 0; i < code.size(); i++) {
+			System.out.println(code.get(i));
+		}
+		
+		System.out.println(g_code);
 		
 		model.addAttribute("detail",dto);
+		model.addAttribute("reviewDto",code);
 		return "rentaldetaile.tiles";
 	}
 	
@@ -62,6 +73,9 @@ public class goodsController {
 		
 		String title = req.getParameter("title");
 		String lists = req.getParameter("lists");
+		
+		System.out.println(title);
+		System.out.println(lists);
 		
 		Map<Object, Object> map = new HashMap<>();
 		
@@ -75,6 +89,26 @@ public class goodsController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "findlist.do", method = RequestMethod.POST)
+	public Map<Object, Object> findlist(HttpServletRequest req) throws Exception {
+		
+		
+		String startindex = req.getParameter("startindex");
+		String endindex = req.getParameter("endindex");
+		
+		System.out.println(startindex);
+		System.out.println(endindex);
+		
+		List<goodsBbsDto> list = goodsService.getbbs(startindex,endindex);
+		Map<Object, Object> map = new HashMap<>();
+		
+		map.put("list", list);
+		
+		
+		return map;		
+		
+	}
 	
 	
 	

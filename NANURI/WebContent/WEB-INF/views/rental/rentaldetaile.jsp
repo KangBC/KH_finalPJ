@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +10,7 @@
 
 
 	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
-
+	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
 	
 
 %>
@@ -19,7 +20,7 @@
 <div class="startdiv">
 
 
-<div class="wrap">
+<div class="detail_wrap">
 	
 	<div class="detail_head">
 	
@@ -44,19 +45,16 @@
 				<div class="price_box">
 					<ul>
 						<li>렌탈</li>
-						<li>₩ <%=bbslist.getG_price() %> 원</li>
-						
+						<li>₩ <%=bbslist.getG_price() %> / 월</li>
+						<li>예상배송일</li>
+						<li>업체 배송(평균 2영업일 소요)</li>
+						<li>배송비</li>
+						<li>₩ 4500</li>
 					</ul>
 				</div>
 			
 			</div>
-		<div class="option_box">
-			<div class="option">
-				여기다 제품 선택 옵션 넣고
-			
-			</div>	
-	
-		</div>
+		
 		</div>
 		
 		<div class="goods_info">
@@ -66,9 +64,134 @@
 		</div>
 	
 	
+	
+	
+	<div class="detail_footer">
+		
+		<div class="tab_box">
+		
+		<ul class="tab_title">
+			<li id="tab01" class="active">기본정보</li>
+			<li id="tab02">상품후기 (<%= list.size()%>)</li>
+			<li id="tab03">Q & A</li>
+		</ul>
+		
+		<ul class="tab_contant">
+			<li id="tab01">기본정보</li>
+			
+			
+		
+			<!-- review -->
+			<li id="tab02">
+				
+				
+
+<ul class="review">
+<%
+	if(list.size() != 0 ){
+	
+	for(int i = 0; i < list.size(); i++){
+%>
+   <li>
+  	<!--상품사진넣기  ////////////-->
+       <div class="img">
+          <!-- <img alt="" src=""> -->
+       </div>
+    <!--/////////////////  -->
+    
+       <div class="text_view" onclick="location.href='reviewdetail.do?seq=<%=list.get(i).getSeq()%>'" style="cursor: pointer;width: 520px;">
+       	<div>
+             <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
+             	
+             	<!-- 별점 -->
+             	<div class="star">별점수: <%=list.get(i).getRating() %></div>
+<!-- =======별이다======= -->
+<tr>
+	<td class="starRev">
+ 		 <span class="starR1">1</span>
+ 		 <span class="starR2">2</span>
+ 		 <span class="starR1">3</span>
+ 		 <span class="starR2">4</span>
+ 		 <span class="starR1">5</span>
+ 		 <span class="starR2">6</span>
+ 		 <span class="starR1">7</span>
+		 <span class="starR2">8</span>
+ 		 <span class="starR1">9</span>
+ 		 <span class="starR2">10</span>
+	</td>
+<tr>
+<input type="hidden" name="rating" id="rating" value="0">
+      			
+      			</div>
+      			<!-- 별점 끝 -->
+    	</div>
+       <div class="idbox" style="padding-top: 10px;">
+          <p class="id" style="margin-bottom: 5px;"><%=list.get(i).getId() %></p>
+          <p class="wdate"><%=list.get(i).getWdate().substring(0,16) %></p>
+       </div>
+   </li>
+<%
+		}
+	}
+	else{
+		%>
+		
+		<div class="review_null">
+		
+			<p>등록된 리뷰가 없습니다.</p>
+			
+		</div>
+		
+		
+		<% 
+	}
+%>
+</ul>
+
+
+			</li>
+			 
+			
+			
+			
+			
+			<li id="tab03">Q & A</li>
+			</ul>
+		</div>
+		
+	
 	</div>
 	
 	
+	</div>
+	
+	<div class="option_box">
+			<div class="option">
+				<div class="top">
+					주문하기
+				</div>
+				<div class="middle">
+				
+					<div>
+					<button class="amountbtn minusbtn" title="수량줄이기">-</button>
+					<input class="number_box" type="number" value="1" disabled="disabled" >
+					<button class="amountbtn plusbtn" title="수량늘이기">+</button>
+					</div>
+					
+				</div>
+				<div class="bottom">
+					<div class="priceview">
+						<input id="price" type="hidden" value="4000" disabled="disabled" >
+						<input class="price" type="number" value="4000" disabled="disabled" >
+					</div>
+					<div class="btnbox">
+						<a class="pricebtn">장바구니</a>
+						<a class="pricebtn">구매하기</a>
+					</div>	
+				</div>
+			</div>	
+	
+		</div>
 	
 	
 
@@ -85,13 +208,60 @@
 
 $(window).scroll(function(){
 	
-	
-    if ($(window).scrollTop() >= 175) {
+	var scrollPosition = ($(".option_box").offset().top - 50);
+    if ($(window).scrollTop() >= scrollPosition) {
        $(".option").addClass("scrollfixed");
     }
     else {
        $(".option").removeClass("scrollfixed");
     }
 });
+
+
+
+$(".tab_title li").click(function(){
+	$(".tab_title li").removeClass('active');
+	$(this).addClass('active');
+	
+	var scrollPosition = $(".tab_title").offset().top;
+	$( 'body' ).animate( { scrollTop: scrollPosition	}, 500);
+	
+	
+	$(".tab_contant > li").hide();
+	var data_show = $(this).attr('id');
+	$(".tab_contant #"+data_show).show();
+	
+	
+});
+
+
+$(".plusbtn").click(function(){
+	var number = parseInt($(".number_box").attr('value'));
+	var numberplus = number + 1;
+	$(".number_box").attr('value',numberplus);
+	
+	var price = parseInt($("#price").attr('value'));
+	var amount = parseInt($(".number_box").attr('value'));
+	
+	var result = price * amount;
+	$(".price").attr('value',result);
+	
+});
+$(".minusbtn").click(function(){
+	var number = parseInt($(".number_box").attr('value'));
+	
+	if(number != 1){
+	var numberplus = number - 1;
+	$(".number_box").attr('value',numberplus);
+	
+	var price = parseInt($("#price").attr('value'));
+	var pricebox = $(".price").attr('value');
+	var result = pricebox - price;
+	$(".price").attr('value',result);
+	
+	}
+});
+
+	
 
 </script>

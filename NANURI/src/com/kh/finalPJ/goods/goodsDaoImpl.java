@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalPJ.review.reviewDto;
+
 @Repository
 public class goodsDaoImpl implements goodsDao {
 
@@ -19,14 +21,33 @@ public class goodsDaoImpl implements goodsDao {
 	
 	 /* bbsList */
 	@Override
-	public List<goodsBbsDto> getbbs() {
+	public List<goodsBbsDto> getbbs(String startindex, String endindex) {
 		
-		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbs");
+		
+		goodspage dto = new goodspage();
+		
+		dto.setStartindex(startindex);
+		dto.setEndindex(endindex);
+		
+	
+		
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbs",dto);
 		
 		return list;
 	}
+	
+	
 
 	
+	@Override
+	public List<goodsBbsDto> getbbslength() {
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbslength");
+		return list;
+	}
+
+
+
+
 	/* readcount */
 	@Override
 	public void readcount(int seq) {
@@ -83,6 +104,15 @@ public class goodsDaoImpl implements goodsDao {
 		}
 		
 		
+		
+		return list;
+	}
+
+	/*리뷰 및 qna 끌어오기*/
+	@Override
+	public List<reviewDto> getreview_qna(String g_code) {
+		
+		List<reviewDto> list = sqlSession.selectList(namespace + "getreview_qna", g_code);
 		
 		return list;
 	}
