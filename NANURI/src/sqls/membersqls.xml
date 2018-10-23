@@ -58,7 +58,15 @@
 	<select id="getBasketList"
 		parameterType="string"
 		resultType="com.kh.finalPJ.member.basketListDto">
-		SELECT SEQ, ID, G_IMG, G_NAME, AMOUNT, MONTH, G_PRICE FROM BASKET, GOODS WHERE BASKET.G_CODE = GOODS.G_CODE AND ID=#{id}
+		SELECT SEQ, ID, G_IMG, G_NAME, AMOUNT, MONTH, SUM_PRICE FROM BASKET, GOODS WHERE BASKET.G_CODE = GOODS.G_CODE AND ID=#{id}
+	</select>
+	
+	<delete id="checkDelAf" parameterType="Integer">
+		DELETE FROM BASKET WHERE SEQ=#{seq}
+	</delete>
+	
+	<select id="totalPrice" parameterType="Integer" resultType="Integer">
+		SELECT SUM_PRICE FROM BASKET WHERE SEQ=#{seq}
 	</select>
 
 </mapper>

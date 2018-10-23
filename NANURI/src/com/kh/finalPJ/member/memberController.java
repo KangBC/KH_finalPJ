@@ -156,10 +156,49 @@ public class memberController {
 		String id = mem.getId();
 		List<basketListDto> list = memberservice.getBasketList(id);
 		if (list.size() < 1) {
-			System.out.println("장바구니 리스트를 가져올 수 없습니다");
 			model.addAttribute("basketList", 0);
 		}
 		model.addAttribute("list", list);
 		return "basketList.tiles";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "basketListDel.do", method = RequestMethod.POST)
+	public Map<String, Integer> checkDelAf(String delList, HttpServletRequest req) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		String Multi_seq[];
+		String Single_seq[];
+
+		if (delList.indexOf("end") != -1) {
+			Single_seq = delList.split("-");
+			if (memberservice.basketListDel(Integer.parseInt(Single_seq[0]))) {
+				map.put("cnt", 1);
+			} else {
+				map.put("cnt", 0);
+			}
+		} else {
+			Multi_seq = delList.split("-");
+			for (int i = 0; i < Multi_seq.length; i++) {
+				if (memberservice.basketListDel(Integer.parseInt(Multi_seq[i]))) {
+					map.put("cnt", 1);
+				} else {
+					map.put("cnt", 0);
+				}
+			}
+		}
+		return map;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "getTotalPrice.do", method = RequestMethod.POST)
+	public Map<String, Integer> getTotalPrice(String totalPrice, HttpServletRequest req) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		String seq[] = totalPrice.split("-");
+		Integer total = 0;
+		for (int i = 0; i < seq.length; i++) {
+			total += memberservice.getTotalPrice(Integer.parseInt(seq[i]));
+		}
+		map.put("total", total);
+		return map;
 	}
 }

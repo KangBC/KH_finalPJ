@@ -20,4 +20,8 @@ public interface memberService {
 
 	List<basketListDto> getBasketList(String id) throws Exception;
 
+	boolean basketListDel(Integer seq) throws Exception;
+	
+	Integer getTotalPrice(Integer seq) throws Exception;
+
 }

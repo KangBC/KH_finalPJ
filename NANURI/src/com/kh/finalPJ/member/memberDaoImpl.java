@@ -62,4 +62,15 @@ public class memberDaoImpl implements memberDao {
 		return sqlsession.selectList(namespace + "getBasketList", id);
 	}
 
+	@Override
+	public boolean basketListDel(Integer seq) throws Exception {
+		int n = sqlsession.delete(namespace + "checkDelAf", seq);
+		return n > 0 ? true : false;
+	}
+
+	@Override
+	public Integer getTotalPrice(Integer seq) throws Exception {
+		return sqlsession.selectOne(namespace + "totalPrice", seq);
+	}
+
 }
