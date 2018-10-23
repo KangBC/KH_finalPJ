@@ -1,5 +1,7 @@
 package com.kh.finalPJ.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -53,6 +55,11 @@ public class memberDaoImpl implements memberDao {
 	@Override
 	public void delUpdateAf(secessionDto sec) throws Exception {
 		sqlsession.update(namespace + "delUpdateAf", sec);
+	}
+
+	@Override
+	public List<basketListDto> getBasketList(String id) throws Exception {
+		return sqlsession.selectList(namespace + "getBasketList", id);
 	}
 
 }

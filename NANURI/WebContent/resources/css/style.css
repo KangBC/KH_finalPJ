@@ -90,6 +90,14 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .admin_content .left_admin ul li:hover > a{color: #fff;}
 .admin_content .left_admin ul li a{width:100%; height:100%; color: #bbb; display: block;padding-left: 35px;padding-top: 13px;  }
 
+/* 장바구니 */
+
+.number_box{width: 100%; border: 1px solid; display: table; margin-top: 30px}
+.number_box .number_node{width: 33%; float: left; border-right: 1px solid}
+.number_box .number_node h3{float: left; font-size: 12px; padding: 20px; padding-top: 30px}
+.number_box .number_node span{float: right; font-size: 20px; font-weight: bold;padding: 20px;}
+
+
 
 
 
