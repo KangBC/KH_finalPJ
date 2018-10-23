@@ -13,8 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.kh.finalPJ.goods.goodsBbsDto;
 import com.sun.net.httpserver.HttpServer;
 
 @Controller
@@ -47,6 +50,7 @@ public class reviewController {
 		//글의 갯수
 		int totalRecordCount = reviewSrevice.getrevCount(param);
 		List<reviewDto> revlist = reviewSrevice.getrevPagingList(param);
+		
 		model.addAttribute("reviewlist", revlist);
 		
 		model.addAttribute("pageNumber", sn);
@@ -58,9 +62,6 @@ public class reviewController {
 		// 선택한 카테고리와 검색한 단어를 설정 
 		model.addAttribute("s_category", param.getS_category());
 		model.addAttribute("s_keyword", param.getS_keyword());
-		
-		logger.info("ddddddddddd "+  param.getS_category());
-		logger.info("ddddddddddd "+  param.getS_keyword());
 		
 		return "reviewlist.tiles";
 	}
@@ -174,4 +175,6 @@ public class reviewController {
 		
 		return "redirect:/reviewlist.do";
 	}
+	
+	
 }

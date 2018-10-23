@@ -12,6 +12,7 @@ public class reviewDto implements Serializable{
 	private int del;
 	private String g_code;
 	private int rating;
+	private String g_img;
 	
 	public reviewDto() {
 		
@@ -27,7 +28,9 @@ public class reviewDto implements Serializable{
 		this.del = del;
 	}
 
-	public reviewDto(int seq, String id, String title, String content, String wdate, int del, String g_code, int rating) {
+
+	public reviewDto(int seq, String id, String title, String content, String wdate, int del, String g_code, int rating,
+			String g_img) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -37,6 +40,15 @@ public class reviewDto implements Serializable{
 		this.del = del;
 		this.g_code = g_code;
 		this.rating = rating;
+		this.g_img = g_img;
+	}
+
+	public String getG_img() {
+		return g_img;
+	}
+
+	public void setG_img(String g_img) {
+		this.g_img = g_img;
 	}
 
 	public int getRating() {

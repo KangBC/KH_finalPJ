@@ -36,30 +36,26 @@ reviewDto dto = (reviewDto)request.getAttribute("detailreview");
 String str = dto.getContent();
 %>
 
-
 <div class="startdiv">
-<form name="frmForm" id="_frmForm" method="post" action="reviewdetail.do">
+<form name="frmForm" class="_frmForm" id="_frmForm" method="post" action="reviewdetail.do">
 
 <table class="list_table" style="width:85%;" >
 
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
-<colgroup>
-<col style="width:200px;" />
-<col style="width:auto;" />
-</colgroup>
 
 <tbody>	
-	<tr class="id">
-		<th>아이디</th>
-		<td style="text-align: left"><%=dto.getId() %></td>
-	</tr>
-	<tr>
-		<th>제목</th>
-		<td style="text-align: left"><%=dto.getTitle() %></td>
-	</tr>
-		<tr>
-		<th>★★별점★★</th>
-		<td style="text-align: left">
+
+<div class="top_box11">
+	
+	<!-- 이미지 -->
+	<div class="goods_img11"><img alt="" src="resources/img/main_img/<%=dto.getG_img()%>" width="100%"> </div>
+	
+	<div>
+	<ul>
+		<li>아이디: <%=dto.getId() %></li>
+		<li>제목: <%=dto.getTitle() %></li>
+		<li>
+		<!-- 별점 -->
 		<div class="starRev">
  		<%
 			for(int j = 1 ; j<=10 ; j++){ 
@@ -88,22 +84,23 @@ String str = dto.getContent();
 						%>	
 	</div>
 		<h5>&nbsp;&nbsp;<%=dto.getRating() %>점</h5>
-		</td>
-	</tr>
-	<tr>
-		<th>작성일</th>
-		<td style="text-align: left"><%=dto.getWdate().substring(0,16) %></td>
-	</tr>
-	<tr>
-		<th>내용</th>
+	<!-- 별점  끝-->
+		</li>
+		
+		<li>작성일:<%=dto.getWdate().substring(0,16) %> </li>
+	</ul>
+	</div>
+</div>
+
+	<tr> 
 		<!-- 만약 textarea처럼 나타내고 싶은 경우 -->
 		<td>
-			<div contentEditable="true" id="content" name="content" style="border:1px solid; width:766px; height:412px; "></div>
+			<div id="content" name="content" style="border:1px solid; width:766px; height:412px;" ></div>
 		</td>
 
 	</tr>
 	<tr>
-		<td colspan="2" style="height:50px; text-align:center;">
+		<td style="height:50px;">
 		
 			 <input type="button" value="글 수정" onclick="location.href='reviewupdate.do?seq=<%=dto.getSeq()%>'">
 			 <input type="button" value="글 삭제" onclick="deletereview('<%=dto.getSeq() %>')">
@@ -123,5 +120,6 @@ $("#content").html(val);
 function deletereview(seq){
 	location.href='deleterev.do?seq='+seq;
 }
+
 </script>
 

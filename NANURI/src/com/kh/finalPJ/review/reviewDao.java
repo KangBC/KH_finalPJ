@@ -1,5 +1,6 @@
 package com.kh.finalPJ.review;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface reviewDao {
@@ -22,7 +23,6 @@ public interface reviewDao {
 	
 	/*글 수정*/
 	public void reviewupdate(reviewDto dto, int seq)throws Exception;
+	
 
-	/*페이징*/
-	//public int getcountlist ();
 }

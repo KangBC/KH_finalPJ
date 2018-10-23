@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDao"%>
 <%@page import="com.kh.finalPJ.review.reviewDaoImpl"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
@@ -38,8 +39,12 @@
 <%
 List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
 
+//goodsBbsDto g_img = 
+
 String category = (String)request.getAttribute("s_category");
 if(category == null) category = "";
+
+String g_code = (String)request.getAttribute("g_code");
 %>
 
 
@@ -51,7 +56,7 @@ if(category == null) category = "";
 <!-- 페이징 -->
 <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>						
 <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?5:recordCountPerPage}"/>
-
+<!-- <input type="hidden" name="g_code" id="g_code" value="g_code"> -->
 
 <!--검색부분 -->
 <div align="center">
@@ -76,8 +81,8 @@ if(category == null) category = "";
 <ul class="review">
    <li>
   	<!--상품사진넣기  ////////////-->
-       <div class="img">
-          <!-- <img alt="" src=""> -->
+       <div class="img" id="">
+          <img alt="" src="resources/img/main_img/<%=list.get(i).getG_img()%>" width="100%"> 
        </div>
     <!--/////////////////  -->
     
@@ -126,7 +131,7 @@ if(category == null) category = "";
        <div class="idbox">
           <p class="id"><%=list.get(i).getId() %></p>
           <p class="wdate"><%=list.get(i).getWdate().substring(0,16) %></p>
-       </div>
+      </div>
    </li>
 
 </ul>
@@ -172,6 +177,8 @@ $(document).ready(function(){
 		$("#_s_category").val("");
 	}
 }); 
+
+
 
 </script>
 
