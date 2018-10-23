@@ -5,6 +5,29 @@
 <fmt:requestEncoding value="utf-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 
+<style type="text/css">
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+</style>
+
 <%
 //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가
 request.setCharacterEncoding("utf-8");
@@ -36,7 +59,36 @@ String str = dto.getContent();
 	</tr>
 		<tr>
 		<th>★★별점★★</th>
-		<td style="text-align: left"><%=dto.getRating() %></td>
+		<td style="text-align: left">
+		<div class="starRev">
+ 		<%
+			for(int j = 1 ; j<=10 ; j++){ 
+				if(j%2==1){
+					if(j <= (int)dto.getRating()){
+		%>
+				  		<span class="starR1 on"></span>
+					  <%
+						}else{
+					  %>
+					  		<span class="starR1"></span>
+				  		<%
+				  			}
+						}else if(j%2==0){
+							if(j <= (int)dto.getRating()){
+						%>
+		  						<span class="starR2 on"></span>
+							<% 
+								}else{
+							%>
+								<span class="starR2"></span>
+							<%
+								}
+							}
+						}
+						%>	
+	</div>
+		<h5>&nbsp;&nbsp;<%=dto.getRating() %>점</h5>
+		</td>
 	</tr>
 	<tr>
 		<th>작성일</th>

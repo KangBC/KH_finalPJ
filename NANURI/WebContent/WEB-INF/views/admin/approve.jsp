@@ -24,6 +24,7 @@
   	  <td>탈퇴 수행 가능</td>
   	  <td>상태</td>
   	  <td>탈퇴 승인</td>
+  	  <td>복구</td>
   	  
 	</tr>
     <c:forEach var="secession" items="${secessionList}" varStatus="secessionS">
@@ -47,8 +48,10 @@
   		    <td><button name="approve" disabled>승인</button></td>
 		  </c:if>
 		  <c:if test="${today > e_date}">
-		    <td><button name="approve" onclick="dateCk('${secession.del_id}','<c:out value='${secession.del_edate}'/>')">승인</button></td>
+		    <td><button name="approve" onclick="dateCk('${secession.del_id}')">승인</button></td>
 		  </c:if>
+		  
+		  <td><button onclick="restore('${secession.del_id}')">복구</button></td>
 	   	</c:if>
 	  	
 	  	<c:if test="${secession.status==1 }">
@@ -69,6 +72,14 @@
 	  location.href="finalSecession.do?id="+id;
 	}
   } 
+  
+  function restore(id) {
+	var ck = confirm("정말 복구 하시겠습니까?");
+	if(ck){
+	  location.href="restoreMember.do?id="+id;
+	}
+  }
+
 </script>   
 </div>
 </div>

@@ -143,4 +143,14 @@ public class memberController {
 		}
 		return map;
 	}
+	
+	@RequestMapping(value = "basketList.do", method = RequestMethod.GET)
+	public String basketList() {
+		return "basketList.tiles";
+	}
+	
+	@RequestMapping(value = "rentalList.do", method = RequestMethod.GET)
+	public String rentalList() {
+		return "rentalList.tiles";
+	}
 }
