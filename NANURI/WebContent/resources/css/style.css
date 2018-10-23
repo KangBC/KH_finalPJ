@@ -44,7 +44,7 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .detail_body .top_box{display: table;}
 .detail_body .top_box .goods_img{width: 300px; height: 400px; background: #333; float: left;} 
 .detail_body .top_box .goods_priceinfo{width: 470px; float: left; border: 1px solid #333;}
-.detail_body .goods_info{width: 100%; height: 1000px; border: 1px solid #333;}
+.detail_body .goods_info{width: 100%; min-height: 400px; border: 1px solid #333;}
 
 .option_box{float:left;float: left; position: relative;}
 .option_box .option{position: absolute;    width: 250px; height: 500px; border: 1px solid #333;}
@@ -82,8 +82,8 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 
 
 /* 어드민 */
-.admin_content {display: table; height: 80%;} 
-.admin_content .admin_box{float: left;padding: 20px; padding-left: 40px;}
+.admin_content {display: table; height: 80%;     width: 1500px;} 
+.admin_content .admin_box{float: left;padding: 20px; padding-left: 40px;width: 70%;}
 .admin_content .left_admin{float: left;width: 250px; height: 100%; background-color: #283c51;}
 .admin_content .left_admin ul{padding: 0; }
 .admin_content .left_admin ul li{width: 100%; height: 50px; cursor:pointer; box-sizing: border-box;margin: 5px 0;   border-bottom: 1px solid #395673;}
