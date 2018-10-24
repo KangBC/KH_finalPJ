@@ -73,4 +73,10 @@
 		SELECT SEQ FROM R_BBS WHERE G_CODE=#{g_code}
 	</select>
 	
+	<select id="getR_StatusList"
+		parameterType="string"
+		resultType="com.kh.finalPJ.member.RStatusDto">
+		SELECT SEQ, GOODS.G_CODE, G_IMG, G_NAME, ID, AMOUNT, S_DATE, E_DATE, TOTAL_PRICE, ORDER_NUM FROM R_STATUS, GOODS WHERE R_STATUS.G_CODE = GOODS.G_CODE AND ID=#{id}
+	</select>
+	
 </mapper>

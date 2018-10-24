@@ -67,4 +67,9 @@ public class memberServiceImpl implements memberService {
 		return memberdao.getGoodsSeq(g_code);
 	}
 
+	@Override
+	public List<RStatusDto> getR_StatusList(String id) throws Exception {
+		return memberdao.getR_StatusList(id);
+	}
+
 }

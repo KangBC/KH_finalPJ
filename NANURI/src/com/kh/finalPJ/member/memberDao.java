@@ -27,4 +27,6 @@ public interface memberDao {
 	Integer getTotalPrice(Integer seq) throws Exception;
 
 	Integer getGoodsSeq(String g_code) throws Exception;
+
+	List<RStatusDto> getR_StatusList(String id) throws Exception;
 }

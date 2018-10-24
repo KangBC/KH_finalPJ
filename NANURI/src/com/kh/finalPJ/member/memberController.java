@@ -145,8 +145,12 @@ public class memberController {
 		return map;
 	}
 
-	@RequestMapping(value = "rentalList.do", method = RequestMethod.GET)
-	public String rentalList() {
+	@RequestMapping(value = "rentalList.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String rentalList(HttpServletRequest req, Model model) throws Exception {
+		memberDto mem = (memberDto) req.getSession().getAttribute("login");
+		String id = mem.getId();
+		List<RStatusDto> list = memberservice.getR_StatusList(id);
+		model.addAttribute("list", list);
 		return "rentalList.tiles";
 	}
 
@@ -155,9 +159,6 @@ public class memberController {
 		memberDto mem = (memberDto) req.getSession().getAttribute("login");
 		String id = mem.getId();
 		List<basketListDto> list = memberservice.getBasketList(id);
-		if (list.size() < 1) {
-			model.addAttribute("basketList", 0);
-		}
 		model.addAttribute("list", list);
 		return "basketList.tiles";
 	}

@@ -78,4 +78,9 @@ public class memberDaoImpl implements memberDao {
 		return sqlsession.selectOne(namespace + "getGoodsSeq", g_code);
 	}
 
+	@Override
+	public List<RStatusDto> getR_StatusList(String id) throws Exception {
+		return sqlsession.selectList(namespace + "getR_StatusList", id);
+	}
+
 }
