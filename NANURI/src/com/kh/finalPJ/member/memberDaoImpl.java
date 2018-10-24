@@ -62,4 +62,25 @@ public class memberDaoImpl implements memberDao {
 		return sqlsession.selectList(namespace + "getBasketList", id);
 	}
 
+	@Override
+	public boolean basketListDel(Integer seq) throws Exception {
+		int n = sqlsession.delete(namespace + "checkDelAf", seq);
+		return n > 0 ? true : false;
+	}
+
+	@Override
+	public Integer getTotalPrice(Integer seq) throws Exception {
+		return sqlsession.selectOne(namespace + "totalPrice", seq);
+	}
+
+	@Override
+	public Integer getGoodsSeq(String g_code) throws Exception {
+		return sqlsession.selectOne(namespace + "getGoodsSeq", g_code);
+	}
+
+	@Override
+	public List<RStatusDto> getR_StatusList(String id) throws Exception {
+		return sqlsession.selectList(namespace + "getR_StatusList", id);
+	}
+
 }

@@ -58,8 +58,5 @@ public class reviewServiceImpl implements reviewService {
 		reviewDao.reviewupdate(dto, seq);
 		
 	}
-	
-	
-	
-	
+
 }

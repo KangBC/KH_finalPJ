@@ -30,6 +30,8 @@
 .starR1.on{background-position:0 0;}
 .starR2.on{background-position:-15px 0;}
 </style>
+
+
 <%
 reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 %>
@@ -38,7 +40,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 <form name="frmForm" id="_frmForm" action="reviewupdateAf.do" method="post">
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
 
-<table>
+<table class="list_table">
 
 <colgroup>
 <col style="width:200px;" />
@@ -72,7 +74,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 		 <span class="starR2">8</span>
  		 <span class="starR1">9</span>
  		 <span class="starR2">10</span>
- 		 <h5 id="grade">&nbsp;&nbsp;0점</h5>
+ 		 <h5 id="grade">&nbsp;&nbsp;0</h5>
 	</td>
 <tr>
 <input type="hidden" name="rating" id="rating" value="0">
@@ -104,7 +106,6 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 
 </form>
 </div>
-
 
 <script type="text/javascript">
 var oEditors = [];

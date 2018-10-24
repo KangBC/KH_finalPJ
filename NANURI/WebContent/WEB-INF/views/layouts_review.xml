@@ -46,6 +46,18 @@
 			value="/WEB-INF/views/member/secession.jsp" />
 	</definition>
 
+	<!-- basketList뷰 -->
+	<definition name="basketList.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/basketList.jsp" />
+	</definition>
+
+	<!-- rentalList뷰 -->
+	<definition name="rentalList.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/rentalList.jsp" />
+	</definition>
+
 	<!--Review ===================================================== -->
 	<!--list뷰 -->
 	<definition name="reviewlist.tiles" extends="main.tiles">
@@ -122,5 +134,27 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/goodsApply.jsp" />
 	</definition>
+	
+	
+	<!--qa ===================================================== -->
+	<definition name="qalist.tiles" extends="main.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/qa/qalist.jsp" />		
+	</definition>
+	
+	<definition name="qaWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaWrite.jsp" />		
+	</definition>
+	
+	<definition name="ansWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/ansWrite.jsp" />		
+	</definition>
+		
+	<definition name="qaAdminWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />		
+	</definition>
+	
 
 </tiles-definitions>

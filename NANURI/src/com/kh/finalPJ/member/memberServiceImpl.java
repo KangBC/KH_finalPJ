@@ -52,4 +52,24 @@ public class memberServiceImpl implements memberService {
 		return memberdao.getBasketList(id);
 	}
 
+	@Override
+	public boolean basketListDel(Integer seq) throws Exception {
+		return memberdao.basketListDel(seq);
+	}
+
+	@Override
+	public Integer getTotalPrice(Integer seq) throws Exception {
+		return memberdao.getTotalPrice(seq);
+	}
+
+	@Override
+	public Integer getGoodsSeq(String g_code) throws Exception {
+		return memberdao.getGoodsSeq(g_code);
+	}
+
+	@Override
+	public List<RStatusDto> getR_StatusList(String id) throws Exception {
+		return memberdao.getR_StatusList(id);
+	}
+
 }

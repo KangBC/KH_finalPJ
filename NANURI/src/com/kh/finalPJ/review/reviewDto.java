@@ -2,6 +2,27 @@ package com.kh.finalPJ.review;
 
 import java.io.Serializable;
 
+
+/*
+DROP TABLE REVIEW
+CASCADE CONSTRAINTS;
+
+CREATE TABLE REVIEW(
+SEQ NUMBER(8) PRIMARY KEY,         
+ID VARCHAR2(50) NOT NULL,         
+TITLE VARCHAR2(200) NOT NULL,
+CONTENT VARCHAR2(4000) NOT NULL,
+WDATE DATE NOT NULL,
+DEL NUMBER(1) NOT NULL,
+G_CODE VARCHAR2(50) NOT NULL, 
+RATING NUMBER(10) NOT NULL
+);
+
+CREATE SEQUENCE SEQ_R
+START WITH 1 INCREMENT BY 1;
+
+DROP SEQUENCE SEQ_R;
+*/
 public class reviewDto implements Serializable{
 
 	private int seq;
@@ -12,6 +33,7 @@ public class reviewDto implements Serializable{
 	private int del;
 	private String g_code;
 	private int rating;
+	private String g_img;
 	
 	public reviewDto() {
 		
@@ -27,7 +49,9 @@ public class reviewDto implements Serializable{
 		this.del = del;
 	}
 
-	public reviewDto(int seq, String id, String title, String content, String wdate, int del, String g_code, int rating) {
+
+	public reviewDto(int seq, String id, String title, String content, String wdate, int del, String g_code, int rating,
+			String g_img) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -37,6 +61,15 @@ public class reviewDto implements Serializable{
 		this.del = del;
 		this.g_code = g_code;
 		this.rating = rating;
+		this.g_img = g_img;
+	}
+
+	public String getG_img() {
+		return g_img;
+	}
+
+	public void setG_img(String g_img) {
+		this.g_img = g_img;
 	}
 
 	public int getRating() {

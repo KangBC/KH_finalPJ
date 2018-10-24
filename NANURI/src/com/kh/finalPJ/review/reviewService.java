@@ -22,4 +22,5 @@ public interface reviewService {
 	
 	/*글 수정*/
 	public void reviewupdate(reviewDto dto, int seq)throws Exception;
+	
 }
