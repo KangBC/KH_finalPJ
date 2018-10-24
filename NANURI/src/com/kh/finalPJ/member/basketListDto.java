@@ -6,6 +6,7 @@ public class basketListDto {
 	private String id;
 	private String g_img;
 	private String g_name;
+	private String g_code;
 	private int amount;
 	private int month;
 	private int sum_price;
@@ -14,12 +15,14 @@ public class basketListDto {
 
 	}
 
-	public basketListDto(int seq, String id, String g_img, String g_name, int amount, int month, int sum_price) {
+	public basketListDto(int seq, String id, String g_img, String g_name, String g_code, int amount, int month,
+			int sum_price) {
 		super();
 		this.seq = seq;
 		this.id = id;
 		this.g_img = g_img;
 		this.g_name = g_name;
+		this.g_code = g_code;
 		this.amount = amount;
 		this.month = month;
 		this.sum_price = sum_price;
@@ -27,8 +30,8 @@ public class basketListDto {
 
 	@Override
 	public String toString() {
-		return "basketListDto [seq=" + seq + ", id=" + id + ", g_img=" + g_img + ", g_name=" + g_name + ", amount="
-				+ amount + ", month=" + month + ", sum_price=" + sum_price + "]";
+		return "basketListDto [seq=" + seq + ", id=" + id + ", g_img=" + g_img + ", g_name=" + g_name + ", g_code="
+				+ g_code + ", amount=" + amount + ", month=" + month + ", sum_price=" + sum_price + "]";
 	}
 
 	public int getSeq() {
@@ -61,6 +64,14 @@ public class basketListDto {
 
 	public void setG_name(String g_name) {
 		this.g_name = g_name;
+	}
+
+	public String getG_code() {
+		return g_code;
+	}
+
+	public void setG_code(String g_code) {
+		this.g_code = g_code;
 	}
 
 	public int getAmount() {
