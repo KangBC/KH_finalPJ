@@ -83,6 +83,10 @@ public class goodsController {
 		
 		List<goodsBbsDto> list = goodsService.findgoods(title,lists);
 		
+		for (int j = 0; j < list.size(); j++) {
+			System.out.println(list.get(j).getG_img());
+		}
+		
 		
 		map.put("list", list);
 		
@@ -105,6 +109,8 @@ public class goodsController {
 		
 		List<goodsBbsDto> list = goodsService.getbbs(startindex,endindex);
 		Map<Object, Object> map = new HashMap<>();
+		
+		
 		
 		map.put("list", list);
 		

@@ -13,7 +13,7 @@
 </select>
 
 <select id="getbbs" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
@@ -43,8 +43,9 @@
   </select>
   
    <select id="findgoodsAll" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT
-	FROM R_BBS A INNER JOIN GOODS B 
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
     WHERE A.TITLE LIKE #{title}|| '%'
     ORDER BY 
@@ -61,8 +62,9 @@
 
  <select id="findchecked" parameterType="java.util.HashMap" resultType="com.kh.finalPJ.goods.goodsBbsDto">
  
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE,A.READCOUNT
-	FROM R_BBS A INNER JOIN GOODS B 
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
     
     <if test="arraylist != null or arraylist == ''">

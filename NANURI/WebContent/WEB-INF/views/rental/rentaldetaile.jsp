@@ -206,7 +206,7 @@
 					 	<input type="hidden" id="loginid" value="<%=id.getId() %>">
 						<input type="hidden" id="g_code" value="<%=bbslist.getG_code() %>">
 						
-						<p id="monthnum" style="margin: 0;">1</p>
+						<input type="number" id="monthnum" value="1">
 					
 						<input id="resultnum" value="<%=bbslist.getG_price() %>" disabled="disabled">
 					</div>
@@ -306,29 +306,36 @@ $(".plusbtn").click(function(){
 	$(".price").attr('value',result);
 	
 	var month_box = parseInt($(".month_box").attr('value'));
-	$("#monthnum").html(month_box);
+	$("#monthnum").attr('value',month_box);
 	
 	$("#resultnum").attr('value',month_box * result);
 	
 });
+
 // 마이너스버튼
 $(".minusbtn").click(function(){
+	
 	var number = parseInt($(this).next().attr('value'));
+	
 	if(number != 1){
+	
 	var numberplus = number - 1;
 	$(this).next().attr('value',numberplus);
-	
+
 	var price = parseInt($("#pricehidden").attr('value'));
-	var pricebox = $(".price").attr('value');
-	var result = pricebox - price;
+	var amount = parseInt($(".number_box").attr('value'));
+	
+	var result = price * amount;
 	$(".price").attr('value',result);
 	
 	var month_box = parseInt($(".month_box").attr('value'));
-	$("#monthnum").html(month_box);
+	$("#monthnum").attr('value',month_box);
 	
 	$("#resultnum").attr('value',month_box * result);
-	
 	}
+	
+	
+	
 });
 
 // 장바구니 insert
