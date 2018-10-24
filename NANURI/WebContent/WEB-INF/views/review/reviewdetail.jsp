@@ -5,29 +5,6 @@
 <fmt:requestEncoding value="utf-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 
-<style type="text/css">
-.starR1{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
-}
-.starR2{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
-}
-.starR1.on{background-position:0 0;}
-.starR2.on{background-position:-15px 0;}
-</style>
-
 <%
 //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가
 request.setCharacterEncoding("utf-8");
@@ -95,7 +72,7 @@ String str = dto.getContent();
 	<tr> 
 		<!-- 만약 textarea처럼 나타내고 싶은 경우 -->
 		<td>
-			<div id="content" name="content" style="border:1px solid; width:766px; height:412px;" ></div>
+			<div id="content" class="reviewcontent" name="content" style="border:1px solid; width:766px;" ></div>
 		</td>
 
 	</tr>
