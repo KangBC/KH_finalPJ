@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Service
@@ -52,6 +53,14 @@ public class goodsServiceImpl implements goodsService {
 	@Override
 	public List<reviewDto> getreview_qna(String g_code) throws Exception {
 		return goodsDao.getreview_qna(g_code);
+	}
+
+
+
+	@Override
+	public boolean basketinsert(basketDto dto) throws Exception {
+		return goodsDao.basketinsert(dto);
+		
 	}
 	
 	

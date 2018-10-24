@@ -12,9 +12,15 @@
 
 	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
 	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
+	
+	
 	memberDto id = (memberDto)request.getSession().getAttribute("login");
 	
-
+	 if(id == null){
+		id = new memberDto();
+		id.setId("null");
+	} 
+	
 %>
 
 
@@ -196,12 +202,16 @@
 						<input id="pricehidden" type="hidden" value="<%=bbslist.getG_price() %>" disabled="disabled" >
 						<input class="price" type="number" value="<%=bbslist.getG_price() %>" disabled="disabled" >
 						
+						<!-- insert date -->
+					 	<input type="hidden" id="loginid" value="<%=id.getId() %>">
+						<input type="hidden" id="g_code" value="<%=bbslist.getG_code() %>">
+						
 						<p id="monthnum" style="margin: 0;">1</p>
 					
 						<input id="resultnum" value="<%=bbslist.getG_price() %>" disabled="disabled">
 					</div>
 					<div class="btnbox">
-						<a class="pricebtn">장바구니</a>
+						<a class="pricebtn" id="basketbtn">장바구니</a>
 						<a class="pricebtn">구매하기</a>
 					</div>	
 				</div>
@@ -222,6 +232,27 @@
 <div class="topbtn" style="width: 10px; height: 10px; background-color: blue; position: fixed; bottom: 30; right: 30; cursor: pointer;	">
 	TOP
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="basketModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        	성공적으로 장바구니에 담겼습니다
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <a type="button" class="btn btn-default" data-dismiss="modal">쇼핑계속하기</a>
+        <a type="button" class="btn btn-primary" href="basketList.do">장바구니이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <script type="text/javascript">
 
@@ -300,7 +331,62 @@ $(".minusbtn").click(function(){
 	}
 });
 
+// 장바구니 insert
+$("#basketbtn").click(function(){
+	
+	// 갯수
+	var amount = $(".number_box").attr('value');
+	// 개월
+	var month = $(".month_box").attr('value');
+	// 총합가격
+	var resultnum = $(".resultnum").attr('value');
+	 // 로그인 id
+	var id = $("#loginid").attr('value'); 
+	// g_code
+	var gcode = $("#g_code").attr('value');
+	
+	
+	if(id == "null"){
+		alert("로그인을 해주세요");
+	}else{
+		
+		var list = {
+				"id" : id,
+				"gcode" : gcode,
+				"month" : month,
+				"amount" : amount
+				};
+		
+	$.ajax({
+		url : "basketinsert.do",
+		type : "POST",
+		data : list,
+		async: true,
+		success : function(data) {
+			
+			
+			
+			if(data){
+				
+				$("#basketModal").modal();
+				
+			}else{
+				alert("다시시도해주세요");
+			}
+		},
+		error : function(xhr, status) {
+			alert("ㅋㅋ넌못해");
+		}
+	})
 
+		
+		
+		
+	//location.href = "basketinsert.do?id="+id+"&g_code="+gcode+"&month="+month+"&amount="+amount;
+	}
+	
+	
+});
 
 
 
