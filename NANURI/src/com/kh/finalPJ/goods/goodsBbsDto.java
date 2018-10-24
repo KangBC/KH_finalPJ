@@ -36,11 +36,27 @@ public class goodsBbsDto implements Serializable {
 	
 	// 검색 dto
 	private String lists;
+	// 상품 이미지
+	private String g_img;
 	
 	public goodsBbsDto() {}
 
 	
 	
+
+	public goodsBbsDto(int seq, String g_code, String title, String content, String r_date, int g_price, String g_img) {
+		super();
+		this.seq = seq;
+		this.g_code = g_code;
+		this.title = title;
+		this.content = content;
+		this.r_date = r_date;
+		this.g_price = g_price;
+		this.g_img = g_img;
+	}
+
+
+
 
 	public goodsBbsDto(String title, String lists) {
 		super();
@@ -117,6 +133,20 @@ public class goodsBbsDto implements Serializable {
 	public int getStardot() {
 		return stardot;
 	}
+
+	
+	public String getG_img() {
+		return g_img;
+	}
+
+
+
+
+	public void setG_img(String g_img) {
+		this.g_img = g_img;
+	}
+
+
 
 
 	public void setStardot(int stardot) {

@@ -82,7 +82,9 @@
 			for(int i=0; i < 5; i++){
 		%>
 		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>&g_code=<%=bbslist.get(i).getG_code() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
-			<div class="goods_img"></div>
+			<div class="goods_img">
+				<img alt="" src="resources/img/rental_content/<%=bbslist.getContent()%>" width="100%">
+			</div>
 			<p class="goods_title"><%=bbslist.get(i).getTitle() %></p>
 			<p class="goods_content"><%=bbslist.get(i).getContent() %></p>
 			<p class="goods_price">₩ <%=bbslist.get(i).getG_price() %></p>
@@ -96,6 +98,8 @@
 
 
 	<div>
+	
+	
 		<button onclick="indexup()" id="pageingbtn" style="display: none;">눌러눌러</button>
 	</div>
 
@@ -152,8 +156,14 @@ $.ajax({
 	 		 
 	 		if(value.title != null){
 	 			
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
-
+	 		// img 가 없을때
+				if(!value.g_img){
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+				}
+				// img 가 있을때
+				else if(value.g_img){
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+				}
 	 			
 	 		}
 	 		
@@ -189,13 +199,18 @@ function indexup(){
 		data : list,
 		async: true,
 		success : function(data) {
-
+		
 		 	 $.each(data.list, function(key, value){ 
 		 		 
 		 		if(value.title != null){
-
-		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
-		 			
+					// img 가 없을때
+					if(!value.g_img){
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+					}
+					// img 가 있을때
+					else if(value.g_img){
+			 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+					}
 		 			/* 더보기 박스 hide */
 		 			var node = $('.goodsbox').children();	 		
 		 			var length = $("#goods_count").html();
@@ -266,8 +281,15 @@ $.ajax({
 	 	 $.each(data.list, function(key, value){ 
 	 		
 	 		if(value.title != null){
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
-	 			 var node = $('.goodsbox').children();
+	 		// img 가 없을때
+				if(!value.g_img){
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+				}
+				// img 가 있을때
+				else if(value.g_img){
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+				}
+		 		var node = $('.goodsbox').children();
 	 			$("#goods_count").html(node.length); 
 	 			$("#pageingbtn").hide();
 	 		}
