@@ -59,6 +59,4 @@ public class reviewServiceImpl implements reviewService {
 		
 	}
 
-	
-	
 }

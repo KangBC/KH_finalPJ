@@ -34,7 +34,7 @@
 
 <div align="center">
 <form name="frmForm" id="_frmForm" action="reviewwriteAf.do" method="post">
-<table>
+<table class="list_table">
 
 <colgroup>
 <col style="width:200px;" />

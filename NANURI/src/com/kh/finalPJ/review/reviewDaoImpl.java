@@ -29,7 +29,8 @@ public class reviewDaoImpl implements reviewDao {
 	public List<reviewDto> getrevPagingList(reviewParam param) throws Exception {
 		
 		List<reviewDto> list = sqlSession.selectList(namespace + "getrevPagingList", param);
-		System.out.println(list.get(0).getG_img());
+		//System.out.println(list.get(0).getG_img());
+		
 		return list;
 	}
 	
@@ -75,8 +76,4 @@ public class reviewDaoImpl implements reviewDao {
 		sqlSession.update(namespace + "reviewupdate", dto);
 		
 	}
-
-
-
-	
 }

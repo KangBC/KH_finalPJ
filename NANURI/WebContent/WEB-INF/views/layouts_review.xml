@@ -134,5 +134,27 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/goodsApply.jsp" />
 	</definition>
+	
+	
+	<!--qa ===================================================== -->
+	<definition name="qalist.tiles" extends="main.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/qa/qalist.jsp" />		
+	</definition>
+	
+	<definition name="qaWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaWrite.jsp" />		
+	</definition>
+	
+	<definition name="ansWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/ansWrite.jsp" />		
+	</definition>
+		
+	<definition name="qaAdminWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />		
+	</definition>
+	
 
 </tiles-definitions>
