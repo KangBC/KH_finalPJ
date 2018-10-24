@@ -128,12 +128,19 @@ public class goodsController {
 		String g_code = req.getParameter("gcode");
 		int month = (Integer.parseInt(req.getParameter("month")));
 		int amount = (Integer.parseInt(req.getParameter("amount")));
+		int resultnum = (Integer.parseInt(req.getParameter("resultnum")));
+		
+		
+		
+		
+		//System.out.println(resultnum + "ddddddddddddddddddddddddddddddddddddddddddd");
 		
 		basketDto dto = new basketDto();
 		dto.setId(id);
 		dto.setG_code(g_code);
 		dto.setMonth(month);
 		dto.setAmount(amount);
+		dto.setSum_price(resultnum);
 		
 		System.out.println(dto.toString());
 		
