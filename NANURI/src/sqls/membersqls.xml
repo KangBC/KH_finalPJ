@@ -79,4 +79,8 @@
 		SELECT SEQ, GOODS.G_CODE, G_IMG, G_NAME, ID, AMOUNT, S_DATE, E_DATE, TOTAL_PRICE, ORDER_NUM FROM R_STATUS, GOODS WHERE R_STATUS.G_CODE = GOODS.G_CODE AND ID=#{id}
 	</select>
 	
+	<delete id="rentalListDel" parameterType="Integer">
+		DELETE FROM R_STATUS WHERE SEQ=#{seq}
+	</delete>
+	
 </mapper>

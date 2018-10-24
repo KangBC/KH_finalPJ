@@ -83,4 +83,10 @@ public class memberDaoImpl implements memberDao {
 		return sqlsession.selectList(namespace + "getR_StatusList", id);
 	}
 
+	@Override
+	public boolean rentalListDel(Integer seq) throws Exception {
+		int n = sqlsession.delete(namespace + "rentalListDel", seq);
+		return n > 0 ? true : false;
+	}
+
 }

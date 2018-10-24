@@ -23,9 +23,9 @@ function basketListDel(seq) {
 			if (x[i].checked == true && x[i].value != "on"
 					&& x[i].value != "off") {
 				if (i == len - 1) {
-					totalPrice = totalPrice + x[i].value.trim();
+					delList = delList + x[i].value.trim();
 				} else {
-					totalPrice = totalPrice + x[i].value.trim() + "-";
+					delList = delList + x[i].value.trim() + "-";
 				}
 			}
 		}

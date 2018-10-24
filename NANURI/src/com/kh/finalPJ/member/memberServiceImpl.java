@@ -72,4 +72,9 @@ public class memberServiceImpl implements memberService {
 		return memberdao.getR_StatusList(id);
 	}
 
+	@Override
+	public boolean rentalListDel(Integer seq) throws Exception {
+		return memberdao.rentalListDel(seq);
+	}
+
 }

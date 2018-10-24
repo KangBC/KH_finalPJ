@@ -101,9 +101,7 @@
 						</c:choose>
 					</table>
 					<div class="row" style="margin: 10px; float: right;">
-						<input type="checkbox" id="alldel" name="delck"
-							onclick="deletechecks(this.checked)"> <input
-							type="button" onclick="basketListDel(-1)" value="선택모두삭제">
+						<input type="button" onclick="basketListDel(-1)" value="선택모두삭제">
 					</div>
 
 					<!-- Total Cost Info -->

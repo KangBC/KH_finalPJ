@@ -78,8 +78,7 @@
 							<c:otherwise>
 								<c:forEach items="${list}" var="list" varStatus="status">
 									<tr>
-										<td><input type="checkbox" name="delck"
-											onclick="totalPrice()" value="${list.seq }"></td>
+										<td><input type="checkbox" name="delck" value="${list.seq }"></td>
 										<td>${list.order_num}</td>
 										<td colspan="2"><a
 											href="memToGoods_Detail.do?g_code=${list.g_code }"> <c:choose>
@@ -118,29 +117,7 @@
 						</c:choose>
 					</table>
 					<div class="row" style="margin: 10px; float: right;">
-						<input type="checkbox" id="alldel" name="delck"
-							onclick="deletechecks(this.checked)"> <input
-							type="button" onclick="basketListDel(-1)" value="선택모두삭제">
-					</div>
-
-					<!-- Total Cost Info -->
-					<div class="number_box">
-						<div class="number_node">
-							<h3>주문금액</h3>
-							<span id="g_price">0원</span>
-						</div>
-						<div class="number_node">
-							<h3>배송비</h3>
-							<span id="d_cost">0원</span>
-						</div>
-						<div class="number_node" style="width: 34%;">
-							<h3>결제금액</h3>
-							<span id="total_price">0원</span>
-						</div>
-					</div>
-					<div class="row" style="float: right; margin: 10px">
-						<input type="button" onclick="" value="선택상품주문"> <input
-							type="button" onclick="" value="전체주문">
+						<input type="button" onclick="rentalListDel(-1)" value="선택모두삭제">
 					</div>
 				</div>
 
@@ -150,5 +127,6 @@
 		<!-- / layout_border -->
 	</div>
 	<!-- / startdiv -->
+	<script type="text/javascript" src="resources/js/rentalList.js"></script>
 </body>
 </html>

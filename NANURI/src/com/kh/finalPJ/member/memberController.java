@@ -214,4 +214,31 @@ public class memberController {
 			return "basketList.tiles";
 		}
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "rentalListDel.do", method = RequestMethod.POST)
+	public Map<String, Integer> rentalListDel(String delList, HttpServletRequest req) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		String Multi_seq[];
+		String Single_seq[];
+
+		if (delList.indexOf("end") != -1) {
+			Single_seq = delList.split("-");
+			if (memberservice.rentalListDel(Integer.parseInt(Single_seq[0]))) {
+				map.put("cnt", 1);
+			} else {
+				map.put("cnt", 0);
+			}
+		} else {
+			Multi_seq = delList.split("-");
+			for (int i = 0; i < Multi_seq.length; i++) {
+				if (memberservice.rentalListDel(Integer.parseInt(Multi_seq[i]))) {
+					map.put("cnt", 1);
+				} else {
+					map.put("cnt", 0);
+				}
+			}
+		}
+		return map;
+	}
 }

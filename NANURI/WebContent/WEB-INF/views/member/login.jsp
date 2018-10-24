@@ -26,7 +26,8 @@
 					</tr>
 					<tr>
 						<th>패스워드</th>
-						<td><input type="password" id="pwd" name="pwd"></td>
+						<td><input type="password" id="pwd" name="pwd"
+							onkeydown="javascript:onEnterSubmit()"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center;"><a
@@ -45,6 +46,13 @@
 		$(document).ready(function() {
 			$("#id").focus();
 		});
+
+		function onEnterSubmit() {
+			var keyCode = window.event.keyCode;
+			if (keyCode == 13) {
+				loginAf();
+			}
+		}
 	</script>
 	<script type="text/javascript" src="resources/js/login.js"></script>
 </body>

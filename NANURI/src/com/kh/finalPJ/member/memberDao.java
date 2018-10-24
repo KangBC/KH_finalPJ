@@ -29,4 +29,6 @@ public interface memberDao {
 	Integer getGoodsSeq(String g_code) throws Exception;
 
 	List<RStatusDto> getR_StatusList(String id) throws Exception;
+	
+	boolean rentalListDel(Integer seq) throws Exception;
 }
