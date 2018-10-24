@@ -73,4 +73,9 @@ public class memberDaoImpl implements memberDao {
 		return sqlsession.selectOne(namespace + "totalPrice", seq);
 	}
 
+	@Override
+	public Integer getGoodsSeq(String g_code) throws Exception {
+		return sqlsession.selectOne(namespace + "getGoodsSeq", g_code);
+	}
+
 }

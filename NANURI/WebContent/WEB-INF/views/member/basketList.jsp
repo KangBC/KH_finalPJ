@@ -77,17 +77,19 @@
 									<tr>
 										<td><input type="checkbox" name="delck"
 											onclick="totalPrice()" value="${list.seq }"></td>
-										<td colspan="2"><c:choose>
-												<c:when test="${list.g_img eq null}">
-													<img alt=""
-														src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
-														style="width: 80; height: 80">
-												</c:when>
-												<c:otherwise>
-													<img alt="" src="resources/img/main_img/${list.g_img}"
-														style="width: 80; height: 80">
-												</c:otherwise>
-											</c:choose> / ${list.g_name }</td>
+										<td colspan="2"><a
+											href="memToGoods_Detail.do?g_code=${list.g_code }"> <c:choose>
+													<c:when test="${list.g_img eq null}">
+														<img alt=""
+															src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
+															style="width: 80; height: 80">
+													</c:when>
+													<c:otherwise>
+														<img alt="" src="resources/img/main_img/${list.g_img}"
+															style="width: 80; height: 80">
+													</c:otherwise>
+												</c:choose></a> <a href="memToGoods_Detail.do?g_code=${list.g_code }">/
+												${list.g_name }</a></td>
 										<td>${list.amount}개</td>
 										<td>${list.month}개월</td>
 										<td><fmt:formatNumber value="${list.sum_price }"

@@ -25,4 +25,6 @@ public interface memberDao {
 	boolean basketListDel(Integer seq) throws Exception;
 
 	Integer getTotalPrice(Integer seq) throws Exception;
+
+	Integer getGoodsSeq(String g_code) throws Exception;
 }

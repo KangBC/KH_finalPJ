@@ -201,4 +201,16 @@ public class memberController {
 		map.put("total", total);
 		return map;
 	}
+
+	@RequestMapping(value = "memToGoods_Detail.do", method = RequestMethod.GET)
+	public String memToGoods_Detail(Model model, String g_code) throws Exception {
+		int seq = memberservice.getGoodsSeq(g_code);
+		if (seq > 0) {
+			model.addAttribute("seq", seq);
+			model.addAttribute("g_code", g_code);
+			return "redirect:goodsdetail.do";
+		} else {
+			return "basketList.tiles";
+		}
+	}
 }

@@ -27,11 +27,11 @@
 				<div class="row"
 					style="border-bottom: 3px solid; padding-bottom: 10px">
 					<div class="col-md-8">
-						<h1>렌탈 목록</h1>
+						<h1>구매 목록</h1>
 					</div>
 					<div class="col-md-4" style="text-align: right; padding-top: 15px">
 						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a> > <a
-							href="rentalList.do">렌탈 목록</a>
+							href="rentalList.do">구매 목록</a>
 					</div>
 				</div>
 

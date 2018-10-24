@@ -62,4 +62,9 @@ public class memberServiceImpl implements memberService {
 		return memberdao.getTotalPrice(seq);
 	}
 
+	@Override
+	public Integer getGoodsSeq(String g_code) throws Exception {
+		return memberdao.getGoodsSeq(g_code);
+	}
+
 }
