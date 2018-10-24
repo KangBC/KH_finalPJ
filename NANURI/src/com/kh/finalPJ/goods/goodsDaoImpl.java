@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Repository
@@ -118,6 +119,11 @@ public class goodsDaoImpl implements goodsDao {
 	}
 
 
-	
-	
+
+	/*basketinsert*/
+	@Override
+	public boolean basketinsert(basketDto dto) {
+		
+		return sqlSession.insert(namespace + "basketinsert", dto)>0 ? true: false;
+	}
 }

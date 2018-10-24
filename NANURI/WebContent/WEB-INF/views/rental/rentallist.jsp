@@ -231,6 +231,7 @@ function findtitle_btn(){
 	var lists = $("#goods_select").val();
 	
 	//alert(lists);
+
 	
 	var list = {
 			"title" : title,

@@ -3,6 +3,7 @@ package com.kh.finalPJ.goods;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsService {
@@ -26,4 +27,6 @@ public interface goodsService {
 	/*getreview_qna*/
 	public List<reviewDto> getreview_qna(String g_code) throws Exception;
 	
+	/*basketinsert*/
+	public boolean basketinsert(basketDto dto) throws Exception;
 }

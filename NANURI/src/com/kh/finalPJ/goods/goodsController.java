@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.review.reviewDto;
 
 
@@ -90,6 +91,7 @@ public class goodsController {
 		
 	}
 	
+	/*페이징 인덱스*/
 	@ResponseBody
 	@RequestMapping(value = "findlist.do", method = RequestMethod.POST)
 	public Map<Object, Object> findlist(HttpServletRequest req) throws Exception {
@@ -111,6 +113,29 @@ public class goodsController {
 		
 	}
 	
+	/*장바구니 insert*/
+	@ResponseBody
+	@RequestMapping(value="basketinsert.do",method = RequestMethod.POST)
+	public boolean basketinsert(Model model,HttpServletRequest req) throws Exception{
+		
+		String id = req.getParameter("id");
+		String g_code = req.getParameter("gcode");
+		int month = (Integer.parseInt(req.getParameter("month")));
+		int amount = (Integer.parseInt(req.getParameter("amount")));
+		
+		basketDto dto = new basketDto();
+		dto.setId(id);
+		dto.setG_code(g_code);
+		dto.setMonth(month);
+		dto.setAmount(amount);
+		
+		System.out.println(dto.toString());
+		
+		return goodsService.basketinsert(dto);
+		
+		
+		
+	}
 	
 	
 
