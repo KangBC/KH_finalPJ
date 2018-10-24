@@ -88,16 +88,12 @@ public class reviewController {
 		String wdate = request.getParameter("wdate");
 		int rating = Integer.parseInt(request.getParameter("rating"));
 		
-		logger.info("----------------------글쓰기 "+ content);
-		
 		reviewDto revdto = new reviewDto();
 		revdto.setId(id);
 		revdto.setTitle(title);
 		revdto.setContent(content);
 		revdto.setWdate(wdate);
 		revdto.setRating(rating);
-		
-		logger.info("----------------------글쓰기 "+ rating);
 		
 		if(revdto.getContent().equals("<p>&nbsp;</p>") || revdto.getTitle().equals("")) {
 			

@@ -112,6 +112,11 @@
 
 </div>
 
+<p>
+    <p>아임 서포트 결제 모듈 테스트 해보기</p>
+    <button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
+</p>
+
 </body>
 </html>
 

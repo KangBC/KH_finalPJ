@@ -1,10 +1,10 @@
+<%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-
 <style type="text/css">
 .starR1{
     background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
@@ -34,6 +34,12 @@ request.setCharacterEncoding("utf-8");
 
 reviewDto dto = (reviewDto)request.getAttribute("detailreview");
 String str = dto.getContent();
+
+memberDto mem = (memberDto)session.getAttribute("login");
+if(mem==null){
+	mem=new memberDto();
+	mem.setId("null");
+}
 %>
 
 <div class="startdiv">
@@ -101,9 +107,15 @@ String str = dto.getContent();
 	</tr>
 	<tr>
 		<td style="height:50px;">
-		
+		<%
+            	if (mem.getId().equals(dto.getId()) ) {
+         %>
 			 <input type="button" value="글 수정" onclick="location.href='reviewupdate.do?seq=<%=dto.getSeq()%>'">
 			 <input type="button" value="글 삭제" onclick="deletereview('<%=dto.getSeq() %>')">
+			 
+		  <%
+               }
+           %>
 			 <input type="button" value="목록으로" onclick="location.href='reviewlist.do'">
 
 		</td>
@@ -113,6 +125,7 @@ String str = dto.getContent();
 
 </form>
 </div>
+
 <script type="text/javascript">
 var val='<%=str %>';
 $("#content").html(val);
@@ -120,6 +133,5 @@ $("#content").html(val);
 function deletereview(seq){
 	location.href='deleterev.do?seq='+seq;
 }
-
 </script>
 

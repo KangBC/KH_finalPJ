@@ -140,6 +140,7 @@ public class AdminController {
 		
 		String filename = ChangeFileName.changeMainImgN(g_code,req.getFile("g_imgF"));
 		String fupload = req.getServletContext().getRealPath("/resources/img/main_img");
+		System.out.println(fupload);
 		
 		try {
 			File file = new File(fupload + "/" + filename);
@@ -208,4 +209,15 @@ public class AdminController {
 		model.addAttribute("codeList",codeList);
 		return "goodsApply.tiles";
 	}
+	
+	@RequestMapping(value="manageRental.do",method = {RequestMethod.GET,RequestMethod.POST})
+	public String manageRental(Model model) throws Exception{
+		return "rentalList.tiles";
+	}
+	
+	@RequestMapping(value="manageSales.do",method = {RequestMethod.GET,RequestMethod.POST})
+	public String sales(Model model) throws Exception{
+		return "manageSales.tiles";
+	}
+	
 }

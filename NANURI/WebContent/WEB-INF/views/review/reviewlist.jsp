@@ -12,7 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 별css -->
 <style type="text/css">
 .starR1{
     background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
@@ -36,17 +35,15 @@
 .starR2.on{background-position:-15px 0;}
 </style>
 
+
 <%
 List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
-
-//goodsBbsDto g_img = 
 
 String category = (String)request.getAttribute("s_category");
 if(category == null) category = "";
 
 String g_code = (String)request.getAttribute("g_code");
 %>
-
 
 <div class="startdiv">
 
@@ -177,9 +174,6 @@ $(document).ready(function(){
 		$("#_s_category").val("");
 	}
 }); 
-
-
-
 </script>
 
 </body>
