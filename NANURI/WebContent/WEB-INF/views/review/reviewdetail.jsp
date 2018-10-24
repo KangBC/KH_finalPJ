@@ -25,10 +25,7 @@ if(mem==null){
 <form name="frmForm" class="_frmForm" id="_frmForm" method="post" action="reviewdetail.do">
 
 <table class="list_table" style="width:85%;" >
-
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
-
-<tbody>	
 
 <div class="top_box11">
 	
@@ -99,7 +96,6 @@ if(mem==null){
 
 		</td>
 	</tr>
-</tbody>
 </table>
 
 </form>

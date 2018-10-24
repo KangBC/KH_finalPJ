@@ -25,7 +25,7 @@ String g_code = (String)request.getAttribute("g_code");
 <div class="startdiv">
 
 <h2>후기</h2>
-<form action="frmForm1" id="_frmFormSearch" method="get" action="">
+<form action="frmForm1" id="_frmFormSearch" method="get">
 
 <!-- 페이징 -->
 <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>						
