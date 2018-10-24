@@ -37,7 +37,15 @@
 <%List<Integer> reflist = (List<Integer>) request.getAttribute("reflist");%> <!-- 로그인 아이디에 해당하는 REF 받아와서 답변과 함께 뿌려주기 위함 -->
 <%List<qaDto> qalist = (List<qaDto>) request.getAttribute("qalist");%>		 <!-- Q&A 리스트 -->
 <%List<qaDto> adminlist = (List<qaDto>) request.getAttribute("adminlist");%> <!-- 공지사항  -->
-<%memberDto mem = (memberDto)session.getAttribute("login"); %>
+<% memberDto mem = null;
+if(session.getAttribute("login") != null){	
+	 mem = (memberDto)session.getAttribute("login");
+}else{
+	 mem = new memberDto();
+	 mem.setAuth(-1);
+	 mem.setId("null");
+}
+%>
 
 <!-- 로그인 세션값 헤더에서 받아오기 -->
 
@@ -47,11 +55,12 @@
 	<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}"/>	
 </form>
 	<table id="report">
-		<%if(qalist != null) {%>
+		<%if(adminlist.size()>0|| qalist.size()>0) {%>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
+				<th>게시일</th>
 			</tr>
 			 	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 공지사항 뿌리기 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 				<%
@@ -61,6 +70,7 @@
 					            <td></td>
 					            <td><%=adminlist.get(i).getTitle()%></td>
 					            <td><%=adminlist.get(i).getId()%></td>
+					            <td><%=adminlist.get(i).getWdate().substring(0, 16) %></td>
 					    </tr>
 					    <tr style="display: none">
 					            <td colspan="3">             
@@ -86,8 +96,9 @@
 					            <%}else{ %>
 					            	<td>Q</td>
 					            	<td><%=qalist.get(i).getTitle()%></td>
-					            <%} %>							           
-						            <td><%=qalist.get(i).getId()%></td>
+					            <%} %>	
+						            <td><%=qalist.get(i).getId()%></td>	<!-- 수정중  -->
+					            	<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>						           
 					        </tr>
 					        <tr style="display: none">					  
 					            <td colspan="3">             
@@ -129,9 +140,15 @@
 					<%
 						}
 					%>			
-		<%} else if(qalist == null) {%>				
+		<%} else {%>	
 			<tr>
-				<td colspan="3">작성된 글이 없습니다.</td>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>게시일</th>
+			</tr>			
+			<tr>
+				<td colspan="4">작성된 글이 없습니다.</td>
 			</tr>
 		<%}%>
 		
@@ -152,16 +169,13 @@
 	<%}else if(mem.getAuth() == 2){ %>
 		<a href="qaAdminWrite.do">공지사항등록</a>
 	<%} %>
-	
-	<!-- 지울꺼 구매하기 뷰넘기기 -->
-	<a href="a.do">구매하기</a>
+
 </div>
     
 <script>
     $(function(){
 
-        $("#report tr:odd").addClass("odd");
-        //$("#report tr:not(.odd)").hide(); 
+        $("#report tr:odd").addClass("odd");      
         $("#report tr:first-child").show(); //열머리글 보여주기 
 
         $("#report tr.odd").click(function(){

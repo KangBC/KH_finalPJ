@@ -40,9 +40,13 @@ public class qaController {
 		
 		// 글의 갯수 
 		int totalRecordCount = QaService.getBbsCount(param);
-		
-		memberDto mem =(memberDto) req.getSession().getAttribute("login");
-		
+		memberDto mem = null;
+		if(req.getSession().getAttribute("login") != null) {
+			mem =(memberDto) req.getSession().getAttribute("login");
+		}else {	// 세션값이 없을때
+			mem = new memberDto();
+			mem.setId("null");
+		}
 		String id = mem.getId();
 		
 		List<Integer> allref = QaService.AllgetRef();
@@ -169,15 +173,6 @@ public class qaController {
 			return "redirect:/qnalist.do";
 		}
 		
-	}
-	
-	// 지울꺼 구매하기 페이지 만들기
-	@RequestMapping(value = "a.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String a(Model model) {
-		
-		logger.info("qaController 구매하기" + new Date());
-		
-		return "a.tiles";
 	}
 }
 

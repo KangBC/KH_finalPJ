@@ -45,14 +45,6 @@
 	<definition name="qaAdminWrite.tiles" extends="test.tiles">
 		<put-attribute name="content"
 			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />		
-	</definition>
-	
-	<!-- 지울꺼 -->
-	<definition name="a.tiles" extends="test.tiles">
-		<put-attribute name="content"
-			value="/WEB-INF/views/qa/order.jsp" />		
-	</definition>
-	
-	
+	</definition>	
 	
 </tiles-definitions>
