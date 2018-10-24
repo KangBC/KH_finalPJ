@@ -49,6 +49,18 @@
 			value="/WEB-INF/views/member/secession.jsp" />
 	</definition>
 	
+	<!-- basketList뷰 -->
+	<definition name="basketList.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/basketList.jsp" />
+	</definition>
+
+	<!-- rentalList뷰 -->
+	<definition name="rentalList.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/member/rentalList.jsp" />
+	</definition>
+	
 	<!-- Goods====================================================================================== -->
 	<definition name="rentallist.tiles" extends="main.tiles">
 
@@ -59,6 +71,11 @@
 	<definition name="rentaldetaile.tiles" extends="main.tiles">
 		<put-attribute name="content"
 			value="/WEB-INF/views/rental/rentaldetaile.jsp" />
+	</definition>
+	
+	<definition name="a.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/rental/order.jsp" />		
 	</definition>
 	
 	<!-- Review====================================================================================== -->
@@ -121,5 +138,38 @@
 	<definition name="goodsApply.tiles" extends="adminMain.tiles"> 
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/goodsApply.jsp" />
+	</definition>
+
+	<!-- 렌탈 관리페이지 -->
+	<definition name="rentalList.tiles" extends="adminMain.tiles"> 
+		<put-attribute name="content"
+			value="/WEB-INF/views/admin/rentalList.jsp" />
+	</definition>
+	
+	<!-- 매출 관리 페이지 -->
+	<definition name="manageSales.tiles" extends="adminMain.tiles"> 
+		<put-attribute name="content"
+			value="/WEB-INF/views/admin/sales.jsp" />
+	</definition>
+	
+	<!--QA ===================================================== -->
+	<definition name="qalist.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qalist.jsp" />		
+	</definition>
+	
+	<definition name="qaWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaWrite.jsp" />		
+	</definition>
+	
+	<definition name="ansWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/ansWrite.jsp" />		
+	</definition>
+		
+	<definition name="qaAdminWrite.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/qa/qaAdminWrite.jsp" />		
 	</definition>
 </tiles-definitions>

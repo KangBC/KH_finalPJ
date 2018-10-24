@@ -19,7 +19,7 @@
 </select>
 
 <select id="getGCodes" resultType="string">
-	SELECT G_CODE FROM GOODS 
+	SELECT GOODS.G_CODE FROM GOODS LEFT JOIN R_BBS ON GOODS.G_CODE=R_BBS.G_CODE WHERE R_BBS.G_CODE IS NULL
 </select>
 
 
@@ -49,11 +49,9 @@
 <insert id="goodsApply" parameterType="map">
 	INSERT INTO R_BBS VALUES(
 		SEQ_R_BBS.NEXTVAL,'${g_code}','${title}','${content}',SYSDATE,0,
-		<foreach collection="sub_imgs" item="sub_img" open="'" close="'" separator=",">
-${sub_img}
-		</foreach>
+	<foreach collection="sub_imgs" item="sub_img" open="'" close="'" separator=",">
+${sub_img}</foreach>
 	)
-	
 </insert>
 
 <delete id="finalSecession" parameterType="string">
