@@ -3,6 +3,7 @@ package com.kh.finalPJ.goods;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsDao {
@@ -18,4 +19,6 @@ public interface goodsDao {
 	goodsBbsDto getgoodsdetail(int seq);
 	
 	List<reviewDto> getreview_qna(String g_code);
+	
+	boolean basketinsert(basketDto dto);
 }
