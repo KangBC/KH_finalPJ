@@ -110,8 +110,10 @@
 										<td><c:choose>
 												<c:when test="${today > e_date}">
 													<span style="font-weight: bold">대여만료</span>
-													<a href="javascript:basketListDel(${list.seq})"><i
-														class="fa fa-trash" aria-hidden="true"></i></a>
+													<br>
+													<a href="javascript:basketListDel(${list.seq})">[ <i
+														class="fa fa-trash" aria-hidden="true"></i> ]
+													</a>
 												</c:when>
 												<c:otherwise>
 													<span style="font-weight: bold"> 대여중 </span>
@@ -126,6 +128,10 @@
 					</table>
 					<div class="row" style="margin: 10px; float: right;">
 						<input type="button" onclick="rentalListDel(-1)" value="선택모두삭제">
+						<button type="button"
+							class="btn btn-outline-secondary waves-effect px-3">
+							<i class="fa fa-trophy" aria-hidden="true"></i>
+						</button>
 					</div>
 				</div>
 

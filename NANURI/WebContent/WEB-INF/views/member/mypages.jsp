@@ -16,21 +16,37 @@
 				<!-- Main Header -->
 				<div class="row"
 					style="border-bottom: 2px solid; padding-bottom: 20px; padding-top: 10px">
-					<div class="col-md-4" align="center">
-						<div
-							style="border-radius: 50%; height: 240px; width: 240px; box-shadow: 2px 2px 15px grey;">
-							<p
-								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">
-								${orderCnt}</p>
-							<p>주문내역</p>
-						</div>
+					<div class="col-md-4" align="center" style="border: solid 1px">
+						<h1>개발중(슬라이더 어떰? - 추천상품같은)</h1>
 					</div>
-					<div class="col-md-4" align="center">
-						<div
-							style="border-radius: 50%; height: 240px; width: 240px; box-shadow: 2px 2px 15px grey;">
-							<p
-								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">${wishCnt}</p>
-							<p>장바구니</p>
+					<div class="col-md-4"
+						style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
+						<div class="row" style="margin-top: 10%">
+							<div class="col-md-4" style="border: solid 1px">
+								<h1>Logo</h1>	
+							</div>
+							<div class="col-md-8">
+								<div>
+									<p style="margin-bottom: 0px">
+										<font style="font-weight: bold; font-size: 30px"
+											color="#542f82">'${login.name }'</font>님 환영합니다!
+									</p>
+								</div>
+								<div style="border: solid 1px; text-align: center; padding: 2px">
+									<a><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+										상품렌트하러 가기 >></a>
+								</div>
+							</div>
+						</div>
+						<div class="row" align="center">
+							<div class="col-md-6" style="padding-right: 0px">
+								<p style="font-size: 40px;">${orderCnt}</p>
+								<p style="margin-bottom: 0px">주문내역</p>
+							</div>
+							<div class="col-md-6" style="padding-left: 0px">
+								<p style="font-size: 40px;">${wishCnt}</p>
+								<p style="margin-bottom: 0px">장바구니</p>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-4" style="padding-top: 15px">
