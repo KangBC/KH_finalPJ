@@ -77,7 +77,7 @@ if(mem==null){
 	<tr> 
 		<!-- 만약 textarea처럼 나타내고 싶은 경우 -->
 		<td>
-			<div id="content" class="reviewcontent" name="content" style="border:1px solid; width:766px;" ></div>
+			<div id="content" class="reviewcontent" name="content" style="border:0px solid; width:766px;" ></div>
 		</td>
 
 	</tr>

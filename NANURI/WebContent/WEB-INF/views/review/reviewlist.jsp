@@ -5,6 +5,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +28,7 @@ String g_code = (String)request.getAttribute("g_code");
 <div class="startdiv">
 
 <h2>후기</h2>
-<form action="frmForm1" id="_frmFormSearch" method="get">
+<form id="_frmFormSearch" method="get" action="">
 
 <!-- 페이징 -->
 <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>						
@@ -53,19 +56,26 @@ String g_code = (String)request.getAttribute("g_code");
 	for(int i = 0; i < list.size(); i++){
 %>
 <ul class="review">
-   <li>
-  	<!--상품사진넣기  ////////////-->
-       <div class="img" id="">
-          <img alt="" src="resources/img/main_img/<%=list.get(i).getG_img()%>" width="100%"> 
-       </div>
-    <!--/////////////////  -->
-    
-       <div class="text_view" onclick="location.href='reviewdetail.do?seq=<%=list.get(i).getSeq()%>'" style="cursor: pointer;">
+<li>
+<!--상품사진넣기  ////////////-->
+	<div class="img" id="">
+		<c:choose>
+			<c:when test="${list.g_img eq null}">
+				<img alt=""	src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif" style="width: 80; height: 80">
+			</c:when>
+				<c:otherwise>
+					<img alt=""	src="resources/img/main_img/<%=list.get(i).getG_img()%>" style="width: 80; height: 80">
+				</c:otherwise>
+		</c:choose>
+	</div>
+<!--/////////////////  -->
+
+    <div class="text_view" onclick="location.href='reviewdetail.do?seq=<%=list.get(i).getSeq()%>'" style="cursor: pointer;">
        	<div>
-             <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
+           <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              	
-             	<!-- 별점 점수 -->
-             	<div class="star">별점수: <%=list.get(i).getRating() %>&nbsp;점</div>
+          <!-- 별점 점수 -->
+       		<div class="star">별점수: <%=list.get(i).getRating() %>&nbsp;점</div>
 <!-- =======별이다======= -->
 <tr>
 	<div class="starRev">

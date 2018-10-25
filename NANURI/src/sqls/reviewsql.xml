@@ -26,7 +26,7 @@
 		  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
 		  		</if>		
 		  		<if test="s_category == 'userid'">
-		  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+		  			AND ID LIKE '%'||#{s_keyword}||'%'
 		  		</if>	  		
 	</if>) A
 	WHERE RNUM BETWEEN ${start} AND ${end}
@@ -46,7 +46,7 @@
   			AND CONTENT LIKE '%'||#{s_keyword}||'%'
   		</if>	
   		<if test="s_category == 'userid'">
-		  	AND CONTENT LIKE '%'||#{s_keyword}||'%'
+		  	AND ID LIKE '%'||#{s_keyword}||'%'
 		  </if>	  		
     </if>
 </select>

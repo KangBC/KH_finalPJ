@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.finalPJ.goods.goodsBbsDto;
+import com.kh.finalPJ.member.memberDto;
 import com.sun.net.httpserver.HttpServer;
 
 @Controller
@@ -81,6 +82,15 @@ public class reviewController {
 	public String revwriteAF(HttpServletRequest request, Model model) throws Exception{
 		
 		logger.info("Welcome reviewController revwriteAf!!!!! "+ new Date());
+		
+		memberDto mem = null;
+		if(request.getSession().getAttribute("login") != null) {
+			mem =(memberDto) request.getSession().getAttribute("login");
+		}else {	// 세션값이 없을때
+			mem = new memberDto();
+			mem.setId("null");
+		}
+		//String id = mem.getId();
 		
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
@@ -152,6 +162,16 @@ public class reviewController {
 	public String reviewupdateAf(HttpServletRequest request, int seq, Model model) throws Exception {
 	
 		logger.info("Welcome reviewController reviewupdateAf!!!!!!!!! "+ new Date());
+		
+		
+		memberDto mem = null;
+		if(request.getSession().getAttribute("login") != null) {
+			mem =(memberDto) request.getSession().getAttribute("login");
+		}else {	// 세션값이 없을때
+			mem = new memberDto();
+			mem.setId("null");
+		}
+		//String id = mem.getId();
 		
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
