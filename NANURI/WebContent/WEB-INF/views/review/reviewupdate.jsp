@@ -17,7 +17,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 <form name="frmForm" id="_frmForm" action="reviewupdateAf.do" method="post">
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
 
-<table class="list_table">
+<table>
 
 <colgroup>
 <col style="width:200px;" />
@@ -41,16 +41,16 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 <tr>
 	<th>별점</th>
 	<td class="starRev">
- 		 <span class="starR1">1</span>
+ 		 <span class="starR1">0.5</span>
+ 		 <span class="starR2">1</span>
+ 		 <span class="starR1">1.5</span>
  		 <span class="starR2">2</span>
- 		 <span class="starR1">3</span>
- 		 <span class="starR2">4</span>
- 		 <span class="starR1">5</span>
- 		 <span class="starR2">6</span>
- 		 <span class="starR1">7</span>
-		 <span class="starR2">8</span>
- 		 <span class="starR1">9</span>
- 		 <span class="starR2">10</span>
+ 		 <span class="starR1">2.5</span>
+ 		 <span class="starR2">3</span>
+ 		 <span class="starR1">3.5</span>
+		 <span class="starR2">4</span>
+ 		 <span class="starR1">4.5</span>
+ 		 <span class="starR2">5</span>
  		 <h5 id="grade">&nbsp;&nbsp;0</h5>
 	</td>
 <tr>
@@ -83,6 +83,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 
 </form>
 </div>
+
 
 <script type="text/javascript">
 var oEditors = [];
