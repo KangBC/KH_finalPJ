@@ -55,32 +55,48 @@
 		SYSDATE+7,0)
 	</insert>
 
-	<select id="getBasketList"
-		parameterType="string"
+	<select id="getBasketList" parameterType="string"
 		resultType="com.kh.finalPJ.member.basketListDto">
-		SELECT SEQ, ID, G_IMG, G_NAME, GOODS.G_CODE, AMOUNT, MONTH, SUM_PRICE FROM BASKET, GOODS WHERE BASKET.G_CODE = GOODS.G_CODE AND ID=#{id}
+		SELECT SEQ, ID, G_IMG, G_NAME, GOODS.G_CODE, AMOUNT, MONTH,
+		SUM_PRICE FROM BASKET, GOODS WHERE BASKET.G_CODE = GOODS.G_CODE AND
+		ID=#{id}
 	</select>
-	
+
 	<delete id="checkDelAf" parameterType="Integer">
-		DELETE FROM BASKET WHERE SEQ=#{seq}
+		DELETE FROM BASKET WHERE
+		SEQ=#{seq}
 	</delete>
-	
-	<select id="totalPrice" parameterType="Integer" resultType="Integer">
+
+	<select id="totalPrice" parameterType="Integer"
+		resultType="Integer">
 		SELECT SUM_PRICE FROM BASKET WHERE SEQ=#{seq}
 	</select>
-	
-	<select id="getGoodsSeq" parameterType="String" resultType="Integer">
+
+	<select id="getGoodsSeq" parameterType="String"
+		resultType="Integer">
 		SELECT SEQ FROM R_BBS WHERE G_CODE=#{g_code}
 	</select>
-	
-	<select id="getR_StatusList"
-		parameterType="string"
+
+	<select id="getR_StatusList" parameterType="string"
 		resultType="com.kh.finalPJ.member.RStatusDto">
-		SELECT SEQ, GOODS.G_CODE, G_IMG, G_NAME, ID, AMOUNT, S_DATE, E_DATE, TOTAL_PRICE, ORDER_NUM FROM R_STATUS, GOODS WHERE R_STATUS.G_CODE = GOODS.G_CODE AND ID=#{id}
+		SELECT SEQ, GOODS.G_CODE, G_IMG, G_NAME, ID, AMOUNT,
+		S_DATE, E_DATE, TOTAL_PRICE, ORDER_NUM FROM R_STATUS, GOODS WHERE
+		R_STATUS.G_CODE = GOODS.G_CODE AND ID=#{id}
 	</select>
-	
+
 	<delete id="rentalListDel" parameterType="Integer">
-		DELETE FROM R_STATUS WHERE SEQ=#{seq}
+		DELETE FROM R_STATUS
+		WHERE SEQ=#{seq}
 	</delete>
-	
+
+	<select id="getOrderCount" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM R_STATUS WHERE ID=#{id}
+	</select>
+
+	<select id="getWishListCount" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM BASKET WHERE ID=#{id}
+	</select>
+
 </mapper>

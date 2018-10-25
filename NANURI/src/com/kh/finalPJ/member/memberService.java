@@ -27,7 +27,11 @@ public interface memberService {
 	Integer getGoodsSeq(String g_code) throws Exception;
 
 	List<RStatusDto> getR_StatusList(String id) throws Exception;
-	
+
 	boolean rentalListDel(Integer seq) throws Exception;
+
+	Integer getOrderCount(String id) throws Exception;
+
+	Integer getWishListCount(String id) throws Exception;
 
 }

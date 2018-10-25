@@ -48,12 +48,12 @@
 						<colgroup>
 							<col width="3%">
 							<col width="10%">
-							<col width="15%">
+							<col width="17%">
 							<col width="10%">
 							<col width="10%">
 							<col width="10%">
 							<col width="10%">
-							<col width="12%">
+							<col width="10%">
 							<col width="10%">
 							<col width="10%">
 						</colgroup>
@@ -67,18 +67,27 @@
 							<th>반납일</th>
 							<th>결제금액</th>
 							<th>상태</th>
+							<th>리뷰</th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty list}">
 								<tr>
-									<td colspan="9" style="text-align: center; padding: 100px">구매내역이
+									<td colspan="10" style="text-align: center; padding: 100px">구매내역이
 										없습니다.</td>
 								</tr>
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${list}" var="list" varStatus="status">
+									<c:set var="now" value="<%=new java.util.Date()%>" />
+									<fmt:parseDate var="e_date" value="${list.e_date}"
+										pattern="yyyy-MM-dd" />
+									<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd" />
+									<fmt:formatDate var="e_date" value="${e_date}"
+										pattern="yyyy-MM-dd" />
 									<tr>
-										<td><input type="checkbox" name="delck" value="${list.seq }"></td>
+										<td><c:if test="${today > e_date}">
+												<input type="checkbox" name="delck" value="${list.seq }">
+											</c:if></td>
 										<td>${list.order_num}</td>
 										<td colspan="2"><a
 											href="memToGoods_Detail.do?g_code=${list.g_code }"> <c:choose>
@@ -94,23 +103,22 @@
 												</c:choose></a> <a href="memToGoods_Detail.do?g_code=${list.g_code }">/
 												${list.g_name }</a></td>
 										<td>${list.amount}</td>
-										<td><fmt:parseDate var="sdate" value="${list.s_date}"
-												pattern="yyyy-MM-dd" />
-											${list.s_date.toString().substring(0,10)}</td>
-										<td><fmt:parseDate var="edate" value="${list.e_date}"
-												pattern="yyyy-MM-dd" />
-											${list.e_date.toString().substring(0,10)}</td>
+										<td>${list.s_date.toString().substring(0,10)}</td>
+										<td>${list.e_date.toString().substring(0,10)}</td>
 										<td><fmt:formatNumber value="${list.total_price }"
 												pattern="#,###" />원</td>
 										<td><c:choose>
-												<c:when test="${sdate > e_date}">
-													<input type="button" onclick="basketListDel(${list.seq})"
-														value="삭제">
+												<c:when test="${today > e_date}">
+													<span style="font-weight: bold">대여만료</span>
+													<a href="javascript:basketListDel(${list.seq})"><i
+														class="fa fa-trash" aria-hidden="true"></i></a>
 												</c:when>
 												<c:otherwise>
-													<span style="font-weight: bold">대여중</span>
+													<span style="font-weight: bold"> 대여중 </span>
 												</c:otherwise>
 											</c:choose></td>
+										<td><a href="reviewwrite.do?g_code=${list.g_code}"><i
+												class="fa fa-hand-o-right" aria-hidden="true"></i>리뷰작성</a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

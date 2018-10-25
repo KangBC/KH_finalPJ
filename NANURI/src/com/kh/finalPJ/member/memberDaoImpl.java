@@ -89,4 +89,14 @@ public class memberDaoImpl implements memberDao {
 		return n > 0 ? true : false;
 	}
 
+	@Override
+	public Integer getOrderCount(String id) throws Exception {
+		return sqlsession.selectOne(namespace + "getOrderCount", id);
+	}
+
+	@Override
+	public Integer getWishListCount(String id) throws Exception {
+		return sqlsession.selectOne(namespace + "getWishListCount", id);
+	}
+
 }

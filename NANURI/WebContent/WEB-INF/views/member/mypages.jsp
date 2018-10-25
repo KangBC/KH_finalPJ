@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +14,14 @@
 		<div class="row">
 			<div style="width: 1100px;">
 				<!-- Main Header -->
-				<div class="row">
-					<h1>마이페이지</h1>
-				</div>
 				<div class="row"
 					style="border-bottom: 2px solid; padding-bottom: 20px; padding-top: 10px">
 					<div class="col-md-4" align="center">
 						<div
 							style="border-radius: 50%; height: 240px; width: 240px; box-shadow: 2px 2px 15px grey;">
 							<p
-								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">0</p>
+								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">
+								${orderCnt}</p>
 							<p>주문내역</p>
 						</div>
 					</div>
@@ -28,7 +29,7 @@
 						<div
 							style="border-radius: 50%; height: 240px; width: 240px; box-shadow: 2px 2px 15px grey;">
 							<p
-								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">0</p>
+								style="padding-top: 60px; font-size: 60px; font-weight: blod; margin: 0px">${wishCnt}</p>
 							<p>장바구니</p>
 						</div>
 					</div>

@@ -95,20 +95,33 @@ public class memberController {
 	}
 
 	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-	public String mypage() {
-		return "mypage.tiles";
+	public String mypage(HttpServletRequest req, Model model) throws Exception {
+		memberDto mem = (memberDto) req.getSession().getAttribute("login");
+		if (mem == null) {
+			return "redirect:login.do";
+		} else {
+			int orderCnt = memberservice.getOrderCount(mem.getId());
+			int wishCnt = memberservice.getWishListCount(mem.getId());
+			model.addAttribute("orderCnt", orderCnt);
+			model.addAttribute("wishCnt", wishCnt);
+			return "mypage.tiles";
+		}
 	}
 
 	@RequestMapping(value = "userUpdate.do", method = RequestMethod.GET)
-	public String userUpdate() {
-		return "userUpdate.tiles";
+	public String userUpdate(HttpServletRequest req) {
+		memberDto mem = (memberDto) req.getSession().getAttribute("login");
+		if (mem == null) {
+			return "redirect:login.do";
+		} else {
+			return "userUpdate.tiles";
+		}
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "userUpdateAf.do", method = RequestMethod.POST)
 	public Map<String, Integer> userUpdateAf(memberDto mem, HttpServletRequest req) throws Exception {
 		Map<String, Integer> map = new HashMap<>();
-		System.out.println(mem.toString());
 		boolean isS = memberservice.userUpdateAf(mem);
 		if (isS) {
 			req.getSession().invalidate();
@@ -127,8 +140,13 @@ public class memberController {
 	}
 
 	@RequestMapping(value = "secession.do", method = RequestMethod.GET)
-	public String secession() {
-		return "secession.tiles";
+	public String secession(HttpServletRequest req) {
+		memberDto mem = (memberDto) req.getSession().getAttribute("login");
+		if (mem == null) {
+			return "redirect:login.do";
+		} else {
+			return "secession.tiles";
+		}
 	}
 
 	@ResponseBody
@@ -148,19 +166,27 @@ public class memberController {
 	@RequestMapping(value = "rentalList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String rentalList(HttpServletRequest req, Model model) throws Exception {
 		memberDto mem = (memberDto) req.getSession().getAttribute("login");
-		String id = mem.getId();
-		List<RStatusDto> list = memberservice.getR_StatusList(id);
-		model.addAttribute("list", list);
-		return "rentalList.tiles";
+		if (mem == null) {
+			return "redirect:login.do";
+		} else {
+			String id = mem.getId();
+			List<RStatusDto> list = memberservice.getR_StatusList(id);
+			model.addAttribute("list", list);
+			return "rentalList.tiles";
+		}
 	}
 
 	@RequestMapping(value = "basketList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String basketList(HttpServletRequest req, Model model) throws Exception {
 		memberDto mem = (memberDto) req.getSession().getAttribute("login");
-		String id = mem.getId();
-		List<basketListDto> list = memberservice.getBasketList(id);
-		model.addAttribute("list", list);
-		return "basketList.tiles";
+		if (mem == null) {
+			return "redirect:login.do";
+		} else {
+			String id = mem.getId();
+			List<basketListDto> list = memberservice.getBasketList(id);
+			model.addAttribute("list", list);
+			return "basketList.tiles";
+		}
 	}
 
 	@ResponseBody

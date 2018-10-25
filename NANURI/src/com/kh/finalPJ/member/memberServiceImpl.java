@@ -77,4 +77,14 @@ public class memberServiceImpl implements memberService {
 		return memberdao.rentalListDel(seq);
 	}
 
+	@Override
+	public Integer getOrderCount(String id) throws Exception {
+		return memberdao.getOrderCount(id);
+	}
+
+	@Override
+	public Integer getWishListCount(String id) throws Exception {
+		return memberdao.getWishListCount(id);
+	}
+
 }
