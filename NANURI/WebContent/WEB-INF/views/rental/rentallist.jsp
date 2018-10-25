@@ -9,17 +9,22 @@
 /* 요기로 끌고온건디여 */
 
 
-
+ 
 	List<goodsBbsDto> bbslist = (List<goodsBbsDto>)request.getAttribute("bbslist");
 
-	
+	 
+	 String title = (String)request.getAttribute("title");
+	 
 
 %>
  
 <div class="startdiv">
 
 <div class="page-h">
-<h1>유아동</h1>
+
+<h1><%=title %></h1>
+<!-- 카테고리 분류 값 -->
+<input type="hidden" value="<%=title %>" id="category_val">
 <hr>
 </div>
 
@@ -56,7 +61,7 @@
 
 <div class="goodsbox_h">
 
-<p class="goods_countbox">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p>
+ <p class="goods_countbox">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p> 
 	<div class="goods_select">
 	
 			
@@ -132,12 +137,26 @@ $(document).ready(function() {
 	
 	
 	/* 리스트 가져오기 */
-	var startindex = 0;
-	var endindex = 5;
- 
+	
+	var startindex = 1;
+	var endindex = 4;
+	var category;
+	
+	if($("#category_val").val() == "유아동"){
+		category = "AC";
+	}
+	else if($("#category_val").val() == "레저"){
+		category = "BC";
+	}else if($("#category_val").val() == "패션"){
+		category = "CC";
+	}else if($("#category_val").val() == "리빙"){
+		category = "DC";
+	}
+ 	
 	var list = {
 			"startindex" : startindex,
 			"endindex" : endindex,
+			"category" : category
 			};
 	
 $.ajax({
@@ -147,6 +166,7 @@ $.ajax({
 	async: true,
 	success : function(data) {
 			
+		console.log(data.list);
 		
 		 $('.goodsbox').children('.goods').remove();
 		
@@ -185,12 +205,13 @@ $.ajax({
 /* 더보기버튼 페이징 */
 function indexup(){
 	
-		startindex = endindex;
+		startindex = endindex + 1;
 		endindex = endindex + 4; 
 		
 		var list = {
 				"startindex" : startindex,
 				"endindex" : endindex,
+				"category" : category
 				};
 		
 	$.ajax({
@@ -251,6 +272,7 @@ function findtitle_btn(){
 	var list = {
 			"title" : title,
 			"lists" : lists,
+			"category" : category
 			};
 	
 	
@@ -260,6 +282,8 @@ $.ajax({
 	data : list,
 	async: true,
 	success : function(data) {
+		
+		console.log(data.list);
 		
 		/* 검색 결과 없을시 */
 		if(data.list.length == 0){

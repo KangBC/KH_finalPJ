@@ -8,11 +8,11 @@ import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsDao {
 
-	List<goodsBbsDto> getbbs(String startindex, String endindex);
+	List<goodsBbsDto> getbbs(String startindex, String endindex, String category);
 	
 	List<goodsBbsDto> getbbslength();
 	
-	List<goodsBbsDto> findgoods(String title,String lists);
+	List<goodsBbsDto> findgoods(String title,String lists,String category);
 	
 	void readcount(int seq);
 	
@@ -21,4 +21,6 @@ public interface goodsDao {
 	List<reviewDto> getreview_qna(String g_code);
 	
 	boolean basketinsert(basketDto dto);
+	
+	List<goodsBbsDto> getbbscategory(String division);
 }

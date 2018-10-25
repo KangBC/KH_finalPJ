@@ -75,17 +75,18 @@ public class goodsController {
 		
 		String title = req.getParameter("title");
 		String lists = req.getParameter("lists");
+		String category = req.getParameter("category");
+
 		
+		System.out.println(category);
 		System.out.println(title);
 		System.out.println(lists);
 		
 		Map<Object, Object> map = new HashMap<>();
 		
-		List<goodsBbsDto> list = goodsService.findgoods(title,lists);
+		List<goodsBbsDto> list = goodsService.findgoods(title,lists,category);
 		
-		for (int j = 0; j < list.size(); j++) {
-			System.out.println(list.get(j).getG_img());
-		}
+		System.out.println(list.size());
 		
 		
 		map.put("list", list);
@@ -103,14 +104,13 @@ public class goodsController {
 		
 		String startindex = req.getParameter("startindex");
 		String endindex = req.getParameter("endindex");
+		String category = req.getParameter("category");
+
+	
 		
-		System.out.println(startindex);
-		System.out.println(endindex);
 		
-		List<goodsBbsDto> list = goodsService.getbbs(startindex,endindex);
+		List<goodsBbsDto> list = goodsService.getbbs(startindex,endindex,category);
 		Map<Object, Object> map = new HashMap<>();
-		
-		
 		
 		map.put("list", list);
 		
@@ -150,6 +150,42 @@ public class goodsController {
 		
 	}
 	
+	/*카테고리*/
+	@RequestMapping(value="rental_category.do",method = {RequestMethod.GET, RequestMethod.POST})
+	public String rental_category(Model model,String division) throws Exception{
+		
+		
+		List<goodsBbsDto> list = null;
+		String title = null;
+		// 유아
+		if(division.equals("AC")) {
+			list = goodsService.getbbscategory(division);
+			title = "유아동";
+		}	
+		// 레저
+		else if(division.equals("BC")) {
+			list = goodsService.getbbscategory(division);
+			title = "레저";
+		}
+		// 패션
+		else if(division.equals("CC")) {
+			list = goodsService.getbbscategory(division);
+			title = "패션";
+		}
+		// 리빙
+		else if(division.equals("DC")) {
+			list = goodsService.getbbscategory(division);
+			title = "리빙";
+		}
+		
+		System.out.println(list.size());
+		
+		model.addAttribute("title",title);
+		model.addAttribute("bbslist",list);
+		
+		return "rentallist.tiles";
+		
+	}
 	
 
 }

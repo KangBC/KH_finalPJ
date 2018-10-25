@@ -25,6 +25,8 @@ VALUES(SEQ_NA_R_BBS.NEXTVAL,22,'하하하하하','굳굳',SYSDATE,0);
 */
 public class goodsBbsDto implements Serializable {
 
+	private int rownum;
+	
 	private int seq;
 	private String g_code;
 	private String title;
@@ -36,6 +38,8 @@ public class goodsBbsDto implements Serializable {
 	
 	// 검색 dto
 	private String lists;
+	private String category;
+	
 	// 상품 이미지
 	private String g_img;
 	
@@ -62,6 +66,16 @@ public class goodsBbsDto implements Serializable {
 		super();
 		this.title = title;
 		this.lists = lists;
+	}
+
+	
+
+
+	public goodsBbsDto(String title, String lists, String category) {
+		super();
+		this.title = title;
+		this.lists = lists;
+		this.category = category;
 	}
 
 
@@ -118,6 +132,50 @@ public class goodsBbsDto implements Serializable {
 		this.stardot = stardot;
 		this.readcount = readcount;
 	}
+
+	
+	public goodsBbsDto(int rownum, int seq, String g_code, String title, String content, String r_date, int g_price,
+			String g_img) {
+		super();
+		this.rownum = rownum;
+		this.seq = seq;
+		this.g_code = g_code;
+		this.title = title;
+		this.content = content;
+		this.r_date = r_date;
+		this.g_price = g_price;
+		this.g_img = g_img;
+	}
+
+
+
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+
 
 
 	public int getReadcount() {

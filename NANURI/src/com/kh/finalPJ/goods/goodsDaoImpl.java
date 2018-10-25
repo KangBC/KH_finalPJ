@@ -22,17 +22,24 @@ public class goodsDaoImpl implements goodsDao {
 	
 	 /* bbsList */
 	@Override
-	public List<goodsBbsDto> getbbs(String startindex, String endindex) {
+	public List<goodsBbsDto> getbbs(String startindex, String endindex, String category) {
 		
 		
 		goodspage dto = new goodspage();
 		
 		dto.setStartindex(startindex);
 		dto.setEndindex(endindex);
+		dto.setCategory(category);
 		
-	
+		System.out.println(dto.getCategory());
 		
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbs",dto);
+		
+		System.out.println(list.size());
+		
+		/*for (int i = 0; i < list.size(); i++) {
+			System.out.println("asdkfjahlsdkfjhawlkf" + list.get(i));
+		}*/
 		
 		return list;
 	}
@@ -72,7 +79,7 @@ public class goodsDaoImpl implements goodsDao {
 	
 	/* AJAX 검색 (title + selectbox) */
 	@Override
-	public List<goodsBbsDto> findgoods(String title,String lists) {
+	public List<goodsBbsDto> findgoods(String title,String lists,String category) {
 		
 		
 		List<goodsBbsDto> list = null;
@@ -80,14 +87,19 @@ public class goodsDaoImpl implements goodsDao {
 		if(title.equals("")) {
 			// 타이틀의 값이 없을때
 			// order by 만 돌려줌
+			goodsBbsDto dto = new goodsBbsDto();
 			
-			ArrayList<String> arraylist = new ArrayList<>();
-			arraylist.add(lists);
+			dto.setTitle(title);
+			dto.setLists(lists);
+			dto.setCategory(category);
 			
-			HashMap<String , Object> maplist = new HashMap<String , Object>();
-			maplist.put("arraylist", arraylist);
+			list = sqlSession.selectList(namespace + "findchecked", dto);
 			
-			list = sqlSession.selectList(namespace + "findchecked", maplist);
+			System.out.println(dto.getLists());
+			
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println(list.get(i).getG_price());
+			}
 			
 			System.out.println("들어옴");
 			
@@ -98,8 +110,12 @@ public class goodsDaoImpl implements goodsDao {
 			
 			dto.setTitle(title);
 			dto.setLists(lists);
+			dto.setCategory(category);
 			
 			list = sqlSession.selectList(namespace + "findgoodsAll", dto);
+			
+			
+			
 			
 			System.out.println("안들어옴");
 		}
@@ -126,4 +142,19 @@ public class goodsDaoImpl implements goodsDao {
 		
 		return sqlSession.insert(namespace + "basketinsert", dto)>0 ? true: false;
 	}
+
+
+
+
+	@Override
+	public List<goodsBbsDto> getbbscategory(String division) {
+		
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbscategory",division);
+		
+		System.out.println(list.size() + " dao ");
+		
+		return list;
+	}
+	
+	
 }

@@ -4,7 +4,7 @@ public class goodspage {
 	
 	private String startindex;
 	private String endindex;
-	
+	private String category;
 	
 	public goodspage() {}
 	
@@ -13,6 +13,24 @@ public class goodspage {
 		super();
 		this.startindex = startindex;
 		this.endindex = endindex;
+	}
+	
+
+	public goodspage(String startindex, String endindex, String category) {
+		super();
+		this.startindex = startindex;
+		this.endindex = endindex;
+		this.category = category;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 

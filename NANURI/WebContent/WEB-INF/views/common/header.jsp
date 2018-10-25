@@ -4,17 +4,18 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+
 <div class="head">
-	<div class="row" style="width: 100%">
-		<div class="col-md-6" style="text-align: left;">
+	<div>
+		<h1 style="float: left;margin: 0;font-size: 22px;"><a href="main.do">logo</a></h1>
 			<ul>
 				<li><a href="main.do">HOME</a></li>
 				<li><a href="rentallist.do">렌탈</a></li>
 				<li><a href="qnalist.do">Q&A게시판</a></li>
 				<li><a href="reviewlist.do">후기게시판</a></li>
 			</ul>
-		</div>
-		<div class="col-md-6" style="text-align: right;">
+	 	<div class="col-md-6" style="text-align: right;">
 			<ul>
 				<c:choose>
 					<c:when test="${login.auth eq 0}">
@@ -31,6 +32,13 @@
 					</c:otherwise>
 				</c:choose>
 			</ul>
-		</div>
+			
+			
+		
+			
+		</div> 
+		
+	
+		
 	</div>
 </div>
