@@ -76,6 +76,30 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .review .idbox{float: left; width: 120px;height: 100%;text-align: center; padding-top: 30px;}
 .review .idbox .id{font-weight: bold;}
 .review .idbox .date{font-size: 12px; color: #999;}
+.reviewcontent img{width: 100%;margin: 20px 0;}
+
+
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+
 
 ._frmForm .top_box11 .goods_img11{width: 200px; height: 200px; float: left;} 
 

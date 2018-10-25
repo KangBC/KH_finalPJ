@@ -12,38 +12,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<style type="text/css">
-.starR1{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
-}
-.starR2{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
-}
-.starR1.on{background-position:0 0;}
-.starR2.on{background-position:-15px 0;}
-</style>
-
-
 <%
 List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewlist");
+
+//goodsBbsDto g_img = 
 
 String category = (String)request.getAttribute("s_category");
 if(category == null) category = "";
 
 String g_code = (String)request.getAttribute("g_code");
 %>
+
 
 <div class="startdiv">
 
@@ -174,6 +153,9 @@ $(document).ready(function(){
 		$("#_s_category").val("");
 	}
 }); 
+
+
+
 </script>
 
 </body>
