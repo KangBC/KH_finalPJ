@@ -1,3 +1,4 @@
+<%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@ page contentType="text/html; charset=utf-8" %>
@@ -11,7 +12,11 @@
 //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가
 request.setCharacterEncoding("utf-8");
 
+
+int rseq = (int)request.getAttribute("rseq");
+
 reviewDto dto = (reviewDto)request.getAttribute("detailreview");
+
 String str = dto.getContent();
 
 memberDto mem = (memberDto)session.getAttribute("login");
@@ -93,7 +98,7 @@ if(mem==null){
                }
            %>
 			 <input type="button" value="목록으로" onclick="location.href='reviewlist.do'">
-
+			 <input type="button" value="해당 상품으로" onclick="location.href='goodsdetail.do?g_code=<%=dto.getG_code()%>&seq=<%=rseq%>'">
 		</td>
 	</tr>
 </table>

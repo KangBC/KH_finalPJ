@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalPJ.goods.goodsBbsDto;
+
 @Repository
 public class reviewDaoImpl implements reviewDao {
 	
@@ -60,6 +62,14 @@ public class reviewDaoImpl implements reviewDao {
 	public reviewDto detailreview(int seq) throws Exception {
 		
 		return sqlSession.selectOne(namespace + "detailreview", seq);
+	}
+	
+	/* 후기에서 해당 페이지 가는~*/
+	@Override
+	public int godetail(reviewDto dto) throws Exception {
+		int seq = sqlSession.selectOne(namespace + "godetail", dto); 
+		
+		return seq;
 	}
 
 	/*글삭제*/

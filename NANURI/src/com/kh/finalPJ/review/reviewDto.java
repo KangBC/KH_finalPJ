@@ -49,7 +49,6 @@ public class reviewDto implements Serializable{
 		this.del = del;
 	}
 
-
 	public reviewDto(int seq, String id, String title, String content, String wdate, int del, String g_code, int rating,
 			String g_img) {
 		super();

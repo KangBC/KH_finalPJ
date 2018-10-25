@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalPJ.goods.goodsBbsDto;
+
 @Service
 public class reviewServiceImpl implements reviewService {
 	
@@ -42,6 +44,13 @@ public class reviewServiceImpl implements reviewService {
 	public reviewDto detailreview(int seq) throws Exception {
 		
 		return reviewDao.detailreview(seq);
+	}
+
+	/* 후기에서 해당 페이지 가는~*/
+	@Override
+	public int godetail(reviewDto dto) throws Exception {
+	
+		return reviewDao.godetail(dto);
 	}
 
 	/*글삭제*/

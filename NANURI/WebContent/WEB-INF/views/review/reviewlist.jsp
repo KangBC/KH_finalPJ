@@ -36,17 +36,19 @@ String g_code = (String)request.getAttribute("g_code");
 <!-- <input type="hidden" name="g_code" id="g_code" value="g_code"> -->
 
 <!--검색부분 -->
+
+
 <div align="center">
-		<select id="_s_category" name="s_category">
-			<option value="" selected="selected">선택</option>
-			<option value="title">제목</option>
-			<option value="contents">내용</option>
-			<option value="userid">작성자</option>
-		</select>
+<select id="_s_category" name="s_category" class="browser-default custom-select" style="width: 95px">
+  <option value="" selected="selected">선택</option>
+  <option value="title">제목</option>
+  <option value="contents">내용</option>
+  <option value="userid">작성자</option>
+</select>
+		
+<input type="text" class="form-control" style="width: 200px; display: inline;" id="_s_keyword" name="s_keyword" value="${s_keyword}"/>
 
-		<input type="text" id="_s_keyword" name="s_keyword" value="${s_keyword}"/>
-
-		<button type="button" id="_btnSearch"> 검색 </button>
+<button type="button" id="_btnSearch" class="btn btn-purple">검색 </button>
 </div>
 
 </form>

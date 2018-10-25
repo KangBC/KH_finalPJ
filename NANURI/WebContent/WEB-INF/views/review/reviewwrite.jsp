@@ -21,6 +21,7 @@
 <tr>
 	<th>아이디</th>
 	<td>
+		<input type="hidden" name="g_code" value="${g_code}">
 		<input type="text" name="id" readonly="readonly" value="${login.id }" size="50">
 	</td>
 </tr>
