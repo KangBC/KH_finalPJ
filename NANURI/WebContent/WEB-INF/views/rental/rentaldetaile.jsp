@@ -66,11 +66,22 @@
 		</div>
 		
 		<div class="goods_info">
-
+			
+			<%
+			if(bbslist.getContent() != null){
+			%>
+			
 			<img alt="" src="resources/img/rental_content/<%=bbslist.getContent()%>" width="100%">
 			 
-			
+			<%
+			}
+			else{
+			%>
+			<p>등록된 내용이 없습니다.</p>
 		
+		<%
+			}
+		%>
 		</div>
 	
 	
@@ -346,11 +357,12 @@ $("#basketbtn").click(function(){
 	// 개월
 	var month = $(".month_box").attr('value');
 	// 총합가격
-	var resultnum = $(".resultnum").attr('value');
+	var resultnum = $("#resultnum").attr('value');
 	 // 로그인 id
 	var id = $("#loginid").attr('value'); 
 	// g_code
 	var gcode = $("#g_code").attr('value');
+	
 	
 	
 	if(id == "null"){
@@ -361,7 +373,8 @@ $("#basketbtn").click(function(){
 				"id" : id,
 				"gcode" : gcode,
 				"month" : month,
-				"amount" : amount
+				"amount" : amount,
+				"resultnum" : resultnum
 				};
 		
 	$.ajax({

@@ -2,9 +2,9 @@
 
 body{margin: 0;}
 a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;list-style: none}
-.head{width:100%;height:90px;background-color: #aaa; padding-top: 30px; box-sizing: border-box;}
-.head ul{width: 80%; display: block; margin: 0 auto;}
-.head ul li{display: inline-block;     width: 100px;}
+.head{width:1280px;height:50px;background-color: #aaa; padding: 12px; box-sizing: border-box;margin: 0 auto;}
+.head ul{width: 80%;margin: 0 auto;float: right;text-align: right;    margin: 0 auto;}
+.head ul li{display: inline-block;padding: 0 30px;}
 
 .content {position: relative;}
 .leftmenubtn{position: fixed; width: 50px; height: 50px; top: 30%; background: blue; cursor: pointer;}
@@ -62,7 +62,7 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .tab_title .active{background-color: #aaa;}
 .tab_contant{width: 100%; padding: 0;}
 .tab_contant #tab01 {display: block;}
-.tab_contant > li {width: 100%;border: 1px solid #333; height: 800px; display: none;}
+.tab_contant > li {width: 100%;border: 1px solid #333; min-height: 800px; display: none;}
 
 
 /* 후기 */
