@@ -87,7 +87,7 @@
  
 <insert id="basketinsert" parameterType="com.kh.finalPJ.member.basketDto" >
 	INSERT INTO BASKET 
-	VALUES(SEQ_BASKET.NEXTVAL,#{id},#{g_code},#{month},#{amount})
+	VALUES(SEQ_BASKET.NEXTVAL,#{id},#{g_code},#{month},#{amount},#{sum_price})
 </insert>
 	
 
