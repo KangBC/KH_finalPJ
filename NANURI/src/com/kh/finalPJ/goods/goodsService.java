@@ -9,14 +9,14 @@ import com.kh.finalPJ.review.reviewDto;
 public interface goodsService {
 	
     /* bbsList */
-	public List<goodsBbsDto> getbbs(String startindex, String endindex) throws Exception;
+	public List<goodsBbsDto> getbbs(String startindex, String endindex, String category) throws Exception;
 	
 	/*getbbslength*/
 	public List<goodsBbsDto> getbbslength() throws Exception;
 
 	
 	/* findgoods */
-	public List<goodsBbsDto> findgoods(String title,String lists) throws Exception;
+	public List<goodsBbsDto> findgoods(String title,String lists, String category) throws Exception;
 
 	/* readcount */
 	public void readcount(int seq) throws Exception;
@@ -29,4 +29,8 @@ public interface goodsService {
 	
 	/*basketinsert*/
 	public boolean basketinsert(basketDto dto) throws Exception;
+	
+	/* getbbscategory */
+	public List<goodsBbsDto> getbbscategory(String division) throws Exception;
+	
 }

@@ -17,9 +17,9 @@ public class goodsServiceImpl implements goodsService {
 
 	
 	@Override
-	public List<goodsBbsDto> getbbs(String startindex, String endindex) {
+	public List<goodsBbsDto> getbbs(String startindex, String endindex, String category) {
 		
-		return goodsDao.getbbs(startindex,endindex);
+		return goodsDao.getbbs(startindex,endindex,category);
 	}
 
 	
@@ -32,8 +32,8 @@ public class goodsServiceImpl implements goodsService {
 
 
 	@Override
-	public List<goodsBbsDto> findgoods(String title,String lists) {
-		return goodsDao.findgoods(title,lists);
+	public List<goodsBbsDto> findgoods(String title,String lists,String category) {
+		return goodsDao.findgoods(title,lists,category);
 	}
 
 
@@ -61,6 +61,13 @@ public class goodsServiceImpl implements goodsService {
 	public boolean basketinsert(basketDto dto) throws Exception {
 		return goodsDao.basketinsert(dto);
 		
+	}
+
+
+
+	@Override
+	public List<goodsBbsDto> getbbscategory(String division) throws Exception {
+		return goodsDao.getbbscategory(division);
 	}
 	
 	
