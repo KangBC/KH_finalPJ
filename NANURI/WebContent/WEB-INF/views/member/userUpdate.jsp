@@ -45,7 +45,7 @@
 
 						<!-- id -->
 						<div class="md-form row" style="margin-bottom: 0px">
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<i class="fa fa-user prefix grey-text"></i> <input type="text"
 									name="id" id="id" value="${login.id} " class="form-control"
 									required disabled> <label for="id"
@@ -112,7 +112,7 @@
 						<div class="md-form row" style="margin-bottom: 0px">
 							<input type="hidden" name="email" id="email"
 								value="${login.email}">
-							<div class="col-md-6">
+							<div class="col-md-8">
 								<i class="fa fa-envelope prefix grey-text"></i> <input
 									type="text" name="bf_email" id="bf_email"
 									value="${login.email}" class="form-control"
@@ -120,10 +120,10 @@
 									class="font-weight-light" style="margin-left: 4rem;">Email</label>
 							</div>
 							<!-- Material input email confirm -->
-							<div class="col-md-6">
+							<div class="col-md-4" style="padding: 0px">
 								<input type="text" id="emailCK" class="form-control" value=""
 									placeholder="*예시 ) abc@abc.com" disabled
-									style="border-bottom: none">
+									style="border-bottom: none; font-size: 13px">
 							</div>
 						</div>
 
