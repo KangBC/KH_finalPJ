@@ -10,14 +10,30 @@
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
+    WHERE A.G_CODE LIKE #{category}|| '%'
 </select>
 
-<select id="getbbs" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+<!-- <select id="getbbs" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
   	WHERE SEQ >= #{startindex} <![CDATA[  AND SEQ < #{endindex} ]]>
+</select> -->
+
+ <select id="getbbs" parameterType="com.kh.finalPJ.goods.goodspage" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+SELECT RNUM,SEQ,G_CODE,TITLE,CONTENT,R_DATE,G_PRICE,G_IMG
+FROM(
+SELECT ROWNUM AS RNUM,SEQ,G_CODE,TITLE,CONTENT,R_DATE,G_PRICE,G_IMG
+FROM (
+SELECT ROWNUM,A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+FROM R_BBS A 
+	INNER JOIN GOODS B 
+    ON A.G_CODE = B.G_CODE
+    WHERE A.G_CODE LIKE #{category}|| '%'
+)
+)
+WHERE RNUM BETWEEN #{startindex} AND #{endindex}
 </select>
   
   <update id="readcount" parameterType="java.lang.Integer">
@@ -47,49 +63,48 @@
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    WHERE A.TITLE LIKE #{title}|| '%'
-    ORDER BY 
+   	WHERE A.G_CODE LIKE #{category}|| '%' AND A.TITLE LIKE #{title}|| '%'
+    ORDER BY
     <if test="lists == 'G_PRICE'">
-	    	${lists} ASC
+   	 ${lists} ASC
 	</if>
 	    	
-	 <if test="lists != 'G_PRICE'">
-	    	${lists} DESC
+	<if test="lists != 'G_PRICE'">
+	 ${lists} DESC
 	</if>
     
   </select> 
 
 
- <select id="findchecked" parameterType="java.util.HashMap" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+ <select id="findchecked" parameterType="com.kh.finalPJ.goods.goodsBbsDto" resultType="com.kh.finalPJ.goods.goodsBbsDto">
  
 	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
 	FROM R_BBS A 
 	INNER JOIN GOODS B 
     ON A.G_CODE = B.G_CODE
-    
-    <if test="arraylist != null or arraylist == ''">
-    	ORDER BY 
-    	
-    	<foreach collection="arraylist" item="item" index="index"  separator=",">
-    	
-	    	<if test="item == 'G_PRICE'">
-	    	${item} ASC
-	    	</if>
-	    	
-	    	<if test="item != 'G_PRICE'">
-	    	${item} DESC
-	    	</if>
-	    	
-    	</foreach>
- 	</if>
-    
+    WHERE A.G_CODE LIKE #{category}|| '%'
+    ORDER BY
+     <if test="lists == 'G_PRICE'">
+   	${lists} ASC
+	  </if>
+    <if test="lists != 'G_PRICE'">
+	 ${lists} DESC
+	</if>
  </select> 
+ 
  
 <insert id="basketinsert" parameterType="com.kh.finalPJ.member.basketDto" >
 	INSERT INTO BASKET 
 	VALUES(SEQ_BASKET.NEXTVAL,#{id},#{g_code},#{month},#{amount},#{sum_price})
 </insert>
 	
-
+	
+  <select id="getbbscategory" parameterType="String"  resultType="com.kh.finalPJ.goods.goodsBbsDto">
+ 	 SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
+    ON A.G_CODE = B.G_CODE
+    WHERE A.G_CODE LIKE #{division}|| '%'
+  </select>
 
 </mapper>
