@@ -23,7 +23,7 @@
 						style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
 						<div class="row" style="margin-top: 10%">
 							<div class="col-md-4" style="border: solid 1px">
-								<h1>Logo</h1>	
+								<h1>Logo</h1>
 							</div>
 							<div class="col-md-8">
 								<div>
@@ -33,8 +33,8 @@
 									</p>
 								</div>
 								<div style="border: solid 1px; text-align: center; padding: 2px">
-									<a><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										상품렌트하러 가기 >></a>
+									<a href="rentallist.do"><i class="fa fa-shopping-cart"
+										aria-hidden="true"></i> 상품렌트하러 가기 >></a>
 								</div>
 							</div>
 						</div>

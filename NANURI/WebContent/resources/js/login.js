@@ -1,3 +1,11 @@
+function searchId() {
+	alert("아이디를 왜 까먹고그래..시간이없어서 못 했어");
+}
+
+function searchPwd() {
+	alert("비밀번호를 왜 까먹고그래..시간이없어서 못 했어");
+}
+
 function loginAf() {
 
 	var id = $("#id").val();
