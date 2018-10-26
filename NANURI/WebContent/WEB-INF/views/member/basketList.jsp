@@ -25,22 +25,19 @@
 
 			<!-- main content -->
 			<div style="width: 880px;">
-
-				<!-- main head -->
+				<!-- Main Header -->
 				<div class="row"
-					style="border-bottom: 3px solid; padding-bottom: 10px">
-					<div class="col-md-8">
-						<h1>장바구니 목록</h1>
-					</div>
+					style="border-bottom: 3px solid #CCCCCC; padding-bottom: 10px">
+					<div class="col-md-8"></div>
 					<div class="col-md-4" style="text-align: right; padding-top: 15px">
 						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a> > <a
 							href="basketList.do">장바구니 목록</a>
 					</div>
 				</div>
-
-				<!-- main view -->
+				<jsp:include page="mypage_header.jsp" />
+				<!-- / Main Header -->
 				<div>
-					<span style="float: right; padding: 10px"><font
+					<span style="float: left; padding: 10px"><font
 						style="font-weight: bold;">${fn:length(list)}</font>개의 상품이
 						조회되었습니다.</span>
 					<table

@@ -1,5 +1,6 @@
 package com.kh.finalPJ.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kh.finalPJ.qa.qaDto;
 
 @Controller
 public class memberController {
@@ -102,6 +105,16 @@ public class memberController {
 		} else {
 			int orderCnt = memberservice.getOrderCount(mem.getId());
 			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<qaDto> qaList = new ArrayList<>();
+			if (DummyqaList.size() > 4) {
+				for (int i = 0; i < 4; i++) {
+					qaList.add(i, DummyqaList.get(i));
+				}
+			} else {
+				qaList = DummyqaList;
+			}
+			model.addAttribute("qaList", qaList);
 			model.addAttribute("orderCnt", orderCnt);
 			model.addAttribute("wishCnt", wishCnt);
 			return "mypage.tiles";
@@ -169,6 +182,20 @@ public class memberController {
 		if (mem == null) {
 			return "redirect:login.do";
 		} else {
+			int orderCnt = memberservice.getOrderCount(mem.getId());
+			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<qaDto> qaList = new ArrayList<>();
+			if (DummyqaList.size() > 4) {
+				for (int i = 0; i < 4; i++) {
+					qaList.add(i, DummyqaList.get(i));
+				}
+			} else {
+				qaList = DummyqaList;
+			}
+			model.addAttribute("qaList", qaList);
+			model.addAttribute("orderCnt", orderCnt);
+			model.addAttribute("wishCnt", wishCnt);
 			String id = mem.getId();
 			List<RStatusDto> list = memberservice.getR_StatusList(id);
 			model.addAttribute("list", list);
@@ -182,6 +209,20 @@ public class memberController {
 		if (mem == null) {
 			return "redirect:login.do";
 		} else {
+			int orderCnt = memberservice.getOrderCount(mem.getId());
+			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<qaDto> qaList = new ArrayList<>();
+			if (DummyqaList.size() > 4) {
+				for (int i = 0; i < 4; i++) {
+					qaList.add(i, DummyqaList.get(i));
+				}
+			} else {
+				qaList = DummyqaList;
+			}
+			model.addAttribute("qaList", qaList);
+			model.addAttribute("orderCnt", orderCnt);
+			model.addAttribute("wishCnt", wishCnt);
 			String id = mem.getId();
 			List<basketListDto> list = memberservice.getBasketList(id);
 			model.addAttribute("list", list);

@@ -32,7 +32,6 @@ function loginAf() {
 		async : true,
 		success : function(data) {
 			if (data.cnt > 0) {
-				alert(id + "님이 로그인하셨습니다.");
 				location.href = 'main.do';
 			} else {
 				alert("탈퇴처리된 아이디나 존재하지 않는 아이디입니다.");

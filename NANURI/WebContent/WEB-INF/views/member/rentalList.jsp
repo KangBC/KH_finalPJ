@@ -25,22 +25,19 @@
 
 			<!-- main content -->
 			<div style="width: 880px;">
-
-				<!-- main head -->
+				<!-- Main Header -->
 				<div class="row"
-					style="border-bottom: 3px solid; padding-bottom: 10px">
-					<div class="col-md-8">
-						<h1>구매 목록</h1>
-					</div>
+					style="border-bottom: 3px solid #CCCCCC; padding-bottom: 10px">
+					<div class="col-md-8"></div>
 					<div class="col-md-4" style="text-align: right; padding-top: 15px">
 						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a> > <a
 							href="rentalList.do">구매 목록</a>
 					</div>
 				</div>
-
-				<!-- main view -->
+				<jsp:include page="mypage_header.jsp" />
+				<!-- / Main Header -->
 				<div>
-					<span style="float: right; padding: 10px"><font
+					<span style="float: left; padding: 10px"><font
 						style="font-weight: bold;">${fn:length(list)}</font>개의 결제내역이
 						조회되었습니다.</span>
 					<table
@@ -127,11 +124,7 @@
 						</c:choose>
 					</table>
 					<div class="row" style="margin: 10px; float: right;">
-						<input type="button" onclick="rentalListDel(-1)" value="선택모두삭제">
-						<button type="button"
-							class="btn btn-outline-secondary waves-effect px-3">
-							<i class="fa fa-trophy" aria-hidden="true"></i>
-						</button>
+						<input type="button" onclick="rentalListDel(-1)" value="선택 모두 삭제">
 					</div>
 				</div>
 
