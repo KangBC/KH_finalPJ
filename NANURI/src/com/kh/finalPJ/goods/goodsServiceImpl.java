@@ -74,7 +74,6 @@ public class goodsServiceImpl implements goodsService {
 
 
 	@Override
-<<<<<<< HEAD
 	public memberDto selectMember(String id) {
 		return goodsDao.selectMember(id);
 	}
@@ -83,7 +82,6 @@ public class goodsServiceImpl implements goodsService {
 	public goodsDto selectGoods(String g_code) {
 		return goodsDao.selectGoods(g_code);
 	}
-=======
 	public List<goodsBbsDto> headselect(String title) throws Exception {
 		
 		return goodsDao.headselect(title);
@@ -96,8 +94,5 @@ public class goodsServiceImpl implements goodsService {
 		// TODO Auto-generated method stub
 		return goodsDao.headselectajax(title);
 	}
-	
-	
->>>>>>> origin/한현석
 	
 }
