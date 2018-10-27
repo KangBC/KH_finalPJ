@@ -34,7 +34,15 @@ public interface goodsService {
 	/* getbbscategory */
 	public List<goodsBbsDto> getbbscategory(String division) throws Exception;
 	
+<<<<<<< HEAD
 	public memberDto selectMember(String id);
 	public goodsDto selectGoods(String g_code);
 	
+=======
+	/* headselect */
+	public List<goodsBbsDto> headselect(String title) throws Exception;
+	
+	/* headselectajax */
+	public List<goodsBbsDto> headselectajax(String title) throws Exception;
+>>>>>>> origin/한현석
 }

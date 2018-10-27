@@ -25,6 +25,12 @@ public interface goodsDao {
 	
 	List<goodsBbsDto> getbbscategory(String division);
 	
+<<<<<<< .merge_file_a10476
 	public memberDto selectMember(String id);
 	public goodsDto selectGoods(String g_code);
+=======
+	List<goodsBbsDto> headselect(String title);
+	
+	List<goodsBbsDto> headselectajax(String title);
+>>>>>>> .merge_file_a07204
 }

@@ -57,6 +57,8 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/member/rentalList.jsp" />
 	</definition>
+	
+	
 
 	<!--Review ===================================================== -->
 	<!--list뷰 -->
@@ -93,6 +95,11 @@
 	<definition name="rentaldetaile.tiles" extends="main.tiles">
 		<put-attribute name="content"
 			value="/WEB-INF/views/rental/rentaldetaile.jsp" />
+	</definition>
+	
+	<definition name="rentallist_select.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/rental/rentallist_select.jsp" />
 	</definition>
 
 	<!--Admin ===================================================== -->

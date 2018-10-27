@@ -12,35 +12,95 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="resources/js/order.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 </head>
 <body>
 
 <div class="startdiv">
-
-<form action="" method="post">
 	<div>
-		<h3>1.주문상품 할인적용</h3>
+		<h3>주문자 정보</h3> 
+		<div>
+	      <ul style="height: 70px; border: 1px solid #dddddd; background: #f8f8f8; padding: 20px; ">
+	        <li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>주문자</b> ${member.name}</li>
+	        <li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>연락처</b> ${member.phone}</li>
+	        <li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>이메일</b> ${member.email}</li>
+	      </ul>
+		</div>
 	</div>
+	<br>
 	<div>	
+		<h3>상품 정보</h3>
 		<table cellspacing="0" border="1" style="border-collapse:collapse; border:1px gray solid">
 			<thead>
 				<tr>
+					<th>상품 이미지</th>					
 					<th>상품정보</th>					
-					<th>판매자</th>
-					<th>배송비</th>
+					<th>수량</th>
+					<th>기간</th>
+					<th>금액</th>					
 				</tr>
 			</thead>			
 			<tbody>	
+			
+			<c:forEach var="item" items="${goodsList}" varStatus="status" >
+				<c:set var="price_one" value="${item.g_price*orderList[status.index].amount*orderList[status.index].month }"/>
+				<c:set var="total" value="${total+price_one}"/>
 				<tr>
-					<td>상품정보디비에서 갖구오기</td>
-					<td>나누리</td>
-					<td>4000</td>
+					<td><img src="resources/img/main_img/${item.g_img }"></td>
+					<td>${item.g_code}</td>
+					<td>${orderList[status.index].amount}</td>
+					<td>${orderList[status.index].month}</td>
+					<td>${price_one}</td>
 				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	<div>	
+	<br>
+	
+	
+	<div>
+		<h3 style="display: inline;">배송지 정보 </h3> 
+		<input id="a" type="checkbox"><label for="a">주문자와 동일</label><br>
+		수령인 <input type="text"> <br>
+		연락처<select>
+				<option selected="selected">010</option>
+				<option>011</option>
+				<option>016</option>
+				<option>017</option>
+				<option>018</option>
+				<option>019</option>
+			</select>
+			-
+			<input type="text" value="">-<input type="text" value="">
+			<br>
+		주소<br>	
+					<!-- Material input address -->
+				<div >
+					<input type="hidden" name="address" id="address" value="">
+					
+					<input type="text" id="address_num"
+							name="address_num" placeholder="Address Number"
+							readonly="readonly" >
+					
+					<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
+					<br>
+						<!-- address search button -->
+					<input type="text" id="address_main"
+						name="address_main" placeholder="Confirm your address"
+						readonly="readonly" required>
+					<input type="text" id="address_detail"
+						name="address_detail" placeholder="Address Detail" required>
+				</div>
+		배송 메시지 <br>
+		<input type="text" placeholder="택배 기사님께  전달할 배송메시지를  입력해주세요.">	
+		<br>
+		<br>
+		<div>
+		<h3>3.결제정보입력</h3>
 		<table cellspacing="0" border="1"  style="border-collapse:collapse; border:1px gray solid">			
 			<tbody>
 				<tr>
@@ -50,94 +110,53 @@
 				</tr>
 					
 				<tr>
-					<td>디비에서 불러온 상품 금액</td>
+					<td><c:out value="${total}"/></td>
 					<td>4000</td>
-					<td>디비에서 불러온금액 + 4000</td>
+					<td><c:out value="${total+4000}"/></td>
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	
-	<div>
-		<h4>주문자 정보 입력</h4>
-		연락처<select>
-				<option selected="selected">010</option>
-				<option>011</option>
-				<option>016</option>
-				<option>017</option>
-				<option>018</option>
-				<option>019</option>
-			</select>
-			-
-			<input type="text" value="">-<input type="text" value="">
-			<br><br>
-		주소<input type="text" readonly="readonly"><button>주소찾기 API</button>	
-		<br><br>
-		<input type="text"> <input type="text">
-	</div>
-	
-	<div>
-		<h3>2.배송지 정보 입력</h3>
-		배송지선택 <br><br>
-		이름 <input type="text">
-		주소<input type="text" readonly="readonly"><button>주소찾기 API</button>	
-		<br><br>
-		<input type="text"> <input type="text" value="상세주소를 입력해주세요">
-		<br><br>
-		연락처<select>
-				<option selected="selected">010</option>
-				<option>011</option>
-				<option>016</option>
-				<option>017</option>
-				<option>018</option>
-				<option>019</option>
-			</select>
-			-
-			<input type="text" value="">-<input type="text" value="">
-			<br><br>
-		배송 메시지 <input type="text" value="택배 기사님께  전달할 배송메시지를  입력해주세요.">	
-		
-		<div>
-			<h3>3.결제정보입력</h3>
-			<h6>결제 API</h6>
+		<button id="check_module" type="button">결제하기</button>
 		</div>
-		
-		<div>
-			<input type="text" value="000원"><br><br>
-			<input type="submit" value="결제하기">
-		</div>
-		
 	</div>
-</form>
-
 </div>
-
-<p>
-    <p>아임 서포트 결제 모듈 테스트 해보기</p>
-    <button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
-</p>
+<script type="text/javascript">
+$("document").ready(function() {
+	$("#check_module").click(function () {
+	    var IMP = window.IMP; // 생략가능
+	    IMP.init('iamport'); 
+	    IMP.request_pay({
+	        pg: 'inicis', // version 1.1.0부터 지원.
+	        pay_method: 'card',
+	        merchant_uid: 'merchant_' + new Date().getTime(),
+	        //   https://docs.iamport.kr/implementation/payment
+	        name: '주문명:결제테스트',
+	        //결제창에서 보여질 이름
+	        amount: <c:out value="${total+4000}"/>, 
+	        //가격 
+	        buyer_email: '${member.email}',
+	        buyer_name: '${member.name}',
+	        buyer_tel: '${member.phone}',
+	        buyer_addr: '서울특별시 강남구 삼성동',
+	        buyer_postcode: '123-456',
+	    }, function (rsp) {
+	        console.log(rsp);
+	        if (rsp.success) {
+	            var msg = '결제가 완료되었습니다.';
+	            msg += '고유ID : ' + rsp.imp_uid;
+	            msg += '상점 거래ID : ' + rsp.merchant_uid;
+	            msg += '결제 금액 : ' + rsp.paid_amount;
+	            msg += '카드 승인번호 : ' + rsp.apply_num;
+	        } else {
+	            var msg = '결제에 실패하였습니다.';
+	            msg += '에러내용 : ' + rsp.error_msg;
+	        }
+	        alert(msg);
+	    });
+	});
+});
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

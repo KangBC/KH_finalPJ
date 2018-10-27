@@ -2,6 +2,8 @@ package com.kh.finalPJ.member;
 
 import java.util.List;
 
+import com.kh.finalPJ.qa.qaDto;
+
 public interface memberDao {
 
 	memberDto login(memberDto mem) throws Exception;
@@ -29,10 +31,12 @@ public interface memberDao {
 	Integer getGoodsSeq(String g_code) throws Exception;
 
 	List<RStatusDto> getR_StatusList(String id) throws Exception;
-	
+
 	boolean rentalListDel(Integer seq) throws Exception;
-	
+
 	Integer getOrderCount(String id) throws Exception;
-	
+
 	Integer getWishListCount(String id) throws Exception;
+
+	List<qaDto> getAdminQaList() throws Exception;
 }

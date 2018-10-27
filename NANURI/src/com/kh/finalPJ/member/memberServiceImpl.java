@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalPJ.qa.qaDto;
+
 @Service
 public class memberServiceImpl implements memberService {
 
@@ -85,6 +87,11 @@ public class memberServiceImpl implements memberService {
 	@Override
 	public Integer getWishListCount(String id) throws Exception {
 		return memberdao.getWishListCount(id);
+	}
+
+	@Override
+	public List<qaDto> getAdminQaList() throws Exception {
+		return memberdao.getAdminQaList();
 	}
 
 }

@@ -99,4 +99,8 @@
 		SELECT COUNT(*) FROM BASKET WHERE ID=#{id}
 	</select>
 
+	<select id="getAdminQaList" resultType="com.kh.finalPJ.qa.qaDto">
+		SELECT * FROM QA WHERE ID='admin' AND DEL=0
+	</select>
+
 </mapper>

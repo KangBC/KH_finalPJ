@@ -1,5 +1,6 @@
 <%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
+<%@page import="com.kh.finalPJ.common.orderedDto"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -223,7 +224,7 @@
 					</div>
 					<div class="btnbox">
 						<a class="pricebtn" id="basketbtn">장바구니</a>
-						<a class="pricebtn">구매하기</a>
+						<a class="pricebtn" id="orderbtn">구매하기</a>
 					</div>	
 				</div>
 			</div>	
@@ -384,8 +385,6 @@ $("#basketbtn").click(function(){
 		async: true,
 		success : function(data) {
 			
-			
-			
 			if(data){
 				
 				$("#basketModal").modal();
@@ -407,7 +406,25 @@ $("#basketbtn").click(function(){
 	
 	
 });
+$("#orderbtn").click(function(){
+	
+	 // 로그인 id
+	var id = $("#loginid").attr('value'); 
+	// g_code
+	var gcode = $("#g_code").attr('value');
+	// 갯수
+	var amount = $(".number_box").attr('value');
+	// 개월
+	var month = $(".month_box").attr('value');
+	// 총합가격
+	var resultnum = $("#resultnum").attr('value');
 
+	if(id == "null"){
+		alert("로그인을 해주세요");
+	}else{
+		location.href = "order.do?id="+id+"&g_code="+gcode+"&month="+month+"&amount="+amount;
+	}      
+});
 
 
 </script>

@@ -27,12 +27,13 @@
       align-items: center;
     }
 
+
 </style>
 
 
 
 
-<div class="swiper-container" style="height: 350px;">
+<div class="swiper-container swiper_auto" style="height: 345px;">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img alt="" src="resources/img/slideimg/img01.jpg" width="100%"></div>
       <div class="swiper-slide"><img alt="" src="resources/img/slideimg/img02.jpg" width="100%"></div>
@@ -42,29 +43,154 @@
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
-<!--     Add Arrows
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div> -->
   </div>
 
-<div class="startdiv">
+<div class="startdiv" style="display: table;">
 
+	<div class="maintop">
+		<h1 class="maintop_title">요즘잘나가요</h1>
+		<hr>
+		<div class="main_goods_box">
+		
+			<div class="startdiv" style="position: relative;">
+  
 
-<ul class="category">
-		<li><a href="rental_category.do?division=AC">유아</a></li>
-		<li><a href="rental_category.do?division=BC">레저</a></li>
-		<li><a href="rental_category.do?division=CC">패션</a></li>
-		<li><a href="rental_category.do?division=DC">리빙</a></li>
-		</ul>
+ <div class="swiper-container swiper1">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+		</div>
+      <div class="swiper-slide">
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+			<div class="goods_img">
+			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<p class="goods_title">하하하하하</p>
+			<p class="goods_price">₩ 55000</p>
+			</a>
+		</div>
+    </div>
+
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  
+</div>
+		
+		</div>
+		
+		<h1 class="maintop_title">최신상품</h1>
+		<hr>
+		<div>
+			<div style="float: left; width: 525px; height: 600px; border: 1px solid;    margin-right: 42px;"></div>
+			<div style="float: left; width: 525px;; height: 600px; border: 1px solid; position: relative;">
+				
+				
+				<div class="swiper-container swiper2">
+				    <div class="swiper-wrapper">
+				      <div class="swiper-slide grid_box">
+							<div class="grid_goods">
+								<div>
+								<img alt="" src="" width="100%">
+								</div>
+								<span>
+									<p>예뗴예뗴</p>
+									<span>예뗴</span>
+								</span>
+							</div>
+							<div></div>
+							<div></div>
+							<div></div>
+					  </div>
+				      <div class="swiper-slide grid_box">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+					  </div>
+				    </div>
+				
+					<div class="silder_btn">
+				    <!-- Add Arrows -->
+				    <div class="swiper-button-next"></div>
+				    <div class="swiper-button-prev"></div>
+				    </div>
+				  </div>
+  					
+			</div>
+		</div>
+		
+	</div>
+		
+	
+	
+	</div>
+<div class="main_middle">
 
 </div>
 
+<div class="goods_info">
+<div class="cate"><span><i>레저/취미</i></span></div>
+	<img alt="" src="resources/img/slideimg/Leisure.jpg" width="100%">
+</div>
+
+<div class="startdiv" style="display: table;">
+
+<h1 class="maintop_title">요즘잘나가요</h1>
+<hr>
+
+
+</div>
+   
+  
+
 
  <script src="resources/swiper/swiper.min.js"></script>
-
+ 
   <!-- Initialize Swiper -->
   <script>
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper_auto', {
       spaceBetween: 30,
       centeredSlides: true,
       autoplay: {
@@ -75,9 +201,33 @@
         el: '.swiper-pagination',
         clickable: true,
       },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+     
     });
+    
+    
+
+	
+	
+    var swiper = new Swiper('.swiper1', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+       
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    
+    var swiper = new Swiper('.swiper2', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+      
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+ 
   </script>

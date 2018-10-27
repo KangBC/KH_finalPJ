@@ -15,39 +15,39 @@ import com.kh.finalPJ.review.reviewDto;
 @Repository
 public class goodsDaoImpl implements goodsDao {
 
-	
+
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	private String namespace = "goods.";
-	
+
 	 /* bbsList */
 	@Override
 	public List<goodsBbsDto> getbbs(String startindex, String endindex, String category) {
-		
-		
+
+
 		goodspage dto = new goodspage();
-		
+
 		dto.setStartindex(startindex);
 		dto.setEndindex(endindex);
 		dto.setCategory(category);
-		
+
 		System.out.println(dto.getCategory());
-		
+
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbs",dto);
-		
+
 		System.out.println(list.size());
-		
+
 		/*for (int i = 0; i < list.size(); i++) {
 			System.out.println("asdkfjahlsdkfjhawlkf" + list.get(i));
 		}*/
-		
+
 		return list;
 	}
-	
-	
 
-	
+
+
+
 	@Override
 	public List<goodsBbsDto> getbbslength() {
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbslength");
@@ -60,78 +60,78 @@ public class goodsDaoImpl implements goodsDao {
 	/* readcount */
 	@Override
 	public void readcount(int seq) {
-		
+
 		sqlSession.update(namespace + "readcount", seq);
-		
+
 		System.out.println(seq);
-		
+
 	}
 
 	/* getgoodsdetail */
 	@Override
 	public goodsBbsDto getgoodsdetail(int seq) {
-		
+
 		goodsBbsDto dto = sqlSession.selectOne(namespace + "getgoodsdetail", seq);
-		
+
 		return dto;
 	}
 
-	
-	
+
+
 	/* AJAX 검색 (title + selectbox) */
 	@Override
 	public List<goodsBbsDto> findgoods(String title,String lists,String category) {
-		
-		
+
+
 		List<goodsBbsDto> list = null;
 
 		if(title.equals("")) {
 			// 타이틀의 값이 없을때
 			// order by 만 돌려줌
 			goodsBbsDto dto = new goodsBbsDto();
-			
+
 			dto.setTitle(title);
 			dto.setLists(lists);
 			dto.setCategory(category);
-			
+
 			list = sqlSession.selectList(namespace + "findchecked", dto);
-			
+
 			System.out.println(dto.getLists());
-			
+
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println(list.get(i).getG_price());
 			}
-			
+
 			System.out.println("들어옴");
-			
+
 		}else {
-			// 값이 있을때 
+			// 값이 있을때
 			// LIKE 랑 ORDER BY 같이 돌려줌
 			goodsBbsDto dto = new goodsBbsDto();
-			
+
 			dto.setTitle(title);
 			dto.setLists(lists);
 			dto.setCategory(category);
-			
+
 			list = sqlSession.selectList(namespace + "findgoodsAll", dto);
-			
-			
-			
-			
+
+
+
+
 			System.out.println("안들어옴");
 		}
-		
-		
-		
+
+
+
 		return list;
 	}
 
 	/*리뷰 및 qna 끌어오기*/
 	@Override
 	public List<reviewDto> getreview_qna(String g_code) {
-		
+
 		List<reviewDto> list = sqlSession.selectList(namespace + "getreview_qna", g_code);
-		
+
 		return list;
 	}
 
@@ -140,7 +140,7 @@ public class goodsDaoImpl implements goodsDao {
 	/*basketinsert*/
 	@Override
 	public boolean basketinsert(basketDto dto) {
-		
+
 		return sqlSession.insert(namespace + "basketinsert", dto)>0 ? true: false;
 	}
 
@@ -149,13 +149,14 @@ public class goodsDaoImpl implements goodsDao {
 
 	@Override
 	public List<goodsBbsDto> getbbscategory(String division) {
-		
+
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "getbbscategory",division);
-		
+
 		System.out.println(list.size() + " dao ");
-		
+
 		return list;
 	}
+
 
 	@Override
 	public memberDto selectMember(String id) {
@@ -166,5 +167,30 @@ public class goodsDaoImpl implements goodsDao {
 	public goodsDto selectGoods(String g_code) {
 		return sqlSession.selectOne(namespace + "selectGoods",g_code);
 	}
-	
+
+
+
+
+	@Override
+	public List<goodsBbsDto> headselect(String title) {
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<goodsBbsDto> headselectajax(String title) {
+
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
+
+
+		return list;
+	}
+
+
+
+
+
 }

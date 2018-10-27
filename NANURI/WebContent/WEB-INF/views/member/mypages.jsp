@@ -15,52 +15,13 @@
 			<div style="width: 1100px;">
 				<!-- Main Header -->
 				<div class="row"
-					style="border-bottom: 2px solid; padding-bottom: 20px; padding-top: 10px">
-					<div class="col-md-4" align="center" style="border: solid 1px">
-						<h1>개발중(슬라이더 어떰? - 추천상품같은)</h1>
-					</div>
-					<div class="col-md-4"
-						style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
-						<div class="row" style="margin-top: 10%">
-							<div class="col-md-4" style="border: solid 1px">
-								<h1>Logo</h1>	
-							</div>
-							<div class="col-md-8">
-								<div>
-									<p style="margin-bottom: 0px">
-										<font style="font-weight: bold; font-size: 30px"
-											color="#542f82">'${login.name }'</font>님 환영합니다!
-									</p>
-								</div>
-								<div style="border: solid 1px; text-align: center; padding: 2px">
-									<a><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										상품렌트하러 가기 >></a>
-								</div>
-							</div>
-						</div>
-						<div class="row" align="center">
-							<div class="col-md-6" style="padding-right: 0px">
-								<p style="font-size: 40px;">${orderCnt}</p>
-								<p style="margin-bottom: 0px">주문내역</p>
-							</div>
-							<div class="col-md-6" style="padding-left: 0px">
-								<p style="font-size: 40px;">${wishCnt}</p>
-								<p style="margin-bottom: 0px">장바구니</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4" style="padding-top: 15px">
-						<p style="text-align: right;">
-							<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a>
-						</p>
-						<p>
-							-배송관련 문의<br>-상품관련 문의<br>-결제 및 반납문의
-						</p>
-						<a href="qnalist.do"> <img alt=""
-							src="https://user-images.githubusercontent.com/38531104/47474722-40738d80-d853-11e8-9c64-ce6c3475b328.PNG">
-						</a>
+					style="border-bottom: 3px solid #CCCCCC; padding-bottom: 10px">
+					<div class="col-md-8"></div>
+					<div class="col-md-4" style="text-align: right; padding-top: 15px">
+						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a>
 					</div>
 				</div>
+				<jsp:include page="mypage_header.jsp" />
 				<!-- / Main Header -->
 				<!-- Main View -->
 				<div class="row" style="margin-top: 20px">

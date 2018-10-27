@@ -2,6 +2,8 @@ package com.kh.finalPJ.member;
 
 import java.util.List;
 
+import com.kh.finalPJ.qa.qaDto;
+
 public interface memberService {
 
 	memberDto login(memberDto mem) throws Exception;
@@ -34,4 +36,5 @@ public interface memberService {
 
 	Integer getWishListCount(String id) throws Exception;
 
+	List<qaDto> getAdminQaList() throws Exception;
 }

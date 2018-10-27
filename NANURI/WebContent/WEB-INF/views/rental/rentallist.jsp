@@ -82,13 +82,13 @@
 
 	<div class="goodsbox" id="goodsbox">
 	
-	<%-- 	
-		<%
-			for(int i=0; i < 5; i++){
+	 	
+		<%-- <%
+			for(int i=0; i < bbslist.size(); i++){
 		%>
 		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>&g_code=<%=bbslist.get(i).getG_code() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
 			<div class="goods_img">
-				<img alt="" src="resources/img/rental_content/<%=bbslist.getContent()%>" width="100%">
+				<img alt="" src="resources/img/rental_content/<%=bbslist.get(i).getContent()%>" width="100%">
 			</div>
 			<p class="goods_title"><%=bbslist.get(i).getTitle() %></p>
 			<p class="goods_content"><%=bbslist.get(i).getContent() %></p>
@@ -97,8 +97,8 @@
 	<% 
 			}
 	%>
-	
 	 --%>
+	 
 	</div>
 
 

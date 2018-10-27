@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalPJ.qa.qaDto;
+
 @Repository
 public class memberDaoImpl implements memberDao {
 
@@ -97,6 +99,11 @@ public class memberDaoImpl implements memberDao {
 	@Override
 	public Integer getWishListCount(String id) throws Exception {
 		return sqlsession.selectOne(namespace + "getWishListCount", id);
+	}
+
+	@Override
+	public List<qaDto> getAdminQaList() throws Exception {
+		return sqlsession.selectList(namespace + "getAdminQaList");
 	}
 
 }
