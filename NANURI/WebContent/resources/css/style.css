@@ -137,8 +137,7 @@ a,p,span,div,h1,h2,h3,h4,h5,h6,label,ul,li{text-decoration: none;;color:#555;lis
 .starR1.on{background-position:0 0;}
 .starR2.on{background-position:-15px 0;}
 
-
-._frmForm .top_box11 .goods_img11{width: 200px; height: 200px; float: left;} 
+._frmForm .goods_img11{width: 200px; height: 300px; float: left; padding-top: 35px} 
 
 
 
