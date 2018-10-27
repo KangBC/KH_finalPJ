@@ -69,6 +69,22 @@ public class goodsServiceImpl implements goodsService {
 	public List<goodsBbsDto> getbbscategory(String division) throws Exception {
 		return goodsDao.getbbscategory(division);
 	}
+
+
+
+	@Override
+	public List<goodsBbsDto> headselect(String title) throws Exception {
+		
+		return goodsDao.headselect(title);
+	}
+
+
+
+	@Override
+	public List<goodsBbsDto> headselectajax(String title) throws Exception {
+		// TODO Auto-generated method stub
+		return goodsDao.headselectajax(title);
+	}
 	
 	
 	

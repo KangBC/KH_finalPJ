@@ -23,4 +23,8 @@ public interface goodsDao {
 	boolean basketinsert(basketDto dto);
 	
 	List<goodsBbsDto> getbbscategory(String division);
+	
+	List<goodsBbsDto> headselect(String title);
+	
+	List<goodsBbsDto> headselectajax(String title);
 }

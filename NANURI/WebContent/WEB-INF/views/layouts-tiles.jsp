@@ -45,29 +45,6 @@
 </head>
 <body>
 
-	<%-- <table border="1" style="width: 100%; height: 100%; border-color: Gray" >
-	<tr align="center">
-		<td height="10%" colspan="2">
-			<!-- 위쪽의 위치설정 (header).. (name에따라서 동작시키게 만듬)-->
-			<tiles:insertAttribute name="header"/>
-		</td>
-	</tr>
-	<tr> <!-- menu , content  -->
-		<td>
-			<!-- 70%에 해당하는 content -->
-			<tiles:insertAttribute name="content"/>
-		</td>
-	</tr>
-	<tr align="center">
-		<td height="10%" colspan="2">
-			<!-- footer -->
-			<tiles:insertAttribute name="footer"/>
-		</td>
-	</tr>
-	
-
-</table> --%>
-
 	<div class="header">
 		<tiles:insertAttribute name="header" />
 	</div>

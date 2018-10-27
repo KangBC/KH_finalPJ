@@ -4,19 +4,11 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
-
-<div class="head">
-	<div>
-		<h1 style="float: left;margin: 0;font-size: 22px;"><a href="main.do">logo</a></h1>
+<div class="heder_top">
+	<div style="margin:  0 auto; width: 980px;display: table;">
+		<div class="heder_top_login" >
 			<ul>
 				<li><a href="main.do">HOME</a></li>
-				<li><a href="rentallist.do">렌탈</a></li>
-				<li><a href="qnalist.do">Q&A게시판</a></li>
-				<li><a href="reviewlist.do">후기게시판</a></li>
-			</ul>
-	 	<div class="col-md-6" style="text-align: right;">
-			<ul>
 				<c:choose>
 					<c:when test="${login.auth eq 0}">
 						<li class="my"><a href="mypage.do">마이페이지</a></li>
@@ -35,10 +27,142 @@
 			
 			
 		
+			</div>
+		</div>
+</div>
+<div style="border-bottom: 1px solid #eee;">
+	<div class="h_logo_box">
+		<h1 style="float: left;margin: 0;font-size: 22px;">
+		<a href="main.do" class="logo"></a>
+		</h1>
+		
+	 	<div class="nav_box" style="text-align: right;">
+			
+			<!-- 검색 -->
+			<div style="position: relative;">
+			<input type="text" value="" placeholder="원하시는 상품을 검색해보세요" class="head_select" onkeyup="headtitle_btn()">
+			<a class="head_select_btn"></a>
+			
+			
+			<div class="head_ajaxbox">
+				<ul class="ajaxboxul"></ul>
+			</div>
+			</div>
+			
+			
+			<!-- <ul>
+				
+				<li><a href="qnalist.do">Q&A게시판</a></li>
+				<li><a href="reviewlist.do">후기게시판</a></li>
+				
+			</ul> -->
+			
+			
+		
 			
 		</div> 
+	</div>
+</div>
+<div style="width: 100%;border-bottom: #ddd 1px solid;">
+<div class="head">
+		
+		<div class="h_category_box">
+			<ul class="headul">
+				
+						<li><a href="rental_category.do?division=AC">유아</a></li>
+						<li><a href="rental_category.do?division=BC">레저</a></li>
+						<li><a href="rental_category.do?division=CC">패션</a></li>
+						<li><a href="rental_category.do?division=DC">리빙</a></li>
+
+			</ul>
+			</div>
+</div>
 		
 	
 		
-	</div>
+	
+	<script type="text/javascript">
+	
+	// 검색
+	$(".head_select_btn").click(function(){
+		var title = $(".head_select").val();
+		location.href = "headselect.do?title="+title;
+		
+	})
+	
+		
+	function headtitle_btn(){
+		
+		var title = $(".head_select").val();	
+		
+			
+		var list = {
+				"title" : title,
+				};
+		
+		// 박스 show
+		$(".head_ajaxbox").show();
+		
+	$.ajax({
+		url : "headselectajax.do",
+		type : "POST",
+		data : list,
+		async: true,
+		success : function(data) {
+			
+			
+			/* 검색 결과 없을시 */
+			if(data.list.length == 0){
+				$(".ajaxboxul").children().remove();
+	 			$(".ajaxboxul").append('<li class="none_title">검색 결과가 없습니다.</li>');
+				//$(".ajaxboxul").append('<li>검색 결과가 없습니다.');
+	 		}
+			
+			/* 검색 결과 있을시 */
+			if(title != ""){
+				
+		 	 $.each(data.list, function(key, value){ 
+		 		$(".ajaxboxul").children('.none_title').remove();
+		 		$(".ajaxboxul").append('<li id="lick" onclick="lick()">'+value.title+'</li>');
+		 		
+		 		
+				 }); 
+			}
+			
+			
+			else{
+				$(".head_ajaxbox").hide();
+			}
+			
+		},
+		error : function(xhr, status) {
+			alert("ㅋㅋ넌못해");
+		}
+	})
+
+
+
+	}
+	
+	 // 다른영역 클릭시 박스 hide
+	$("html").click(function(){
+		$(".head_ajaxbox").hide();
+	});
+	 
+	// li 클릭시 값 이동
+	
+	function lick(){
+		 
+		 
+		 alert(this.text);
+
+	 }
+	
+	 $("#lick").click(function(){
+		 alert(this.text);
+		 $(".head_select").val('asdfasdf')
+	 }) 
+		
+	</script>
+	
 </div>
