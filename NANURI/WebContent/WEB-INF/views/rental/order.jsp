@@ -3,6 +3,8 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <fmt:requestEncoding value="utf-8" />
 
     
@@ -19,6 +21,13 @@
 </head>
 <body>
 
+<sql:setDataSource
+    url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+    driver="oracle.jdbc.driver.OracleDriver"
+    user="final"
+    password="final"
+    var= "conn"/>
+
 <div class="startdiv">
 	<div>
 		<h3>주문자 정보</h3> 
@@ -29,8 +38,18 @@
 	        <li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>이메일</b> ${member.email}</li>
 	      </ul>
 		</div>
+	    <input id="buyer" type="hidden" value="${member.name}">
+	    <input id="buyer_email" type="hidden" value="${member.email}">
+	    <input id="buyer_phone_f" type="hidden" value="${fn:split(member.phone,'-')[0]}">
+	    <input id="buyer_phone_m" type="hidden" value="${fn:split(member.phone,'-')[1]}">
+	    <input id="buyer_phone_b" type="hidden" value="${fn:split(member.phone,'-')[2]}">
+	    <input id="buyer_address_n" type="hidden" value="${fn:split(member.address,'-')[0]}">
+	    <input id="buyer_address_m" type="hidden" value="${fn:split(member.address,'-')[1]}">
+	    <input id="buyer_address_d" type="hidden" value="${fn:split(member.address,'-')[2]}">
 	</div>
 	<br>
+	
+	
 	<div>	
 		<h3>상품 정보</h3>
 		<table cellspacing="0" border="1" style="border-collapse:collapse; border:1px gray solid">
@@ -44,7 +63,6 @@
 				</tr>
 			</thead>			
 			<tbody>	
-			
 			<c:forEach var="item" items="${goodsList}" varStatus="status" >
 				<c:set var="price_one" value="${item.g_price*orderList[status.index].amount*orderList[status.index].month }"/>
 				<c:set var="total" value="${total+price_one}"/>
@@ -58,47 +76,45 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		<input id="total_price" type="hidden" value='${total}' >
 	</div>
 	<br>
 	
 	
 	<div>
 		<h3 style="display: inline;">배송지 정보 </h3> 
-		<input id="a" type="checkbox"><label for="a">주문자와 동일</label><br>
-		수령인 <input type="text"> <br>
-		연락처<select>
-				<option selected="selected">010</option>
-				<option>011</option>
-				<option>016</option>
-				<option>017</option>
-				<option>018</option>
-				<option>019</option>
-			</select>
-			-
-			<input type="text" value="">-<input type="text" value="">
+		<input id="copy" type="checkbox"><label for="copy">주문자와 동일</label><br>
+		<label for="recipient">수령인</label>
+		<input id="recipient" type="text"> <br>
+		
+		<label for="phone_container">전화번호</label>
+		<div id="phone_container" style="display: inline-block;">
+		<select id="phone_f">
+			<option selected="selected">010</option>
+			<option>011</option>
+			<option>016</option>
+			<option>017</option>
+			<option>018</option>
+			<option>019</option>
+		</select>-
+		<input id="phone_m" type="text" value="">-<input id="phone_b" type="text" value="">
+		</div>
+		<br>
+		<label for="address_container">주소</label>	
+		<div id="address_container">
+			<input type="hidden" name="address" id="address" value="">
+					
+			<input type="text" id="address_num" name="address_num" placeholder="Address Number"	readonly="readonly" >
+					
+			<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
 			<br>
-		주소<br>	
-					<!-- Material input address -->
-				<div >
-					<input type="hidden" name="address" id="address" value="">
-					
-					<input type="text" id="address_num"
-							name="address_num" placeholder="Address Number"
-							readonly="readonly" >
-					
-					<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
-					<br>
-						<!-- address search button -->
-					<input type="text" id="address_main"
-						name="address_main" placeholder="Confirm your address"
-						readonly="readonly" required>
-					<input type="text" id="address_detail"
-						name="address_detail" placeholder="Address Detail" required>
-				</div>
-		배송 메시지 <br>
-		<input type="text" placeholder="택배 기사님께  전달할 배송메시지를  입력해주세요.">	
+			<input type="text" id="address_main" name="address_main" placeholder="Confirm your address" readonly="readonly" >
+			<input type="text" id="address_detail" name="address_detail" placeholder="Address Detail" >
+		</div>
 		<br>
 		<br>
+
+
 		<div>
 		<h3>3.결제정보입력</h3>
 		<table cellspacing="0" border="1"  style="border-collapse:collapse; border:1px gray solid">			
@@ -111,52 +127,23 @@
 					
 				<tr>
 					<td><c:out value="${total}"/></td>
-					<td>4000</td>
-					<td><c:out value="${total+4000}"/></td>
+					<td>4500</td>
+					<td><c:out value="${total+4500}"/></td>
 				</tr>
 			</tbody>
 		</table>
-		<button id="check_module" type="button">결제하기</button>
+		<c:set var="now" value="<%=new java.util.Date()%>" />
+		<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set>
+		<sql:query sql="select SEQ_R_STATUS.nextval from dual" var="getseq" dataSource="${conn}" />
+		<c:forEach var="seqobj" items="${getseq.rowsByIndex}">
+			<c:set var="seq" value="${seqobj[0]}"/>
+	    </c:forEach>
+
+		<input id="merchant_uid" type="hidden" value="S${today}${seq}">
+		<button id="iamport_module" type="button">결제하기</button>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$("document").ready(function() {
-	$("#check_module").click(function () {
-	    var IMP = window.IMP; // 생략가능
-	    IMP.init('iamport'); 
-	    IMP.request_pay({
-	        pg: 'inicis', // version 1.1.0부터 지원.
-	        pay_method: 'card',
-	        merchant_uid: 'merchant_' + new Date().getTime(),
-	        //   https://docs.iamport.kr/implementation/payment
-	        name: '주문명:결제테스트',
-	        //결제창에서 보여질 이름
-	        amount: <c:out value="${total+4000}"/>, 
-	        //가격 
-	        buyer_email: '${member.email}',
-	        buyer_name: '${member.name}',
-	        buyer_tel: '${member.phone}',
-	        buyer_addr: '서울특별시 강남구 삼성동',
-	        buyer_postcode: '123-456',
-	    }, function (rsp) {
-	        console.log(rsp);
-	        if (rsp.success) {
-	            var msg = '결제가 완료되었습니다.';
-	            msg += '고유ID : ' + rsp.imp_uid;
-	            msg += '상점 거래ID : ' + rsp.merchant_uid;
-	            msg += '결제 금액 : ' + rsp.paid_amount;
-	            msg += '카드 승인번호 : ' + rsp.apply_num;
-	        } else {
-	            var msg = '결제에 실패하였습니다.';
-	            msg += '에러내용 : ' + rsp.error_msg;
-	        }
-	        alert(msg);
-	    });
-	});
-});
-</script>
-
 </body>
 </html>
 
