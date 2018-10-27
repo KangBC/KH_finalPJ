@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.finalPJ.member.basketDto;
+import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsService {
@@ -32,5 +33,8 @@ public interface goodsService {
 	
 	/* getbbscategory */
 	public List<goodsBbsDto> getbbscategory(String division) throws Exception;
+	
+	public memberDto selectMember(String id);
+	public goodsDto selectGoods(String g_code);
 	
 }

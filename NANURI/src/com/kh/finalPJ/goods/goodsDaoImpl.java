@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalPJ.member.basketDto;
+import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Repository
@@ -155,6 +156,15 @@ public class goodsDaoImpl implements goodsDao {
 		
 		return list;
 	}
-	
+
+	@Override
+	public memberDto selectMember(String id) {
+		return sqlSession.selectOne(namespace + "selectMember",id);
+	}
+
+	@Override
+	public goodsDto selectGoods(String g_code) {
+		return sqlSession.selectOne(namespace + "selectGoods",g_code);
+	}
 	
 }

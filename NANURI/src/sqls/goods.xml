@@ -106,5 +106,13 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
     ON A.G_CODE = B.G_CODE
     WHERE A.G_CODE LIKE #{division}|| '%'
   </select>
+  
+  <select id="selectMember" parameterType="String"  resultType="com.kh.finalPJ.member.memberDto">
+ 	 SELECT * FROM MEMBER WHERE id=#{id}
+  </select>
 
+  <select id="selectGoods" parameterType="String"  resultType="com.kh.finalPJ.goods.goodsDto">
+ 	 SELECT * FROM GOODS WHERE g_code=#{g_code}
+  </select>
+   
 </mapper>

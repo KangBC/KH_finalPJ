@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.finalPJ.common.orderedDto;
 import com.kh.finalPJ.member.basketDto;
+import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.member.memberService;
 import com.kh.finalPJ.review.reviewDto;
 
 
@@ -187,6 +190,26 @@ public class goodsController {
 		
 	}
 	
+	@RequestMapping(value="order.do",method = {RequestMethod.GET, RequestMethod.POST})
+	public String order(Model model,orderedDto ordered) throws Exception{
+		String id = ordered.getId();
+		String g_code = ordered.getG_code();
+		
+		memberDto member = goodsService.selectMember(id);
+		goodsDto goods = goodsService.selectGoods(g_code);
 
+		System.out.println(member.getId() + "00000000000000000000000000000000000000");
+		System.out.println(goods.getG_code() + "00000000000000000000000000000000000000");
+		
+		List<goodsDto> goodsList = new ArrayList<>();
+		goodsList.add(goods);
+		List<orderedDto> orderList = new ArrayList<>();
+		orderList.add(ordered);
+		
+		model.addAttribute("member",member);
+		model.addAttribute("goodsList",goodsList);
+		model.addAttribute("orderList",orderList);
+		return "order.tiles";
+	}
 }
 

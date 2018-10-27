@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.finalPJ.member.basketDto;
+import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Service
@@ -69,7 +70,17 @@ public class goodsServiceImpl implements goodsService {
 	public List<goodsBbsDto> getbbscategory(String division) throws Exception {
 		return goodsDao.getbbscategory(division);
 	}
-	
-	
+
+
+
+	@Override
+	public memberDto selectMember(String id) {
+		return goodsDao.selectMember(id);
+	}
+
+	@Override
+	public goodsDto selectGoods(String g_code) {
+		return goodsDao.selectGoods(g_code);
+	}
 	
 }

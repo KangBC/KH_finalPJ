@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.finalPJ.member.basketDto;
+import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsDao {
@@ -23,4 +24,7 @@ public interface goodsDao {
 	boolean basketinsert(basketDto dto);
 	
 	List<goodsBbsDto> getbbscategory(String division);
+	
+	public memberDto selectMember(String id);
+	public goodsDto selectGoods(String g_code);
 }
