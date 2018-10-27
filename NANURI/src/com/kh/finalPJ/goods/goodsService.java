@@ -33,4 +33,9 @@ public interface goodsService {
 	/* getbbscategory */
 	public List<goodsBbsDto> getbbscategory(String division) throws Exception;
 	
+	/* headselect */
+	public List<goodsBbsDto> headselect(String title) throws Exception;
+	
+	/* headselectajax */
+	public List<goodsBbsDto> headselectajax(String title) throws Exception;
 }

@@ -85,10 +85,7 @@ public class goodsController {
 		Map<Object, Object> map = new HashMap<>();
 		
 		List<goodsBbsDto> list = goodsService.findgoods(title,lists,category);
-		
-		System.out.println(list.size());
-		
-		
+				
 		map.put("list", list);
 		
 		
@@ -187,6 +184,42 @@ public class goodsController {
 		
 	}
 	
-
+	// headselect
+		@RequestMapping(value="headselect.do",method = {RequestMethod.GET, RequestMethod.POST})
+		public String headselect(Model model,String title) throws Exception{
+			
+			
+			List<goodsBbsDto> list = goodsService.headselect(title);
+			
+			System.out.println(list.size());
+			
+			String head = "검색 된 상품";
+			model.addAttribute("title",head);
+			model.addAttribute("bbslist",list);
+			return "rentallist_select.tiles";
+			
+		}
+	
+	// headselectajax
+		@ResponseBody
+		@RequestMapping(value="headselectajax.do",method = RequestMethod.POST)
+		public Map<Object, Object> headselectajax(Model model,HttpServletRequest req) throws Exception{
+			
+			String title = req.getParameter("title");
+			
+			
+			
+			List<goodsBbsDto> list = goodsService.headselectajax(title);
+			
+			System.out.println(list.size());
+			Map<Object, Object> map = new HashMap<>();
+			
+			map.put("list", list);
+			
+			
+			return map;		
+			
+			
+		}
 }
 

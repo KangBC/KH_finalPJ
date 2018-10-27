@@ -155,6 +155,29 @@ public class goodsDaoImpl implements goodsDao {
 		
 		return list;
 	}
+
+
+
+
+	@Override
+	public List<goodsBbsDto> headselect(String title) {
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<goodsBbsDto> headselectajax(String title) {
+		
+		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
+		
+		
+		return list;
+	}
+	
+	
 	
 	
 }

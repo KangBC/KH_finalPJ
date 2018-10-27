@@ -107,4 +107,14 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
     WHERE A.G_CODE LIKE #{division}|| '%'
   </select>
 
+
+<select id="headselect" parameterType="String" resultType="com.kh.finalPJ.goods.goodsBbsDto">
+	
+	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+	FROM R_BBS A 
+	INNER JOIN GOODS B 
+    ON A.G_CODE = B.G_CODE
+    WHERE A.TITLE LIKE #{title}|| '%'
+
+</select>
 </mapper>
