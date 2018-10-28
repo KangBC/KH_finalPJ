@@ -17,13 +17,15 @@
 
 <style>    
         body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
-        #report { border-collapse:collapse; width:500px}
+        #report { border-collapse:collapse; width:800px}
         #report h4 { margin:0px; padding:0px;}
-        #report th { background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;}
-        #report td { background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; }
-        #report tr.odd td { background:#fff url(row_bkg.png) repeat-x scroll center left; cursor:pointer; }
+        #report th { text-align:center !important;background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
+        #report td {text-align:center; background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; font-size: 12px; padding: 20px;}
+        #report tr.odd td { background:#fff url(row_bkg.png) repeat-x scroll center left; cursor:pointer; border-bottom: 1px solid #e1e1e1;}
         #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #report div.up { background-position:0px 0px;}
+        th{ border: 1px solid black;}
+        .title_td{text-align: left !important;width: 470px;}
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,17 +49,20 @@ if(session.getAttribute("login") != null){
 }
 %>
 
-<!-- 로그인 세션값 헤더에서 받아오기 -->
 
 <div class="startdiv">
 <form id="_frmFormSearch" method="get" action="">
 	<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>
 	<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}"/>	
 </form>
-	<table id="report">
+	<table id="report" class="ba_qna" style="border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1;width: 100%;">
+		<%-- <col width="40px">
+		<col width="450px">
+		<col width="100px">
+		<col width="180px"> --%>
 		<%if(adminlist.size()>0|| qalist.size()>0) {%>
 			<tr>
-				<th>번호</th>
+				<th>구분</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>게시일</th>
@@ -66,18 +71,27 @@ if(session.getAttribute("login") != null){
 				<%
 					for (int i = 0; i < adminlist.size(); i++) {							
 				%>
-						<tr class="odd">					         
+						<tr class="odd">
+								<div class="arrow"></div>					         
 					            <td></td>
-					            <td><%=adminlist.get(i).getTitle()%></td>
+					            <td class="title_td" ><%=adminlist.get(i).getTitle()%></td>
 					            <td><%=adminlist.get(i).getId()%></td>
 					            <td><%=adminlist.get(i).getWdate().substring(0, 16) %></td>
 					    </tr>
-					    <tr style="display: none">
-					            <td colspan="3">             
-					                <label>제목:</label><h4><%=adminlist.get(i).getTitle()%></h4>
+					    <tr style="display: none;">
+					            <td colspan="4" style="border-bottom: 1px solid gray; border-top: 1px solid gray;">   
+					            	<div style="border-bottom: 1px solid gray;">          
+					           			<h4 align="center"><%=adminlist.get(i).getTitle()%></h4>
+					                </div>
+					                <div style="border-bottom: 1px solid gray;text-align: left !important; padding: 10px;">
+						            	게시일:<%=adminlist.get(i).getWdate().substring(0, 16) %><br>
+						            	작성자:<%=adminlist.get(i).getId()%>
+						            </div>
+						            <div style="text-align: left !important; padding: 30px;">
 									<label>내용:</label><%=adminlist.get(i).getContent() %>	
+									</div>
 								<%if(mem.getAuth() == 2){ %>
-					            	<span><a href="ansDelete.do?seq=<%=adminlist.get(i).getSeq()%>">공지사항삭제 버튼위치</a></span>
+					            	<div align="right"><a href="ansDelete.do?seq=<%=adminlist.get(i).getSeq()%>">삭제</a></div>
 					            <%} %>				             
 					            </td>					      
 					    </tr>
@@ -91,48 +105,56 @@ if(session.getAttribute("login") != null){
 							(mem.getAuth() == 2)) {%><!-- 공개글  --> 							
 							<tr class="odd">
 								<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>				         
-					            	<td>└ A</td>
-					            	<td>└ <%=qalist.get(i).getTitle()%></td>
+					            	<td><span style="margin-right: 26px;"></span>└ A</td>
+					            	<td class="title_td" ><span style="margin-right: 8px;"></span>└ <%=qalist.get(i).getTitle()%></td>
 					            <%}else{ %>
 					            	<td>Q</td>
-					            	<td><%=qalist.get(i).getTitle()%></td>
+					            	<td class="title_td" ><%=qalist.get(i).getTitle()%></td>
 					            <%} %>	
-						            <td><%=qalist.get(i).getId()%></td>	<!-- 수정중  -->
+						            <td><%=qalist.get(i).getId()%></td>	
 					            	<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>						           
 					        </tr>
 					        <tr style="display: none">					  
-					            <td colspan="3">             
-					            <label>제목:</label><h4><%=qalist.get(i).getTitle()%></h4>
-								<label>내용:</label><%=qalist.get(i).getContent() %>
-									<%if((!qalist.get(i).getTitle().equals("관리자 답변입니다.")) && (mem.getAuth() == 2)){%>
-										<%
-										allref2.set(i,-2);
-										if(!allref2.contains(qalist.get(i).getRef())){ %>					
-							 				<span><a href="ansWrite.do?ref=<%=qalist.get(i).getRef()%>&g_code=<%=qalist.get(i).getG_code()%>&secret=<%=qalist.get(i).getSecret()%>">답변 버튼위치</a></span>
-					               		<%} %>
-					               <%} %>
-					               	<%if(!qalist.get(i).getTitle().equals("관리자 답변입니다.") && (mem.getId().equals(qalist.get(i).getId()) || mem.getAuth() == 2)) {%>
-					            		<span><a href="delete.do?ref=<%=qalist.get(i).getRef()%>">삭제 버튼위치</a></span>
-					            	<%} %>
-					            	<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.") && mem.getAuth() == 2){ %>
-					            		<span><a href="ansDelete.do?seq=<%=qalist.get(i).getSeq()%>">답변삭제 버튼위치</a></span>
-					            	<%} %>   
+					            <td colspan="4">   
+						            <div style="border-bottom: 1px solid gray;">	          
+						            	<h4 align="center"><%=qalist.get(i).getTitle()%></h4>
+						            </div>
+						            <div style="border-bottom: 1px solid gray; text-align: left !important; padding: 10px;">
+						            	게시일:<%=qalist.get(i).getWdate().substring(0, 16) %><br>
+						            	작성자:<%=qalist.get(i).getId()%>
+						            </div>
+						            <div style="text-align: left !important; padding: 30px;">
+										<label>내용:</label><%=qalist.get(i).getContent() %>
+									</div>
+										<div align="right">
+										<%if((!qalist.get(i).getTitle().equals("관리자 답변입니다.")) && (mem.getAuth() == 2)){%>
+											<%
+											allref2.set(i,-2);
+											if(!allref2.contains(qalist.get(i).getRef())){ %>					
+								 				<a href="ansWrite.do?ref=<%=qalist.get(i).getRef()%>&g_code=<%=qalist.get(i).getG_code()%>&secret=<%=qalist.get(i).getSecret()%>">답변 <span style="margin-right: 7px"></span> </a>
+						               		<%} %>
+						               <%} %>
+						               	<%if(!qalist.get(i).getTitle().equals("관리자 답변입니다.") && (mem.getId().equals(qalist.get(i).getId()) || mem.getAuth() == 2)) {%>
+						            		<a href="delete.do?ref=<%=qalist.get(i).getRef()%>">삭제</a>
+						            	<%} %>
+						            	</div>
+						            	<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.") && mem.getAuth() == 2){ %>
+						            		<div align="right"><a href="ansDelete.do?seq=<%=qalist.get(i).getSeq()%>">삭제</a></div>
+						            	<%} %>   
 					            </td>					           
 					        </tr>
 							
 						<%}else if(qalist.get(i).getSecret() == 1){ %><!-- 비공개글  --> 
 							<tr class="odd">						
-							<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>							
-								<td>A</td>
+							<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>
+								<td><span style="margin-right: 26px;"></span> └ A</td>
+								<td class="title_td" ><span style="margin-right: 8px;"></span>└ 비공개글 답변입니다.</td>
 							<%}else{ %>
 								<td>Q</td>
-								<%} %>
-							<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>	
-								<td>비공개글 답변입니다.</td>
-							<%}else{ %>
-								<td>비공개 글입니다.</td>
-							<%} %>
+								<td class="title_td" >비공개 글입니다.</td>
+								<%} %>						
 								<td><%=qalist.get(i).getId() %></td>
+								<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>
 							</tr>
 							<tr>
 							</tr>
@@ -142,7 +164,7 @@ if(session.getAttribute("login") != null){
 					%>			
 		<%} else {%>	
 			<tr>
-				<th>번호</th>
+				<th>구분</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>게시일</th>
@@ -167,17 +189,16 @@ if(session.getAttribute("login") != null){
 	<%if(mem.getAuth() == 0){ %>
 		<a href="qaWrite.do">글쓰기</a>
 	<%}else if(mem.getAuth() == 2){ %>
-		<a href="qaAdminWrite.do">공지사항등록</a>
-	<%} %>
-
+		<div align="right" style="width: 100%"><a href="qaAdminWrite.do">공지사항등록</a></div>
+	<%} %>	
 </div>
     
 <script>
     $(function(){
 
         $("#report tr:odd").addClass("odd");      
-        $("#report tr:first-child").show(); //열머리글 보여주기 
-
+        /* $("#report tr:first-child").show(); */ //열머리글 보여주기 
+        
         $("#report tr.odd").click(function(){
         	
             $(this).next("tr").toggle();
