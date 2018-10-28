@@ -112,7 +112,6 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
   	 SELECT * FROM MEMBER WHERE id=#{id}
   </select>
 
-
   <select id="selectGoods" parameterType="String"  resultType="com.kh.finalPJ.goods.goodsDto">
   	 SELECT * FROM GOODS WHERE g_code=#{g_code}
   </select>

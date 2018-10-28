@@ -171,18 +171,23 @@ public class goodsController {
 	}
 
 	@RequestMapping(value = "order.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String order(Model model, orderedDto ordered) throws Exception {
-		String id = ordered.getId();
-		String g_code = ordered.getG_code();
+	public String order(Model model,String id, String data) throws Exception {
 
+		String splitData[] = data.split("/");
 		memberDto member = goodsService.selectMember(id);
-		goodsDto goods = goodsService.selectGoods(g_code);
-
 		List<goodsDto> goodsList = new ArrayList<>();
-		goodsList.add(goods);
 		List<orderedDto> orderList = new ArrayList<>();
-		orderList.add(ordered);
-
+		
+		for (String str : splitData) {
+			String singleData[] = str.split(",");
+			
+			goodsDto goods = goodsService.selectGoods(singleData[0]);
+			orderedDto ordered=new orderedDto(id,singleData[0],singleData[1],singleData[2],singleData[3]);
+			
+			goodsList.add(goods);
+			orderList.add(ordered);
+		}
+	
 		model.addAttribute("member", member);
 		model.addAttribute("goodsList", goodsList);
 		model.addAttribute("orderList", orderList);
