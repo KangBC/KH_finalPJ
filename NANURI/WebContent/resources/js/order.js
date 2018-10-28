@@ -20,7 +20,19 @@ $("document").ready(function() {
 	});
 	
 	$("#iamport_module").click(function () {
-		if(checkInput()){
+		var data = $("#data").val();
+		alert(data);
+		location.href="orderAf.do?data="+data;
+		/*		var dataList = new Array();
+
+		var data = new Object();
+		data.id = $("#buyer").val();
+		data.order_num = $("#merchant_uid").val();
+		dataList.push(data);
+		
+		var jsonData = JSON.stringify(dataList);
+		alert(jsonData);*/
+		/*if(checkInput()){
 			alert($("#merchant_uid").val());
 	      var IMP = window.IMP; // 생략가능
 	      IMP.init('iamport'); 
@@ -52,7 +64,7 @@ $("document").ready(function() {
 	        }
 	        alert(msg);
 	      });
-		}
+		}*/
 	});
 });
 

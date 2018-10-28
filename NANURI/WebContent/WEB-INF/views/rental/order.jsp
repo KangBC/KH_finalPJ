@@ -34,7 +34,7 @@
     var= "conn"/>
     
 <c:set var="now" value="<%=new java.util.Date()%>" />
-<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set>
+<c:set var="today"><fmt:formatDate value="${now}" pattern="yyMMdd" /></c:set>
 
 <sql:query sql="select SEQ_R_STATUS.nextval from dual" var="getseq" dataSource="${conn}" />
 <c:forEach var="seqobj" items="${getseq.rowsByIndex}">
@@ -42,7 +42,7 @@
 </c:forEach>
    
 <c:set var="merchant_uid" value="S${today}${seq}"/>
-<input id="merchant_uid" type="hidden" value="merchant_uid">
+<input id="merchant_uid" type="hidden" value="${merchant_uid}">
 
 <!-- 주문 정보 -->
 <div class="startdiv">
@@ -90,9 +90,11 @@
 					<td>${orderList[status.index].month}</td>
 					<td>${price_one}</td>
 				</tr>
+				<c:set var="data" value="${data}${item.g_code},${member.id},${orderList[status.index].amount},${orderList[status.index].month},${price_one},${merchant_uid}/"/>
 			</c:forEach>
 			</tbody>
 		</table>
+		<input id="data" type="hidden" value='${data}' >
 		<input id="total_price" type="hidden" value='${total}' >
 	</div>
 	<br>
@@ -148,7 +150,6 @@
 		</table>
 		</div>
 	</div>
-
 
 	<button id="iamport_module" type="button">결제하기</button>
 </div>

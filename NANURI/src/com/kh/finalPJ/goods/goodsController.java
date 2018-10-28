@@ -1,6 +1,9 @@
 package com.kh.finalPJ.goods;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,12 +15,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.finalPJ.common.orderedDto;
+import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
@@ -186,9 +189,44 @@ public class goodsController {
 		return "order.tiles";
 	}
 
-	@ResponseBody
 	@RequestMapping(value = "orderAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String orderAf(Model model, @RequestBody Map<String, Object> map) throws Exception {
+	public String orderAf(Model model, String data) throws Exception {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yy/MM/dd");
+		Date today = new Date();
+		
+		System.out.println(data);
+		String splitData[] = data.split("/");
+
+		List<RStatusDto> dtoList = new ArrayList<>();
+		for(int i = 0; i< splitData.length; i++) {
+			String dtoData[] = splitData[i].split(",");
+			
+			String s_date = transFormat.format(today);
+			String e_date="";
+
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(new Date());
+		    cal.add(Calendar.MONTH, Integer.parseInt(dtoData[3]));
+		    e_date = transFormat.format(cal.getTime());
+			
+		    RStatusDto R_Status = new RStatusDto();
+		    R_Status.setG_code(dtoData[0]);
+		    R_Status.setId(dtoData[1]);
+		    R_Status.setAmount(Integer.parseInt(dtoData[2]));
+		    R_Status.setS_date(s_date);
+		    R_Status.setE_date(e_date);
+		    R_Status.setTotal_price(Integer.parseInt(dtoData[4]));
+		    R_Status.setOrder_num(dtoData[5]);
+		    
+			dtoList.add(R_Status);
+		}
+		
+		if(goodsService.RStatusInsert(dtoList)) {
+			System.out.println("성공!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}else {
+			System.out.println("실.....패............");
+		}
+		
 		return null;
 	}
 
