@@ -185,7 +185,6 @@ public class goodsDaoImpl implements goodsDao {
 
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
 
-
 		return list;
 	}
 

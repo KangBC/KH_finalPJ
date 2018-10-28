@@ -233,7 +233,7 @@ public class goodsController {
 			
 			String title = req.getParameter("title");
 
-
+			
 
 			List<goodsBbsDto> list = goodsService.headselectajax(title);
 
