@@ -30,34 +30,7 @@
 
 <div class="page-b" >
 
-	<div class="selectbox">
-		<!-- 
-		<span class="check_c">
-		<input type="checkbox" id="ck1" name="goodsname" value="R_DATE">
-		<label for="ck1">최신순</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck4" name="goodsname" value="G_PRICE" >
-		<label for="ck4">낮은가격순</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck2" name="goodsname" value="SEQ">
-		<label for="ck2">조회순</label>
-		</span>
-		<span class="check_c">
-		<input type="checkbox" id="ck3" name="goodsname" value="STARDOT" >
-		<label for="ck3">별점순</label>
-		</span>
-		 -->
-		<span class="check_c">
-		
-		</span>
-		
-		<!-- <button onclick="ck_btn()">제발좀 ㅡㅡ</button> -->
-		
 	
-		
-	</div>
 
 <div class="goodsbox_h">
 
@@ -101,11 +74,9 @@
 	 
 	</div>
 
-
-	<div>
-	
-	
-		<button onclick="indexup()" id="pageingbtn" style="display: none;">눌러눌러</button>
+	<!-- 더보기 btn -->
+	<div style="    text-align: center;">
+		<button onclick="indexup()" id="pageingbtn" style="display: none;">+ 더보기</button>
 	</div>
 
 

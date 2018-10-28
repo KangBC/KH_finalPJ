@@ -8,19 +8,19 @@
 	<div style="margin:  0 auto; width: 980px;display: table;">
 		<div class="heder_top_login" >
 			<ul>
-				<li><a href="main.do">HOME</a></li>
+				<li><a href="main.do"><i class="fas fa-home mr-5"></i>HOME</a></li>
 				<c:choose>
 					<c:when test="${login.auth eq 0}">
-						<li class="my"><a href="mypage.do">마이페이지</a></li>
-						<li><a href="logout.do">로그아웃</a></li>
+						<li class="my"><a href="mypage.do"><i class="fas fa-user mr-5"></i></i>마이페이지</a></li>
+						<li><a href="logout.do"><i class="fas fa-sign-out-alt mr-5"></i>로그아웃</a></li>
 					</c:when>
 					<c:when test="${login.auth eq 2}">
-						<li class="my"><a href="admin.do">관리자</a></li>
-						<li><a href="logout.do">로그아웃</a></li>
+						<li class="my"><a href="admin.do"><i class="fas fa-hammer mr-5"></i>관리자</a></li>
+						<li><a href="logout.do"><i class="fas fa-sign-out-alt mr-5"></i>로그아웃</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="login.do">로그인</a></li>
-						<li><a href="regi.do">회원가입</a></li>
+						<li><a href="login.do"><i class="fas fa-sign-in-alt mr-5"></i>로그인</a></li>
+						<li><a href="regi.do"><i class="fas fa-user-plus mr-5"></i>회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

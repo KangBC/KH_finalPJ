@@ -27,6 +27,36 @@
 		
 		<div style="margin: 0 auto; width: 80%; border-bottom: 1px solid #ddd"></div>
 		
+		<div class="left_content">
+			<ul>
+				<li>
+					<a href="mypage.do">
+					<i class="fas fa-user"></i>
+					<span>마이쇼핑</span>
+					</a>
+				</li>
+				<li>
+				    <a href="basketList.do">
+					<i class="fas fa-shopping-cart"></i>
+					<span>장바구니</span>
+					</a>
+				</li>
+				<li>
+					<a href="reviewlist.do">
+					<i class="fas fa-file"></i>
+					<span>리뷰</span>
+					</a>
+				</li>
+				<li>
+					<a href="qnalist.do">
+					<i class="fas fa-quran"></i>
+					<span>Q&A</span>
+					</a>
+				</li>
+			</ul>
+			
+		</div>
+		
 	</div>
 	
 	<div class="left_middle">
