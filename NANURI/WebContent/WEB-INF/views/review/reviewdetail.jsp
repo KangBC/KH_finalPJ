@@ -32,11 +32,11 @@ if(mem==null){
 <!-- 이미지 -->
 <div class="goods_img11"><img alt="" src="resources/img/main_img/<%=dto.getG_img()%>" width="100%"> </div>
 
-<div class="top_right" style="padding-left: 180px; padding-top: 180px; padding-bottom: 10px">
+<div class="top_right" style="padding-left: 170px; padding-top: 20px; padding-bottom: 35px">
 <ul>
-	<li>아이디: <%=dto.getId() %></li>
-	<li>제목: <%=dto.getTitle() %></li>
-	<li>작성일:<%=dto.getWdate().substring(0,16) %></li>
+	<li>아이디: <%=dto.getId() %> | <%=dto.getWdate().substring(0,16) %></li>
+	
+	<li></li>
 
 	<!-- 별점 -->
 		<div class="starRev">
@@ -68,10 +68,12 @@ if(mem==null){
 	</div>
 		<h5>&nbsp;&nbsp;<%=dto.getRating() %>점</h5>
 	<!-- 별점  끝-->
+	
+	<li style="font-size: 20px; font-weight: bold;">제목: <%=dto.getTitle() %></li>
 </ul>
 </div>
 <!-- 만약 textarea처럼 나타내고 싶은 경우 -->
-	<div id="content" class="reviewcontent" name="content" style="border:1px solid; width:766px;" ></div>
+	<div id="content" class="reviewcontent" name="content" style=" width:800px; overflow: scroll; height: 500px;" ></div>
 	<div align="right" style="width:766px;">
 		<%
             if (mem.getId().equals(dto.getId()) ) {
