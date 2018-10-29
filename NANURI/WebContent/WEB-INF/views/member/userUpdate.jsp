@@ -15,7 +15,8 @@
 
 			<!-- left bar -->
 			<div style="width: 220px;">
-				<div style="margin-top: 70px; border: 1px solid; margin-right: 30px">
+				<div
+					style="margin-top: 70px; border: 1px solid #CCCCCC; margin-right: 30px;">
 					<jsp:include page="mypage_leftbar.jsp" />
 				</div>
 			</div>
@@ -25,10 +26,8 @@
 
 				<!-- main head -->
 				<div class="row"
-					style="border-bottom: 3px solid; padding-bottom: 10px">
-					<div class="col-md-8">
-						<h1>회원정보 수정</h1>
-					</div>
+					style="border-bottom: 1px solid #CCCCCC; padding-bottom: 10px; margin-bottom: 10px">
+					<div class="col-md-8"></div>
 					<div class="col-md-4" style="text-align: right; padding-top: 15px">
 						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a> > <a
 							href="userUpdate.do">회원정보 수정</a>
@@ -37,11 +36,11 @@
 
 				<!-- main view -->
 				<!-- Login_Box -->
-				<div class="card">
+				<div class="card" style="margin-left: 10%; margin-right: 10%">
 
 					<!-- Card body -->
-					<div class="card-body "
-						style="padding: 25%; padding-top: 5%; padding-bottom: 5%">
+					<div class="card-body"
+						style="padding: 15%; padding-top: 5%; padding-bottom: 5%">
 
 						<!-- id -->
 						<div class="md-form row" style="margin-bottom: 0px">
@@ -149,7 +148,7 @@
 							</div>
 							<div class="col-md-4">
 								<button type="button"
-									class="btn btn-outline-default waves-effect"
+									class="btn btn-outline-secondary waves-effect px-3"
 									onclick="sample6_execDaumPostcode()">
 									<i class="fa fa-search" aria-hidden="true"></i> 주소찾기
 								</button>
@@ -170,7 +169,9 @@
 
 						<!-- Sign up -->
 						<div class="text-center py-4 mt-3">
-							<button type="button" class="btn btn-primary" onclick="regiAf()">수정하기</button>
+							<button type="button"
+								class="btn btn-outline-secondary waves-effect px-3"
+								onclick="regiAf()">수정하기</button>
 						</div>
 
 					</div>

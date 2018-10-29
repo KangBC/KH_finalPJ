@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalPJ.qa.qaDto;
+import com.kh.finalPJ.review.reviewDto;
 
 @Repository
 public class memberDaoImpl implements memberDao {
@@ -104,6 +105,11 @@ public class memberDaoImpl implements memberDao {
 	@Override
 	public List<qaDto> getAdminQaList() throws Exception {
 		return sqlsession.selectList(namespace + "getAdminQaList");
+	}
+
+	@Override
+	public List<reviewDto> getMyReviewList(String id) throws Exception {
+		return sqlsession.selectList(namespace + "getMyReviewList", id);
 	}
 
 }
