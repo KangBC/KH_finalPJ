@@ -100,7 +100,13 @@
 	</select>
 
 	<select id="getAdminQaList" resultType="com.kh.finalPJ.qa.qaDto">
-		SELECT * FROM QA WHERE ID='admin' AND DEL=0
+		SELECT * FROM QA WHERE
+		ID='admin' AND DEL=0
+	</select>
+
+	<select id="getMyReviewList" parameterType="String"
+		resultType="com.kh.finalPJ.review.reviewDto">
+		SELECT * FROM REVIEW WHERE ID=#{id} ORDER BY WDATE DESC
 	</select>
 
 </mapper>
