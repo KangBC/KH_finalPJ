@@ -22,6 +22,70 @@
 <script type="text/javascript" src="resources/js/order.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
+<style type="text/css">
+
+.tit {
+	font-size: 16px;
+	font-weight: bold;
+	color: #222222;
+	line-height: normal;
+}
+
+.goodsInfoContainer td{
+	padding:20px 20px 20px 20px; 
+	heigth: 120px;
+}
+.goodsInfoContainer img{
+	width: 90px;
+	height: 90px;
+}
+
+.receiptContainer label{
+	margin: 0px;
+	width: 130px;
+	height: 36px;
+}
+.receiptContainer input{
+	height:36px;
+}
+.receiptContainer #phone_f{
+	margin-right:5px;
+	height:36px;
+	width: 60px;
+}
+.receiptContainer #phone_m{
+	margin-left:5px;
+	margin-right:5px;
+	padding: 4px 15px 5px 15px;
+	width: 95px;
+}
+.receiptContainer #phone_b{
+	margin-left:5px;
+	margin-right:5px;
+	padding: 4px 15px 5px 15px;
+	width: 95px;
+}
+.receiptContainer #recipient{
+	padding: 4px 15px 5px 15px;
+	width: 174px;
+}
+.receiptContainer #address_num{
+	padding: 4px 15px 5px 15px;
+	width: 174px;
+}
+.receiptContainer #address_main{
+	margin-left: 133px;
+	padding: 4px 15px 5px 15px;
+	width: 380px;
+}
+.receiptContainer #address_detail{
+	margin-left: 10px;
+	padding: 4px 15px 5px 15px;
+	width: 260px;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -46,8 +110,8 @@
 
 <!-- 주문 정보 -->
 <div class="startdiv">
+	<div class="tit">주문자 정보</div>
 	<div>
-		<h3>주문자 정보</h3> 
 		<div>
 	  	<ul style="height: 70px; border: 1px solid #dddddd; background: #f8f8f8; padding: 20px; ">
 	    	<li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>주문자</b> ${member.name}</li>
@@ -67,9 +131,17 @@
 	<br>
 
 	
-	<div>	
-		<h3>상품 정보</h3>
+	<div class="tit">주문상품 <span class="num">(${fn:length(goodsList)}개)</span></div>
+	<div class="goodsInfoContainer">	
 		<table cellspacing="0" border="1" style="border-collapse:collapse; border:1px gray solid">
+			<colgroup>
+			<!-- 임시 -->
+				<col width="130px">
+				<col width="450px">
+				<col width="80px">
+				<col width="270px">
+				<col width="150px">
+			</colgroup>
 			<thead>
 				<tr>
 					<th>상품 이미지</th>					
@@ -100,8 +172,8 @@
 	<br>
 	
 	
-	<div>
-		<h3 style="display: inline;">배송지 정보 </h3> 
+	<div class="tit">배송지 정보</div>
+	<div class="receiptContainer">
 		<input id="copy" type="checkbox"><label for="copy">주문자와 동일</label><br>
 		<label for="recipient">수령인</label>
 		<input id="recipient" type="text"> <br>		
@@ -118,9 +190,9 @@
 		<input id="phone_m" type="text" value="">-<input id="phone_b" type="text" value="">
 		</div>
 		<br>
-		<label for="address_container">주소</label>	
 		<div id="address_container">
 			<input type="hidden" name="address" id="address" value="">					
+			<label>주소</label>	
 			<input type="text" id="address_num" name="address_num" placeholder="Address Number"	readonly="readonly" >					
 			<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
 			<br>
@@ -131,9 +203,8 @@
 		<br>
 	</div>
 	
+	<div class="tit">결제 정보</div>
 	<div>
-		<div>
-		<h3>3.결제정보입력</h3>
 		<table cellspacing="0" border="1"  style="border-collapse:collapse; border:1px gray solid">			
 			<tbody>
 				<tr>
@@ -148,7 +219,6 @@
 				</tr>
 			</tbody>
 		</table>
-		</div>
 	</div>
 
 	<button id="iamport_module" type="button">결제하기</button>
