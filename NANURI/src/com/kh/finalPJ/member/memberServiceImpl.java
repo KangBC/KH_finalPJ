@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.finalPJ.qa.qaDto;
+import com.kh.finalPJ.review.reviewDto;
 
 @Service
 public class memberServiceImpl implements memberService {
@@ -92,6 +93,11 @@ public class memberServiceImpl implements memberService {
 	@Override
 	public List<qaDto> getAdminQaList() throws Exception {
 		return memberdao.getAdminQaList();
+	}
+
+	@Override
+	public List<reviewDto> getMyReviewList(String id) throws Exception {
+		return memberdao.getMyReviewList(id);
 	}
 
 }

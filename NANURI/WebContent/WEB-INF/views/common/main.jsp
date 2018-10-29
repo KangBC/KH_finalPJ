@@ -1,34 +1,15 @@
+<%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<style>
+<%
 
-  .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
+List<goodsBbsDto> readbbs = (List<goodsBbsDto>)request.getAttribute("readbbs");
+List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
-
-</style>
+%>
 
 
 
@@ -48,7 +29,7 @@
 <div class="startdiv" style="display: table;">
 
 	<div class="maintop">
-		<h1 class="maintop_title">요즘잘나가요</h1>
+		<h1 class="maintop_title">조회수가 높은</h1>
 		<hr>
 		<div class="main_goods_box">
 		
@@ -58,56 +39,43 @@
  <div class="swiper-container swiper1">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+      
+      <%
+      // 데이터가 4개이상일때
+      if(readbbs.size() > 2){
+      for(int i = 0; i < 4; i++){
+      
+      %>
+			<a href="goodsdetail.do?seq="<%=readbbs.get(i).getSeq() %> class="goods">
 			<div class="goods_img">
 			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
+			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
+			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
 			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
+		
+		<%
+      }
+      }
+		%>
 		</div>
       <div class="swiper-slide">
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
+	 <%
+	 // 데이터가 8개이상일때
+	  if(readbbs.size() > 6){
+      for(int i = 4; i < 8; i++){
+      
+      %>
+			<a href="goodsdetail.do?seq="<%=readbbs.get(i).getSeq() %> class="goods">
 			<div class="goods_img">
 			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
+			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
+			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
 			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
-			<a href="goodsdetail.do?seq=1&amp;g_code=BC1111" class="goods">
-			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
-			<p class="goods_title">하하하하하</p>
-			<p class="goods_price">₩ 55000</p>
-			</a>
+		
+		<%
+      }
+	  }
+		%>
 		</div>
     </div>
 
@@ -123,31 +91,58 @@
 		<h1 class="maintop_title">최신상품</h1>
 		<hr>
 		<div>
-			<div style="float: left; width: 525px; height: 600px; border: 1px solid;    margin-right: 42px;"></div>
-			<div style="float: left; width: 525px;; height: 600px; border: 1px solid; position: relative;">
+			<div class="new_datebox" >
+				
+			</div>
+			<div class="new_dateboxlist" >
 				
 				
 				<div class="swiper-container swiper2">
 				    <div class="swiper-wrapper">
 				      <div class="swiper-slide grid_box">
+				      
+				        <%
+					      // 데이터가 4개이상일때
+					      if(datedds.size() > 2){
+					      for(int i = 0; i < 4; i++){
+					      
+					      %>
+				      
 							<div class="grid_goods">
 								<div>
-								<img alt="" src="" width="100%">
+								<img alt="" src="resources/img/download.png" width="100%">
 								</div>
 								<span>
-									<p>예뗴예뗴</p>
-									<span>예뗴</span>
+									<p><%=datedds.get(i).getTitle() %></p>
+									<span><%=datedds.get(i).getG_price() %></span>
 								</span>
 							</div>
-							<div></div>
-							<div></div>
-							<div></div>
+						<%
+					      }
+					      }
+						%>
 					  </div>
 				      <div class="swiper-slide grid_box">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+							 <%
+					      // 데이터가 8개이상일때
+					      if(datedds.size() > 6){
+					      for(int i = 4; i < 8; i++){
+					      
+					      %>
+				      
+							<div class="grid_goods">
+								<div>
+								<img alt="" src="resources/img/download.png" width="100%">
+								</div>
+								<span>
+									<p><%=datedds.get(i).getTitle() %></p>
+									<span><%=datedds.get(i).getG_price() %></span>
+								</span>
+							</div>
+						<%
+					      }
+					      }
+						%>
 					  </div>
 				    </div>
 				
@@ -179,6 +174,60 @@
 
 <h1 class="maintop_title">요즘잘나가요</h1>
 <hr>
+
+<div style="display: table;">
+	<div class="grid_goods_big">
+		<div>
+			<img alt="" src="resources/img/download.png" width="100%">
+		</div>
+		<span>
+			<p>title</p>
+			<span>price</span>
+		</span>
+		</div>	
+		<div class="grid_goods_big">
+		<div>
+			<img alt="" src="resources/img/download.png" width="100%">
+		</div>
+		<span>
+			<p>title</p>
+			<span>price</span>
+		</span>
+		</div>
+		<div class="grid_goods_big">
+		<div>
+			<img alt="" src="resources/img/download.png" width="100%">
+		</div>
+		<span>
+			<p>title</p>
+			<span>price</span>
+		</span>
+		</div>						
+</div>
+
+<div>
+	<div style="display: table;">
+	<%
+	 for(int i = 0; i < 5; i++){
+					      
+					      %>
+	<div class="grid_goods_small">
+		<div>
+			<img alt="" src="resources/img/download.png" width="100%">
+		</div>
+		<span>
+			<p>title</p>
+			<span>price</span>
+		</span>
+		</div>	
+		
+	<%
+	 }
+	%>
+		
+		</div>
+
+</div>
 
 
 </div>

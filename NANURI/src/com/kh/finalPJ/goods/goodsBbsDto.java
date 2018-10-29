@@ -48,6 +48,22 @@ public class goodsBbsDto implements Serializable {
 	
 	
 
+	public goodsBbsDto(int seq, String g_code, String title, String content, String r_date, int g_price, int readcount,
+			String g_img) {
+		super();
+		this.seq = seq;
+		this.g_code = g_code;
+		this.title = title;
+		this.content = content;
+		this.r_date = r_date;
+		this.g_price = g_price;
+		this.readcount = readcount;
+		this.g_img = g_img;
+	}
+
+
+
+
 	public goodsBbsDto(int seq, String g_code, String title, String content, String r_date, int g_price, String g_img) {
 		super();
 		this.seq = seq;

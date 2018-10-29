@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.finalPJ.qa.qaDto;
+import com.kh.finalPJ.review.reviewDto;
 
 @Controller
 public class memberController {
@@ -105,7 +106,9 @@ public class memberController {
 		} else {
 			int orderCnt = memberservice.getOrderCount(mem.getId());
 			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<reviewDto> DummyReviewList = memberservice.getMyReviewList(mem.getId());
 			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<reviewDto> reviewList = new ArrayList<>();
 			List<qaDto> qaList = new ArrayList<>();
 			if (DummyqaList.size() > 4) {
 				for (int i = 0; i < 4; i++) {
@@ -114,6 +117,14 @@ public class memberController {
 			} else {
 				qaList = DummyqaList;
 			}
+			if (DummyReviewList.size() > 2) {
+				for (int i = 0; i < 2; i++) {
+					reviewList.add(i, DummyReviewList.get(i));
+				}
+			} else {
+				reviewList = DummyReviewList;
+			}
+			model.addAttribute("reviewList", reviewList);
 			model.addAttribute("qaList", qaList);
 			model.addAttribute("orderCnt", orderCnt);
 			model.addAttribute("wishCnt", wishCnt);
@@ -153,11 +164,35 @@ public class memberController {
 	}
 
 	@RequestMapping(value = "secession.do", method = RequestMethod.GET)
-	public String secession(HttpServletRequest req) {
+	public String secession(HttpServletRequest req, Model model) throws Exception {
 		memberDto mem = (memberDto) req.getSession().getAttribute("login");
 		if (mem == null) {
 			return "redirect:login.do";
 		} else {
+			int orderCnt = memberservice.getOrderCount(mem.getId());
+			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<reviewDto> DummyReviewList = memberservice.getMyReviewList(mem.getId());
+			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<reviewDto> reviewList = new ArrayList<>();
+			List<qaDto> qaList = new ArrayList<>();
+			if (DummyqaList.size() > 4) {
+				for (int i = 0; i < 4; i++) {
+					qaList.add(i, DummyqaList.get(i));
+				}
+			} else {
+				qaList = DummyqaList;
+			}
+			if (DummyReviewList.size() > 2) {
+				for (int i = 0; i < 2; i++) {
+					reviewList.add(i, DummyReviewList.get(i));
+				}
+			} else {
+				reviewList = DummyReviewList;
+			}
+			model.addAttribute("reviewList", reviewList);
+			model.addAttribute("qaList", qaList);
+			model.addAttribute("orderCnt", orderCnt);
+			model.addAttribute("wishCnt", wishCnt);
 			return "secession.tiles";
 		}
 	}
@@ -184,7 +219,9 @@ public class memberController {
 		} else {
 			int orderCnt = memberservice.getOrderCount(mem.getId());
 			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<reviewDto> DummyReviewList = memberservice.getMyReviewList(mem.getId());
 			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<reviewDto> reviewList = new ArrayList<>();
 			List<qaDto> qaList = new ArrayList<>();
 			if (DummyqaList.size() > 4) {
 				for (int i = 0; i < 4; i++) {
@@ -193,6 +230,14 @@ public class memberController {
 			} else {
 				qaList = DummyqaList;
 			}
+			if (DummyReviewList.size() > 2) {
+				for (int i = 0; i < 2; i++) {
+					reviewList.add(i, DummyReviewList.get(i));
+				}
+			} else {
+				reviewList = DummyReviewList;
+			}
+			model.addAttribute("reviewList", reviewList);
 			model.addAttribute("qaList", qaList);
 			model.addAttribute("orderCnt", orderCnt);
 			model.addAttribute("wishCnt", wishCnt);
@@ -211,7 +256,9 @@ public class memberController {
 		} else {
 			int orderCnt = memberservice.getOrderCount(mem.getId());
 			int wishCnt = memberservice.getWishListCount(mem.getId());
+			List<reviewDto> DummyReviewList = memberservice.getMyReviewList(mem.getId());
 			List<qaDto> DummyqaList = memberservice.getAdminQaList();
+			List<reviewDto> reviewList = new ArrayList<>();
 			List<qaDto> qaList = new ArrayList<>();
 			if (DummyqaList.size() > 4) {
 				for (int i = 0; i < 4; i++) {
@@ -220,6 +267,14 @@ public class memberController {
 			} else {
 				qaList = DummyqaList;
 			}
+			if (DummyReviewList.size() > 2) {
+				for (int i = 0; i < 2; i++) {
+					reviewList.add(i, DummyReviewList.get(i));
+				}
+			} else {
+				reviewList = DummyReviewList;
+			}
+			model.addAttribute("reviewList", reviewList);
 			model.addAttribute("qaList", qaList);
 			model.addAttribute("orderCnt", orderCnt);
 			model.addAttribute("wishCnt", wishCnt);
@@ -307,5 +362,16 @@ public class memberController {
 			}
 		}
 		return map;
+	}
+
+	public List<Object> changeList(List<Object> Dummy, List<Object> list) {
+		if (Dummy.size() > 4) {
+			for (int i = 0; i < 4; i++) {
+				list.add(i, Dummy.get(i));
+			}
+		} else {
+			list = Dummy;
+		}
+		return list;
 	}
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
@@ -157,7 +158,9 @@ public class goodsDaoImpl implements goodsDao {
 		return list;
 	}
 
-
+	
+	
+	// START - BIT
 	@Override
 	public memberDto selectMember(String id) {
 		return sqlSession.selectOne(namespace + "selectMember",id);
@@ -168,23 +171,29 @@ public class goodsDaoImpl implements goodsDao {
 		return sqlSession.selectOne(namespace + "selectGoods",g_code);
 	}
 
-
-
-
+	@Override
+	public boolean RStatusInsert(List<RStatusDto> R_Status) {
+		boolean insertCk = true;
+		for (RStatusDto rStatusDto : R_Status) {
+			if(sqlSession.insert(namespace +"orderComplete", rStatusDto)<1){
+				insertCk = false;
+			}
+		}
+		return insertCk;
+	}
+	// END - BIT 
+	
+	
 	@Override
 	public List<goodsBbsDto> headselect(String title) {
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
 		return list;
 	}
 
-
-
-
 	@Override
 	public List<goodsBbsDto> headselectajax(String title) {
 
 		List<goodsBbsDto> list = sqlSession.selectList(namespace + "headselect",title);
-
 
 		return list;
 	}

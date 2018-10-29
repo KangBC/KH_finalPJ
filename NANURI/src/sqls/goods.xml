@@ -107,25 +107,28 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
     WHERE A.G_CODE LIKE #{division}|| '%'
   </select>
 
+<!-- START : BIT -->
   <select id="selectMember" parameterType="String"  resultType="com.kh.finalPJ.member.memberDto">
- 	 SELECT * FROM MEMBER WHERE id=#{id}
+  	 SELECT * FROM MEMBER WHERE id=#{id}
   </select>
-
 
   <select id="selectGoods" parameterType="String"  resultType="com.kh.finalPJ.goods.goodsDto">
- 	 SELECT * FROM GOODS WHERE g_code=#{g_code}
+  	 SELECT * FROM GOODS WHERE g_code=#{g_code}
   </select>
 
+  <insert id="orderComplete" parameterType="com.kh.finalPJ.member.RStatusDto">
+  	INSERT INTO R_STATUS
+  	VALUES(SEQ_R_STATUS.NEXTVAL, #{g_code}, #{id}, #{amount}, #{s_date}, #{e_date}, #{total_price}, #{order_num})
+  </insert>
+<!-- END : BIT -->
 
-
-<select id="headselect" parameterType="String" resultType="com.kh.finalPJ.goods.goodsBbsDto">
-
-	SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
+<select id="headselect" parameterType="String"  resultType="com.kh.finalPJ.goods.goodsBbsDto">
+ 	 SELECT A.SEQ,A.G_CODE,A.TITLE,A.CONTENT, A.R_DATE,B.G_PRICE , B.G_IMG
 	FROM R_BBS A
 	INNER JOIN GOODS B
     ON A.G_CODE = B.G_CODE
     WHERE A.TITLE LIKE #{title}|| '%'
+  </select>
 
-</select>
 
 </mapper>

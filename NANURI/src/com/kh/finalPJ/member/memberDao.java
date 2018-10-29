@@ -3,6 +3,7 @@ package com.kh.finalPJ.member;
 import java.util.List;
 
 import com.kh.finalPJ.qa.qaDto;
+import com.kh.finalPJ.review.reviewDto;
 
 public interface memberDao {
 
@@ -39,4 +40,6 @@ public interface memberDao {
 	Integer getWishListCount(String id) throws Exception;
 
 	List<qaDto> getAdminQaList() throws Exception;
+
+	List<reviewDto> getMyReviewList(String id) throws Exception;
 }

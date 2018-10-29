@@ -408,6 +408,7 @@ $("#basketbtn").click(function(){
 });
 $("#orderbtn").click(function(){
 	
+	
 	 // 로그인 id
 	var id = $("#loginid").attr('value'); 
 	// g_code
@@ -419,10 +420,12 @@ $("#orderbtn").click(function(){
 	// 총합가격
 	var resultnum = $("#resultnum").attr('value');
 
+	var data = gcode+","+amount+","+month+","+resultnum;
+	
 	if(id == "null"){
 		alert("로그인을 해주세요");
 	}else{
-		location.href = "order.do?id="+id+"&g_code="+gcode+"&month="+month+"&amount="+amount;
+		location.href = "order.do?id=" + id + "&data=" + data;
 	}      
 });
 

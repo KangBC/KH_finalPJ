@@ -1,32 +1,29 @@
 package com.kh.finalPJ.goods;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.finalPJ.common.orderedDto;
+import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
-import com.kh.finalPJ.member.memberService;
 import com.kh.finalPJ.review.reviewDto;
-
 
 @Controller
 public class goodsController {
@@ -36,21 +33,20 @@ public class goodsController {
 	goodsService goodsService;
 
 	// getList
-	@RequestMapping(value="rentallist.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String getList(Model model,HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "rentallist.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String getList(Model model, HttpServletRequest request) throws Exception {
 
 		List<goodsBbsDto> list = goodsService.getbbslength();
 
-		model.addAttribute("bbslist",list);
+		model.addAttribute("bbslist", list);
 
 		return "rentallist.tiles";
 
 	}
 
-
 	// goodsdetaile view
-	@RequestMapping(value="goodsdetail.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String goodsdetaile(Model model,int seq,String g_code,HttpServletRequest req) throws Exception{
+	@RequestMapping(value = "goodsdetail.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String goodsdetaile(Model model, int seq, String g_code, HttpServletRequest req) throws Exception {
 
 		// readcount
 		goodsService.readcount(seq);
@@ -59,15 +55,14 @@ public class goodsController {
 		// g_code 연결(rivew,qna)
 		List<reviewDto> code = goodsService.getreview_qna(g_code);
 
-
 		for (int i = 0; i < code.size(); i++) {
 			System.out.println(code.get(i));
 		}
 
 		System.out.println(g_code);
 
-		model.addAttribute("detail",dto);
-		model.addAttribute("reviewDto",code);
+		model.addAttribute("detail", dto);
+		model.addAttribute("reviewDto", code);
 		return "rentaldetaile.tiles";
 	}
 
@@ -80,49 +75,42 @@ public class goodsController {
 		String lists = req.getParameter("lists");
 		String category = req.getParameter("category");
 
-
 		System.out.println(category);
 		System.out.println(title);
 		System.out.println(lists);
 
 		Map<Object, Object> map = new HashMap<>();
 
-		List<goodsBbsDto> list = goodsService.findgoods(title,lists,category);
+		List<goodsBbsDto> list = goodsService.findgoods(title, lists, category);
 
 		map.put("list", list);
-
 
 		return map;
 
 	}
 
-	/*페이징 인덱스*/
+	/* 페이징 인덱스 */
 	@ResponseBody
 	@RequestMapping(value = "findlist.do", method = RequestMethod.POST)
 	public Map<Object, Object> findlist(HttpServletRequest req) throws Exception {
-
 
 		String startindex = req.getParameter("startindex");
 		String endindex = req.getParameter("endindex");
 		String category = req.getParameter("category");
 
-
-
-
-		List<goodsBbsDto> list = goodsService.getbbs(startindex,endindex,category);
+		List<goodsBbsDto> list = goodsService.getbbs(startindex, endindex, category);
 		Map<Object, Object> map = new HashMap<>();
 
 		map.put("list", list);
-
 
 		return map;
 
 	}
 
-	/*장바구니 insert*/
+	/* 장바구니 insert */
 	@ResponseBody
-	@RequestMapping(value="basketinsert.do",method = RequestMethod.POST)
-	public boolean basketinsert(Model model,HttpServletRequest req) throws Exception{
+	@RequestMapping(value = "basketinsert.do", method = RequestMethod.POST)
+	public boolean basketinsert(Model model, HttpServletRequest req) throws Exception {
 
 		String id = req.getParameter("id");
 		String g_code = req.getParameter("gcode");
@@ -130,10 +118,8 @@ public class goodsController {
 		int amount = (Integer.parseInt(req.getParameter("amount")));
 		int resultnum = (Integer.parseInt(req.getParameter("resultnum")));
 
-
-
-
-		//System.out.println(resultnum + "ddddddddddddddddddddddddddddddddddddddddddd");
+		// System.out.println(resultnum +
+		// "ddddddddddddddddddddddddddddddddddddddddddd");
 
 		basketDto dto = new basketDto();
 		dto.setId(id);
@@ -146,106 +132,139 @@ public class goodsController {
 
 		return goodsService.basketinsert(dto);
 
-
-
 	}
 
-	/*카테고리*/
-	@RequestMapping(value="rental_category.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String rental_category(Model model,String division) throws Exception{
-
+	/* 카테고리 */
+	@RequestMapping(value = "rental_category.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String rental_category(Model model, String division) throws Exception {
 
 		List<goodsBbsDto> list = null;
 		String title = null;
 		// 유아
-		if(division.equals("AC")) {
+		if (division.equals("AC")) {
 			list = goodsService.getbbscategory(division);
 			title = "유아동";
 		}
 		// 레저
-		else if(division.equals("BC")) {
+		else if (division.equals("BC")) {
 			list = goodsService.getbbscategory(division);
 			title = "레저";
 		}
 		// 패션
-		else if(division.equals("CC")) {
+		else if (division.equals("CC")) {
 			list = goodsService.getbbscategory(division);
 			title = "패션";
 		}
 		// 리빙
-		else if(division.equals("DC")) {
+		else if (division.equals("DC")) {
 			list = goodsService.getbbscategory(division);
 			title = "리빙";
 		}
 
 		System.out.println(list.size());
 
-		model.addAttribute("title",title);
-		model.addAttribute("bbslist",list);
+		model.addAttribute("title", title);
+		model.addAttribute("bbslist", list);
 
 		return "rentallist.tiles";
 
 	}
 
+	@RequestMapping(value = "order.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String order(Model model,String id, String data) throws Exception {
 
-	@RequestMapping(value="order.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String order(Model model,orderedDto ordered) throws Exception{
-		String id = ordered.getId();
-		String g_code = ordered.getG_code();
-
+		String splitData[] = data.split("/");
 		memberDto member = goodsService.selectMember(id);
-		goodsDto goods = goodsService.selectGoods(g_code);
-
-		System.out.println(member.getId() + "00000000000000000000000000000000000000");
-		System.out.println(goods.getG_code() + "00000000000000000000000000000000000000");
-
 		List<goodsDto> goodsList = new ArrayList<>();
-		goodsList.add(goods);
 		List<orderedDto> orderList = new ArrayList<>();
-		orderList.add(ordered);
-
-		model.addAttribute("member",member);
-		model.addAttribute("goodsList",goodsList);
-		model.addAttribute("orderList",orderList);
+		
+		for (String str : splitData) {
+			String singleData[] = str.split(",");
+			
+			goodsDto goods = goodsService.selectGoods(singleData[0]);
+			orderedDto ordered=new orderedDto(id,singleData[0],singleData[1],singleData[2],singleData[3]);
+			
+			goodsList.add(goods);
+			orderList.add(ordered);
+		}
+	
+		model.addAttribute("member", member);
+		model.addAttribute("goodsList", goodsList);
+		model.addAttribute("orderList", orderList);
 		return "order.tiles";
 	}
 
-	// headselect
-		@RequestMapping(value="headselect.do",method = {RequestMethod.GET, RequestMethod.POST})
-		public String headselect(Model model,String title) throws Exception{
+	@RequestMapping(value = "orderAf.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String orderAf(Model model, String data) throws Exception {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yy/MM/dd");
+		Date today = new Date();
 
+		System.out.println(data);
+		String splitData[] = data.split("/");
 
-			List<goodsBbsDto> list = goodsService.headselect(title);
+		List<RStatusDto> dtoList = new ArrayList<>();
+		for(int i = 0; i< splitData.length; i++) {
+			String dtoData[] = splitData[i].split(",");
 
-			System.out.println(list.size());
+			String s_date = transFormat.format(today);
+			String e_date="";
 
-			String head = "검색 된 상품";
-			model.addAttribute("title",head);
-			model.addAttribute("bbslist",list);
-			return "rentallist_select.tiles";
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(new Date());
+		    cal.add(Calendar.MONTH, Integer.parseInt(dtoData[3]));
+		    e_date = transFormat.format(cal.getTime());
 
+		    RStatusDto R_Status = new RStatusDto();
+		    R_Status.setG_code(dtoData[0]);
+		    R_Status.setId(dtoData[1]);
+		    R_Status.setAmount(Integer.parseInt(dtoData[2]));
+		    R_Status.setS_date(s_date);
+		    R_Status.setE_date(e_date);
+		    R_Status.setTotal_price(Integer.parseInt(dtoData[4]));
+		    R_Status.setOrder_num(dtoData[5]);
+
+			dtoList.add(R_Status);
 		}
+
+		if(goodsService.RStatusInsert(dtoList)) {
+			System.out.println("성공!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}else {
+			System.out.println("실.....패............");
+		}
+
+		return null;
+	}
+
+	// headselect
+	@RequestMapping(value = "headselect.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String headselect(Model model, String title) throws Exception {
+
+		List<goodsBbsDto> list = goodsService.headselect(title);
+
+		System.out.println(list.size());
+
+		String head = "검색 된 상품";
+		model.addAttribute("title", head);
+		model.addAttribute("bbslist", list);
+		return "rentallist_select.tiles";
+
+	}
 
 	// headselectajax
-		@ResponseBody
-		@RequestMapping(value="headselectajax.do",method = RequestMethod.POST)
-		public Map<Object, Object> headselectajax(Model model,HttpServletRequest req) throws Exception{
-			
-			String title = req.getParameter("title");
+	@ResponseBody
+	@RequestMapping(value = "headselectajax.do", method = RequestMethod.POST)
+	public Map<Object, Object> headselectajax(Model model, HttpServletRequest req) throws Exception {
 
+		String title = req.getParameter("title");
 
+		List<goodsBbsDto> list = goodsService.headselectajax(title);
 
-			List<goodsBbsDto> list = goodsService.headselectajax(title);
+		System.out.println(list.size());
+		Map<Object, Object> map = new HashMap<>();
 
-			System.out.println(list.size());
-			Map<Object, Object> map = new HashMap<>();
+		map.put("list", list);
 
-			map.put("list", list);
-
-
-			return map;
-
-
-		}
+		return map;
+	}
 
 }

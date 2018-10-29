@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
@@ -72,7 +73,7 @@ public class goodsServiceImpl implements goodsService {
 	}
 
 
-
+	// START - BIT
 	@Override
 	public memberDto selectMember(String id) {
 		return goodsDao.selectMember(id);
@@ -82,6 +83,14 @@ public class goodsServiceImpl implements goodsService {
 	public goodsDto selectGoods(String g_code) {
 		return goodsDao.selectGoods(g_code);
 	}
+	
+	@Override
+	public boolean RStatusInsert(List<RStatusDto> R_Status) {
+		return goodsDao.RStatusInsert(R_Status);
+	}
+	// END - BIT
+
+
 	public List<goodsBbsDto> headselect(String title) throws Exception {
 		
 		return goodsDao.headselect(title);
