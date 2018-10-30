@@ -80,8 +80,30 @@
 		
 	
 		
+<div class="topbtn" style="">
+	
+</div>
+		
 	
 	<script type="text/javascript">
+	
+	
+	$( window ).scroll( function() {
+		if ( $( this ).scrollTop() > 80 ) {
+			$( ".topbtn" ).fadeIn();
+		} else {
+			$( ".topbtn" ).fadeOut();
+		}
+	} );
+	
+	//topbtn
+	$(".topbtn").click(function(){
+		 $('html, body').animate({
+	         scrollTop : 0
+	     }, 400);
+	});	
+
+	
 	
 	// 검색
 	//$(".head_select_btn").click(function(){

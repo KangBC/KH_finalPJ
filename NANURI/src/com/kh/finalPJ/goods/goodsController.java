@@ -54,16 +54,33 @@ public class goodsController {
 		goodsBbsDto dto = goodsService.getgoodsdetail(seq);
 		// g_code 연결(rivew,qna)
 		List<reviewDto> code = goodsService.getreview_qna(g_code);
-
-		for (int i = 0; i < code.size(); i++) {
-			System.out.println(code.get(i));
-		}
-
-		System.out.println(g_code);
+		
+		String title = null;
+		String category = dto.getG_code().substring(0, 2);
+		
+				// 유아
+				if (category.equals("AC")) {
+					title = "유아동";
+				}
+				// 레저
+				else if (category.equals("BC")) {
+					title = "레저";
+				}
+				// 패션
+				else if (category.equals("CC")) {
+					title = "패션";
+				}
+				// 리빙
+				else if (category.equals("DC")) {
+					title = "리빙";
+				}
 
 		model.addAttribute("detail", dto);
 		model.addAttribute("reviewDto", code);
+		model.addAttribute("title", title);
 		return "rentaldetaile.tiles";
+		
+		
 	}
 
 	/* 이름 + SELECTBOX 검색 */

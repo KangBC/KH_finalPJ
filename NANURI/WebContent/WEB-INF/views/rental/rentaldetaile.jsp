@@ -12,6 +12,7 @@
 
 
 	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
+	String title = (String)request.getAttribute("title");
 	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
 	
 	
@@ -34,7 +35,7 @@
 	<div class="detail_head">
 	
 		<p class="category">
-		[ 가전제품 ]
+		[ <%=title %> ]
 		</p>
 		
 		<p class="goods_title">
@@ -47,14 +48,13 @@
 		
 		<div class="top_box">
 			<div class="goods_img">
-			
+				<img alt="" src="resources/img/main_img/<%=bbslist.getG_img()%>" width="100%">
 			</div>
 		
 			<div class="goods_priceinfo">
 				<div class="price_box">
 					<ul>
-						<li>렌탈</li>
-						<li>₩ <%=bbslist.getG_price() %> / 월</li>
+						<li> ₩ <%=bbslist.getG_price() %> / 월</li>
 						<li>예상배송일</li>
 						<li>업체 배송(평균 2영업일 소요)</li>
 						<li>배송비</li>
@@ -241,10 +241,6 @@
 </div>
 
 
-<div class="topbtn" style="width: 10px; height: 10px; background-color: blue; position: fixed; bottom: 30; right: 30; cursor: pointer;	">
-	TOP
-</div>
-
 
 
 <!-- Modal -->
@@ -269,12 +265,6 @@
 <script type="text/javascript">
 
 
-//topbtn
-$(".topbtn").click(function(){
-	 $('html, body').animate({
-         scrollTop : 0
-     }, 400);
-});	
 
 // 옵션박스
 $(window).scroll(function(){
