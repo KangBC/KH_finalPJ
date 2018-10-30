@@ -35,8 +35,9 @@
 						<tbody>
 							<tr>
 								<th>아이디</th>
-								<td><input type="text" id="id" name="id"></td>
-								<td rowspan="2"><a href="javascript:loginAf()"><img
+								<td><input type="text" id="id" name="id"
+									onkeydown="javascript:onTabKey()"></td>
+								<td rowspan="2"><a id="login" href="javascript:loginAf()"><img
 										style="height: 75px" alt=""
 										src="https://user-images.githubusercontent.com/38531104/47544998-e216df80-d924-11e8-828b-4bfa34b9bfd3.png"></a></td>
 							</tr>
@@ -65,6 +66,13 @@
 		$(document).ready(function() {
 			$("#id").focus();
 		});
+
+		function onTabKey() {
+			var keyCode = window.event.keyCode;
+			if (keyCode == 9) {
+				$("#login").focus();
+			}
+		}
 
 		function onEnterSubmit() {
 			var keyCode = window.event.keyCode;
