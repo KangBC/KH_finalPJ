@@ -48,6 +48,18 @@ public class RStatusDto {
 
 	}
 
+	public RStatusDto(String g_code, String id, int amount, String s_date, String e_date, int total_price,
+			String order_num) {
+		super();
+		this.g_code = g_code;
+		this.id = id;
+		this.amount = amount;
+		this.s_date = s_date;
+		this.e_date = e_date;
+		this.total_price = total_price;
+		this.order_num = order_num;
+	}
+
 	public RStatusDto(int seq, String g_code, String g_img, String g_name, String id, int amount, String s_date,
 			String e_date, int total_price, String order_num) {
 		super();

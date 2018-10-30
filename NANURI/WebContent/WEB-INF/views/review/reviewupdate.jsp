@@ -4,86 +4,84 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
+<!-- smarteditor -->
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-<body>
 
 <%
 reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 %>
 
-<div align="center">
+<div class="startdiv">
 <form name="frmForm" id="_frmForm" action="reviewupdateAf.do" method="post">
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
 
-<table>
+<table class="_table">
 
-<colgroup>
-<col style="width:200px;" />
-<col style="width:auto;" />
-</colgroup>
-
+<th colspan="2" width="900px">
+</th>
 <tr>
-	<th>아이디</th>
+	<td>아이디</td>
 	<td>
-		<input type="text" name="id" readonly="readonly" value="<%=dto.getId() %>" size="50">
+		<input type="text" name="id" readonly="readonly" value="<%=dto.getId() %>" size="35">
 	</td>
 </tr>
-
 <tr>
-	<th>제목</th>
+	<td colspan="2" height="2" bgcolor="#542f82">
+</tr>
+<tr>
+	<td>제목</td>
 	<td>
-		<input type="text" name='title' value="<%=dto.getTitle() %>" size="50"/>
+		<input type="text" name='title' value="<%=dto.getTitle() %>" size="35"/>
 	</td>
+</tr>
+<tr>
+	<td colspan="2" height="2" bgcolor="#542f82">
 </tr>
 <!-- =======별이다======= -->
 <tr>
 	<th>별점</th>
 	<td class="starRev">
- 		 <span class="starR1">0.5</span>
- 		 <span class="starR2">1</span>
- 		 <span class="starR1">1.5</span>
+ 		 <span class="starR1">1</span>
  		 <span class="starR2">2</span>
- 		 <span class="starR1">2.5</span>
- 		 <span class="starR2">3</span>
- 		 <span class="starR1">3.5</span>
-		 <span class="starR2">4</span>
- 		 <span class="starR1">4.5</span>
- 		 <span class="starR2">5</span>
+ 		 <span class="starR1">3</span>
+ 		 <span class="starR2">4</span>
+ 		 <span class="starR1">5</span>
+ 		 <span class="starR2">6</span>
+ 		 <span class="starR1">7</span>
+		 <span class="starR2">8</span>
+ 		 <span class="starR1">9</span>
+ 		 <span class="starR2">10</span>
  		 <h5 id="grade">&nbsp;&nbsp;0</h5>
-	</td>
+	</td> 
 <tr>
+<tr>
+	<td colspan="2" height="2" bgcolor="#542f82">
+</tr>
 <input type="hidden" name="rating" id="rating" value="0">
-
 </table>
 
 <!-- 스마트에디터 & 확인 취소버튼 -->
-<table style="margin-top: 10px; background-color:white;">
-	<col style="width: 100px"><col style="width: 1000px">
-     
+<table>
+<col style="width: 100px"><col style="width: 1000px">  
 <tr>
-	<td colspan="2">
-		<textarea style="height: 600px; width: 1000px" name="content" id="content" ><%=dto.getContent() %></textarea>      
-	</td>
-        
+	<td>
+		<textarea style="height: 500px; width: 900px" name="content" id="content" ><%=dto.getContent() %></textarea>      
+	</td>        
 </tr>
-<tr style="height: 30px" align="center">
-	<td colspan="2">
-    	<input type="button" value="완료" id="savebutton">
-    	
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	
+<tr>
+	<td height="2" bgcolor="#542f82">
+</tr>
+
+<tr>
+	<td align="right"  style="width: 908px">
+    	<input type="button" value="완료" id="savebutton">   
         <input type="button" value="취소" onclick="location.href='reviewlist.do'">
     </td>
 </tr>
 </table>
-
 </form>
 </div>
-
 
 <script type="text/javascript">
 var oEditors = [];
@@ -139,6 +137,3 @@ $('.starRev span').click(function(){
 	  return false;
 });
 </script>
-
-</body>
-</html>

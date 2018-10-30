@@ -20,8 +20,8 @@ $("document").ready(function() {
 	});
 	
 	$("#iamport_module").click(function () {
+		
 		if(checkInput()){
-			alert($("#merchant_uid").val());
 	      var IMP = window.IMP; // 생략가능
 	      IMP.init('iamport'); 
 	      IMP.request_pay({
@@ -46,6 +46,10 @@ $("document").ready(function() {
 	            msg += '상점 거래ID : ' + rsp.merchant_uid;
 	            msg += '결제 금액 : ' + rsp.paid_amount;
 	            msg += '카드 승인번호 : ' + rsp.apply_num;
+	           
+	            var data = $("#data").val();
+				alert(data);
+				location.href="orderAf.do?data="+data;
 	        } else {
 	            var msg = '결제에 실패하였습니다.';
 	            msg += '에러내용 : ' + rsp.error_msg;
@@ -123,7 +127,6 @@ function checkInput() {
 		alert("수령인 전화번호 확인해 주세요");
 		return false;
 	}
-	
 	
 	if(address_n=='' || address_m==''|| address_d==''){
 		alert("수령하실 주소를 입력하세요");

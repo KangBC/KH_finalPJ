@@ -3,6 +3,7 @@ package com.kh.finalPJ.goods;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
 import com.kh.finalPJ.review.reviewDto;
@@ -27,6 +28,9 @@ public interface goodsDao {
 	
 	public memberDto selectMember(String id);
 	public goodsDto selectGoods(String g_code);
+	
+	public boolean RStatusInsert(List<RStatusDto> R_Status);
+	
 	List<goodsBbsDto> headselect(String title);
 	
 	List<goodsBbsDto> headselectajax(String title);

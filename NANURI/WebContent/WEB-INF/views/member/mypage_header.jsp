@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="row"
-	style="border-bottom: 2px solid #CCCCCC; padding-bottom: 20px; padding-top: 10px; height: 280px">
+	style="border-bottom: 1px solid #CCCCCC; padding-bottom: 20px; padding-top: 10px; height: 280px">
 	<div class="col-md-4"
 		style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
 		<div class="row" style="margin-top: 10%">
@@ -39,58 +39,47 @@
 	</div>
 	<div class="col-md-4" align="center"
 		style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
+		<a href="reviewlist.do"> <img
+			style="width: 100%; padding-top: 10%; border-bottom: 1px solid #CCCCCC; padding-bottom: 5px; margin-bottom: 5px"
+			alt=""
+			src="https://user-images.githubusercontent.com/38531104/47624703-88035d80-db62-11e8-9300-3ad9341a12d2.PNG"></a>
+		<table style="text-align: left; width: 100%;">
+			<colgroup>
+				<col width="15%">
+				<col width="85%">
+			</colgroup>
+			<tbody>
+				<c:choose>
+					<c:when test="${empty reviewList}">
+						<tr>
+							<td colspan="2" style="text-align: center; padding: 10%">등록한
+								리뷰가 없습니다.</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${reviewList}" var="reviewList"
+							varStatus="status">
+							<tr>
+								<th><c:choose>
+										<c:when test="${reviewList.g_img eq null}">
+											<img alt=""
+												src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
+												style="width: 50px; height: 50px">
+										</c:when>
+										<c:otherwise>
+											<img alt="" src="resources/img/main_img/${reviewList.g_img}"
+												style="width: 50px; height: 50px">
+										</c:otherwise>
+									</c:choose></th>
+								<th><a
+									href="reviewdetail.do?g_code=${reviewList.g_code}&seq=${reviewList.seq}">${reviewList.title}</a></th>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
 
-		<!-- 최근본상품 -->
-		<div class="row" style="padding-left: 20%; padding-right: 20%">
-			<div class="col-md-6"
-				style="text-align: left; padding: 0px; padding-top: 15px">
-				<p style="margin-bottom: 0px">ㆍ최근본상품</p>
-			</div>
-			<div class="col-md-6"
-				style="text-align: right; padding: 0px; padding-top: 15px">
-				<p style="margin-bottom: 0px">${fn:length(recentViewGoods)}개</p>
-			</div>
-		</div>
-		<c:choose>
-			<c:when test="${empty recentViewGoods}">
-				<div class="row" style="width: 100%">
-					<div align="center" style="width: 100%; margin-top: 20%">
-						<a href="rentallist.do">[ 최근본 상품내역이 없습니다 ]</a>
-					</div>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<!-- GoodsImg -->
-				<div class="row" style="width: 100%">
-					<div class="col-md-3" style="padding-top: 18%">
-						<a><i style="color: #542f82; font-size: 1.3em"
-							class="fa fa-toggle-left" aria-hidden="true"></i></a>
-					</div>
-					<div class="col-md-6" align="center" style="width: 100%">
-						<img style="max-width: 100%; height: auto;" alt=""
-							src="http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/18/8/5/1/8/1/8/pSxxS/1440851818_B.jpg">
-					</div>
-					<div class="col-md-3" style="padding-top: 18%">
-						<a><i style="color: #542f82; font-size: 1.3em"
-							class="fa fa-toggle-right" aria-hidden="true"></i></a>
-					</div>
-				</div>
-				<!-- GoodsTitle -->
-				<div class="row"
-					style="padding-left: 20%; padding-right: 20%; width: 100%;">
-					<div align="center" style="width: 100%">
-						<p style="font-size: 0.9em; margin: 0px">아디다스 유모차 EZK-990</p>
-					</div>
-				</div>
-				<!-- GoodsPrice -->
-				<div class="row"
-					style="padding-left: 20%; padding-right: 20%; width: 100%;">
-					<div align="center" style="width: 100%">
-						<p style="font-size: 0.9em; margin: 0px">99,000원</p>
-					</div>
-				</div>
-			</c:otherwise>
-		</c:choose>
 	</div>
 	<div class="col-md-4">
 		<a href="qnalist.do"> <img style="width: 100%; height: auto"

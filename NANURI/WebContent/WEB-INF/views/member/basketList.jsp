@@ -17,7 +17,8 @@
 
 			<!-- left bar -->
 			<div style="width: 220px;">
-				<div style="margin-top: 70px; border: 1px solid; margin-right: 30px">
+				<div
+					style="margin-top: 70px; border: 1px solid #CCCCCC; margin-right: 30px;">
 					<jsp:include page="mypage_leftbar.jsp" />
 				</div>
 			</div>
@@ -27,7 +28,7 @@
 			<div style="width: 880px;">
 				<!-- Main Header -->
 				<div class="row"
-					style="border-bottom: 3px solid #CCCCCC; padding-bottom: 10px">
+					style="border-bottom: 1px solid #CCCCCC; padding-bottom: 10px">
 					<div class="col-md-8"></div>
 					<div class="col-md-4" style="text-align: right; padding-top: 15px">
 						<a href="main.do">메인</a> > <a href="mypage.do">마이페이지</a> > <a
@@ -37,6 +38,7 @@
 				<jsp:include page="mypage_header.jsp" />
 				<!-- / Main Header -->
 				<div>
+				<input type="hidden" id="loginId" value="${login.id }"/>
 					<span style="float: left; padding: 10px"><font
 						style="font-weight: bold;">${fn:length(list)}</font>개의 상품이
 						조회되었습니다.</span>
@@ -93,6 +95,7 @@
 										<td><input type="button"
 											onclick="basketListDel(${list.seq})" value="삭제"></td>
 									</tr>
+									<input type="hidden" name="data" value="${list.g_code},${list.amount},${list.month},${list.sum_price}/"/>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -117,8 +120,8 @@
 						</div>
 					</div>
 					<div class="row" style="float: right; margin: 10px">
-						<input type="button" onclick="" value="선택상품주문"> <input
-							type="button" onclick="" value="전체주문">
+						<input type="button" onclick="selectOrder()" value="선택상품주문"> <input
+							type="button" onclick="integralOrder()" value="전체주문">
 					</div>
 				</div>
 				<!-- / main view -->

@@ -34,7 +34,7 @@ public class reviewController {
 	@RequestMapping(value = "reviewlist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String revlist(Model model, reviewParam param) throws Exception {
 
-		logger.info("Welcome reviewController revlist!! " + new Date());
+		logger.info("Welcome reviewController revlist!! " + new Date());	
 
 		List<reviewDto> list = reviewSrevice.getreview();
 		// model.addAttribute("reviewlist", list);
@@ -82,16 +82,14 @@ public class reviewController {
 	public String revwriteAF(HttpServletRequest request, Model model) throws Exception {
 
 		logger.info("Welcome reviewController revwriteAf!!!!! " + new Date());
-
+		
 		memberDto mem = null;
 		if (request.getSession().getAttribute("login") != null) {
-			mem = (memberDto) request.getSession().getAttribute("login");
-		} else { // 세션값이 없을때
-			mem = new memberDto();
-			mem.setId("null");
+			mem =(memberDto) request.getSession().getAttribute("login");
+		}else{
+			return "redirect:login.do";
 		}
-		// String id = mem.getId();
-
+		
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -106,7 +104,7 @@ public class reviewController {
 		revdto.setContent(content);
 		revdto.setRating(rating);
 
-		System.out.println(revdto.toString());
+		//System.out.println(revdto.toString());
 
 		if (revdto.getContent().equals("<p>&nbsp;</p>") || revdto.getTitle().equals("")) {
 
@@ -138,9 +136,16 @@ public class reviewController {
 
 	/* 글 삭제 */
 	@RequestMapping(value = "deleterev.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String deleterev(reviewDto dto, Model model) throws Exception {
+	public String deleterev(HttpServletRequest request, reviewDto dto, Model model) throws Exception {
 
 		logger.info("Welcome reviewController deleterev!!!!!!! " + new Date());
+		
+		memberDto mem = null;
+		if (request.getSession().getAttribute("login") != null) {
+			mem =(memberDto) request.getSession().getAttribute("login");
+		}else{
+			return "redirect:login.do";
+		}
 
 		reviewSrevice.deleterev(dto.getSeq());
 
@@ -153,8 +158,6 @@ public class reviewController {
 
 		logger.info("Welcome reviewController reviewupdate! " + new Date());
 
-		model.addAttribute("reviewupdate", "수정하기");
-
 		reviewDto rdto = reviewSrevice.detailreview(dto.getSeq());
 		model.addAttribute("reviewupdate", rdto);
 
@@ -165,15 +168,13 @@ public class reviewController {
 	public String reviewupdateAf(HttpServletRequest request, int seq, Model model) throws Exception {
 
 		logger.info("Welcome reviewController reviewupdateAf!!!!!!!!! " + new Date());
-
+			
 		memberDto mem = null;
 		if (request.getSession().getAttribute("login") != null) {
-			mem = (memberDto) request.getSession().getAttribute("login");
-		} else { // 세션값이 없을때
-			mem = new memberDto();
-			mem.setId("null");
+			mem =(memberDto) request.getSession().getAttribute("login");
+		}else{
+			return "redirect:login.do";
 		}
-		// String id = mem.getId();
 
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");

@@ -27,7 +27,6 @@ String g_code = (String)request.getAttribute("g_code");
 
 <div class="startdiv">
 
-<h2>후기</h2>
 <form id="_frmFormSearch" method="get" action="">
 
 <!-- 페이징 -->
@@ -77,7 +76,7 @@ String g_code = (String)request.getAttribute("g_code");
            <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
              	
           <!-- 별점 점수 -->
-       		<div class="star">별점수: <%=list.get(i).getRating() %>&nbsp;점</div>
+       		<div class="star" style="font-size: 10px">별점수: <%=list.get(i).getRating() %>&nbsp;점</div>
 <!-- =======별이다======= -->
 <tr>
 	<div class="starRev">
@@ -125,7 +124,7 @@ String g_code = (String)request.getAttribute("g_code");
 }
 %>
 
-<button type="button" onclick="location.href='reviewwrite.do'">글쓰기</button>
+<!-- <button type="button" onclick="location.href='reviewwrite.do'">글쓰기</button> -->
 
 </div>
 <br>
