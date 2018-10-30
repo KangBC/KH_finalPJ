@@ -25,7 +25,7 @@
   	  <td>렌트 가격</td>
   	  <td>이미지</td>
   	  <td>총 갯수</td>
-  	  <td>대여 중인 갯수</td>
+  	  <td></td>
 	</tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="goodsS">
 	  <tr class="stock_col">

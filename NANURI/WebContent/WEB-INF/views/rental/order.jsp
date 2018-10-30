@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="com.kh.finalPJ.member.RStatusDto"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
@@ -29,17 +32,61 @@
 	font-weight: bold;
 	color: #222222;
 	line-height: normal;
+	
+	border-bottom: 1px solid #999;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 }
 
+.buyerInfoContainer, .goodsInfoContainer, .receiptContainer, .priceInfoContainer{
+	margin-bottom: 25px;
+
+}
+
+.buyerInfoContainer ul{
+	height: 70px; 
+	border: 1px solid #dddddd; 
+	background: #f8f8f8; 
+	padding: 20px; 
+}
+.buyerInfoContainer li{
+	float:left; 
+	width: 345px; 
+	border-left: 1px solid #dddddd;
+	padding-left: 10px;
+}
+
+.goodsInfoContainer table{
+	border: none;
+	text-align: center;
+	border-top: 1px solid #ddd;
+}
+.goodsInfoContainer th{
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+}
 .goodsInfoContainer td{
 	padding:20px 20px 20px 20px; 
 	heigth: 120px;
+	border-bottom: 1px solid #ddd;
 }
 .goodsInfoContainer img{
 	width: 90px;
 	height: 90px;
 }
 
+#copy{
+	margin-left: 45px;
+}
+#copylabel{
+	font-size: 15px;
+	font-weight: normal;
+	color: #222222;
+}
+
+.receiptContainer li{
+	margin-bottom: 10px;
+}
 .receiptContainer label{
 	margin: 0px;
 	width: 130px;
@@ -50,6 +97,7 @@
 }
 .receiptContainer #phone_f{
 	margin-right:5px;
+	padding-left:8px;
 	height:36px;
 	width: 60px;
 }
@@ -84,6 +132,29 @@
 	width: 260px;
 }
 
+.priceInfoContainer{
+	display: table;
+}
+.priceInfoContainer table{
+	float:left;
+	border: none;
+	text-align: center;
+	border-top: 1px solid #ddd;
+}
+.priceInfoContainer th{
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+}
+.priceInfoContainer td{
+	padding:20px 20px 20px 20px; 
+	heigth: 120px;
+	border-bottom: 1px solid #ddd;
+}
+#iamport_module{
+	float: left;
+	margin-top: 93px;
+	margin-left: 10px;
+}
 </style>
 
 </head>
@@ -97,7 +168,7 @@
     password="final"
     var= "conn"/>
     
-<c:set var="now" value="<%=new java.util.Date()%>" />
+<c:set var="now" value="<%=new Date()%>" />
 <c:set var="today"><fmt:formatDate value="${now}" pattern="yyMMdd" /></c:set>
 
 <sql:query sql="select SEQ_R_STATUS.nextval from dual" var="getseq" dataSource="${conn}" />
@@ -111,12 +182,12 @@
 <!-- 주문 정보 -->
 <div class="startdiv">
 	<div class="tit">주문자 정보</div>
-	<div>
+	<div class=buyerInfoContainer>
 		<div>
-	  	<ul style="height: 70px; border: 1px solid #dddddd; background: #f8f8f8; padding: 20px; ">
-	    	<li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>주문자</b> ${member.name}</li>
-	    	<li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>연락처</b> ${member.phone}</li>
-	    	<li style="float:left; width: 300px; border-left: 1px solid #dddddd;"><b>이메일</b> ${member.email}</li>
+	  	<ul>
+	    	<li style="border-left: none;"><b>주문자</b> ${member.name}</li>
+	    	<li><b>연락처</b> ${member.phone}</li>
+	    	<li><b>이메일</b> ${member.email}</li>
 	  	</ul>
 		</div>
 	    <input id="buyer" type="hidden" value="${member.name}">
@@ -133,7 +204,7 @@
 	
 	<div class="tit">주문상품 <span class="num">(${fn:length(goodsList)}개)</span></div>
 	<div class="goodsInfoContainer">	
-		<table cellspacing="0" border="1" style="border-collapse:collapse; border:1px gray solid">
+		<table cellspacing="0" >
 			<colgroup>
 			<!-- 임시 -->
 				<col width="130px">
@@ -153,14 +224,27 @@
 			</thead>			
 			<tbody>	
 			<c:forEach var="item" items="${goodsList}" varStatus="status">
+				<c:set var="month" value="${orderList[status.index].month}" />
+				<%
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
+				Date today = new Date();
+				Calendar c = Calendar.getInstance();
+				c.setTime(today);
+				c.add(Calendar.MONTH, Integer.parseInt(pageContext.getAttribute("month").toString()));
+				String e_day = format.format(c.getTime());
+				%>
+
+				<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set>
+				<c:set var="e_day" value="<%=e_day%>"/>
 				<c:set var="price_one" value="${item.g_price*orderList[status.index].amount*orderList[status.index].month }"/>
 				<c:set var="total" value="${total+price_one}"/>
+				
 				<tr>
 					<td><img src="resources/img/main_img/${item.g_img }"></td>
-					<td>${item.g_code}</td>
-					<td>${orderList[status.index].amount}</td>
-					<td>${orderList[status.index].month}</td>
-					<td>${price_one}</td>
+					<td>${item.g_name}</td>
+					<td>${orderList[status.index].amount}개</td>
+					<td>${today}~${e_day }</td>
+					<td><fmt:formatNumber value="${price_one}" pattern="￦#,###" ></fmt:formatNumber></td>
 				</tr>
 				<c:set var="data" value="${data}${item.g_code},${member.id},${orderList[status.index].amount},${orderList[status.index].month},${price_one},${merchant_uid}/"/>
 			</c:forEach>
@@ -172,56 +256,65 @@
 	<br>
 	
 	
-	<div class="tit">배송지 정보</div>
+	<div class="tit">배송지 정보 <input id="copy" type="checkbox"><label id="copylabel" for="copy">주문자와 동일</label><br></div>
 	<div class="receiptContainer">
-		<input id="copy" type="checkbox"><label for="copy">주문자와 동일</label><br>
-		<label for="recipient">수령인</label>
-		<input id="recipient" type="text"> <br>		
-		<label for="phone_container">전화번호</label>
-		<div id="phone_container" style="display: inline-block;">
-		<select id="phone_f">
-			<option selected="selected">010</option>
-			<option>011</option>
-			<option>016</option>
-			<option>017</option>
-			<option>018</option>
-			<option>019</option>
-		</select>-
-		<input id="phone_m" type="text" value="">-<input id="phone_b" type="text" value="">
-		</div>
-		<br>
-		<div id="address_container">
-			<input type="hidden" name="address" id="address" value="">					
-			<label>주소</label>	
-			<input type="text" id="address_num" name="address_num" placeholder="Address Number"	readonly="readonly" >					
-			<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
-			<br>
-			<input type="text" id="address_main" name="address_main" placeholder="Confirm your address" readonly="readonly" >
-			<input type="text" id="address_detail" name="address_detail" placeholder="Address Detail" >
-		</div>
-		<br>
-		<br>
+		<ul>
+			<li>
+				<label for="recipient">수령인</label>
+				<input id="recipient" type="text"> <br>		
+			</li>
+			<li>
+				<label for="phone_container">전화번호</label>
+				<div id="phone_container" style="display: inline-block;">
+					<select id="phone_f">
+						<option selected="selected">010</option>
+						<option>011</option>
+						<option>016</option>
+						<option>017</option>
+						<option>018</option>
+						<option>019</option>
+					</select>-
+					<input id="phone_m" type="text" value="">-<input id="phone_b" type="text" value="">
+				</div>
+				</li>
+				<li>
+				<div id="address_container">
+					<input type="hidden" name="address" id="address" value="">					
+					<label>주소</label>	
+					<input type="text" id="address_num" name="address_num" placeholder="Address Number"	readonly="readonly" >					
+					<button type="button" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
+					<br>
+					<input type="text" id="address_main" name="address_main" placeholder="Confirm your address" readonly="readonly" >
+					<input type="text" id="address_detail" name="address_detail" placeholder="Address Detail" >
+				</div>
+				</li>
+		</ul>
 	</div>
 	
 	<div class="tit">결제 정보</div>
-	<div>
-		<table cellspacing="0" border="1"  style="border-collapse:collapse; border:1px gray solid">			
+	<div class="priceInfoContainer">
+		<table cellspacing="0">			
 			<tbody>
+				<colgroup>
+					<col width="150px">
+					<col width="150px">
+					<col width="150px">
+				</colgroup>
 				<tr>
 					<td>상품금액</td>
 					<td>배송비</td>
 					<td>최종결제금액</td>
 				</tr>					
 				<tr>
-					<td><c:out value="${total}"/></td>
-					<td>4500</td>
-					<td><c:out value="${total+4500}"/></td>
+					<td><fmt:formatNumber value="${total}" pattern="￦#,###" ></fmt:formatNumber></td>
+					<td><fmt:formatNumber value="4500" pattern="￦#,###" ></fmt:formatNumber></td>
+					<td><fmt:formatNumber value="${total+4500}" pattern="￦#,###" ></fmt:formatNumber></td>
 				</tr>
 			</tbody>
 		</table>
+	<button id="iamport_module" type="button" style="float: left;">결제하기</button>
 	</div>
 
-	<button id="iamport_module" type="button">결제하기</button>
 </div>
 </body>
 </html>
