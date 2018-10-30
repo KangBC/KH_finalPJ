@@ -168,7 +168,7 @@ ul{padding: 0}
 
 .maintop{margin-top: 40px;}
 .maintop_title{margin-bottom:25px;font-size: 30px;font-weight: bold;color: #792b86;text-align: center; font-family:  Malgun Gothic, "맑은 고딕" , /*"NanumGothic","NanumBarunGothic",*/Helvetica, Arial, sans-serif,"AppleGothic","Apple Gothic","Noto Serif","NotoSansKR","NotoSans","맑은 고딕","돋음", "Dotum", sans-serif}
-.main_middle{ width: 100%; height: 250px; background-color: #792b86; background-image: url('../img/slideimg/img_m.jpg');}
+.main_middle{ width: 100%; height: 250px; background-color: #792b86; background-image: url('../img/slideimg/img_m.jpg'); margin-top: 50px}
 
 .goods_info{width : 100%; margin-bottom:60px; margin-top: 130px; position: relative;}
 .cate {
@@ -205,35 +205,40 @@ ul{padding: 0}
     font-style: normal;
 }
 .grid_box {display: block !important;padding-top: 30px;} 
-.grid_box > div{width: 50%; height: 50%; float: left;}
+.grid_box > div{float: left;    width: 260px;  height: 285px;}
 .grid_goods{text-align: center;}
-.grid_goods div{width: 100%; height: 240px;}
+.grid_goods div{    width: 200px; margin: 0 auto;}
+.grid_goods span{font-size: 16px; color: #cd1965; font-weight: bold; font-family: 'Spoqa Han Sans'; letter-spacing: 0; margin-top: 4px;}
 .grid_goods p{font-size: 14px; font-weight: bold; margin-bottom: 5px;}
 .grid_goods span{font-size: 14px;}
 .grid_goods_big {text-align: center;width: 330px;float: left;margin-right: 43px;}
 .grid_goods_big:last-child{margin-right: 0}
-.grid_goods_big div{ height: 340px;}
-.grid_goods_big p{font-size: 14px; font-weight: bold; margin-bottom: 5px;}
-.grid_goods_big span{font-size: 14px;}
+.grid_goods_big div{ height: 380px;}
+.grid_goods_big p{font-size: 16px; font-weight: bold; margin-bottom: 5px;}
+.grid_goods_big span{font-size: 16px; color: #cd1965; font-weight: bold; font-family: 'Spoqa Han Sans'; letter-spacing: 0; margin-top: 4px;}
 
-.grid_goods_small {text-align: center;width: 190px;float: left;margin-right: 31px;}
+.grid_goods_small {text-align: center;width: 190px;float: left;margin-right: 31px; margin-top: 20px;    border: 1px solid #ddd; padding: 5px;}
 .grid_goods_small:last-child{margin-right: 0}
 .grid_goods_small div{ height: 210px;}
-.grid_goods_small p{font-size: 14px; font-weight: bold; margin-bottom: 5px;}
-.grid_goods_small span{font-size: 14px;}
+.grid_goods_small p{font-size: 13px; font-weight: bold; margin-bottom: 5px;}
+.grid_goods_small span{font-size: 12px; color: #cd1965; font-weight: bold; font-family: 'Spoqa Han Sans'; letter-spacing: 0; margin-top: 4px;}
 
 .silder_btn{    position: absolute;width: 100px;top: 0;right: 0;}
+.silder_btn2 {}
 .swiper-container {width: 100%;height: 100%;}
 .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: -webkit-box;
       display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;
       -ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;
       -webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
-.new_datebox{float: left; width: 525px; height: 600px; border: 1px solid; margin-right: 42px;
+.new_datebox{float: left; width: 525px; height: 600px; margin-right: 42px;
 			background-image: url('../img/main_m_img.jpg');background-size: 100% 100%;}
-.new_dateboxlist{float: left; width: 525px; height: 600px; border: 1px solid;}
+.new_dateboxlist{float: left; width: 525px; height: 600px; }
 
 .silder_btn .swiper-button-next{background-image:url('../img/s_btn_r.png');background-size: 100%;    top: 22px;    height: 30px;}
 .silder_btn .swiper-button-prev{background-image:url('../img/s_btn_l.png');background-size: 100%;    top: 22px;      left: 30px;  height: 30px;}
+.main_goods .goods_title{margin-top: 20px;}
+.swiper1 {    padding-top: 30px;}
+
 
 /* 푸터  */
 .footer{    margin-top: 40px;    border-top: #542f82 solid 4px;}
