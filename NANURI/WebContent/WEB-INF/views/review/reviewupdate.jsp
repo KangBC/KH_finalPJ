@@ -16,31 +16,24 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 <form name="frmForm" id="_frmForm" action="reviewupdateAf.do" method="post">
 <input type="hidden" name="seq"  value="<%=dto.getSeq() %>"/>
 
-<table class="_table">
+<table class="_table" style="width: 1080px">
 
-<th colspan="2" width="900px"  style="background: #f3f3f3; font-size: 25px">
-후기 수정하기
-</th>
-<tr>
+<th colspan="2" width="900px"></th>
+<tr height="50px" class="md-form">
 	<td>아이디</td>
 	<td>
-		<input type="text" name="id" readonly="readonly" value="<%=dto.getId() %>" size="35">
+		<input type="text" id="inputIconEx2" class="form-control" name="id" readonly="readonly" value="<%=dto.getId() %>" size="35">
 	</td>
 </tr>
-<tr>
-	<td colspan="2" height="2" bgcolor="#e7e7e7">
-</tr>
-<tr>
+<tr height="50px" class="md-form">
 	<td>제목</td>
 	<td>
-		<input type="text" name='title' value="<%=dto.getTitle() %>" size="35"/>
+		<input type="text" id="inputIconEx2" class="form-control" name='title' value="<%=dto.getTitle() %>" size="35"/>
 	</td>
 </tr>
-<tr>
-	<td colspan="2" height="2" bgcolor="#e7e7e7">
-</tr>
+
 <!-- =======별이다======= -->
-<tr>
+<tr height="40px" class="md-form">
 	<th>별점</th>
 	<td class="starRev">
  		 <span class="starR1">1</span>
@@ -63,11 +56,11 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 </table>
 
 <!-- 스마트에디터 & 확인 취소버튼 -->
-<table>
-<col style="width: 100px"><col style="width: 1000px">  
+<table style="width: 1080px">
+<col style="width: 100px"><col style="width: 1080px">  
 <tr>
 	<td>
-		<textarea style="height: 500px; width: 900px" name="content" id="content" ><%=dto.getContent() %></textarea>      
+		<textarea style="height: 500px; width: 1075px" name="content" id="content"><%=dto.getContent() %></textarea>      
 	</td>        
 </tr>
 <tr>

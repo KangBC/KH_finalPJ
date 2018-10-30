@@ -25,23 +25,18 @@
 %>
 
 <div class="startdiv">
-	<form name="frmForm" class="_frmForm" id="_frmForm" method="post"
-		action="reviewdetail.do">
+	<form name="frmForm" class="_frmForm" id="_frmForm" method="post" action="reviewdetail.do">
 
 		<input type="hidden" name="seq" value="<%=dto.getSeq()%>" />
 
 		<!-- 이미지 -->
 		<div class="goods_img11">
-			<img alt="" src="resources/img/main_img/<%=dto.getG_img()%>"
-				width="100%">
+			<img alt="" src="resources/img/main_img/<%=dto.getG_img()%>" width="100%">
 		</div>
 
-		<div class="top_right"
-			style="padding-left: 170px; padding-top: 20px; padding-bottom: 35px">
+		<div class="top_right" style="padding-left: 170px; padding-top: 20px; padding-bottom: 35px">
 			<ul>
 				<li>아이디: <%=dto.getId()%> | <%=dto.getWdate().substring(0, 16)%></li>
-
-				<li></li>
 
 				<!-- 별점 -->
 				<div class="starRev">
@@ -71,9 +66,7 @@
 						}
 					%>
 				</div>
-				<h5>
-					&nbsp;&nbsp;<%=dto.getRating()%>점
-				</h5>
+				<h5>&nbsp;&nbsp;<%=dto.getRating()%>점</h5>
 				<!-- 별점  끝-->
 
 				<li style="font-size: 20px; font-weight: bold;">제목: <%=dto.getTitle()%></li>
@@ -94,19 +87,14 @@
 			<%
 				}
 			%>
-			<input type="button" value="목록으로"
-				onclick="location.href='reviewlist.do'"> <input
-				type="button" value="해당 상품으로"
-				onclick="location.href='goodsdetail.do?g_code=<%=dto.getG_code()%>&seq=<%=rseq%>'">
-
-
+			<input type="button" value="목록으로"	onclick="location.href='reviewlist.do'"> 
+			<input type="button" value="해당 상품으로" onclick="location.href='goodsdetail.do?g_code=<%=dto.getG_code()%>&seq=<%=rseq%>'">
 
 		</div>
 	</form>
 </div>
 <script type="text/javascript">
-var val='<%=str%>
-	';
+var val='<%=str%>';
 	$("#content").html(val);
 
 	function deletereview(seq) {

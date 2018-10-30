@@ -12,26 +12,22 @@
 <form name="frmForm" id="_frmForm" action="reviewwriteAf.do" method="post">
 <input type="hidden" name="g_code" value="${g_code}">
 
-<table class="_table">
-<th colspan="2" width="900px"  style="background: #f3f3f3; font-size: 25px">
-후기 남기기
-</th>
-<tr>
+<table class="_table" style="width: 1080px">
+<th colspan="2" width="900px"></th>
+<tr height="50px" class="md-form">
 	<td>아이디: </td>
-	<td><input type="text" name="id" readonly="readonly" value="${login.id }" size="30"></td>
+	<td>
+		<input type="text" name="id" readonly="readonly" id="inputIconEx2" class="form-control" value="${login.id }" size="30">
+	</td>
 </tr>
-<tr>
-	<td colspan="2" height="2" bgcolor="#e7e7e7">
-</tr>
-<tr>
+<tr height="50px" class="md-form">
 	<td>제목: </td>
-	<td><input type="text" name='title' id="title" size="30"/></td>
-</tr>
-<tr>
-	<td colspan="2" height="2" bgcolor="#e7e7e7">
+	<td>
+		<input type="text" id="inputIconEx2" class="form-control" name='title' id="title" size="30"/>
+	</td>
 </tr>
 <!-- =======별이다======= -->
-<tr>
+<tr height="40px" class="md-form">
 	<td>별점: </td>
 	<td style="display: inline-block;" class="starRev">
  		 <span class="starR1"></span>
@@ -47,18 +43,15 @@
  		 <p style="display: inline;" id="grade">&nbsp;&nbsp;0</p>
 	</td>
 </tr>
-<tr>
-	<td colspan="2" height="2" bgcolor="#e7e7e7">
-</tr>
 <input type="hidden" name="rating" id="rating" value="0">
 </table>
 
-<table>
-<col style="width: 100px"><col style="width: 1000px">
+<table style="width: 1080px">
+<col style="width: 100px"><col style="width: 1080px">
 <tr>
 	<td>
 		<!--스마트에디터  -->
-		<textarea style="height: 500px; width: 900px" name="content" id="content"></textarea>
+		<textarea style="height: 500px; width: 1075px; overflow: scroll"" name="content" id="content"></textarea>
 	</td>
 </tr>
 <tr>
