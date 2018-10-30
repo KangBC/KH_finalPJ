@@ -9,6 +9,7 @@
 List<goodsBbsDto> readbbs = (List<goodsBbsDto>)request.getAttribute("readbbs");
 List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
+
 %>
 
 

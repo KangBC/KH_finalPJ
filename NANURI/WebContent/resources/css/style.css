@@ -206,7 +206,7 @@ ul{padding: 0}
     font-style: normal;
 }
 .grid_box {display: block !important;padding-top: 30px;} 
-.grid_box > div{width: 50%; height: 50%; float: left; border: 1px solid}
+.grid_box > div{width: 50%; height: 50%; float: left;}
 .grid_goods{text-align: center;}
 .grid_goods div{width: 100%; height: 240px;}
 .grid_goods p{font-size: 14px; font-weight: bold; margin-bottom: 5px;}
@@ -233,6 +233,8 @@ ul{padding: 0}
 			background-image: url('../img/main_m_img.jpg');background-size: 100% 100%;}
 .new_dateboxlist{float: left; width: 525px; height: 600px; border: 1px solid;}
 
+.silder_btn .swiper-button-next{background-image:url('../img/s_btn_r.png');background-size: 100%;    top: 22px;    height: 30px;}
+.silder_btn .swiper-button-prev{background-image:url('../img/s_btn_l.png');background-size: 100%;    top: 22px;      left: 30px;  height: 30px;}
 
 /* 푸터  */
 .footer{    margin-top: 40px;    border-top: #542f82 solid 4px;}
