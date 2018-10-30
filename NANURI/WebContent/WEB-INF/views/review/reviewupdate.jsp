@@ -18,7 +18,8 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 
 <table class="_table">
 
-<th colspan="2" width="900px">
+<th colspan="2" width="900px"  style="background: #f3f3f3; font-size: 25px">
+후기 수정하기
 </th>
 <tr>
 	<td>아이디</td>
@@ -27,7 +28,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 	</td>
 </tr>
 <tr>
-	<td colspan="2" height="2" bgcolor="#542f82">
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
 </tr>
 <tr>
 	<td>제목</td>
@@ -36,7 +37,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 	</td>
 </tr>
 <tr>
-	<td colspan="2" height="2" bgcolor="#542f82">
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
 </tr>
 <!-- =======별이다======= -->
 <tr>
@@ -56,7 +57,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 	</td> 
 <tr>
 <tr>
-	<td colspan="2" height="2" bgcolor="#542f82">
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
 </tr>
 <input type="hidden" name="rating" id="rating" value="0">
 </table>
@@ -70,7 +71,7 @@ reviewDto dto = (reviewDto)request.getAttribute("reviewupdate");
 	</td>        
 </tr>
 <tr>
-	<td height="2" bgcolor="#542f82">
+	<td height="2" bgcolor="#e7e7e7">
 </tr>
 
 <tr>

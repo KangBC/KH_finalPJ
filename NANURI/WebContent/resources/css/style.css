@@ -114,8 +114,8 @@ ul{padding: 0}
 .review li{height: 140px; padding: 10px;    border-bottom: 1px solid #999;    padding-top: 25px;}
 .review .img{float: left; width: 90px;height:90px;border-radius: 65%;margin-right: 10px;}
 .review .text_view{float: left;     width: 810px;height: 100%;    padding: 11px;}
-.review .text_view .title{margin: 0; font-weight: bold;font-size: 18px;width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.review .text_view .content{font-size: 10px;    margin-top: 5px; width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.review .text_view .title{margin: 0; font-weight: bold;font-size: 12px;width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.review .text_view .content{font-size: 12px;    margin-top: 5px; width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
 .review .idbox{float: left; width: 120px;height: 100%;text-align: center; padding-top: 30px;}
 .review .idbox .id{font-weight: bold;}
@@ -144,7 +144,7 @@ ul{padding: 0}
 .starR1.on{background-position:0 0;}
 .starR2.on{background-position:-15px 0;}
 
-._frmForm .goods_img11{width: 150px; height: 150px; float: left; } 
+._frmForm .goods_img11{width: 200px; height: 300px; float: left; padding-top: 35px} 
 
 
 

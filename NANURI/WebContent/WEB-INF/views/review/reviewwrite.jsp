@@ -13,21 +13,22 @@
 <input type="hidden" name="g_code" value="${g_code}">
 
 <table class="_table">
-<th colspan="2" width="900px">
+<th colspan="2" width="900px"  style="background: #f3f3f3; font-size: 25px">
+후기 남기기
 </th>
 <tr>
 	<td>아이디: </td>
 	<td><input type="text" name="id" readonly="readonly" value="${login.id }" size="30"></td>
 </tr>
 <tr>
-	<td colspan="2" height="2" bgcolor="#542f82">
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
 </tr>
 <tr>
 	<td>제목: </td>
 	<td><input type="text" name='title' id="title" size="30"/></td>
 </tr>
 <tr>
-	<td colspan="2" height="2" bgcolor="#542f82">
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
 </tr>
 <!-- =======별이다======= -->
 <tr>
@@ -46,7 +47,9 @@
  		 <p style="display: inline;" id="grade">&nbsp;&nbsp;0</p>
 	</td>
 </tr>
-
+<tr>
+	<td colspan="2" height="2" bgcolor="#e7e7e7">
+</tr>
 <input type="hidden" name="rating" id="rating" value="0">
 </table>
 
@@ -55,11 +58,11 @@
 <tr>
 	<td>
 		<!--스마트에디터  -->
-		<textarea style="height: 500px; width: 900px; overflow: scroll" name="content" id="content"></textarea>
+		<textarea style="height: 500px; width: 900px" name="content" id="content"></textarea>
 	</td>
 </tr>
 <tr>
-	<td height="2" bgcolor="#542f82">
+	<td height="2" bgcolor="#e7e7e7">
 </tr>
 <tr>
 	<td align="right"  style="width: 908px">
