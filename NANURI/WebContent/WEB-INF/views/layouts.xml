@@ -72,6 +72,12 @@
 			value="/WEB-INF/views/rental/rentaldetaile.jsp" />
 	</definition>
 	
+		<definition name="rentallist_select.tiles" extends="main.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/rental/rentallist_select.jsp" />
+	</definition>
+	
+	
 	<definition name="order.tiles" extends="main.tiles">
 		<put-attribute name="content"
 			value="/WEB-INF/views/rental/order.jsp" />		
