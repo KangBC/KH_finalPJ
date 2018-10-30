@@ -19,6 +19,10 @@
 <%memberDto mem = (memberDto)session.getAttribute("login"); %>
 
 <div class="startdiv">
+	<div style="font-style: italic; padding-left: 269px; font-size: 35; padding-bottom: 5px;">
+		Q&A 답변
+	</div>
+
 	<div style="width: 500px; margin: 0px auto;">
 		<form action="ansWriteAf.do" id="_frmForm" method="post">
 			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 8px;
@@ -31,14 +35,24 @@
 				<div style="padding-left: 30px;">  
 				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none;" required></textarea><br>
 				</div>
-			<input type="submit" style="margin-left: 408; margin-top: 14;" value="작성완료">
-				<input type="hidden" name="ref" value="<%=ansdto.getRef()%>">
-				<input type="hidden" name="g_code" value="<%=ansdto.getG_code()%>">
-				<input type="hidden" name="secret" value="<%=ansdto.getSecret()%>">
-				<input type="hidden" name="id" value="<%=mem.getId()%>">
+			<div align="center" style="padding-top: 12px;">	
+				<input type="submit" value="완료">
+					<input type="hidden" name="ref" value="<%=ansdto.getRef()%>">
+					<input type="hidden" name="g_code" value="<%=ansdto.getG_code()%>">
+					<input type="hidden" name="secret" value="<%=ansdto.getSecret()%>">
+					<input type="hidden" name="id" value="<%=mem.getId()%>">
+					&nbsp;&nbsp;
+				<input type="button" onclick="cancel()" value="취소">	
+			</div>
 		</form>	
 	</div>
 </div>
+
+<script type="text/javascript">
+function cancel() {
+	location.href="qnalist.do";
+}
+</script>
 
 
 </body>

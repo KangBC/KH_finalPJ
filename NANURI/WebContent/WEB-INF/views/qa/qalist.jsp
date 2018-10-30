@@ -78,22 +78,23 @@ if(session.getAttribute("login") != null){
 					%>
 							<tr class="odd">
 									<div class="arrow"></div>					         
-						            <td></td>
+						            <td>공지</td>
 						            <td class="title_td" ><%=adminlist.get(i).getTitle()%></td>
 						            <td><%=adminlist.get(i).getId()%></td>
 						            <td><%=adminlist.get(i).getWdate().substring(0, 16) %></td>
 						    </tr>
 						    <tr style="display: none;">
 						            <td colspan="4" style="border-bottom: 1px solid gray; border-top: 1px solid gray;">   
-						            	<div style="border-bottom: 1px solid gray;">          
+						            	<div style="border-bottom: 1px solid gray; padding-bottom: 14px;">          
 						           			<h4 align="center"><%=adminlist.get(i).getTitle()%></h4>
 						                </div>
 						                <div style="border-bottom: 1px solid gray;text-align: left !important; padding: 10px;">
 							            	게시일:<%=adminlist.get(i).getWdate().substring(0, 16) %><br>
 							            	작성자:<%=adminlist.get(i).getId()%>
-							            </div>
-							            <div style="text-align: left !important; padding: 30px;">
-										<label>내용:</label><%=adminlist.get(i).getContent() %>	
+							            </div>	
+							            <div style="text-align: left !important; padding-top: 8px; padding-left: 10px;">내용</div>						         	
+							            <div style="text-align: left !important; padding: 30px;">										
+										<%=adminlist.get(i).getContent() %>	
 										</div>
 									<%if(mem.getAuth() == 2){ %>
 						            	<div align="right" style="margin-right: 15;"><a href="ansDelete.do?seq=<%=adminlist.get(i).getSeq()%>">삭제</a></div>
@@ -120,16 +121,17 @@ if(session.getAttribute("login") != null){
 						            	<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>						           
 						        </tr>
 						        <tr style="display: none">					  
-						            <td colspan="4">   
-							            <div style="border-bottom: 1px solid gray;">	          
+						            <td colspan="4" style="border-bottom: 1px solid gray;">   
+							            <div style="border-bottom: 1px solid gray; padding-bottom: 14px;">	          
 							            	<h4 align="center"><%=qalist.get(i).getTitle()%></h4>
 							            </div>
 							            <div style="border-bottom: 1px solid gray; text-align: left !important; padding: 10px;">
 							            	게시일:<%=qalist.get(i).getWdate().substring(0, 16) %><br>
 							            	작성자:<%=qalist.get(i).getId()%>
 							            </div>
+							            <div style="text-align: left !important; padding-top: 8px; padding-left: 10px;">내용</div>
 							            <div style="text-align: left !important; padding: 30px;">
-											<label>내용:</label><%=qalist.get(i).getContent() %>
+											<%=qalist.get(i).getContent() %>
 										</div>
 											<div align="right" style="margin-right: 15;" >
 											<%if((!qalist.get(i).getTitle().equals("관리자 답변입니다.")) && (mem.getAuth() == 2)){%>

@@ -16,6 +16,10 @@
 <%memberDto mem = (memberDto)session.getAttribute("login"); %>
 
 <div class="startdiv">
+	<div style="font-style: italic; padding-left: 250px; font-size: 35; padding-bottom: 15px;">
+		Q&A 글쓰기
+	</div>
+	
 	<div style="width: 500px; margin: 0px auto;">
 		<form action="qaWriteAf.do" id="_frmForm" method="post">
 			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; padding-top: 8px;">
@@ -35,10 +39,20 @@
 			<div style="padding-left: 30px;">			
 				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none;" required></textarea><br>
 			</div>	
-			<input type="submit" style="margin-left: 408; margin-top: 14;" value="작성완료">
+			<div align="center" style="padding-top: 12px;">
+				<input type="submit"  value="완료">
+				&nbsp;&nbsp;
+				<input type="button" onclick="cancel()" value="취소">
+			</div>
 		</form>	
 	</div>
 </div>
+
+<script type="text/javascript">
+function cancel() {
+	location.href="qnalist.do";
+}
+</script>
 
 
 </body>
