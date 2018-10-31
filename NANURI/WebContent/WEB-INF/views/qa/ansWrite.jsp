@@ -27,13 +27,12 @@
 		<form action="ansWriteAf.do" id="_frmForm" method="post">
 			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 8px;
 	   					padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;">
-				<label>제목</label>
-				<input type="text" name="title" value="관리자 답변입니다." readonly="readonly"><br>
-			</div>	
-			
-				<label style="padding-left: 30px;">내용</label>
+				<label style="margin-left: -20;">제목</label>
+				<input type="text" name="title" value="관리자 답변입니다." style="margin-left: 13; border-radius: 3px; border: 1px solid #ccc; margin-left: 6px;" readonly="readonly"><br>
+			</div>			
+				<label style="padding-left: 30px; margin-left: -20;">내용</label>
 				<div style="padding-left: 30px;">  
-				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none;" required></textarea><br>
+				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none; border-radius: 3px; border: 1px solid #ccc;" required></textarea><br>
 				</div>
 			<div align="center" style="padding-top: 12px;">	
 				<input type="submit" value="완료">

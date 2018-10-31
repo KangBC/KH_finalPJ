@@ -23,21 +23,21 @@
 	<div style="width: 500px; margin: 0px auto;">
 		<form action="qaWriteAf.do" id="_frmForm" method="post">
 			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; padding-top: 8px;">
-				<label>아이디 : </label>
-				<input type="text" name="id" value="<%=mem.getId()%>" readonly="readonly"><br>
+				<label style="margin-left: -20;">아이디</label>
+				<input type="text" name="id" value="<%=mem.getId()%>" style="margin-left: 15; width: 136px; border-radius: 3px; border: 1px solid #ccc;" readonly="readonly"><br>
 			</div> 
 			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 8px;
 	   					padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;">
-				<label>제   목  : </label>
-				<input type="text" name="title" style="margin-left: 10;" required ><br>
+				<label style="margin-left: -20;">제   목</label>
+				<input type="text" name="title" style="margin-left: 25; width: 260; border-left: none; border-radius: 3px; border: 1px solid #ccc;" required ><br>
 			</div>
 			<div style="padding-left: 30px; border-bottom: 1px solid #e1e1e1; margin-bottom: 15px;">	
-				<label>글공개여부 </label>
-				<input type="checkbox" id="check" name="check"><br>
+				<label style="margin-left: -20;">글공개여부</label>			
+				<input type="checkbox" id="check" name="check" style="margin-left: 5;"><br>			
 			</div>
-			<label style="padding-left: 30px;">내용</label>
+			<label style="padding-left: 30px; margin-left: -20;">내용</label>
 			<div style="padding-left: 30px;">			
-				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none;" required></textarea><br>
+				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none; border-radius: 3px; border: 1px solid #ccc;" required></textarea><br>
 			</div>	
 			<div align="center" style="padding-top: 12px;">
 				<input type="submit"  value="완료">
