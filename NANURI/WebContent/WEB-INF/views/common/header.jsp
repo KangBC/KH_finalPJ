@@ -69,7 +69,7 @@
 		<div class="h_category_box">
 			<ul class="headul">
 				
-						<li><a href="rental_category.do?division=AC">유아</a></li>
+						<li><a href="rental_category.do?division=BC">유아</a></li>
 						<li><a href="rental_category.do?division=LSC">레저</a></li>
 						<li><a href="rental_category.do?division=FC">패션</a></li>
 						<li><a href="rental_category.do?division=LVC">리빙</a></li>

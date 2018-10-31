@@ -25,16 +25,16 @@
 
 <div class="in">
 <div class="box logo">
-<em>MYOMEE</em> <a href="/cm/appIntro.do" class="btnApp">모바일 앱 안내</a>
+<em>NANURI</em> <a href="/cm/appIntro.do" class="btnApp">모바일 앱 안내</a>
 </div>
 <div class="box address">
-<div class="tit">롯데렌탈㈜</div>
+<div class="tit">나누리렌탈㈜</div>
 <ul class="list">
-<li>대표이사 : 표현명 <em class="bar">|</em> 사업자등록번호 : 214-87-79183 <em class="bar">|</em> 통신판매업신고번호 : 제2010-경기안양-420호
+<li>대표이사 : 김세영 <em class="bar">|</em> 사업자등록번호 : 000-00-00000 <em class="bar">|</em> 통신판매업신고번호 : 제2010-경기안양-420호
 </li>
-<li>사업장 소재지 : 경기도 안양시 동안구 전파로 88 신원비젼타워 8층</li>
-<li>서울 본사 : 서울시 강남구 테헤란로 422 KT타워 6~9층</li>
-<li>개인정보보호책임자 : 최창희</li>
+<li>사업장 소재지 : 서울특별시 빛찬구 현석로14길 6 임호빌딩 2F, 3F, 4F, 5F</li>
+<li>서울 본사 : 서울특별시 중구 남대문로 120 대일빌딩 2F, 3F</li>
+<li>개인정보보호책임자 : 감바울</li>
 </ul>
 <div class="tit">
 고객센터&nbsp;
@@ -44,11 +44,10 @@
 
 
 
-
-1522-4100<em class="bar">|</em><a class="f_color_gr5" href="mailto:myomeecs@lotte.net" style=" letter-spacing:0;" target="_blank">myomeecs@lotte.net</a>
+1998-2018<em class="bar">|</em><a class="f_color_gr5" href="mailto:kang.b.c.1208@gmail.com" style=" letter-spacing:0;" target="_blank">kang.b.c.1208@gmail.com</a>
 </div>
 <ul class="list">
-<li><a class="lk" href="http://www.ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2010383018030200440&amp;area1=&amp;area2=&amp;currpage=1&amp;searchKey=04&amp;searchVal=2148779183&amp;stdate=&amp;enddate" target="_blank">사업자 정보 확인</a> <em class="bar">|</em> <a class="lk" href="javascript:open_unMail();">이메일무단수집거부</a></li>
+<li><a class="lk" target="_blank">사업자 정보 확인</a> <em class="bar">|</em> <a class="lk" href="javascript:open_unMail();">이메일무단수집거부</a></li>
 </ul>
 <p class="copyright">Copyright © 2018 LOTTE rental Co.,Ltd. All Rights Reserved.</p>
 </div>
@@ -56,8 +55,8 @@
 <div class="bottom">
 <div class="in">
 <ul class="links">
-<li class="fbook"><a href="https://www.facebook.com/MYOMEEofficial" target="_blank">페이스북</a></li>
-<li class="insta"><a href="https://www.instagram.com/myomee_official/" target="_blank">인스타그램</a></li>
+<li class="fbook"><a target="_blank">페이스북</a></li>
+<li class="insta"><a target="_blank">인스타그램</a></li>
 </ul>
 </div>
 </div>
@@ -75,7 +74,7 @@
 </div>
 </div>
 	 	
-	 </div>
+</div>
 
 
 </div>
