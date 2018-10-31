@@ -51,7 +51,6 @@
     </if>
 </select>
 
-
 <insert id="writeReview" parameterType="com.kh.finalPJ.review.reviewDto">
 	INSERT INTO REVIEW
 	VALUES(SEQ_R.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, 0, #{g_code}, #{rating})
@@ -80,5 +79,9 @@
 	WHERE SEQ=#{seq}
 </update>
 
-
+<select id="getGoodsSeq" parameterType="String" resultType="java.lang.Integer">
+	SELECT SEQ
+	FROM R_BBS
+	WHERE G_CODE = #{g_code}
+</select>
 </mapper>

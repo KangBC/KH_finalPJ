@@ -1,7 +1,9 @@
 package com.kh.finalPJ.review;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -114,26 +116,21 @@ public class reviewController {
 
 		return "redirect:reviewlist.do";
 	}
+	
 
-	/* 디테일보기 */
-	@RequestMapping(value = "reviewdetail.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailreview(int seq, Model model, String g_code) throws Exception {
-
-		logger.info("Welcome reviewController reviewdetail!!!!!! " + new Date());
-
-		reviewDto dto = null;
-		dto = reviewSrevice.detailreview(seq);
-		model.addAttribute("detailreview", dto);
-
-		// 후기에서 해당 페이지 가는~
-		int rseq = reviewSrevice.godetail(dto);
-		model.addAttribute("rseq", rseq);
-
-		// System.out.println("컨트롤"+dto.getContent());
-
-		return "reviewdetail.tiles";
+	/*해당상품으로 가기*/
+	@ResponseBody
+	@RequestMapping(value = "getGoodsSeq.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<Object, Object> getGoodsSeq(String g_code, Model model) throws Exception {
+		Map<Object, Object> seq = new HashMap<>();
+		
+		int g_seq = reviewSrevice.getGoodsSeq(g_code);
+		
+		seq.put("g_seq", g_seq);
+		
+		return seq;
 	}
-
+	
 	/* 글 삭제 */
 	@RequestMapping(value = "deleterev.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleterev(HttpServletRequest request, reviewDto dto, Model model) throws Exception {

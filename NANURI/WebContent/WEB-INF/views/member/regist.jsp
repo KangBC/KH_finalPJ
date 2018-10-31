@@ -34,7 +34,7 @@
 				</div>
 
 				<div class="md-form row" style="margin-top: 0px">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<input type="text" id="idCK" name="idCK" class="form-control"
 							value="" disabled style="border-bottom: none">
 					</div>

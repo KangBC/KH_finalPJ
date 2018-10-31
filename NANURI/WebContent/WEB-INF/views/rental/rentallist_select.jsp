@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,7 +16,9 @@
 	 
 	 String title = (String)request.getAttribute("title");
 	 
-
+	// 단위변환
+	 DecimalFormat dc = new DecimalFormat("###,###,###,###");   
+	 String price = null;
 %>
  
 <div class="startdiv">
@@ -44,14 +47,15 @@
 	 	
 		<%
 			for(int i=0; i < bbslist.size(); i++){
+				// 단위변환
+				price = dc.format(bbslist.get(i).getG_price());
 		%>
 		<a href="goodsdetail.do?seq=<%=bbslist.get(i).getSeq() %>&g_code=<%=bbslist.get(i).getG_code() %>" class="goods goods<%=bbslist.get(i).getSeq() %>" >
 			<div class="goods_img">
-				<img alt="" src="resources/img/rental_content/<%=bbslist.get(i).getContent()%>" width="100%">
+				<img alt="" src="resources/img/main_img/<%=bbslist.get(i).getG_img()%>" width="100%">
 			</div>
 			<p class="goods_title"><%=bbslist.get(i).getTitle() %></p>
-			<p class="goods_content"><%=bbslist.get(i).getContent() %></p>
-			<p class="goods_price">₩ <%=bbslist.get(i).getG_price() %></p>
+			<p class="goods_price">₩ <%=price %></p>
 		</a>
 	<% 
 			}
@@ -71,7 +75,6 @@
 
 
 </div>
-
 
 
 

@@ -68,4 +68,11 @@ public class reviewServiceImpl implements reviewService {
 		
 	}
 
+	/*해당상품으로 가기*/
+	@Override
+	public int getGoodsSeq(String g_code) throws Exception {
+		
+		return reviewDao.getGoodsSeq(g_code);
+	}
+
 }

@@ -76,7 +76,7 @@ ul{padding: 0}
 .goods{ width: 240px; height: 350px; float: left;margin: 5px 15px; text-align: center;}
 .goods p {margin: 0}
 .goods .goods_img{height: 250px;background: #333;}
-.goods .goods_title{margin: 5px 0;color: #888;font-weight: 700;font-size: 14;}
+.goods .goods_title{margin: 5px 0;color: #888;font-weight: 700;font-size: 14; margin-top: 15px;}
 .goods .goods_content{color: #777;font-size: 14px;}
 .goods .goods_price{font-size: 16px;color: #cd1965;font-weight: bold;font-family: 'Spoqa Han Sans';
     letter-spacing: 0; margin-top: 4px;}
@@ -179,10 +179,19 @@ ul{padding: 0}
 .admin_content .left_admin ul li a{width:100%; height:100%; color: #bbb; display: block;padding-left: 35px;padding-top: 13px;  }
 
 /* 장바구니 */
-
-.number_box .number_node{width: 33%; float: left; border-right: 1px solid}
-.number_box .number_node h3{float: left; font-size: 12px; padding: 20px; padding-top: 30px}
-.number_box .number_node span{float: right; font-size: 20px; font-weight: bold;padding: 20px;}
+.number_box_baskit{border: 1px solid;
+    width: 100%;
+    text-align: center;
+    border: none;
+    float: left;
+    padding: 0;
+    padding-left: 12px;
+    background: none;
+    border: 1px solid #ddd;
+    border-right:none}
+.number_box_baskit .number_node{width: 33%; float: left; border-right: 1px solid #ddd;}
+.number_box_baskit .number_node h3{float: left; font-size: 12px; padding: 20px; padding-top: 30px}
+.number_box_baskit .number_node span{float: right; font-size: 20px; font-weight: bold;padding: 20px;}
 
 /* 메인 */
 
@@ -256,7 +265,9 @@ ul{padding: 0}
 
 .silder_btn .swiper-button-next{background-image:url('https://user-images.githubusercontent.com/24869943/47766315-701e0c00-dd11-11e8-921e-bc9e75bc4aa2.png');background-size: 100%;    top: 22px;    height: 30px;}
 .silder_btn .swiper-button-prev{background-size: 100%;background-image:url('https://user-images.githubusercontent.com/24869943/47766314-6f857580-dd11-11e8-9be7-adffbbc6627e.png');    top: 22px;      left: 30px;  height: 30px;}
-.main_goods .goods_title{margin-top: 20px;}
+.main_goods .goods_title{margin-top: 20px;    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
 .swiper1 {    padding-top: 30px;}
 
 
