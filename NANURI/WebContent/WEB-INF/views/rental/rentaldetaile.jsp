@@ -5,6 +5,7 @@
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -80,7 +81,7 @@
 						</li>
 						<li>
 							<div class="title"style="margin-top: 4px;">배송비</div>
-							<div>₩ <b style="font-size: 16px;">4500</b></div>
+							<div>₩ <b style="font-size: 16px;" class="shipping">4500</b></div>
 						</li>
 						<li>
 							<div class="title">제휴카드</div>
@@ -436,10 +437,14 @@ $(".tab_title li").click(function(){
 	
 });
 
+
+
 // 타이틀 가격 ,처리
 var price_top = $("#price_top").html();
 $("#price_top").html(numberWithCommas(price_top));
 
+var shipping = $(".shipping").html();
+$(".shipping").html(numberWithCommas(shipping));
 
 // 디폴트 가격 , 처리
 var inresult = $("#resultnum").val();
@@ -500,7 +505,8 @@ $("#basketbtn").click(function(){
 	// 개월
 	var month = $(".month_box").attr('value');
 	// 총합가격
-	var resultnum = $("#resultnum").attr('value');
+	var resultnumstring = $("#resultnum").attr('value');
+	var resultnum = resultnumstring.replace(',', '');
 	 // 로그인 id
 	var id = $("#loginid").attr('value'); 
 	// g_code
