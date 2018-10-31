@@ -105,7 +105,7 @@
 					</div>
 
 					<!-- Total Cost Info -->
-					<div class="number_box">
+					<div class="number_box_baskit">
 						<div class="number_node">
 							<h3>주문금액</h3>
 							<span id="g_price">0원</span>

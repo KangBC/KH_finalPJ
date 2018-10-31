@@ -9,6 +9,7 @@
 List<goodsBbsDto> readbbs = (List<goodsBbsDto>)request.getAttribute("readbbs");
 List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
+
 %>
 
 
@@ -33,7 +34,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 		<hr>
 		<div class="main_goods_box">
 		
-			<div class="startdiv" style="position: relative;">
+			<div class="startdiv" style="position: relative;padding: 0">
   
 
  <div class="swiper-container swiper1">
@@ -46,9 +47,9 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
       for(int i = 0; i < 4; i++){
       
       %>
-			<a href="goodsdetail.do?seq="<%=readbbs.get(i).getSeq() %> class="goods">
+			<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>" class="goods main_goods">
 			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<img alt="" src="resources/img/main_img/<%=readbbs.get(i).getG_img()%>" width="100%"></div>
 			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
 			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
 			</a>
@@ -65,9 +66,9 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
       for(int i = 4; i < 8; i++){
       
       %>
-			<a href="goodsdetail.do?seq="<%=readbbs.get(i).getSeq() %> class="goods">
+			<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>" class="goods main_goods">
 			<div class="goods_img">
-			<img alt="" src="resources/img/download.png" width="100%"></div>
+			<img alt="" src="resources/img/main_img/<%=readbbs.get(i).getG_img()%>" width="100%"></div>
 			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
 			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
 			</a>
@@ -80,8 +81,10 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
     </div>
 
     <!-- Add Arrows -->
+    <div class="silder_btn silder_btn2">
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
+    </div>
   </div>
   
 </div>
@@ -107,16 +110,18 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 					      for(int i = 0; i < 4; i++){
 					      
 					      %>
-				      
 							<div class="grid_goods">
+							<a href="goodsdetail.do?seq=<%=datedds.get(i).getSeq() %>&g_code=<%=datedds.get(i).getG_code() %>">
 								<div>
-								<img alt="" src="resources/img/download.png" width="100%">
+								<img alt="" src="resources/img/main_img/<%=datedds.get(i).getG_img()%>" width="100%">
 								</div>
 								<span>
 									<p><%=datedds.get(i).getTitle() %></p>
-									<span><%=datedds.get(i).getG_price() %></span>
+									<span>₩ <%=datedds.get(i).getG_price() %></span>
 								</span>
+								</a>
 							</div>
+							
 						<%
 					      }
 					      }
@@ -127,18 +132,20 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 					      // 데이터가 8개이상일때
 					      if(datedds.size() > 6){
 					      for(int i = 4; i < 8; i++){
-					      
+					   
 					      %>
-				      
 							<div class="grid_goods">
+							<a href="goodsdetail.do?seq=<%=datedds.get(i).getSeq() %>&g_code=<%=datedds.get(i).getG_code() %>">
 								<div>
-								<img alt="" src="resources/img/download.png" width="100%">
+								<img alt="" src="resources/img/main_img/<%=datedds.get(i).getG_img()%>" width="100%">
 								</div>
 								<span>
 									<p><%=datedds.get(i).getTitle() %></p>
-									<span><%=datedds.get(i).getG_price() %></span>
+									<span>₩ <%=datedds.get(i).getG_price() %></span>
 								</span>
+								</a>
 							</div>
+							
 						<%
 					      }
 					      }
@@ -167,62 +174,65 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
 <div class="goods_info" style="    margin-top: 130px;">
 <div class="cate"><span><i>레저/취미</i></span></div>
-	<img alt="" src="resources/img/slideimg/Leisure.jpg" width="100%">
+	<a href="rental_category.do?division=BC">
+		<img alt="" src="resources/img/slideimg/Leisure.jpg" width="100%">
+	</a>
+	
 </div>
 
 <div class="startdiv" style="display: table;">
 
-<h1 class="maintop_title">요즘잘나가요</h1>
+<h1 class="maintop_title">후기가 높은</h1>
 <hr>
 
 <div style="display: table;">
+
+     <%
+	if(datedds.size() > 2){
+	for(int i = 0; i < 3; i++){
+					      
+	%>
+
 	<div class="grid_goods_big">
+	<a href="goodsdetail.do?seq=<%=datedds.get(i).getSeq() %>&g_code=<%=datedds.get(i).getG_code() %>">
 		<div>
-			<img alt="" src="resources/img/download.png" width="100%">
+		<img alt="" src="resources/img/main_img/<%=datedds.get(i).getG_img()%>" width="100%">
 		</div>
 		<span>
-			<p>title</p>
-			<span>price</span>
+			<p><%=datedds.get(i).getTitle() %></p>
+			<span>₩ <%=datedds.get(i).getG_price() %></span>
 		</span>
+		</a>
 		</div>	
-		<div class="grid_goods_big">
-		<div>
-			<img alt="" src="resources/img/download.png" width="100%">
-		</div>
-		<span>
-			<p>title</p>
-			<span>price</span>
-		</span>
-		</div>
-		<div class="grid_goods_big">
-		<div>
-			<img alt="" src="resources/img/download.png" width="100%">
-		</div>
-		<span>
-			<p>title</p>
-			<span>price</span>
-		</span>
-		</div>						
+		<%
+					      }
+					      }
+		%>
 </div>
 
 <div>
 	<div style="display: table;">
-	<%
-	 for(int i = 0; i < 5; i++){
-					      
-					      %>
+  	<%
+      // 데이터가 4개이상일때
+      if(readbbs.size() > 5){
+      for(int i = 0; i < 5; i++){
+      
+      %>
 	<div class="grid_goods_small">
+		<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>">
 		<div>
-			<img alt="" src="resources/img/download.png" width="100%">
+		<img alt="" src="resources/img/main_img/<%=readbbs.get(i).getG_img()%>" width="100%">
 		</div>
 		<span>
-			<p>title</p>
-			<span>price</span>
+			<p><%=readbbs.get(i).getTitle() %></p>
+			<span>₩ <%=readbbs.get(i).getG_price() %></span>
 		</span>
+		</a>
 		</div>	
 		
 	<%
 	 }
+      }
 	%>
 		
 		</div>
