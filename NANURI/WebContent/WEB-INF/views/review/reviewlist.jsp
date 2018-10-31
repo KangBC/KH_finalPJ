@@ -134,81 +134,58 @@
 		</jsp:include>
 	</div>
 	<script>
-		function modal_view(seq, g_img, id, wdate, title, rating, content,
-				g_code) {
-			$('#viewModal')
-					.on(
-							'show.bs.modal',
-							function(event) {
+		function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
+			$('#viewModal').on('show.bs.modal',function(event) {
+	$("#starRev").empty();
+	$("#modal_id").empty();
+	$("#modal_title").empty();
+	$("#modal_footer").empty();
 
-								$("#starRev").empty();
-								$("#modal_id").empty();
-								$("#modal_title").empty();
-								$("#modal_footer").empty();
+	if (g_img == null || g_img == "") {
+		$(".modal-body #g_img")
+				.attr('src',
+						"http://k-startup.go.kr/images/homepage/prototype/noimage.gif");
+	} else {
+		$(".modal-body #g_img").attr('src',
+				"resources/img/main_img/" + g_img);
+	}
+	$("#_seq").val(seq);
+	$(".modal-body #modal_id").append(
+			"<font style='font-weight: bold;'>ㅣ</font>작성자 : "
+					+ id);
+	$(".modal-body #modal_wdate").text(
+			wdate.toString().substring(0, 16));
+	$(".modal-body #modal_title").append(
+			"<p style='font-size: 1.3em; font-weight: bold'>"
+					+ title + "</p>");
+	$(".modal-body #_rating").val(rating);
+	$(".modal-body #content").html(content);
+	$("#_g_code").val(g_code);
 
-								if (g_img == null || g_img == "") {
-									$(".modal-body #g_img")
-											.attr('src',
-													"http://k-startup.go.kr/images/homepage/prototype/noimage.gif");
-								} else {
-									$(".modal-body #g_img").attr('src',
-											"resources/img/main_img/" + g_img);
-								}
-								$("#_seq").val(seq);
-								$(".modal-body #modal_id").append(
-										"<font style='font-weight: bold;'>ㅣ</font>작성자 : "
-												+ id);
-								$(".modal-body #modal_wdate").text(
-										wdate.toString().substring(0, 16));
-								$(".modal-body #modal_title").append(
-										"<p style='font-size: 1.3em; font-weight: bold'>"
-												+ title + "</p>");
-								$(".modal-body #_rating").val(rating);
-								$(".modal-body #content").html(content);
-								$("#_g_code").val(g_code);
-
-								for (var i = 1; i <= 10; i++) {
-									if (i % 2 == 1) {
-										if (i <= rating) {
-											$("#starRev")
-													.append(
-															"<span class='starR1 on'></span>");
-										} else {
-											$("#starRev")
-													.append(
-															"<span class='starR1'></span>");
-										}
-									} else if (i % 2 == 0) {
-										if (i <= rating) {
-											$("#starRev")
-													.append(
-															"<span class='starR2 on'></span>");
-										} else {
-											$("#starRev")
-													.append(
-															"<span class='starR2'></span>");
-										}
-									}
-								}
-
-								if (id == $("#loginId").val()) {
-									$("#modal_footer")
-											.append(
-													"<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='글 수정' onclick='location.href='reviewupdate.do?seq="
-															+ seq + "'>");
-									$("#modal_footer")
-											.append(
-													"<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='글 삭제' onclick='deletereview('"
-															+ seq + "')'>");
-								}
-								$("#modal_footer")
-										.append(
-												"<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
-								$("#modal_footer")
-										.append(
-												"<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='해당 상품으로' onclick='goodsdetail()'>");
-							});
+	for (var i = 1; i <= 10; i++) {
+		if (i % 2 == 1) {
+			if (i <= rating) {
+				$("#starRev").append("<span class='starR1 on'></span>");
+			} else {
+				$("#starRev").append("<span class='starR1'></span>");
+			}
+		} else if (i % 2 == 0) {
+			if (i <= rating) {
+				$("#starRev").append("<span class='starR2 on'></span>");
+			} else {
+				$("#starRev").append("<span class='starR2'></span>");
+			}
 		}
+	}
+
+	  if (id == $("#loginId").val()) {
+         $("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='글 수정' onclick='updateview()'>");
+         $("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='글 삭제' onclick='deletereview()'>");
+      }
+         $("#modal_footer").append("<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
+         $("#modal_footer") .append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='해당 상품으로' onclick='goodsdetail()'>");
+      });
+}
 	</script>
 	<script type="text/javascript">
 		function goPage(pageNumber) {
