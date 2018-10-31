@@ -6,6 +6,7 @@ import java.util.List;
 import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.qa.qaDto;
 import com.kh.finalPJ.review.reviewDto;
 
 public interface goodsDao {
@@ -34,4 +35,13 @@ public interface goodsDao {
 	List<goodsBbsDto> headselect(String title);
 	
 	List<goodsBbsDto> headselectajax(String title);
+	
+	List<qaDto> getQnAlist_g(String g_code);
+	
+	public List<Integer> getRef(String id);
+	
+	public List<Integer> AllgetRef();
+	
+	 
+	 
 }

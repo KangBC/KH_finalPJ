@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.qa.qaDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Repository
@@ -198,7 +199,25 @@ public class goodsDaoImpl implements goodsDao {
 		return list;
 	}
 
+	@Override
+   public List<qaDto> getQnAlist_g(String g_code) {
+      
+      List<qaDto> list = sqlSession.selectList(namespace + "getQnAlist_g", g_code);
+      
+      return list;
+   }
+   
+   @Override
+	public List<Integer> getRef(String id) {
+		List<Integer> ref = sqlSession.selectList(namespace + "getRef", id);
+		return ref;
+	}
 
+	@Override
+	public List<Integer> AllgetRef() {
+		List<Integer> ref = sqlSession.selectList(namespace + "AllgetRef");
+		return ref;
+	}
 
 
 

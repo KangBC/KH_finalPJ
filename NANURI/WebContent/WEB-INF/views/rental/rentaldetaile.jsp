@@ -1,8 +1,10 @@
+<%@page import="com.kh.finalPJ.qa.qaDto"%>
 <%@page import="com.kh.finalPJ.member.memberDto"%>
 <%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@page import="com.kh.finalPJ.common.orderedDto"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +14,12 @@
 
 
 	goodsBbsDto bbslist = (goodsBbsDto)request.getAttribute("detail");
+	String title = (String)request.getAttribute("title");
 	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
+	
+	List<Integer> allref = (List<Integer>) request.getAttribute("allref");   
+	List<Integer> reflist = (List<Integer>) request.getAttribute("reflist");
+	List<qaDto> qalist = (List<qaDto>) request.getAttribute("g_qalist");
 	
 	
 	memberDto id = (memberDto)request.getSession().getAttribute("login");
@@ -24,7 +31,17 @@
 	
 %>
 
-
+<style>    
+       
+        #report { border-collapse:collapse; width:100%}
+        #report h4 { margin:0px; padding:0px;}
+        #report th { text-align:center !important;background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
+        #report td {text-align:center; background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; font-size: 12px; padding: 20px;}
+        #report tr.odd td { background:#fff url(row_bkg.png) repeat-x scroll center left; cursor:pointer; border-bottom: 1px solid #e1e1e1;}
+        #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+        #report div.up { background-position:0px 0px;}
+       
+</style>
 
 <div class="startdiv">
 
@@ -34,7 +51,7 @@
 	<div class="detail_head">
 	
 		<p class="category">
-		[ 가전제품 ]
+		[ <%=title %> ]
 		</p>
 		
 		<p class="goods_title">
@@ -47,18 +64,28 @@
 		
 		<div class="top_box">
 			<div class="goods_img">
-			
+				<img alt="" src="resources/img/main_img/<%=bbslist.getG_img()%>" width="100%">
 			</div>
 		
 			<div class="goods_priceinfo">
 				<div class="price_box">
 					<ul>
-						<li>렌탈</li>
-						<li>₩ <%=bbslist.getG_price() %> / 월</li>
-						<li>예상배송일</li>
-						<li>업체 배송(평균 2영업일 소요)</li>
-						<li>배송비</li>
-						<li>₩ 4500</li>
+						<li>
+							<div class="title"  style="color: #cd1965;margin-top: 6px;">렌탈</div>
+							<div  style="color: #cd1965;">₩ <span id="price_top"><%=bbslist.getG_price() %></span> / 월</div>
+						</li>
+						<li>
+						<div class="title">예상배송일</div>
+						<div>업체 배송(평균 2영업일 소요)</div>
+						</li>
+						<li>
+							<div class="title"style="margin-top: 4px;">배송비</div>
+							<div>₩ <b style="font-size: 16px;">4500</b></div>
+						</li>
+						<li>
+							<div class="title">제휴카드</div>
+							<div>MY RENTAL LOTTE CARD</div>
+						</li>
 					</ul>
 				</div>
 			
@@ -78,7 +105,7 @@
 			}
 			else{
 			%>
-			<p>등록된 내용이 없습니다.</p>
+			<p style="    text-align: center;  padding: 50px;">등록된 내용이 없습니다.</p>
 		
 		<%
 			}
@@ -99,7 +126,15 @@
 		</ul>
 		
 		<ul class="tab_contant">
-			<li id="tab01">기본정보</li>
+			<li id="tab01">
+				<table width="720" style="width: 540pt; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0"><colgroup><col width="720" style="width: 540pt; mso-width-source: userset; mso-width-alt: 23040;"></colgroup><tbody><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"></td></tr><tr height="30" style="height: 22.5pt;"><td width="720" height="30" style="border: 0px black; border-image: none; width: 540pt; height: 22.5pt; background-color: white;"><strong><span style="font-size: 18pt;">계약 안내사항</span></strong></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><strong></strong></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><span style="font-size: 10pt;">▷ 본 상품은 약정된 분납금 상환 이후 소유권이 고객님께 이전되는 '스마트장기' 상품입니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><span style="font-size: 10pt;">▷ 계약물품의
+중도 반납은 불가능 하며 잔여 금액 중도 상환 후 소유권 이전은 가능합니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><p><span style="font-size: 10pt;">▷ 계약기간
+동안 무상 A/S를 진행합니다.(단, 고객과실 및 자연적 환경에 의한 훼손의 경우는 제외됩니다.)</span></p><p><br></p></td></tr><tr height="58" style="height: 43.5pt; mso-height-source: userset;"><td width="720" height="58" style="border: 0px black; border-image: none; width: 540pt; height: 43.5pt; background-color: white;"><strong><span style="font-size: 18pt;">유의사항</span></strong></td></tr><tr height="32" style="height: 24pt;"><td width="720" height="32" style="border: 0px black; border-image: none; width: 540pt; height: 24pt; background-color: white;"><span style="font-size: 10pt;">▷ 고객의 단순
+변심에 의한 교환/반품은 어렵우니 신중한 구매결정 부탁드립니다.<br>▷ '스마트장기'는 신용거래이므로 신용등급 등에 따라 주문,
+렌탈요청이 취소되거나 추가 증빙이 필요할 수 있습니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"></td></tr><tr height="30" style="height: 22.5pt;">
+<td width="720" height="30" style="border: 0px black; border-image: none; width: 540pt; height: 22.5pt; background-color: white;"></td></tr><tr height="22" style="height: 16.5pt;"><td height="22" style="border: 0px black; border-image: none; height: 16.5pt; background-color: white;"></td></tr></tbody></table>
+
+			</li>
 			
 			
 		
@@ -177,7 +212,88 @@
 			
 			
 			
-			<li id="tab03">Q & A</li>
+			<li id="tab03">
+				<table id="report">
+					<tr>
+						<th>구분</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>게시일</th>
+					</tr>
+					<%if(qalist.size() >0){
+						for (int i = 0; i < qalist.size(); i++) {
+							List<Integer> allref2 = allref; // 답변버튼 중복생성안되게 만들기위해 필요한 변수
+							if((qalist.get(i).getSecret() == 0 && qalist.get(i).getDel() == 0) ||
+								(reflist.contains(qalist.get(i).getRef())  && (qalist.get(i).getDel() == 0)) ||
+								(id.getAuth() == 2)) {%><!-- 공개글  --> 							
+								<tr class="odd">
+									<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>				         
+						            	<td><span style="margin-right: 26px;"></span>└ A</td>
+						            	<td class="title_td" ><span style="margin-right: 8px;"></span>└ <%=qalist.get(i).getTitle()%></td>
+						            <%}else{ %>
+						            	<td>Q</td>
+						            	<td class="title_td" ><%=qalist.get(i).getTitle()%></td>
+						            <%} %>	
+							            <td><%=qalist.get(i).getId()%></td>	
+						            	<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>						           
+						        </tr>
+						        <tr style="display: none">					  
+						            <td colspan="4">   
+							            <div style="border-bottom: 1px solid gray;">	          
+							            	<h4 align="center"><%=qalist.get(i).getTitle()%></h4>
+							            </div>
+							            <div style="border-bottom: 1px solid gray; text-align: left !important; padding: 10px;">
+							            	게시일:<%=qalist.get(i).getWdate().substring(0, 16) %><br>
+							            	작성자:<%=qalist.get(i).getId()%>
+							            </div>
+							            <div style="text-align: left !important; padding: 30px;">
+											<label>내용:</label><%=qalist.get(i).getContent() %>
+										</div>
+											<div align="right">
+											<%if((!qalist.get(i).getTitle().equals("관리자 답변입니다.")) && (id.getAuth() == 2)){%>
+												<%
+												allref2.set(i,-2);
+												if(!allref2.contains(qalist.get(i).getRef())){ %>					
+									 				<a href="ansWrite.do?ref=<%=qalist.get(i).getRef()%>&g_code=<%=qalist.get(i).getG_code()%>&secret=<%=qalist.get(i).getSecret()%>">답변 <span style="margin-right: 7px"></span> </a>
+							               		<%} %>
+							               <%} %>
+							               	<%if(!qalist.get(i).getTitle().equals("관리자 답변입니다.") && (id.getId().equals(qalist.get(i).getId()) || id.getAuth() == 2)) {%>
+							            		<a href="delete.do?ref=<%=qalist.get(i).getRef()%>">삭제</a>
+							            	<%} %>
+							            	</div>
+							            	<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.") && id.getAuth() == 2){ %>
+							            		<div align="right"><a href="ansDelete.do?seq=<%=qalist.get(i).getSeq()%>">삭제</a></div>
+							            	<%} %>   
+						            </td>					           
+						        </tr>
+								
+							<%}else if(qalist.get(i).getSecret() == 1){ %><!-- 비공개글  --> 
+								<tr class="odd">						
+								<%if(qalist.get(i).getTitle().equals("관리자 답변입니다.")){ %>
+									<td><span style="margin-right: 26px;"></span> └ A</td>
+									<td class="title_td" ><span style="margin-right: 8px;"></span>└ 비공개글 답변입니다.</td>
+								<%}else{ %>
+									<td>Q</td>
+									<td class="title_td" >비공개 글입니다.</td>
+									<%} %>						
+									<td><%=qalist.get(i).getId() %></td>
+									<td><%=qalist.get(i).getWdate().substring(0, 16) %></td>
+								</tr>
+								<tr>
+								</tr>
+							<%} %>
+						<%
+							}
+						%>		
+					<%}else{ %>
+							<tr>
+								<td colspan="4">작성된 글이 없습니다.</td>
+							</tr>
+					<%} %>
+					
+				</table>
+			
+			</li>
 			</ul>
 		</div>
 		
@@ -194,15 +310,15 @@
 				</div>
 				<div class="middle">
 				
-					<div>
-					<p>갯수</p>
+					<div style="display: table; padding: 10px;">
+					<p class="option_title">갯수</p>
 					<button class="monthbtn minusbtn" title="수량줄이기">-</button>
 					<input class="number_box" type="number" value="1" disabled="disabled" >
 					<button class="monthbtn plusbtn" title="수량늘이기">+</button>
 					</div>
 					
-					<div>
-					<p>기간</p>
+					<div style="display: table; padding: 10px;">
+					<p class="option_title">기간</p>
 					<button class="monthbtn minusbtn" title="수량줄이기">-</button>
 					<input class="month_box" type="number" value="1" disabled="disabled" >
 					<button class="monthbtn plusbtn" title="수량늘이기">+</button>
@@ -211,20 +327,33 @@
 				</div>
 				<div class="bottom">
 					<div class="priceview">
+						<div>
 						<input id="pricehidden" type="hidden" value="<%=bbslist.getG_price() %>" disabled="disabled" >
-						<input class="price" type="number" value="<%=bbslist.getG_price() %>" disabled="disabled" >
+						<span class="pr_title">상품가격 :</span>
+						<input class="price inputresult" type="number" value="<%=bbslist.getG_price() %>" disabled="disabled" >
+						<span style="font-size: 12px;">원</span>
+						</div>
 						
 						<!-- insert date -->
 					 	<input type="hidden" id="loginid" value="<%=id.getId() %>">
 						<input type="hidden" id="g_code" value="<%=bbslist.getG_code() %>">
 						
-						<input type="number" id="monthnum" value="1">
-					
-						<input id="resultnum" value="<%=bbslist.getG_price() %>" disabled="disabled">
+						<div>
+						<span class="pr_title">개월수 :</span>
+						<input type="number" class="inputresult" id="monthnum"value="1" disabled="disabled">
+						<span style="font-size: 12px;">개월</span>
+						</div>
+						
+						<div style="padding-top: 10px;border-top: 1px solid #ddd; margin-top: 10px;">
+							<span style="    font-size: 13px;font-weight: bold;">총 금액</span>
+							
+						<input id="resultnum" class="inputresult" style="width:155px;font-size: 19px; color: #cd1965; font-weight: bold;    padding-right: 25px;" value="<%=bbslist.getG_price() %>" disabled="disabled">
+						<span>원</span>
+						</div>
 					</div>
 					<div class="btnbox">
-						<a class="pricebtn" id="basketbtn">장바구니</a>
-						<a class="pricebtn" id="orderbtn">구매하기</a>
+						<a class="pricebtn bas_btn" id="basketbtn">장바구니</a>
+						<a class="pricebtn result_btn" id="orderbtn">구매하기</a>
 					</div>	
 				</div>
 			</div>	
@@ -240,10 +369,6 @@
 
 </div>
 
-
-<div class="topbtn" style="width: 10px; height: 10px; background-color: blue; position: fixed; bottom: 30; right: 30; cursor: pointer;	">
-	TOP
-</div>
 
 
 
@@ -269,12 +394,6 @@
 <script type="text/javascript">
 
 
-//topbtn
-$(".topbtn").click(function(){
-	 $('html, body').animate({
-         scrollTop : 0
-     }, 400);
-});	
 
 // 옵션박스
 $(window).scroll(function(){
@@ -285,6 +404,18 @@ $(window).scroll(function(){
     }
     else {
        $(".option").removeClass("scrollfixed");
+    }
+});
+
+
+$(window).scroll(function(){
+	
+	var scrollPosition = ($(".footer").offset().top - 600);
+    if ($(window).scrollTop() >= scrollPosition) {
+    	 $(".option").addClass("scrollfixed2");
+    }
+    else {
+    	 $(".option").removeClass("scrollfixed2");
     }
 });
 
@@ -305,6 +436,15 @@ $(".tab_title li").click(function(){
 	
 });
 
+// 타이틀 가격 ,처리
+var price_top = $("#price_top").html();
+$("#price_top").html(numberWithCommas(price_top));
+
+
+// 디폴트 가격 , 처리
+var inresult = $("#resultnum").val();
+$("#resultnum").attr('value',numberWithCommas(inresult));
+
 // 플러스 버튼
 $(".plusbtn").click(function(){
 	var number = parseInt($(this).prev().attr('value'));
@@ -312,6 +452,7 @@ $(".plusbtn").click(function(){
 	$(this).prev().attr('value',numberplus);
 	
 	var price = parseInt($("#pricehidden").attr('value'));
+	
 	var amount = parseInt($(".number_box").attr('value'));
 	
 	var result = price * amount;
@@ -320,8 +461,9 @@ $(".plusbtn").click(function(){
 	var month_box = parseInt($(".month_box").attr('value'));
 	$("#monthnum").attr('value',month_box);
 	
-	$("#resultnum").attr('value',month_box * result);
-	
+	$("#resultnum").attr('value',numberWithCommas(month_box * result));
+	/* <fmt:formatNumber value="month_box * result"
+		pattern="#,###" /> */
 });
 
 // 마이너스버튼
@@ -343,7 +485,7 @@ $(".minusbtn").click(function(){
 	var month_box = parseInt($(".month_box").attr('value'));
 	$("#monthnum").attr('value',month_box);
 	
-	$("#resultnum").attr('value',month_box * result);
+	$("#resultnum").attr('value',numberWithCommas(month_box * result));
 	}
 	
 	
@@ -429,5 +571,21 @@ $("#orderbtn").click(function(){
 	}      
 });
 
+$(function(){
+
+    $("#report tr:odd").addClass("odd");      
+    /* $("#report tr:first-child").show(); */ //열머리글 보여주기 
+    
+    $("#report tr.odd").click(function(){
+    	
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+
+    });
+});
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 </script>

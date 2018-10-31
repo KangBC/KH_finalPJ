@@ -23,6 +23,7 @@ import com.kh.finalPJ.common.orderedDto;
 import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.qa.qaDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Controller
@@ -47,23 +48,58 @@ public class goodsController {
 	// goodsdetaile view
 	@RequestMapping(value = "goodsdetail.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String goodsdetaile(Model model, int seq, String g_code, HttpServletRequest req) throws Exception {
-
+		
+		memberDto mem = null;
+		if(req.getSession().getAttribute("login") != null) {
+			mem =(memberDto) req.getSession().getAttribute("login");
+		}else {	// 세션값이 없을때
+			mem = new memberDto();
+			mem.setId("null");
+		}
+		String id = mem.getId();
+		
 		// readcount
 		goodsService.readcount(seq);
 		// getdetaile
 		goodsBbsDto dto = goodsService.getgoodsdetail(seq);
 		// g_code 연결(rivew,qna)
 		List<reviewDto> code = goodsService.getreview_qna(g_code);
-
-		for (int i = 0; i < code.size(); i++) {
-			System.out.println(code.get(i));
-		}
-
-		System.out.println(g_code);
+		
+		List<qaDto> g_qalist = goodsService.getQnAlist_g(g_code); 
+		List<Integer> allref = goodsService.AllgetRef();
+		List<Integer> reflist = goodsService.getRef(id);	
+		
+		String title = null;
+		String category = dto.getG_code().substring(0, 2);
+		
+				// 유아
+				if (category.equals("BC")) {
+					title = "유아동";
+				}
+				// 레저
+				else if (category.equals("LSC")) {
+					title = "레저";
+				}
+				// 패션
+				else if (category.equals("FC")) {
+					title = "패션";
+				}
+				// 리빙
+				else if (category.equals("LVC")) {
+					title = "리빙";
+				}
 
 		model.addAttribute("detail", dto);
 		model.addAttribute("reviewDto", code);
+		model.addAttribute("title", title);
+		
+		model.addAttribute("g_qalist", g_qalist);
+		model.addAttribute("allref", allref);
+		model.addAttribute("reflist", reflist);
+		
 		return "rentaldetaile.tiles";
+		
+		
 	}
 
 	/* 이름 + SELECTBOX 검색 */
@@ -141,22 +177,22 @@ public class goodsController {
 		List<goodsBbsDto> list = null;
 		String title = null;
 		// 유아
-		if (division.equals("AC")) {
+		if (division.equals("BC")) {
 			list = goodsService.getbbscategory(division);
 			title = "유아동";
 		}
 		// 레저
-		else if (division.equals("BC")) {
+		else if (division.equals("LSC")) {
 			list = goodsService.getbbscategory(division);
 			title = "레저";
 		}
 		// 패션
-		else if (division.equals("CC")) {
+		else if (division.equals("FC")) {
 			list = goodsService.getbbscategory(division);
 			title = "패션";
 		}
 		// 리빙
-		else if (division.equals("DC")) {
+		else if (division.equals("LVC")) {
 			list = goodsService.getbbscategory(division);
 			title = "리빙";
 		}

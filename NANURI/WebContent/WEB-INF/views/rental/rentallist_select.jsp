@@ -22,7 +22,7 @@
 
 <div class="page-h">
 
-<h1><%=title %></h1>
+<h1 style="font-size: 30px;font-weight: bold;"><%=title %></h1>
 <!-- 카테고리 분류 값 -->
 <input type="hidden" value="<%=title %>" id="category_val">
 <hr>
@@ -34,7 +34,7 @@
 
 <div class="goodsbox_h">
 
- <p class="goods_countbox">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p> 
+ <p class="goods_countbox" style="    margin-bottom: 20px;">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p> 
 
 </div>
 <hr style="height: 1px;background: #333;margin: 0;">
