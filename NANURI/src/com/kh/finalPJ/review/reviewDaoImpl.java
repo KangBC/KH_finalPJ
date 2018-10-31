@@ -86,4 +86,12 @@ public class reviewDaoImpl implements reviewDao {
 		sqlSession.update(namespace + "reviewupdate", dto);
 		
 	}
+
+	/*해당상품으로 가기*/
+	@Override
+	public int getGoodsSeq(String g_code) throws Exception {
+		return sqlSession.selectOne(namespace + "getGoodsSeq" , g_code);
+		
+	}
+	
 }
