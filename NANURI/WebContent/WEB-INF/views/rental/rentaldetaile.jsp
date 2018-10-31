@@ -4,6 +4,7 @@
 <%@page import="com.kh.finalPJ.common.orderedDto"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,7 +33,7 @@
 
 <style>    
        
-        #report { border-collapse:collapse; width:800px}
+        #report { border-collapse:collapse; width:100%}
         #report h4 { margin:0px; padding:0px;}
         #report th { text-align:center !important;background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
         #report td {text-align:center; background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; font-size: 12px; padding: 20px;}
@@ -71,7 +72,7 @@
 					<ul>
 						<li>
 							<div class="title"  style="color: #cd1965;margin-top: 6px;">렌탈</div>
-							<div  style="color: #cd1965;">₩ <span><%=bbslist.getG_price() %></span> / 월</div>
+							<div  style="color: #cd1965;">₩ <span id="price_top"><%=bbslist.getG_price() %></span> / 월</div>
 						</li>
 						<li>
 						<div class="title">예상배송일</div>
@@ -104,7 +105,7 @@
 			}
 			else{
 			%>
-			<p>등록된 내용이 없습니다.</p>
+			<p style="    text-align: center;  padding: 50px;">등록된 내용이 없습니다.</p>
 		
 		<%
 			}
@@ -125,7 +126,15 @@
 		</ul>
 		
 		<ul class="tab_contant">
-			<li id="tab01">기본정보</li>
+			<li id="tab01">
+				<table width="720" style="width: 540pt; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0"><colgroup><col width="720" style="width: 540pt; mso-width-source: userset; mso-width-alt: 23040;"></colgroup><tbody><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"></td></tr><tr height="30" style="height: 22.5pt;"><td width="720" height="30" style="border: 0px black; border-image: none; width: 540pt; height: 22.5pt; background-color: white;"><strong><span style="font-size: 18pt;">계약 안내사항</span></strong></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><strong></strong></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><span style="font-size: 10pt;">▷ 본 상품은 약정된 분납금 상환 이후 소유권이 고객님께 이전되는 '스마트장기' 상품입니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><span style="font-size: 10pt;">▷ 계약물품의
+중도 반납은 불가능 하며 잔여 금액 중도 상환 후 소유권 이전은 가능합니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"><p><span style="font-size: 10pt;">▷ 계약기간
+동안 무상 A/S를 진행합니다.(단, 고객과실 및 자연적 환경에 의한 훼손의 경우는 제외됩니다.)</span></p><p><br></p></td></tr><tr height="58" style="height: 43.5pt; mso-height-source: userset;"><td width="720" height="58" style="border: 0px black; border-image: none; width: 540pt; height: 43.5pt; background-color: white;"><strong><span style="font-size: 18pt;">유의사항</span></strong></td></tr><tr height="32" style="height: 24pt;"><td width="720" height="32" style="border: 0px black; border-image: none; width: 540pt; height: 24pt; background-color: white;"><span style="font-size: 10pt;">▷ 고객의 단순
+변심에 의한 교환/반품은 어렵우니 신중한 구매결정 부탁드립니다.<br>▷ '스마트장기'는 신용거래이므로 신용등급 등에 따라 주문,
+렌탈요청이 취소되거나 추가 증빙이 필요할 수 있습니다.</span></td></tr><tr height="22" style="height: 16.5pt;"><td width="720" height="22" style="border: 0px black; border-image: none; width: 540pt; height: 16.5pt; background-color: white;"></td></tr><tr height="30" style="height: 22.5pt;">
+<td width="720" height="30" style="border: 0px black; border-image: none; width: 540pt; height: 22.5pt; background-color: white;"></td></tr><tr height="22" style="height: 16.5pt;"><td height="22" style="border: 0px black; border-image: none; height: 16.5pt; background-color: white;"></td></tr></tbody></table>
+
+			</li>
 			
 			
 		
@@ -203,7 +212,7 @@
 			
 			
 			
-			<li id="tab03">Q & A
+			<li id="tab03">
 				<table id="report">
 					<tr>
 						<th>구분</th>
@@ -337,6 +346,7 @@
 						
 						<div style="padding-top: 10px;border-top: 1px solid #ddd; margin-top: 10px;">
 							<span style="    font-size: 13px;font-weight: bold;">총 금액</span>
+							
 						<input id="resultnum" class="inputresult" style="width:155px;font-size: 19px; color: #cd1965; font-weight: bold;    padding-right: 25px;" value="<%=bbslist.getG_price() %>" disabled="disabled">
 						<span>원</span>
 						</div>
@@ -408,12 +418,6 @@ $(window).scroll(function(){
     	 $(".option").removeClass("scrollfixed2");
     }
 });
-/* $(".tab_box").scroll( function() { 
-	var elem= $(".tab_box"); 
-	if ( elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
-		alert("End of Yellow"); } 
-	}); */
-
 
 
 // 하단 탭메뉴
@@ -432,6 +436,15 @@ $(".tab_title li").click(function(){
 	
 });
 
+// 타이틀 가격 ,처리
+var price_top = $("#price_top").html();
+$("#price_top").html(numberWithCommas(price_top));
+
+
+// 디폴트 가격 , 처리
+var inresult = $("#resultnum").val();
+$("#resultnum").attr('value',numberWithCommas(inresult));
+
 // 플러스 버튼
 $(".plusbtn").click(function(){
 	var number = parseInt($(this).prev().attr('value'));
@@ -439,6 +452,7 @@ $(".plusbtn").click(function(){
 	$(this).prev().attr('value',numberplus);
 	
 	var price = parseInt($("#pricehidden").attr('value'));
+	
 	var amount = parseInt($(".number_box").attr('value'));
 	
 	var result = price * amount;
@@ -447,7 +461,7 @@ $(".plusbtn").click(function(){
 	var month_box = parseInt($(".month_box").attr('value'));
 	$("#monthnum").attr('value',month_box);
 	
-	$("#resultnum").attr('value',month_box * result);
+	$("#resultnum").attr('value',numberWithCommas(month_box * result));
 	/* <fmt:formatNumber value="month_box * result"
 		pattern="#,###" /> */
 });
@@ -471,7 +485,7 @@ $(".minusbtn").click(function(){
 	var month_box = parseInt($(".month_box").attr('value'));
 	$("#monthnum").attr('value',month_box);
 	
-	$("#resultnum").attr('value',month_box * result);
+	$("#resultnum").attr('value',numberWithCommas(month_box * result));
 	}
 	
 	
@@ -569,5 +583,9 @@ $(function(){
 
     });
 });
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 </script>

@@ -177,7 +177,7 @@ public class goodsController {
 		List<goodsBbsDto> list = null;
 		String title = null;
 		// 유아
-		if (division.equals("AC")) {
+		if (division.equals("BC")) {
 			list = goodsService.getbbscategory(division);
 			title = "유아동";
 		}

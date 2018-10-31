@@ -88,7 +88,7 @@ ul{padding: 0}
 .detail_wrap{display: table;}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
 .detail_head .goods_title{font-size: 32px; color:#333;}
-.detail_body {width: 780px;    float: left;}
+.detail_body {width: 780px;    float: left;margin-right: 25px;}
 .detail_body .top_box{display: table;border-bottom: 40px solid #ddd;}
 .detail_body .top_box .goods_img{width: 350px; height: 400px;float: left;margin-right: 15px;} 
 .detail_body .top_box .goods_priceinfo{width: 340px; float: left;margin-top: 20px;}
@@ -122,11 +122,11 @@ ul{padding: 0}
 .scrollfixed{position: fixed !important; top:50; transition: 0.3s all}
 .scrollfixed2{position: fixed !important; top:0;}
 .tab_title{display: table;  width: 100%; padding: 0; padding-top: 20px;}
-.tab_title li{float: left; width: 33.33333%; height: 40px; border: 1px solid #333; text-align: center; cursor: pointer;}
-.tab_title .active{background-color: #aaa;}
+.tab_title li{float: left; width: 33.33333%; height: 50px; border: 1px solid #999; text-align: center; cursor: pointer;    padding-top: 13px;}
+.tab_title .active{background-color: #9d87b8; color: #fff}
 .tab_contant{width: 100%; padding: 0;}
 .tab_contant #tab01 {display: block;}
-.tab_contant > li {width: 100%;border: 1px solid #333; min-height: 800px; display: none;}
+.tab_contant > li {width: 100%; min-height: 800px; display: none;    min-height: 400px; padding: 10px;}
 .inputresult{background: none; border: none; font-weight: bold; width: 115px;    text-align: right;}
 .pr_title{font-size: 13px;display: inline-block; width: 70px;}
 
@@ -254,8 +254,8 @@ ul{padding: 0}
 			background-image: url('../img/main_m_img.jpg');background-size: 100% 100%;}
 .new_dateboxlist{float: left; width: 525px; height: 600px; }
 
-.silder_btn .swiper-button-next{background-image:url('../img/s_btn_r.png');background-size: 100%;    top: 22px;    height: 30px;}
-.silder_btn .swiper-button-prev{background-image:url('../img/s_btn_l.png');background-size: 100%;    top: 22px;      left: 30px;  height: 30px;}
+.silder_btn .swiper-button-next{background-image:url('https://user-images.githubusercontent.com/24869943/47766315-701e0c00-dd11-11e8-921e-bc9e75bc4aa2.png');background-size: 100%;    top: 22px;    height: 30px;}
+.silder_btn .swiper-button-prev{background-size: 100%;background-image:url('https://user-images.githubusercontent.com/24869943/47766314-6f857580-dd11-11e8-9be7-adffbbc6627e.png');    top: 22px;      left: 30px;  height: 30px;}
 .main_goods .goods_title{margin-top: 20px;}
 .swiper1 {    padding-top: 30px;}
 

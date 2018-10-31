@@ -114,7 +114,7 @@ $(document).ready(function() {
 	var category;
 	
 	if($("#category_val").val() == "유아동"){
-		category = "AC";
+		category = "BC";
 	}
 	else if($("#category_val").val() == "레저"){
 		category = "LSC";
