@@ -1,5 +1,6 @@
 package com.kh.finalPJ.goods;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +39,8 @@ public class goodsController {
 	public String getList(Model model, HttpServletRequest request) throws Exception {
 
 		List<goodsBbsDto> list = goodsService.getbbslength();
-
+		
+		
 		model.addAttribute("bbslist", list);
 
 		return "rentallist.tiles";
@@ -111,9 +113,9 @@ public class goodsController {
 		String lists = req.getParameter("lists");
 		String category = req.getParameter("category");
 
-		System.out.println(category);
+	/*	System.out.println(category);
 		System.out.println(title);
-		System.out.println(lists);
+		System.out.println(lists);*/
 
 		Map<Object, Object> map = new HashMap<>();
 
@@ -196,12 +198,14 @@ public class goodsController {
 			list = goodsService.getbbscategory(division);
 			title = "리빙";
 		}
-
-		System.out.println(list.size());
-
+		
+		
+		
+		
 		model.addAttribute("title", title);
 		model.addAttribute("bbslist", list);
 
+		
 		return "rentallist.tiles";
 
 	}

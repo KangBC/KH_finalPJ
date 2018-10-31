@@ -37,7 +37,6 @@
  <p class="goods_countbox">총  <span id="goods_count"><%=bbslist.size() %></span> 개 의 상품이 있습니다.</p> 
 	<div class="goods_select">
 	
-			
 	
 	
 		<select id="goods_select" onchange="findtitle_btn()">
@@ -145,15 +144,16 @@ $.ajax({
 			
 	 	 $.each(data.list, function(key, value){ 
 	 		 
+
 	 		if(value.title != null){
 	 			
 	 		// img 가 없을때
 				if(!value.g_img){
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 				}
 				// img 가 있을때
 				else if(value.g_img){
-		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 				}
 	 			
 	 		}
@@ -197,11 +197,11 @@ function indexup(){
 		 		if(value.title != null){
 					// img 가 없을때
 					if(!value.g_img){
-		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 					}
 					// img 가 있을때
 					else if(value.g_img){
-			 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+			 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 					}
 		 			/* 더보기 박스 hide */
 		 			var node = $('.goodsbox').children();	 		
@@ -282,11 +282,11 @@ $.ajax({
 	 		if(value.title != null){
 	 		// img 가 없을때
 				if(!value.g_img){
-	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+	 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/download.png" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 				}
 				// img 가 있을때
 				else if(value.g_img){
-		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+value.g_price+'</p></a>');
+		 			$('.goodsbox').append('<a href="goodsdetail.do?seq='+value.seq+'&g_code='+value.g_code+'" class="goods" ><div class="goods_img"><img alt="" src="resources/img/main_img/'+value.g_img+'" width="100%"></div><p class="goods_title">'+value.title+'</p><p class="goods_price">₩ '+numberWithCommas(value.g_price)+'</p></a>');
 				}
 		 		var node = $('.goodsbox').children();
 	 			$("#goods_count").html(node.length); 
@@ -316,23 +316,9 @@ $.ajax({
 }
 
 
+function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 
-
-
-
-	
-</script>
-
-
-<script type="text/javascript">
-var page = 1;
-/* 
-$(window).scroll(function() {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-      console.log(++page);
-      $("#goodsbox").append("<h1>Page " + page + "</h1><BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~");
-      
-    }
-}); */
 </script>
 

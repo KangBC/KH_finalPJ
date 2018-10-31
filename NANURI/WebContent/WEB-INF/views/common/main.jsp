@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.kh.finalPJ.goods.goodsBbsDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,11 @@
 
 List<goodsBbsDto> readbbs = (List<goodsBbsDto>)request.getAttribute("readbbs");
 List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
+
+// 단위변환
+DecimalFormat dc = new DecimalFormat("###,###,###,###");   
+String price = null;
+
 
 
 %>
@@ -45,13 +51,14 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
       // 데이터가 4개이상일때
       if(readbbs.size() > 2){
       for(int i = 0; i < 4; i++){
-      
+    	  // 단위 변환
+    	  price = dc.format(readbbs.get(i).getG_price());
       %>
 			<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>" class="goods main_goods">
 			<div class="goods_img">
 			<img alt="" src="resources/img/main_img/<%=readbbs.get(i).getG_img()%>" width="100%"></div>
 			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
-			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
+			<p class="goods_price">₩ <%=price%></p>
 			</a>
 		
 		<%
@@ -64,13 +71,14 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 	 // 데이터가 8개이상일때
 	  if(readbbs.size() > 6){
       for(int i = 4; i < 8; i++){
-      
+    	  // 단위변환
+    	  price = dc.format(readbbs.get(i).getG_price());
       %>
 			<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>" class="goods main_goods">
 			<div class="goods_img">
 			<img alt="" src="resources/img/main_img/<%=readbbs.get(i).getG_img()%>" width="100%"></div>
 			<p class="goods_title"><%=readbbs.get(i).getTitle() %></p>
-			<p class="goods_price">₩ <%=readbbs.get(i).getG_price()%></p>
+			<p class="goods_price">₩ <%=price%></p>
 			</a>
 		
 		<%
@@ -108,7 +116,8 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 					      // 데이터가 4개이상일때
 					      if(datedds.size() > 2){
 					      for(int i = 0; i < 4; i++){
-					      
+					    	  // 단위변환
+					    	  price = dc.format(datedds.get(i).getG_price());
 					      %>
 							<div class="grid_goods">
 							<a href="goodsdetail.do?seq=<%=datedds.get(i).getSeq() %>&g_code=<%=datedds.get(i).getG_code() %>">
@@ -117,7 +126,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 								</div>
 								<span>
 									<p><%=datedds.get(i).getTitle() %></p>
-									<span>₩ <%=datedds.get(i).getG_price() %></span>
+									<span>₩ <%=price %></span>
 								</span>
 								</a>
 							</div>
@@ -132,7 +141,8 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 					      // 데이터가 8개이상일때
 					      if(datedds.size() > 6){
 					      for(int i = 4; i < 8; i++){
-					   
+					    	  // 단위변환
+					    	  price = dc.format(datedds.get(i).getG_price());
 					      %>
 							<div class="grid_goods">
 							<a href="goodsdetail.do?seq=<%=datedds.get(i).getSeq() %>&g_code=<%=datedds.get(i).getG_code() %>">
@@ -141,7 +151,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 								</div>
 								<span>
 									<p><%=datedds.get(i).getTitle() %></p>
-									<span>₩ <%=datedds.get(i).getG_price() %></span>
+									<span>₩ <%=price %></span>
 								</span>
 								</a>
 							</div>
@@ -174,7 +184,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
 <div class="goods_info" style="    margin-top: 130px;">
 <div class="cate"><span><i>레저/취미</i></span></div>
-	<a href="rental_category.do?division=BC">
+	<a href="rental_category.do?division=LSC">
 		<img alt="" src="resources/img/slideimg/Leisure.jpg" width="100%">
 	</a>
 	
@@ -190,7 +200,8 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
      <%
 	if(datedds.size() > 2){
 	for(int i = 0; i < 3; i++){
-					      
+		 // 단위변환
+  	  price = dc.format(datedds.get(i).getG_price());			      	
 	%>
 
 	<div class="grid_goods_big">
@@ -200,7 +211,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 		</div>
 		<span>
 			<p><%=datedds.get(i).getTitle() %></p>
-			<span>₩ <%=datedds.get(i).getG_price() %></span>
+			<span>₩ <%=price %></span>
 		</span>
 		</a>
 		</div>	
@@ -216,7 +227,8 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
       // 데이터가 4개이상일때
       if(readbbs.size() > 5){
       for(int i = 0; i < 5; i++){
-      
+    	  // 단위변환
+      	  price = dc.format(readbbs.get(i).getG_price());	
       %>
 	<div class="grid_goods_small">
 		<a href="goodsdetail.do?seq=<%=readbbs.get(i).getSeq() %>&g_code=<%=readbbs.get(i).getG_code() %>">
@@ -225,7 +237,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 		</div>
 		<span>
 			<p><%=readbbs.get(i).getTitle() %></p>
-			<span>₩ <%=readbbs.get(i).getG_price() %></span>
+			<span>₩ <%=price %></span>
 		</span>
 		</a>
 		</div>	
