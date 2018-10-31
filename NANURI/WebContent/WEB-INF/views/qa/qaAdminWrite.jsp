@@ -17,29 +17,40 @@
 
 <%memberDto mem = (memberDto)session.getAttribute("login"); %>
 <div class="startdiv">
-	<form action="qaAdminWriteAf.do" id="_frmForm" method="post">
-		<label>아이디</label>
-		<input type="text" name="id" value="<%=mem.getId()%>" readonly="readonly"><br> <!-- 나중에 로그인 세션값으로 수정 readonly-->
-		<label>제목</label>
-		<input type="text" name="title" required><br>	
-		<label>내용</label>
-		<textarea rows="10" cols="50" name="content" required></textarea><br>
-		<!-- <input type="submit" value="작성완료"> -->
-		<input type="submit"  value="공지사항 등록">
-	</form>	
+	<div style="font-style: italic; padding-left: 261px; font-size: 35; padding-bottom: 4px;">
+		Q&A 공지사항
+	</div>
+
+	<div style="width: 500px; margin: 0px auto;">
+		<form action="qaAdminWriteAf.do" id="_frmForm" method="post">
+			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; padding-top: 8px;">
+				<label>아이디 : </label>
+				<input type="text" name="id" value="<%=mem.getId()%>" readonly="readonly"><br>
+			</div>
+			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 8px;
+	   					padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;">
+				<label>제목 : </label>
+				<input type="text" name="title" style="margin-left: 14;" required><br>
+			</div>	
+			<label style="padding-left: 30px;">내용</label>
+			<div style="padding-left: 30px;">
+				<textarea rows="10" cols="50" name="content" style="width: 450px; text-decoration: none; outline:none; resize: none; "  required ></textarea><br>
+			</div>
+			<div align="center" style="padding-top: 13px;">
+			<input type="submit"  value="등록">
+			&nbsp;&nbsp;
+			<input type="button" onclick="cancel()" value="취소">	
+			</div>
+		</form>	
+	</div>
 </div>
+
+<script type="text/javascript">
+function cancel() {
+	location.href="qnalist.do";
+}
+</script>
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

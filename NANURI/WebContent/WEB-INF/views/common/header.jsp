@@ -41,7 +41,7 @@
 			<!-- 검색 -->
 			<div style="position: relative;">
 			<input type="text" value="" placeholder="원하시는 상품을 검색해보세요" class="head_select" onkeyup="headtitle_btn()">
-			<a class="head_select_btn" onclick="head_select_btn()"></a>
+			<a class="head_select_btn"></a>
 			
 			
 			<div class="head_ajaxbox">
@@ -106,17 +106,14 @@
 	
 	
 	// 검색
-	//$(".head_select_btn").click(function(){
-	function head_select_btn(){
+	$(".head_select_btn").click(function(){
 		var title = $(".head_select").val();
 		location.href = "headselect.do?title="+title;
 		
-	}
+	})
 	
 		
 	function headtitle_btn(){
-		
-		
 		
 		var title = $(".head_select").val();	
 		
@@ -152,10 +149,6 @@
 		 		
 		 		
 				 }); 
-
-				
-		 	 
-		 	 
 			}
 			
 			
@@ -169,11 +162,7 @@
 		}
 	})
 
-	var keyCode = window.event.keyCode;
-		if (keyCode == 13) {
-			head_select_btn();
-		
-	}
+
 
 	}
 	

@@ -7,44 +7,33 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:annotation-config/>
-	
-	<!-- 	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
-	 -->
-	
+	<context:annotation-config />
+
 	<!-- tiles 설정 -->
-	<bean id="tilesConfig" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	<bean id="tilesConfig"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/views/layouts.xml</value> <!-- 위치를 선정하는 부분 -->
+				<value>/WEB-INF/views/layouts.xml</value>
 			</list>
 		</property>
 	</bean>
-	
-	<!-- interceptors 설정 -->
-	<!-- <mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**/*.do" />
-			<bean class="com.kh.finalPJ.common.LoginInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
+
 	<!-- viewResolver 설정 -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="requestContextAttribute" value="req"/>
-		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="requestContextAttribute" value="req" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	</bean>
-	
+
 	<!-- java 파일의 공통 package 설정 -->
-	<context:component-scan base-package="com.kh.finalPJ"/>
-	
+	<context:component-scan
+		base-package="com.kh.finalPJ" />
+
 	<!-- 주석문의 사용 허가 -->
-	<mvc:annotation-driven/>
-	
+	<mvc:annotation-driven />
+
 	<!-- spring에서 처리할 수 없는 요청은 tomcat에 위임 -->
-	<mvc:default-servlet-handler/>
+	<mvc:default-servlet-handler />
 </beans>
