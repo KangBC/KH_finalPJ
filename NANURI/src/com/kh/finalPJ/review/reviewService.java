@@ -28,4 +28,7 @@ public interface reviewService {
 	/*글 수정*/
 	public void reviewupdate(reviewDto dto, int seq)throws Exception;
 	
+	/*해당상품으로 가기*/
+	public int getGoodsSeq(String g_code)throws Exception; 
+	
 }

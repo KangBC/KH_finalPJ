@@ -25,33 +25,28 @@
 	<div class="startdiv">
 		<form id="_frmFormSearch" method="get" action="">
 			<!-- 페이징 -->
-			<input type="hidden" name="pageNumber" id="_pageNumber"
-				value="${(empty pageNumber)?0:pageNumber}" /> <input type="hidden"
-				name="recordCountPerPage" id="_recordCountPerPage"
-				value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
+			<input type="hidden" name="pageNumber" id="_pageNumber"	value="${(empty pageNumber)?0:pageNumber}" />
+				<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage"	value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
 
 			<!--검색부분 -->
 			<div align="center">
-				<select id="_s_category" name="s_category"
-					class="browser-default custom-select" style="width: 95px">
+				<select id="_s_category" name="s_category"	class="browser-default custom-select" style="width: 95px">
 					<option value="" selected="selected">선택</option>
 					<option value="title">제목</option>
 					<option value="contents">내용</option>
 					<option value="userid">작성자</option>
-				</select> <input type="text" class="form-control"
-					style="width: 200px; display: inline;" id="_s_keyword"
+				</select>
+				<input type="text" class="form-control" style="width: 200px; display: inline;" id="_s_keyword"
 					name="s_keyword" value="${s_keyword}" />
 
-				<button type="button" id="_btnSearch" class="btn btn-purple">검색
-				</button>
+				<button type="button" id="_btnSearch" class="btn btn-purple">검색	</button>
 			</div>
 		</form>
 		<br>
 		<c:choose>
 			<c:when test="${empty reviewlist}">
 				<tr>
-					<td colspan="7" style="text-align: center; padding: 100px">등록된
-						상품 리뷰가 없습니다.</td>
+					<td colspan="7" style="text-align: center; padding: 100px">등록된 상품 리뷰가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -63,18 +58,16 @@
 							<div class="img" id="">
 								<c:choose>
 									<c:when test="${list.g_img eq null}">
-										<img alt=""
-											src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
-											style="width: 80; height: 80">
+										<img alt=""	src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif" style="width: 80; height: 80">
 									</c:when>
 									<c:otherwise>
-										<img alt="" src="resources/img/main_img/${list.g_img }"
-											style="width: 80; height: 80">
+										<img alt="" src="resources/img/main_img/${list.g_img }" style="width: 80; height: 80">
 									</c:otherwise>
 								</c:choose>
-							</div> <!-- / 상품이미지 --> <!-- 상품디테일 --> <a data-toggle="modal"
-							data-target="#viewModal"
-							onclick="modal_view('${list.seq}','${list.g_img}','${list.id}','${list.wdate}','${list.title}','${list.rating}' ,'<c:out value="${list.content }" escapeXml="true" />','${list.g_code }');">
+							</div>
+							 <!-- / 상품이미지 -->
+							 <!-- 상품디테일 -->
+							<a data-toggle="modal" data-target="#viewModal"	onclick="modal_view('${list.seq}','${list.g_img}','${list.id}','${list.wdate}','${list.title}','${list.rating}' ,'<c:out value="${list.content }" escapeXml="true" />','${list.g_code }');">
 								<div class="text_view" style="cursor: pointer;">
 									<div class="title">${list.title }</div>
 
@@ -133,9 +126,10 @@
 			<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
 		</jsp:include>
 	</div>
-	<script>
-		function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
-			$('#viewModal').on('show.bs.modal',function(event) {
+	
+<script>
+function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
+	$('#viewModal').on('show.bs.modal',function(event) {
 	$("#starRev").empty();
 	$("#modal_id").empty();
 	$("#modal_title").empty();
@@ -186,40 +180,36 @@
          $("#modal_footer") .append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='해당 상품으로' onclick='goodsdetail()'>");
       });
 }
-	</script>
-	<script type="text/javascript">
-		function goPage(pageNumber) {
-			$("#_pageNumber").val(pageNumber);
-			$("#_frmFormSearch").attr("target", "_self").attr("action",
-					"reviewlist.do").submit();
-		}
+</script>
+<script type="text/javascript">
+function goPage(pageNumber) {
+	$("#_pageNumber").val(pageNumber);
+	$("#_frmFormSearch").attr("target", "_self").attr("action",	"reviewlist.do").submit();
+}
 
-		$("#_btnSearch").click(function() {
-			//alert('search');						
-			$("#_frmFormSearch").attr({
-				"target" : "_self",
-				"action" : "reviewlist.do"
-			}).submit();
+	$("#_btnSearch").click(function() {
+		//alert('search');						
+	$("#_frmFormSearch").attr({
+		"target" : "_self",
+		"action" : "reviewlist.do"
+	}).submit();
 
-		});
+});
 
-		/* 검색 카테고리를 유지 start */
-		var str = $
-		{
-			category
-		};
+/* 검색 카테고리를 유지 start */
+var str = ${category};
 
-		$(document).ready(function() {
-			//document.frmForm1.s_category.value = str;
-			$("#_s_category").val(str);
+$(document).ready(function() {
+	//document.frmForm1.s_category.value = str;
+	$("#_s_category").val(str);
 
-			// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
-			if ($("#_s_keyword").val().trim() == "") {
-				//document.frmForm1.s_category.value = "";
-				$("#_s_category").val("");
-			}
-		})
-	</script>
-	<jsp:include page="reviewDetail_Modal.jsp" />
+	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
+	if ($("#_s_keyword").val().trim() == "") {
+	//document.frmForm1.s_category.value = "";
+	$("#_s_category").val("");
+	}
+})
+</script>
+<jsp:include page="reviewDetail_Modal.jsp" />
 </body>
 </html>
