@@ -130,5 +130,27 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
     WHERE A.TITLE LIKE #{title}|| '%'
   </select>
 
+<!-- qa  -->
+<select parameterType="String" resultType="com.kh.finalPJ.qa.qaDto" id="getQnAlist_g">
+      SELECT SEQ, ID, TITLE, CONTENT, WDATE, REF, DEL, G_CODE, SECRET
+      FROM QA
+      WHERE G_CODE = #{g_code}
+      ORDER BY REF DESC, SEQ ASC
+</select>
 
+<!-- ref 받아오기 -->
+	<select parameterType="String" resultType="java.lang.Integer" id="getRef">
+		SELECT REF
+		FROM QA
+		WHERE ID=#{id}	
+	</select>
+	
+	<!-- 모든 ref값 가져오기 -->	
+	<select resultType="java.lang.Integer" id="AllgetRef">
+		SELECT REF
+		FROM QA
+		WHERE NOT REF=-1	
+		ORDER BY REF DESC, SEQ ASC
+	</select>
+	
 </mapper>

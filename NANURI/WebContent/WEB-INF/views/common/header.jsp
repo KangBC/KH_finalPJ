@@ -70,9 +70,9 @@
 			<ul class="headul">
 				
 						<li><a href="rental_category.do?division=AC">유아</a></li>
-						<li><a href="rental_category.do?division=BC">레저</a></li>
-						<li><a href="rental_category.do?division=CC">패션</a></li>
-						<li><a href="rental_category.do?division=DC">리빙</a></li>
+						<li><a href="rental_category.do?division=LSC">레저</a></li>
+						<li><a href="rental_category.do?division=FC">패션</a></li>
+						<li><a href="rental_category.do?division=LVC">리빙</a></li>
 
 			</ul>
 			</div>
@@ -102,7 +102,7 @@
 	         scrollTop : 0
 	     }, 400);
 	});	
-
+	
 	
 	
 	// 검색

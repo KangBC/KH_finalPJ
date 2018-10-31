@@ -117,11 +117,11 @@ $(document).ready(function() {
 		category = "AC";
 	}
 	else if($("#category_val").val() == "레저"){
-		category = "BC";
+		category = "LSC";
 	}else if($("#category_val").val() == "패션"){
-		category = "CC";
+		category = "FC";
 	}else if($("#category_val").val() == "리빙"){
-		category = "DC";
+		category = "LVC";
 	}
  	
 	var list = {

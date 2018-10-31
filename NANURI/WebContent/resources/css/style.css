@@ -57,7 +57,7 @@ ul{padding: 0}
 .left_content ul li span{font-size: 10px;    font-weight: bold;}
 .left_content ul li i{ font-size: 40px;display: block;margin-bottom: 10px;}
    
-.startdiv {width: 1100px; margin: 0 auto; padding: 10px;padding-top: 40px;}
+.startdiv {width: 1100px; margin: 0 auto; padding: 10px;padding-top: 40px;    min-height: 500px;}
 .head_category{position: relative;}
 .head_category_box{position: absolute; width: 100%; height: 200px; background: #eee;z-index: 999;left: 0; display:none;}
 .head_category_box .category {padding: 0}
@@ -89,29 +89,46 @@ ul{padding: 0}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
 .detail_head .goods_title{font-size: 32px; color:#333;}
 .detail_body {width: 780px;    float: left;}
-.detail_body .top_box{display: table;border-bottom: 1px solid #ddd;}
-.detail_body .top_box .goods_img{width: 300px; height: 400px;float: left;} 
-.detail_body .top_box .goods_priceinfo{width: 470px; float: left;}
+.detail_body .top_box{display: table;border-bottom: 40px solid #ddd;}
+.detail_body .top_box .goods_img{width: 350px; height: 400px;float: left;margin-right: 15px;} 
+.detail_body .top_box .goods_priceinfo{width: 340px; float: left;margin-top: 20px;}
 .detail_body .goods_info{width: 100%; min-height: 400px; padding: 20px;}
 
-.option_box{float:left;float: left; position: relative;}
-.option_box .option{position: absolute;    width: 250px; height: 500px; border: 1px solid #333;}
-.option_box .option .top{width: 100%; height:10%; font-size: 14px; padding: 20px; border-bottom: 1px solid #333; text-align: center;}
-.option_box .option .middle{height:60%;}
-.option_box .option .bottom{height: 30%;}
-.option_box .option .bottom .priceview{height: 100px; background-color: #ccc; padding: 10px;}
-.option_box .option .bottom .btnbox {text-align: center;}
-.option_box .option .bottom .btnbox .pricebtn{width: 40%; height: 50px; border: 1px solid; padding: 10px; display: inline-block;}
-.amountbtn{    width: 35px;height: 35px;}
+.price_box ul{ width: 100%;}
+.price_box ul li{border-top: 1px solid #ddd; padding: 20px; display: table;width: 100%;font-size: 13px;}
+.price_box ul li:last-child{border-bottom: 1px solid #ddd}
+.price_box ul li div{float: left; }
+.price_box ul li .title{width: 90px;}
+.price_box ul li div span{font-size: 19px;color: #cd1965;font-weight: bold;}
 
-.scrollfixed{position: fixed !important; top:50;}
+.result_btn{color: #fff !important; background: #9d87b8; border: 1px solid #bbb}
+.bas_btn{color: #fff !important; background: #aaa;border: 1px solid #bbb}
+
+.option_box{float:left;float: left; position: relative;}
+.option_box .option{position: absolute;    width: 250px; border: 1px solid #ccc;}
+.option_box .option .top{width: 100%; height:52px; font-size: 14px; padding: 20px; border-bottom: 1px solid #ddd; text-align: center;    background: #9d87b8;
+    color: #fff;padding-top: 16px;}
+.option_box .option .middle{    height: 180px;}
+.option_box .option .bottom{height: 30%;}
+.option_box .option .bottom .priceview{padding: 10px;border-top: #dddddd solid 1px; background-color: #f3f3f3;}
+.option_box .option .bottom .btnbox {text-align: center;    padding: 10px;background: #f1f1f1; border-top: 1px solid #ddd}
+.option_box .option .bottom .btnbox .pricebtn{width: 40%; height: 50px; padding: 12px; display: inline-block; }
+.amountbtn{    width: 35px;height: 35px;}
+.monthbtn {    width: 35px; height: 35px; background: #eee; border: 1px solid #ddd; float: left;cursor: pointer;}
+.month_box,.number_box{    border: 1px solid;width: 48px;text-align: center;border: none; float:left;
+    padding: 0;padding-left: 12px;height: 35px;background: none;border: 1px solid #ddd;}
+.option_title{margin: 0}
+
+.scrollfixed{position: fixed !important; top:50; transition: 0.3s all}
+.scrollfixed2{position: fixed !important; top:0;}
 .tab_title{display: table;  width: 100%; padding: 0; padding-top: 20px;}
 .tab_title li{float: left; width: 33.33333%; height: 40px; border: 1px solid #333; text-align: center; cursor: pointer;}
 .tab_title .active{background-color: #aaa;}
 .tab_contant{width: 100%; padding: 0;}
 .tab_contant #tab01 {display: block;}
 .tab_contant > li {width: 100%;border: 1px solid #333; min-height: 800px; display: none;}
-
+.inputresult{background: none; border: none; font-weight: bold; width: 115px;    text-align: right;}
+.pr_title{font-size: 13px;display: inline-block; width: 70px;}
 
 /* 후기 */
 .review{width: 100%; display: table; padding: 0;}
@@ -163,7 +180,6 @@ ul{padding: 0}
 
 /* 장바구니 */
 
-.number_box{width: 100%; border: 1px solid; display: table; margin-top: 30px}
 .number_box .number_node{width: 33%; float: left; border-right: 1px solid}
 .number_box .number_node h3{float: left; font-size: 12px; padding: 20px; padding-top: 30px}
 .number_box .number_node span{float: right; font-size: 20px; font-weight: bold;padding: 20px;}
