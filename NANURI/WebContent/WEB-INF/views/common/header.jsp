@@ -132,26 +132,21 @@
 		async: true,
 		success : function(data) {
 			
+			$(".ajaxboxul").children().remove();
 			
 			/* 검색 결과 없을시 */
 			if(data.list.length == 0){
-				$(".ajaxboxul").children().remove();
 	 			$(".ajaxboxul").append('<li class="none_title">검색 결과가 없습니다.</li>');
 				//$(".ajaxboxul").append('<li>검색 결과가 없습니다.');
 	 		}
 			
 			/* 검색 결과 있을시 */
 			if(title != ""){
-				
 		 	 $.each(data.list, function(key, value){ 
 		 		$(".ajaxboxul").children('.none_title').remove();
 		 		$(".ajaxboxul").append('<li id="lick" onclick="lick()">'+value.title+'</li>');
-		 		
-		 		
 				 }); 
 			}
-			
-			
 			else{
 				$(".head_ajaxbox").hide();
 			}
