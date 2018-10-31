@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.finalPJ.member.RStatusDto;
 import com.kh.finalPJ.member.basketDto;
 import com.kh.finalPJ.member.memberDto;
+import com.kh.finalPJ.qa.qaDto;
 import com.kh.finalPJ.review.reviewDto;
 
 @Service
@@ -102,6 +103,23 @@ public class goodsServiceImpl implements goodsService {
 	public List<goodsBbsDto> headselectajax(String title) throws Exception {
 		// TODO Auto-generated method stub
 		return goodsDao.headselectajax(title);
+	}
+
+
+
+	@Override
+	public List<qaDto> getQnAlist_g(String g_code) {
+		return goodsDao.getQnAlist_g(g_code);
+	}
+	
+	@Override
+	public List<Integer> getRef(String id) {
+		return goodsDao.getRef(id);
+	}
+
+	@Override
+	public List<Integer> AllgetRef() {
+		return goodsDao.AllgetRef();
 	}
 	
 }

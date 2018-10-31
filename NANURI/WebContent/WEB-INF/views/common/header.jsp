@@ -70,9 +70,9 @@
 			<ul class="headul">
 				
 						<li><a href="rental_category.do?division=AC">유아</a></li>
-						<li><a href="rental_category.do?division=BC">레저</a></li>
-						<li><a href="rental_category.do?division=CC">패션</a></li>
-						<li><a href="rental_category.do?division=DC">리빙</a></li>
+						<li><a href="rental_category.do?division=LSC">레저</a></li>
+						<li><a href="rental_category.do?division=FC">패션</a></li>
+						<li><a href="rental_category.do?division=LVC">리빙</a></li>
 
 			</ul>
 			</div>
@@ -80,8 +80,30 @@
 		
 	
 		
+<div class="topbtn" style="">
+	
+</div>
+		
 	
 	<script type="text/javascript">
+	
+	
+	$( window ).scroll( function() {
+		if ( $( this ).scrollTop() > 80 ) {
+			$( ".topbtn" ).fadeIn();
+		} else {
+			$( ".topbtn" ).fadeOut();
+		}
+	} );
+	
+	//topbtn
+	$(".topbtn").click(function(){
+		 $('html, body').animate({
+	         scrollTop : 0
+	     }, 400);
+	});	
+	
+	
 	
 	// 검색
 	$(".head_select_btn").click(function(){

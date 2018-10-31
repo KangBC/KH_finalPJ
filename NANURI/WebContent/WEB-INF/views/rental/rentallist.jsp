@@ -22,7 +22,7 @@
 
 <div class="page-h">
 
-<h1><%=title %></h1>
+<h1 style="font-size: 30px;font-weight: bold;"><%=title %></h1>
 <!-- 카테고리 분류 값 -->
 <input type="hidden" value="<%=title %>" id="category_val">
 <hr>
@@ -117,11 +117,11 @@ $(document).ready(function() {
 		category = "AC";
 	}
 	else if($("#category_val").val() == "레저"){
-		category = "BC";
+		category = "LSC";
 	}else if($("#category_val").val() == "패션"){
-		category = "CC";
+		category = "FC";
 	}else if($("#category_val").val() == "리빙"){
-		category = "DC";
+		category = "LVC";
 	}
  	
 	var list = {
@@ -258,17 +258,21 @@ $.ajax({
 		
 		/* 검색 결과 없을시 */
 		if(data.list.length == 0){
+			
  			$("#pageingbtn").hide();
+ 			$('.goodsbox').html('<p class="select_none">검색결과가 없습니다.</p>')
  		}
 		
 		/* 검색 결과 있을시 */
-		if(title != ""){
-			
+		else{
+		
+		 $('.goodsbox').children('.select_none').remove();
 		 $('.goodsbox').children('.goods').remove();
-		 	var node = $('.goodsbox').children();
+		 	var node = $('.goodsbox').children('.goods');
  			$("#goods_count").html(node.length); 
  			
- 			//alert(data.list.length);
+ 			
+ 	
  			
 		 	console.log(data.list.title);
 			
@@ -291,15 +295,16 @@ $.ajax({
 	 		
 	 		
 			 });
-		}
+		
 		
 		
 		// 공백일때 페이지 새로고침
-		else{
-			location.reload();
+	/* 	else if(title == ""){
+			alert("sa");
+			//location.reload();
 			//$("#findtitle").focus();
+		} */
 		}
-		
 	},
 	error : function(xhr, status) {
 		alert("ㅋㅋ넌못해");
