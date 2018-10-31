@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <fmt:requestEncoding value="utf-8" />
 
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog"
@@ -44,6 +46,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div id="content"
 						style="height: 350px; padding: 5%; border: 2px solid #542f82; margin-top: 10px; overflow: scroll; overflow-x: hidden"></div>
 				</div>
@@ -58,10 +61,15 @@
 </div>
 <script type="text/javascript">
 	function goodsdetail() {
-		location.href = "goodsdetail.do?g_code=" + $("#_g_code").val() + "&seq="
-				+ $("#_seq").val();
+		alert("111");
+		location.href = "goodsdetail.do?g_code=" + $("#_g_code").val() + "&seq="+ $("#_seq").val();
 	}
-	function deletereview(seq) {
-		location.href = 'deleterev.do?seq=' + $("#seq").val();
+	function deletereview() {
+		//alert($("#_seq").val());
+		location.href = 'deleterev.do?seq=' + $("#_seq").val();
+	}
+	function updateview() {
+		
+		location.href = 'reviewupdate.do?seq=' + $("#_seq").val();
 	}
 </script>
