@@ -17,10 +17,10 @@
 			</div>
 			<!-- / modal header -->
 			<!-- modal body -->
-			<input type="hidden" id="g_code" name="g_code" />
+			<input type="hidden" id="_g_code" name="_g_code" />
 			<form name="frmForm" class="_frmForm" id="_frmForm" method="post"
 				action="reviewdetail.do">
-				<input type="hidden" id="seq" name="seq" />
+				<input type="hidden" id="_seq" name="_seq" />
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-4">
@@ -51,16 +51,17 @@
 				<!-- modal footer -->
 				<div id="modal_footer" class="modal-footer" style="float: center">
 				</div>
+				<!-- / modal footer -->
 			</form>
-			<!-- / modal footer -->
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 	function goodsdetail() {
-		location.href="goodsdetail.do?g_code="+$("#g_code").val()+"&seq="+$("#seq").val();
+		location.href = "goodsdetail.do?g_code=" + $("#_g_code").val() + "&seq="
+				+ $("#_seq").val();
 	}
 	function deletereview(seq) {
-		location.href ='deleterev.do?seq='+$("#seq").val();
+		location.href = 'deleterev.do?seq=' + $("#seq").val();
 	}
 </script>
