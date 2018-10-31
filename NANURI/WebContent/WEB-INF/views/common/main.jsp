@@ -172,7 +172,7 @@ List<goodsBbsDto> datedds = (List<goodsBbsDto>)request.getAttribute("datedds");
 
 </div>
 
-<div class="goods_info">
+<div class="goods_info" style="    margin-top: 130px;">
 <div class="cate"><span><i>레저/취미</i></span></div>
 	<a href="rental_category.do?division=BC">
 		<img alt="" src="resources/img/slideimg/Leisure.jpg" width="100%">
