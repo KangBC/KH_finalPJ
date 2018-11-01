@@ -59,7 +59,7 @@
 					<c:otherwise>
 						<c:forEach items="${reviewList}" var="reviewList"
 							varStatus="status">
-							<tr>
+							<tr style="border-bottom: 1px solid #CCCCCC">
 								<th><c:choose>
 										<c:when test="${reviewList.g_img eq null}">
 											<img alt=""
@@ -72,7 +72,7 @@
 										</c:otherwise>
 									</c:choose></th>
 								<th><a
-									href="reviewdetail.do?g_code=${reviewList.g_code}&seq=${reviewList.seq}">${reviewList.title}</a></th>
+									href="reviewlist.do">${reviewList.title}</a></th>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
