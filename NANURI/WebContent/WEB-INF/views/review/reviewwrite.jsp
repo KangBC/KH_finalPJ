@@ -59,8 +59,8 @@
 </tr>
 <tr>
 	<td align="right"  style="width: 908px">
-	<input type="button" value="완료" id="savebutton">
-	<input type="button" value="취소" onclick="location.href='reviewlist.do'">
+	<input type="button" class='btn btn-outline-secondary waves-effect px-3' value="완료" id="savebutton">
+	<input type="button" class='btn btn-outline-secondary waves-effect px-3' value="취소" onclick="location.href='reviewlist.do'">
 	</td>
 </tr>
 </table>
