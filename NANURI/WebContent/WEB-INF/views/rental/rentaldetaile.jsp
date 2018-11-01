@@ -566,7 +566,8 @@ $("#orderbtn").click(function(){
 	// 개월
 	var month = $(".month_box").attr('value');
 	// 총합가격
-	var resultnum = $("#resultnum").attr('value');
+	var resultnumstring = $("#resultnum").attr('value');
+	var resultnum = resultnumstring.replace(',', '');
 
 	var data = gcode+","+amount+","+month+","+resultnum;
 	
