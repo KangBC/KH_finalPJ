@@ -38,7 +38,7 @@ public class reviewController {
 
 		logger.info("Welcome reviewController revlist!! " + new Date());	
 
-		List<reviewDto> list = reviewSrevice.getreview();
+		//List<reviewDto> list = reviewSrevice.getreview();
 		// model.addAttribute("reviewlist", list);
 
 		// paging 처리
@@ -117,7 +117,6 @@ public class reviewController {
 		return "redirect:reviewlist.do";
 	}
 	
-
 	/*해당상품으로 가기*/
 	@ResponseBody
 	@RequestMapping(value = "getGoodsSeq.do", method = { RequestMethod.GET, RequestMethod.POST })
