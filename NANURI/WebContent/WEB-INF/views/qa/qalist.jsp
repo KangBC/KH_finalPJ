@@ -253,7 +253,7 @@ th {
 			</div>
 			<div class="col-md-3" style="text-align: center; padding-top: 20px;">
 				<%if(mem.getAuth() == 0){ %>
-				<a href="qaWrite.do">
+				<a href="qaWrite.do?g_seq=-1">
 				<span style="margin: 10px; padding:10px; border-top : 1.5px solid #542f82; border-bottom :1.5px solid #542f82; font-size: 1.6em;"><font>글쓰기</font></span></a>
 				<%}else if(mem.getAuth() == 2){ %>
 				<a href="qaAdminWrite.do">
@@ -274,7 +274,7 @@ th {
 		<%} %> --%>
 	</div>
 
-	<script>
+<script>
     $(function(){
 
         $("#report tr:odd").addClass("odd");      
