@@ -77,4 +77,8 @@
 	FROM R_BBS
 	WHERE G_CODE = #{g_code}
 </select>
+
+<select id="goToDto" parameterType="Integer" resultType="com.kh.finalPJ.review.reviewDto">
+	SELECT * FROM REVIEW WHERE SEQ = #{seq}
+</select>
 </mapper>

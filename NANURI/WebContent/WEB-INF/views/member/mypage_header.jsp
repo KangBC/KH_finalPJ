@@ -71,8 +71,7 @@
 												style="width: 50px; height: 50px">
 										</c:otherwise>
 									</c:choose></th>
-								<th><a
-									href="reviewlist.do">${reviewList.title}</a></th>
+								<th><a href="reviewlist.do?seq=${reviewList.seq}">${reviewList.title}</a></th>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

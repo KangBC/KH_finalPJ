@@ -22,7 +22,45 @@ public class reviewParam {
 	private String wdate;
 	private int del;
 	private String g_code;
+	private int rating;
+	private String g_img;
 	
+	public String getS_category() {
+		return s_category;
+	}
+	public void setS_category(String s_category) {
+		this.s_category = s_category;
+	}
+	public String getS_keyword() {
+		return s_keyword;
+	}
+	public void setS_keyword(String s_keyword) {
+		this.s_keyword = s_keyword;
+	}
+	public int getRecordCountPerPage() {
+		return recordCountPerPage;
+	}
+	public void setRecordCountPerPage(int recordCountPerPage) {
+		this.recordCountPerPage = recordCountPerPage;
+	}
+	public int getPageNumber() {
+		return pageNumber;
+	}
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
 	public int getSeq() {
 		return seq;
 	}
@@ -65,42 +103,24 @@ public class reviewParam {
 	public void setG_code(String g_code) {
 		this.g_code = g_code;
 	}
-	public String getS_category() {
-		return s_category;
+	public int getRating() {
+		return rating;
 	}
-	public void setS_category(String s_category) {
-		this.s_category = s_category;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
-	public String getS_keyword() {
-		return s_keyword;
+	public String getG_img() {
+		return g_img;
 	}
-	public void setS_keyword(String s_keyword) {
-		this.s_keyword = s_keyword;
+	public void setG_img(String g_img) {
+		this.g_img = g_img;
 	}
-	public int getRecordCountPerPage() {
-		return recordCountPerPage;
+	
+	@Override
+	public String toString() {
+		return "reviewParam [s_category=" + s_category + ", s_keyword=" + s_keyword + ", recordCountPerPage="
+				+ recordCountPerPage + ", pageNumber=" + pageNumber + ", start=" + start + ", end=" + end + ", seq="
+				+ seq + ", id=" + id + ", title=" + title + ", content=" + content + ", wdate=" + wdate + ", del=" + del
+				+ ", g_code=" + g_code + ", rating=" + rating + ", g_img=" + g_img + "]";
 	}
-	public void setRecordCountPerPage(int recordCountPerPage) {
-		this.recordCountPerPage = recordCountPerPage;
-	}
-	public int getPageNumber() {
-		return pageNumber;
-	}
-	public void setPageNumber(int pageNumber) {
-		this.pageNumber = pageNumber;
-	}
-	public int getStart() {
-		return start;
-	}
-	public void setStart(int start) {
-		this.start = start;
-	}
-	public int getEnd() {
-		return end;
-	}
-	public void setEnd(int end) {
-		this.end = end;
-	}
-
-
 }
