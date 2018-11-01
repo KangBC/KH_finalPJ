@@ -19,6 +19,13 @@ $("document").ready(function() {
 		}
 	});
 	
+	$("#test_btn").click(function () {
+		var data = $("#data").val();
+		alert(data);
+		location.href="orderAf.do?data="+data;
+		alert("DB 저장 완료");
+	});
+	
 	$("#iamport_module").click(function () {
 		
 		if(checkInput()){
@@ -47,9 +54,6 @@ $("document").ready(function() {
 	            msg += '결제 금액 : ' + rsp.paid_amount;
 	            msg += '카드 승인번호 : ' + rsp.apply_num;
 	           
-	            var data = $("#data").val();
-				alert(data);
-				location.href="orderAf.do?data="+data;
 	        } else {
 	            var msg = '결제에 실패하였습니다.';
 	            msg += '에러내용 : ' + rsp.error_msg;

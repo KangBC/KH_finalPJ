@@ -272,7 +272,7 @@ public class goodsController {
 			System.out.println("실.....패............");
 		}
 
-		return null;
+		return "rentalList.tiles";
 	}
 
 	// headselect
