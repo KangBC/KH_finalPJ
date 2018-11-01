@@ -21,8 +21,8 @@
 					</p>
 				</div>
 				<div style="border: solid 1px; text-align: center; padding: 2px">
-					<a href="rentallist.do"><i class="fa fa-shopping-cart"
-						aria-hidden="true"></i> 쇼핑하러 가기 >></a>
+					<a href="rental_category.do?division=BC"><i
+						class="fa fa-shopping-cart" aria-hidden="true"></i> 쇼핑하러 가기 >></a>
 				</div>
 			</div>
 		</div>

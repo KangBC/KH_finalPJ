@@ -15,7 +15,10 @@ function basketListDel(seq) {
 	var len = x.length;
 
 	var delList = "";
-
+	if(len == 1){
+		alert("선택된 상품이 없습니다.");
+		return;
+	}
 	if (seq != -1) {
 		delList = seq + "-end";
 	} else {
