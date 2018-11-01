@@ -89,7 +89,7 @@ ul{padding: 0}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
 .detail_head .goods_title{font-size: 32px; color:#333;}
 .detail_body {width: 780px;    float: left;margin-right: 25px;}
-.detail_body .top_box{display: table;border-bottom: 40px solid #ddd;}
+.detail_body .top_box{display: table;border-bottom: 40px solid #ddd; width: 100%;}
 .detail_body .top_box .goods_img{width: 350px; height: 400px;float: left;margin-right: 15px;} 
 .detail_body .top_box .goods_priceinfo{width: 340px; float: left;margin-top: 20px;}
 .detail_body .goods_info{width: 100%; min-height: 400px; padding: 20px;}
@@ -197,7 +197,7 @@ ul{padding: 0}
 
 .maintop{margin-top: 40px;}
 .maintop_title{margin-bottom:25px;font-size: 30px;font-weight: bold;color: #792b86;text-align: center; font-family:  Malgun Gothic, "맑은 고딕" , /*"NanumGothic","NanumBarunGothic",*/Helvetica, Arial, sans-serif,"AppleGothic","Apple Gothic","Noto Serif","NotoSansKR","NotoSans","맑은 고딕","돋음", "Dotum", sans-serif}
-.main_middle{ width: 100%; height: 250px; background-color: #792b86; background-image: url('../img/slideimg/img_m.jpg'); margin-top: 50px}
+.main_middle{ width: 100%; height: 356px; background-image: url('../img/banner_mm.png'); margin-top: 80px; background-repeat: no-repeat;}
 
 .goods_info{width : 100%; margin-bottom:60px; margin-top: 30px; position: relative;}
 .cate {

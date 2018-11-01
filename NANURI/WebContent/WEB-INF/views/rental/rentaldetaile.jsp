@@ -36,9 +36,9 @@
        
         #report { border-collapse:collapse; width:100%}
         #report h4 { margin:0px; padding:0px;}
-        #report th { text-align:center !important;background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
+        #report th { text-align:center !important; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
         #report td {text-align:center; background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; font-size: 12px; padding: 20px;}
-        #report tr.odd td { background:#fff url(row_bkg.png) repeat-x scroll center left; cursor:pointer; border-bottom: 1px solid #e1e1e1;}
+        #report tr.odd td {cursor:pointer; border-bottom: 1px solid #e1e1e1;}
         #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #report div.up { background-position:0px 0px;}
        

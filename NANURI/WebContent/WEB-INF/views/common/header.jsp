@@ -80,7 +80,7 @@
 		
 	
 		
-<div class="topbtn" style="">
+<div class="topbtn" style="display:none;width: 40px; height: 40px; background-color:blue;position: fixed; bottom: 30; right: 30; cursor: pointer;z-index: 9999;background-image: url('../img/top_btn.png');background-size: 100% 100%;">
 	
 </div>
 		
@@ -102,7 +102,6 @@
 	         scrollTop : 0
 	     }, 400);
 	});	
-	
 	
 	
 	// 검색

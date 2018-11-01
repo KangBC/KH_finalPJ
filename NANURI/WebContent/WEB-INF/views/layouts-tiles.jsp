@@ -13,7 +13,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NANURI</title>
+<link rel="shortcut icon" href="resources/img/icon_title.png">
 <!-- meta -->
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
