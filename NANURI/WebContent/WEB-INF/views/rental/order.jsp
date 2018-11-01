@@ -312,6 +312,7 @@
 				</tr>
 			</tbody>
 		</table>
+	<button id="test_btn" type="button" style="float: left;">결제 안하고 저장하기</button>
 	<button id="iamport_module" type="button" style="float: left;">결제하기</button>
 	</div>
 

@@ -65,29 +65,29 @@
 	}
 %>
 <div style="float:left; width:100%; text-align:center; padding-top: 20px"> 
-	<a href="#none" title="처음페이지" onclick="goPage('0');"><img src="resources/img/first.png" alt="처음페이지" style="width:15px; height:15px;"/></a>&nbsp;		
+	<a href="#none" title="처음페이지" onclick="goPage('0');"><img src="resources/img/first.png" alt="처음페이지" style="width:10px; height:10px;"/></a>&nbsp;		
 		<%
 		if (screenStartPageIndex > 1){
 			%>
-			<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1%>');"><img src="resources/img/next.png" alt="이전페이지" style="width:15px; height:15px;"/></a>&nbsp;	
+			<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1%>');"><img src="resources/img/next.png" alt="이전페이지" style="width:10px; height:10px;"/></a>&nbsp;	
 			<%
 		}
 		    	
 		for (int i=screenStartPageIndex; i<screenEndPageIndex ;i++){
 			if (i==pageNumber){
 		    	%>	
-				<span style="font-size:1.8em; color:#000000; font-weight:bold;"><%=i+1%></span>&nbsp;
+				<span style="font-size:12pt; color:#000000; font-weight:bold;"><%=i+1%></span>&nbsp;
 		    	<% 
 			} else { 
 		    	%>	
-				<a href="#none" title="<%=i+1%>페이지" onclick="goPage(<%=i%>);" style="font-size:1.8em; color:#000000; font-weight:normal;"><%=i+1%></a>&nbsp;
+				<a href="#none" title="<%=i+1%>페이지" onclick="goPage(<%=i%>);" style="font-size: 12pt; color:#000000; font-weight:normal;"><%=i+1%></a>&nbsp;
 		    	<%		
 		    }
 		}
 		    	
 		if (screenEndPageIndex < totalPageCount){
 		    %>	
-			<a href="#none" title="다음페이지" onclick="goPage(<%=screenEndPageIndex %>);"><img src="resources/img/next.png" alt="다음페이지" style="width:15px; height:15px;"/></a>&nbsp;
+			<a href="#none" title="다음페이지" onclick="goPage(<%=screenEndPageIndex %>);"><img src="resources/img/next.png" alt="다음페이지" style="width:10px; height:10px;"/></a>&nbsp;
 		    <%
 		} // end if
 		    
@@ -97,7 +97,7 @@
 		}
 		%>
 		        	
-	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>);" ><img src="resources/img/next.png" alt="마지막페이지" style="width:15px; height:15px;" /></a>
+	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>);" ><img src="resources/img/next.png" alt="마지막페이지" style="width:10px; height:10px;" /></a>
 </div>		
 <%-- 			
 <div style="float:left; width:4%; text-align:center;">		

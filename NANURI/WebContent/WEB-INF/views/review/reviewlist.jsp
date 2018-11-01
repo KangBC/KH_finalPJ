@@ -45,9 +45,9 @@
 		<br>
 		<c:choose>
 			<c:when test="${empty reviewlist}">
-				<tr>
-					<td colspan="7" style="text-align: center; padding: 100px">등록된 상품 리뷰가 없습니다.</td>
-				</tr>
+		
+					<div align="center">등록된 상품 리뷰가 없습니다.</div>
+				<!-- </tr> -->
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${reviewlist}" var="list" varStatus="status">

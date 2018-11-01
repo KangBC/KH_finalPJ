@@ -117,7 +117,6 @@ public class reviewController {
 		return "redirect:reviewlist.do";
 	}
 	
-
 	/*해당상품으로 가기*/
 	@ResponseBody
 	@RequestMapping(value = "getGoodsSeq.do", method = { RequestMethod.GET, RequestMethod.POST })
