@@ -155,6 +155,11 @@
 	margin-top: 93px;
 	margin-left: 10px;
 }
+#test_btn{
+	float: left;
+	margin-top: 93px;
+	margin-left: 10px;
+}
 </style>
 
 </head>
@@ -312,8 +317,8 @@
 				</tr>
 			</tbody>
 		</table>
-	<button id="test_btn" type="button" style="float: left;">결제 안하고 저장하기</button>
-	<button id="iamport_module" type="button" style="float: left;">결제하기</button>
+	<button id="test_btn" type="button">결제 안하고 저장하기</button>
+	<button id="iamport_module" type="button" >결제하기</button>
 	</div>
 
 </div>

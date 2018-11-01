@@ -8,7 +8,5 @@
     <li><a href="approve.do">탈퇴 승인</a></li>
     <li><a href="goodsApply.do">상품 등록</a></li>
     <li><a href="manageStock.do">재고 관리</a></li>
-    <li><a href="">렌트중인 품목</a></li>
-    <li><a href="">매출 관리</a></li>
   </ul>
 </div>

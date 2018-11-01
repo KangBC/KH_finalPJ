@@ -16,15 +16,16 @@
       <col width="200px">
       <col width="250px">
       <col width="100px">
+      <col width="100px">
     </colgroup>
 	<tr>
 	  <td>ID</td>
-  	  <td>REASON</td>
-  	  <td>탈퇴 신청</td>
-  	  <td>탈퇴 수행 가능</td>
-  	  <td>상태</td>
-  	  <td>탈퇴 승인</td>
-  	  <td>복구</td>
+  	<td>REASON</td>
+  	<td>탈퇴 신청</td>
+  	<td>탈퇴 수행 가능</td>
+  	<td>상태</td>
+  	<td>탈퇴 승인</td>
+  	<td>복구</td>
   	  
 	</tr>
     <c:forEach var="secession" items="${secessionList}" varStatus="secessionS">
