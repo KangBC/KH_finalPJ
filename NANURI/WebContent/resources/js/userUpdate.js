@@ -145,13 +145,13 @@ function regiAf() {
 }
 
 function pwcheck() {
-	var pwRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	var pwRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z]).*$/;
 	var pw1 = $("#pwd1").val();
 	var pw2 = $("#pwd2").val();
 
 	if (pw1 == pw2 && pw1 != "") {
 		if (!pwRule.test(pw1)) {
-			$("#pwdResult").val("*비밀번호 (영어,특수문자,숫자를 포함한 8~15자)").css("color",
+			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color",
 					"red");
 			passwordcheck = "false";
 			return;
