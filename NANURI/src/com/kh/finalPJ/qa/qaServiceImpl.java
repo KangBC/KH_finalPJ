@@ -35,7 +35,7 @@ public class qaServiceImpl implements qaService {
 	// 상품번호 있을때 없을때 둘다 사용가능
 	@Override 
 	public boolean ansWrite(qaDto dto) {
-		if(dto.getG_code()== null) {
+		if(dto.getG_code().equals("null")) {
 			// 상품번호 없을때
 			return QaDao.ansWriteN(dto);			
 		}else {
