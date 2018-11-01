@@ -38,7 +38,7 @@ public class reviewController {
 
 		logger.info("Welcome reviewController revlist!! " + new Date());	
 
-		List<reviewDto> list = reviewSrevice.getreview();
+		//List<reviewDto> list = reviewSrevice.getreview();
 		// model.addAttribute("reviewlist", list);
 
 		// paging 처리

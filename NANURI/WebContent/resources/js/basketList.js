@@ -13,18 +13,16 @@ function deletechecks(e) {
 function basketListDel(seq) {
 	var x = document.getElementsByName("delck");
 	var len = x.length;
-
+	var nullCheck = "false";
 	var delList = "";
-	if(len == 1){
-		alert("선택된 상품이 없습니다.");
-		return;
-	}
+
 	if (seq != -1) {
 		delList = seq + "-end";
 	} else {
 		for (i = 0; i < len; i++) {
 			if (x[i].checked == true && x[i].value != "on"
 					&& x[i].value != "off") {
+				nullCheck = "true";
 				if (i == len - 1) {
 					delList = delList + x[i].value.trim();
 				} else {
@@ -32,6 +30,11 @@ function basketListDel(seq) {
 				}
 			}
 		}
+	}
+
+	if (nullCheck == "false" && seq == -1) {
+		alert("선택된 상품이 없습니다");
+		return;
 	}
 
 	$.ajax({
@@ -104,37 +107,40 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function selectOrder(){
+function selectOrder() {
 	var x = document.getElementsByName("delck");
-	
-	var id=$("#loginId").val();;
-	var data ="";
-	
-	for(var i=1; i<x.length; i++){
-		if(x[i].checked == true){
-			data =data + x[i].parentNode.parentNode.nextSibling.nextSibling.value;
+
+	var id = $("#loginId").val();
+	;
+	var data = "";
+
+	for (var i = 1; i < x.length; i++) {
+		if (x[i].checked == true) {
+			data = data
+					+ x[i].parentNode.parentNode.nextSibling.nextSibling.value;
 		}
 	}
-	if(data==""){
+	if (data == "") {
 		alert("주문할 상품을 선택해 주세요");
 		return;
 	}
-	location.href="order.do?id=" + id + "&data=" + data;
+	location.href = "order.do?id=" + id + "&data=" + data;
 }
 
-function integralOrder(){
+function integralOrder() {
 	var x = document.getElementsByName("delck");
 
-	if(x.length<2){
+	if (x.length < 2) {
 		alert("등록된 상품이 없습니다.");
 		return;
 	}
 
-	var id=$("#loginId").val();;
-	var data ="";
-	
-	for(var i=1; i<x.length; i++){
+	var id = $("#loginId").val();
+	;
+	var data = "";
+
+	for (var i = 1; i < x.length; i++) {
 		data = data + x[i].parentNode.parentNode.nextSibling.nextSibling.value;
 	}
-	location.href="order.do?id=" + id + "&data=" + data;
+	location.href = "order.do?id=" + id + "&data=" + data;
 }
