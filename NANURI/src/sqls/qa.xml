@@ -35,11 +35,17 @@
 		ORDER BY SEQ DESC
 	</select>		
 	
-	<!-- 유저 질문기입 -->
-	<insert parameterType="com.kh.finalPJ.qa.qaDto" id="QaWrite">
+	<!-- 유저 질문기입 상품번호가 없을때-->
+	<insert parameterType="com.kh.finalPJ.qa.qaDto" id="QaWriteN">
 		INSERT INTO QA(SEQ, ID, TITLE, CONTENT, WDATE, REF, DEL, G_CODE, SECRET)
 		VALUES(SEQ_QA.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, (SELECT NVL(MAX(REF),0)+1 FROM QA), 0, NULL, #{secret})
-	</insert>	
+	</insert>
+	
+	<!-- 유저 질문기입 상품번호가 있을때 -->
+	<insert parameterType="com.kh.finalPJ.qa.qaDto" id="QaWriteY">
+		INSERT INTO QA(SEQ, ID, TITLE, CONTENT, WDATE, REF, DEL, G_CODE, SECRET)
+		VALUES(SEQ_QA.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, (SELECT NVL(MAX(REF),0)+1 FROM QA), 0, #{g_code}, #{secret})
+	</insert>
 	
 	<!-- 관리자 답변 상품번호가 없을때  -->
 	<insert parameterType="com.kh.finalPJ.qa.qaDto" id="ansWriteN"> <!-- ID 로그인뷰랑 합치면 고치기 3인거 고치기 -->

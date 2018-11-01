@@ -8,7 +8,9 @@ public interface qaDao {
 	
 	public List<qaDto> getAdminQaList();
 	
-	public boolean QaWrite(qaDto dto);
+	public boolean QaWriteN(qaDto dto);
+	
+	public boolean QaWriteY(qaDto dto);
 	
 	public boolean ansWriteN(qaDto dto);
 	

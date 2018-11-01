@@ -59,7 +59,7 @@ public class goodsController {
 			mem.setId("null");
 		}
 		String id = mem.getId();
-		
+	
 		// readcount
 		goodsService.readcount(seq);
 		// getdetaile
@@ -272,7 +272,7 @@ public class goodsController {
 			System.out.println("실.....패............");
 		}
 
-		return "rentalList.tiles";
+		return "redirect:rentalList.do";
 	}
 
 	// headselect

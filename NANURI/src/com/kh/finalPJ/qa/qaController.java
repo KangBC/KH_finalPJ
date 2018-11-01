@@ -68,24 +68,30 @@ public class qaController {
 	}
 	
 	@RequestMapping(value = "qaWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String qaWrite(HttpServletRequest req) {
+	public String qaWrite(HttpServletRequest req, int g_seq,String g_code, Model model) {
 		
 		logger.info("qaController qaWrite" + new Date());
 		
+		System.out.println("mmmmmmmmmmmmmg_seq" + g_seq);
 		if(req.getSession().getAttribute("login") != null) {			
-			return "qaWrite.tiles";
+			
+			if(g_code != null || g_seq == -1) {			
+				model.addAttribute("g_code", g_code);
+				model.addAttribute("g_seq", g_seq);
+				return "qaWrite.tiles";
+			}else{			
+				return "qaWrite.tiles";
+			}
 		}else {	// 세션값이 없을때
 			return "login.do";
-		}
-
-		
+		}		
 	}
 	
 	@RequestMapping(value = "qaWriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String qaWriteAf(HttpServletRequest req, qaDto dto) {
+	public String qaWriteAf(HttpServletRequest req, qaDto dto, int g_seq, Model model) {
 		
 		logger.info("qaController qaWriteAf" + new Date());
-		
+				
 		if(req.getSession().getAttribute("login") != null) {			
 			boolean c = dto.isCheck(); // 체크박스 체크여부확인
 			
@@ -94,12 +100,18 @@ public class qaController {
 			}else {
 				dto.setSecret(0);
 			}
-			
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  dto" + dto.toString());
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  g_seq" + g_seq);
+		
 			boolean b = QaService.QaWrite(dto);
 			if(b) {
-			
-			return "redirect:/qnalist.do";
-			
+				if(dto.getG_code() != null && g_seq != -1) {
+					model.addAttribute("g_code", dto.getG_code());
+					model.addAttribute("seq", g_seq);
+					return "redirect:/goodsdetail.do";
+				}else {
+					return "redirect:/qnalist.do";
+				}
 			}else {
 				return "redirect:/qaWrite.do";
 			}

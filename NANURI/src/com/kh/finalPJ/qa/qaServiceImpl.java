@@ -23,13 +23,19 @@ public class qaServiceImpl implements qaService {
 
 	@Override
 	public boolean QaWrite(qaDto dto) {
-		return QaDao.QaWrite(dto);
+		if(dto.getG_code()== null) {
+			// 상품번호 없을때
+			return QaDao.QaWriteN(dto);			
+		}else {
+			//상품번호 있을때
+			return QaDao.QaWriteY(dto);
+		}
 	}
 
 	// 상품번호 있을때 없을때 둘다 사용가능
 	@Override 
 	public boolean ansWrite(qaDto dto) {
-		if(dto.getG_code().equals("null")) {
+		if(dto.getG_code()== null) {
 			// 상품번호 없을때
 			return QaDao.ansWriteN(dto);			
 		}else {

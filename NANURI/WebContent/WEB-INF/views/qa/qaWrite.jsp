@@ -13,7 +13,15 @@
 </head>
 <body>
 
-<%memberDto mem = (memberDto)session.getAttribute("login"); %>
+<%memberDto mem = (memberDto)session.getAttribute("login");%>
+<%String g_code = null; 
+	int g_seq = -1;%>
+<%if(request.getAttribute("g_code") != null){
+	g_code = (String)request.getAttribute("g_code");
+	g_seq = (int)request.getAttribute("g_seq");
+	System.out.println("g_code = " +g_code);
+}%>
+
 
 <div class="startdiv">
 	<div style="font-style: italic; padding-left: 250px; font-size: 35; padding-bottom: 15px;">
@@ -41,6 +49,12 @@
 			</div>	
 			<div align="center" style="padding-top: 12px;">
 				<input type="submit"  value="완료">
+				<%if(g_code != null) {%>
+					<input type="hidden" name="g_code" value="<%=g_code%>">
+					<input type="hidden" name="g_seq" value="<%=g_seq%>">
+				<%}else{ %>	
+					<input type="hidden" name="g_seq" value="<%=g_seq%>">
+				<%} %>
 				&nbsp;&nbsp;
 				<input type="button" onclick="cancel()" value="취소">
 			</div>
@@ -50,7 +64,12 @@
 
 <script type="text/javascript">
 function cancel() {
-	location.href="qnalist.do";
+	<%if(g_code !=null){%>
+		location.href="goodsdetail.do?seq=<%=g_seq%>&g_code=<%=g_code%>";
+	<%}else{%>	
+		location.href="qnalist.do";
+	<%}%>
+	
 }
 </script>
 

@@ -293,7 +293,10 @@
 					<%} %>
 					
 				</table>
-			
+				<%if(id.getAuth() == 0){ %>
+					<a href="qaWrite.do?g_seq=<%=bbslist.getSeq() %>&g_code=<%=bbslist.getG_code()%>">
+					<span style="margin: 10px; padding:10px; border-top : 1.5px solid #542f82; border-bottom :1.5px solid #542f82; font-size: 1.6em;"><font>글쓰기</font></span></a>
+				<%}%>
 			</li>
 			</ul>
 		</div>
