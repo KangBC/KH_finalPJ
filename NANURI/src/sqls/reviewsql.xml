@@ -10,8 +10,7 @@
 	ORDER BY WDATE DESC
 </select>
 
-<select id="getrevPagingList" resultType="com.kh.finalPJ.review.reviewDto" parameterType="com.kh.finalPJ.review.reviewParam">
-	
+<select id="getrevPagingList" resultType="com.kh.finalPJ.review.reviewDto" parameterType="com.kh.finalPJ.review.reviewParam">	
 	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, G_CODE, RATING, G_IMG
 	FROM (SELECT ROW_NUMBER() OVER(ORDER BY seq DESC) AS RNUM, SEQ, ID, TITLE, CONTENT, WDATE, DEL, R.G_CODE, RATING, G_IMG
 	FROM REVIEW R, GOODS G
@@ -60,12 +59,6 @@
 	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, R.G_CODE, RATING, G_IMG
 	FROM REVIEW R, GOODS G
 	WHERE R.G_CODE=G.G_CODE(+) AND SEQ=#{seq}
-</select>
-
-<select id="godetail" parameterType="com.kh.finalPJ.review.reviewDto" resultType="java.lang.Integer">
-	SELECT SEQ
-	FROM R_BBS
-	WHERE G_CODE = #{g_code}
 </select>
 
 <update id="deleterev"  parameterType="java.lang.Integer">
