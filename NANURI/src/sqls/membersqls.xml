@@ -9,8 +9,7 @@
 		parameterType="com.kh.finalPJ.member.memberDto"
 		resultType="com.kh.finalPJ.member.memberDto">
 		SELECT * FROM MEMBER
-		WHERE ID=#{id} AND PWD=#{pwd} AND AUTH
-		IN (0, 2)
+		WHERE ID=#{id} AND PWD=#{pwd}
 	</select>
 
 	<select id="idCheck" parameterType="String" resultType="Integer">
@@ -110,5 +109,5 @@
 		RATING, GOODS.G_IMG FROM REVIEW, GOODS WHERE REVIEW.G_CODE =
 		GOODS.G_CODE AND ID=#{id} ORDER BY WDATE DESC
 	</select>
-
+	
 </mapper>

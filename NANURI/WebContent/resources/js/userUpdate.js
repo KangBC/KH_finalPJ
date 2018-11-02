@@ -116,7 +116,6 @@ function regiAf() {
 		$("#phone").val($("#bf_phone").val());
 	}
 
-	alert($("#address").val());
 	var data = {
 		id : $("#id").val().trim(),
 		pwd : $("#pwd").val().trim(),

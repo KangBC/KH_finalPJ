@@ -55,15 +55,16 @@
       <col width="150px">
       <col width="150px">
       <col width="150px">
+      <col width="150px">
     </colgroup>
     <tr>
 	  <td><input name="g_code" type="text" placeholder="상품코드" style="width: 150px"></td>
 	  <td><input name="g_name" type="text" placeholder="상품명" style="width: 150px"></td>
 	  <td><input name="g_price" type="text" placeholder="가격" style="width: 150px"></td>
-  	  <td><input name="g_imgF" type="file" accept="image/gif,image/jpeg,image/png" style="width: 0px"></td>
+  	  <td><input name="g_imgF" type="file" accept="image/gif,image/jpeg,image/png" style="width: 76px"></td>
   	  <td></td>
   	  <td><input type="submit" value="상품 추가"></td>
-	</tr>
+		</tr>
   </table>
   </form>
   
