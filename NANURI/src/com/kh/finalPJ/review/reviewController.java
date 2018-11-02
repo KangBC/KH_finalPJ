@@ -39,7 +39,6 @@ public class reviewController {
 
 		if (param.getSeq() > 0) {
 			reviewDto goToDto = reviewSrevice.goToDto(param.getSeq());
-			System.out.println(goToDto.toString());
 			model.addAttribute("goToDto", goToDto);
 		}
 

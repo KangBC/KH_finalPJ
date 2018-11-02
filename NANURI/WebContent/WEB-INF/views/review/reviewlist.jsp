@@ -25,25 +25,20 @@
 	<div class="startdiv">
 		<form id="_frmFormSearch" method="get" action="">
 			<!-- 페이징 -->
-			<input type="hidden" name="pageNumber" id="_pageNumber"
-				value="${(empty pageNumber)?0:pageNumber}" /> <input type="hidden"
-				name="recordCountPerPage" id="_recordCountPerPage"
-				value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
+			<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
+			<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage"	value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
 
 			<!--검색부분 -->
 			<div align="center">
-				<select id="_s_category" name="s_category"
-					class="browser-default custom-select" style="width: 95px">
+				<select id="_s_category" name="s_category" class="browser-default custom-select" style="width: 95px">
 					<option value="" selected="selected">선택</option>
 					<option value="title">제목</option>
 					<option value="contents">내용</option>
 					<option value="userid">작성자</option>
-				</select> <input type="text" class="form-control"
-					style="width: 200px; display: inline;" id="_s_keyword"
-					name="s_keyword" value="${s_keyword}" />
+				</select>
+				<input type="text" class="form-control" style="width: 200px; display: inline;" id="_s_keyword" name="s_keyword" value="${s_keyword}" />
 
-				<button type="button" id="_btnSearch" class="btn btn-purple">검색
-				</button>
+				<button type="button" id="_btnSearch" class="btn btn-purple">검색</button>
 			</div>
 		</form>
 		<br>
@@ -60,18 +55,17 @@
 							<div class="img" id="">
 								<c:choose>
 									<c:when test="${list.g_img eq null}">
-										<img alt=""
-											src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
+										<img alt=""	src="http://k-startup.go.kr/images/homepage/prototype/noimage.gif"
 											style="width: 80; height: 80">
 									</c:when>
 									<c:otherwise>
-										<img alt="" src="resources/img/main_img/${list.g_img }"
-											style="width: 80; height: 80">
+										<img alt="" src="resources/img/main_img/${list.g_img }"	style="width: 80; height: 80">
 									</c:otherwise>
 								</c:choose>
-							</div> <!-- / 상품이미지 --> <!-- 상품디테일 --> <a data-toggle="modal"
-							data-target="#viewModal"
-							onclick="modal_view('${list.seq}','${list.g_img}','${list.id}','${list.wdate}','${list.title}','${list.rating}' ,'<c:out value="${list.content }" escapeXml="true" />','${list.g_code }');">
+							</div>
+							 <!-- / 상품이미지 -->
+							 <!-- 상품디테일 -->
+							 <a data-toggle="modal" data-target="#viewModal" onclick="modal_view('${list.seq}','${list.g_img}','${list.id}','${list.wdate}','${list.title}','${list.rating}' ,'<c:out value="${list.content }" escapeXml="true" />','${list.g_code }');">
 								<div class="text_view" style="cursor: pointer;">
 									<div class="title">${list.title }</div>
 
@@ -103,15 +97,13 @@
 											</c:choose>
 										</c:forEach>
 									</div>
-									<input type="hidden" name="rating" id="rating"
-										value="${rating }">
+									<input type="hidden" name="rating" id="rating" value="${rating }">
 									<!-- 별점 끝 -->
 								</div>
 						</a>
 							<div class="idbox">
 								<p class="id">${list.id}</p>
-								<fmt:parseDate var="wdate" value="${list.wdate}"
-									pattern="yyyy-MM-dd" />
+								<fmt:parseDate var="wdate" value="${list.wdate}" pattern="yyyy-MM-dd" />
 								<fmt:formatDate value="${wdate}" pattern="yyyy-MM-dd" />
 							</div>
 						</li>
@@ -124,7 +116,7 @@
 	<!-- 페이징 처리 -->
 	<div id="paging_wrap">
 		<jsp:include page="/WEB-INF/views/review/paging.jsp" flush="false">
-			<jsp:param value="${pageNumber }" name="pageNumber" />
+			<jsp:param value="${pageNumber }" name="pageNumber"/>
 			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
 			<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
 			<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
@@ -194,15 +186,14 @@ function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
 		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='수정' onclick='updateview()'>");
 		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='삭제' onclick='deletereview()'>");
 	}
-	$("#modal_footer").append("<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
+	//$("#modal_footer").append("<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
 });
 		}
 	</script>
 	<script type="text/javascript">
 		function goPage(pageNumber) {
 			$("#_pageNumber").val(pageNumber);
-			$("#_frmFormSearch").attr("target", "_self").attr("action",
-					"reviewlist.do").submit();
+			$("#_frmFormSearch").attr("target", "_self").attr("action",	"reviewlist.do").submit();
 		}
 
 		$("#_btnSearch").click(function() {
@@ -215,10 +206,7 @@ function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
 		});
 
 		/* 검색 카테고리를 유지 start */
-		var str = $
-		{
-			category
-		};
+		var str = ${category};
 
 		$(document).ready(function() {
 			//document.frmForm1.s_category.value = str;

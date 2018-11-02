@@ -44,6 +44,10 @@ function sample6_execDaumPostcode() {
 	}).open();
 }
 
+$("#address_detail").focus(function() {
+	$("#address_detail").val("");
+});
+
 var passwordcheck = "false";
 
 function nickCheck() {
@@ -78,8 +82,9 @@ function nickCheck() {
 }
 
 function regiAf() {
-	if ($("#address_num").val() != "") {
-		var address = $("#address_num").val() + "-" + $("#address_main").val()
+	if ($("#address_detail").val() != "" && $("#address_num").val() != "") {
+		var address = "";
+		address = $("#address_num").val() + "-" + $("#address_main").val()
 				+ "-" + $("#address_detail").val();
 		$("#address").val(address);
 	}
@@ -111,6 +116,7 @@ function regiAf() {
 		$("#phone").val($("#bf_phone").val());
 	}
 
+	alert($("#address").val());
 	var data = {
 		id : $("#id").val().trim(),
 		pwd : $("#pwd").val().trim(),
@@ -151,8 +157,7 @@ function pwcheck() {
 
 	if (pw1 == pw2 && pw1 != "") {
 		if (!pwRule.test(pw1)) {
-			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color",
-					"red");
+			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color", "red");
 			passwordcheck = "false";
 			return;
 		}

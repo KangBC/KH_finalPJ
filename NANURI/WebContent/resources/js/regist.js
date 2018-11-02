@@ -122,9 +122,13 @@ function nickCheck() {
 function regiAf() {
 
 	// 주소를 합쳐주기
-	var address = $("#address_num").val() + "-" + $("#address_main").val()
-			+ "-" + $("#address_detail").val();
-	$("#address").val(address);
+	var address = "";
+	
+	if($("#address_detail").val() != "" && $("#address_num").val() !=""){
+		address = $("#address_num").val() + "-" + $("#address_main").val()
+		+ "-" + $("#address_detail").val();
+		$("#address").val(address);
+	}
 
 	if (idok == "false") {
 		alert("ID체크를 하세요");
@@ -144,7 +148,7 @@ function regiAf() {
 	} else if ($("#phone").val().trim().length < 1) {
 		alert("전화번호를 확인하세요");
 		return;
-	} else if ($("#address").val().trim().length < 1) {
+	} else if (address.trim().length < 1) {
 		alert("주소를 확인하세요");
 		return;
 	}

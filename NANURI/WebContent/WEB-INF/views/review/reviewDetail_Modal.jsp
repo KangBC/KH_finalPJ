@@ -11,12 +11,13 @@
 }
 </style>
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog"  style="max-width: 700px;">
-		<div class="modal-content" style="width: 650px; height: 900px;">
+	<div class="modal-dialog"  style="max-width: 600px;">
+		<div class="modal-content" style="width: 500px; height: 740px;">
 			<!-- modal header -->
 			<div class="modal-header" style="display: table; height: 58px; background: #542f82;">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+					<span aria-hidden="true" style="color:#fff">&times;</span>
+					
 				</button>
 			</div>
 			<!-- / modal header -->
@@ -45,7 +46,7 @@
 						</div>
 					</div>
 
-					<div id="content" style="height: 500px; padding: 5%; border: 2px solid #542f82; margin-top: 10px; overflow: scroll; overflow-x: hidden"></div>
+					<div id="content" style="height: 410px; padding: 5%; border: 2px solid #542f82; margin-top: 10px; overflow: scroll; overflow-x: hidden"></div>
 				</div>
 				<!-- / modal body -->
 				<!-- modal footer -->
