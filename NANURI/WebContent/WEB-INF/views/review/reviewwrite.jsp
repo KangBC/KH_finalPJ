@@ -30,7 +30,7 @@
 <tr height="40px" class="md-form">
 	<td>별점: </td>
 	<td style="display: inline-block;" class="starRev">
- 		 <span class="starR1"></span>
+ 		 <span class="starR1">1</span>
  		 <span class="starR2">2</span>
  		 <span class="starR1">3</span>
  		 <span class="starR2">4</span>
