@@ -44,15 +44,33 @@ public class memberController {
 	public Map<Object, Object> loginAf(HttpServletRequest req, memberDto mem) throws Exception {
 		Map<Object, Object> map = new HashMap<>();
 		memberDto login = null;
-		login = memberservice.login(mem);
-		if (login != null && !login.getId().equals("")) {
-			req.getSession().setAttribute("login", login);
-			map.put("cnt", 1);
-		} else {
+		// [반환값 - ( 아이디없음 : 0, 비밀번호 오류 : 1, 로그인 성공 : 2, 탈퇴대기 회원 : 3)]
+		if (memberservice.idCheck(mem.getId()) == 0) {
+			// 아이디 없음
 			req.getSession().invalidate();
 			map.put("cnt", 0);
+			return map;
 		}
-		return map;
+		login = memberservice.login(mem);
+		if (login != null && !login.getId().equals("")) {
+			// 로그인 성공
+			if (login.getAuth() == 1) {
+				// 탈퇴대기중인 회원일 경우
+				req.getSession().invalidate();
+				map.put("cnt", 3);
+				return map;
+			} else {
+				// 관리자, 일반회원 로그인 성공
+				req.getSession().setAttribute("login", login);
+				map.put("cnt", 2);
+				return map;
+			}
+		} else {
+			// 비밀번호 오류
+			req.getSession().invalidate();
+			map.put("cnt", 1);
+			return map;
+		}
 	}
 
 	@ResponseBody

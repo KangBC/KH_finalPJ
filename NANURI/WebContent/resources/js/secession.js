@@ -4,8 +4,13 @@ function afterAction() {
 
 function secessionAf() {
 
-	var del_id = $("#del_id").val();
-	var del_reason = $("#del_reason").val();
+	var del_id = $("#del_id").val().trim();
+	var del_reason = $("#del_reason").val().trim();
+
+	if (del_reason.length < 20) {
+		alert("20자 이상의 사유를 입력하세요");
+		return;
+	}
 
 	if (del_reason == null || del_reason == "") {
 		alert("탈퇴사유를 입력하세요");

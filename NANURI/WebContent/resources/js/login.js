@@ -31,11 +31,16 @@ function loginAf() {
 		data : data,
 		async : true,
 		success : function(data) {
-			if (data.cnt > 0) {
+			if (data.cnt == 0) {
+				alert("존재하지 않는 아이디입니다");
+				return;
+			} else if(data.cnt == 1){
+				alert("비밀번호를 다시 확인해 주십시오");
+				return;
+			} else if(data.cnt == 2){
 				location.href = 'main.do';
-			} else {
-				alert("탈퇴처리된 아이디나 존재하지 않는 아이디입니다.");
-				location.href = 'login.do';
+			} else if(data.cnt == 3){
+				alert("탈퇴승인 대기 중인 아이디입니다");
 				return;
 			}
 		},
