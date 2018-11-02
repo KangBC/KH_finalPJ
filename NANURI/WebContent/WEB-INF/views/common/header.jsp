@@ -40,9 +40,10 @@
 			
 			<!-- 검색 -->
 			<div style="position: relative;">
-			<input type="text" value="" placeholder="원하시는 상품을 검색해보세요" class="head_select" onkeyup="headtitle_btn()">
-			<a class="head_select_btn"></a>
-			
+			<form action="headselect.do" method="post">
+			<input type="text" autocomplete="off" value="" name="title" placeholder="원하시는 상품을 검색해보세요" class="head_select" onkeyup="headtitle_btn()">
+			<input type="submit" class="head_select_btn">
+			</form>
 			
 			<div class="head_ajaxbox">
 				<ul class="ajaxboxul"></ul>
@@ -102,15 +103,7 @@
 	         scrollTop : 0
 	     }, 400);
 	});	
-	
-	
-	// 검색
-	$(".head_select_btn").click(function(){
-		var title = $(".head_select").val();
-		location.href = "headselect.do?title="+title;
-		
-	})
-	
+
 		
 	function headtitle_btn(){
 		
@@ -143,8 +136,16 @@
 			if(title != ""){
 		 	 $.each(data.list, function(key, value){ 
 		 		$(".ajaxboxul").children('.none_title').remove();
-		 		$(".ajaxboxul").append('<li id="lick" onclick="lick()">'+value.title+'</li>');
+		 		$(".ajaxboxul").append('<li class="li_click">'+value.title+'</li>');
 				 }); 
+		 	 
+		 	 // 클릭시 val 삽입
+		 	$(".li_click").click(function(){
+				var date = $(this).html();
+				$(".head_select").val(date);
+				
+			});
+		 	 
 			}
 			else{
 				$(".head_ajaxbox").hide();
@@ -159,25 +160,14 @@
 
 
 	}
-	
 	 // 다른영역 클릭시 박스 hide
 	$("html").click(function(){
 		$(".head_ajaxbox").hide();
 	});
-	 
-	// li 클릭시 값 이동
-	
-	function lick(){
-		 
-		 
-		 alert(this.text);
 
-	 }
 	
-	 $("#lick").click(function(){
-		 alert(this.text);
-		 $(".head_select").val('asdfasdf')
-	 }) 
+	 
+	
 		
 	</script>
 	
