@@ -260,13 +260,17 @@ ul{padding: 0}
       -ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;
       -webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
 .new_datebox{float: left; width: 525px; height: 600px; margin-right: 42px;
-			background-image: url('../img/main_m_img.jpg');background-size: 100% 100%;}
+			background-image: url('../img/main_m_img.jpg');background-size: 100% 100%;position: relative;}
 .new_dateboxlist{float: left; width: 525px; height: 600px; }
 
 .silder_btn .swiper-button-next{background-image:url('https://user-images.githubusercontent.com/24869943/47766315-701e0c00-dd11-11e8-921e-bc9e75bc4aa2.png');background-size: 100%;    top: 22px;    height: 30px;}
 .silder_btn .swiper-button-prev{background-size: 100%;background-image:url('https://user-images.githubusercontent.com/24869943/47766314-6f857580-dd11-11e8-9be7-adffbbc6627e.png');    top: 22px;      left: 30px;  height: 30px;}
 .main_goods .goods_title{margin-top: 20px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .swiper1 {    padding-top: 30px;}
+
+.desc{ position:absolute; left:1px; top:70px; display:block; background-color:rgba(40,41,37,0.6); width:284px; height:170px; }
+.desc .tit{ display:table; height:170px; width:260px; padding:0 30px; table-layout:fixed; }
+.desc .tit i{ display:table-cell;  vertical-align:middle; line-height:38px; font-size:28px; color:#ffffff; text-align:center; font-style:normal; }
 
 
 /* 푸터  */

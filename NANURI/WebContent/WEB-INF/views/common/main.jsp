@@ -103,7 +103,9 @@ String price = null;
 		<hr>
 		<div>
 			<div class="new_datebox" >
-				
+				<span class="desc">
+					<span class="tit"><i>최신상품들을 골라보세요</i></span>
+				</span>
 			</div>
 			<div class="new_dateboxlist" >
 				
