@@ -63,7 +63,7 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
 	FROM R_BBS A
 	INNER JOIN GOODS B
     ON A.G_CODE = B.G_CODE
-   	WHERE A.G_CODE LIKE #{category}|| '%' AND A.TITLE LIKE #{title}|| '%'
+   	WHERE A.G_CODE LIKE #{category}|| '%' AND A.TITLE LIKE '%'|| #{title}|| '%'
     ORDER BY
     <if test="lists == 'G_PRICE'">
    	 ${lists} ASC

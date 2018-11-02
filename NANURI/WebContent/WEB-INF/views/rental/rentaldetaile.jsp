@@ -33,15 +33,64 @@
 %>
 
 <style>    
-       
-        #report { border-collapse:collapse; width:100%}
-        #report h4 { margin:0px; padding:0px;}
-        #report th { text-align:center !important; color:#fff; padding:7px 15px; text-align:left;border-left: none; border-right: none;}
-        #report td {text-align:center; background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; font-size: 12px; padding: 20px;}
-        #report tr.odd td {cursor:pointer; border-bottom: 1px solid #e1e1e1;}
-        #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
-        #report div.up { background-position:0px 0px;}
-       
+
+#report {
+	border-collapse: collapse;
+	width:100%;
+}
+
+#report h4 {
+	margin: 0px;
+	padding: 0px;
+}
+
+#report th {
+	text-align: center !important;
+	background: url(header_bkg.png) repeat-x scroll center left;
+	color: #fff;
+	padding: 7px 15px;
+	text-align: left;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #542f82;
+	border-bottom: 2px solid #542f82;
+	color: black;
+}
+
+#report td {
+	text-align: center;
+	background: #fff none repeat-x scroll center left;
+	color: #000;
+	padding: 7px 15px;
+	font-size: 12px;
+	padding: 20px;
+}
+
+#report tr.odd td {
+	background: #fff url(row_bkg.png) repeat-x scroll center left;
+	cursor: pointer;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+#report div.arrow {
+	background: transparent url(arrows.png) no-repeat scroll 0px -16px;
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+
+#report div.up {
+	background-position: 0px 0px;
+}
+
+.writebtn{background-color: #9d87b8;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    display: block;
+    width: 70px;
+    float: right;}
 </style>
 
 <div class="startdiv">
@@ -293,9 +342,10 @@
 					<%} %>
 					
 				</table>
-				<%if(id.getAuth() == 0){ %>
-					<a href="qaWrite.do?g_seq=<%=bbslist.getSeq() %>&g_code=<%=bbslist.getG_code()%>">
-					<span style="margin: 10px; padding:10px; border-top : 1.5px solid #542f82; border-bottom :1.5px solid #542f82; font-size: 1.6em;"><font>글쓰기</font></span></a>
+				<%if(!id.getId().equals("null") && id.getAuth() == 0){ %>
+				<div style="    display: block; margin-top: 20px;">
+					<a class="writebtn" href="qaWrite.do?g_seq=<%=bbslist.getSeq() %>&g_code=<%=bbslist.getG_code()%>">글쓰기</a>
+					</div>
 				<%}%>
 			</li>
 			</ul>
