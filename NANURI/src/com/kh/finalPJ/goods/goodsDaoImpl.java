@@ -133,7 +133,6 @@ public class goodsDaoImpl implements goodsDao {
 	public List<reviewDto> getreview_qna(String g_code) {
 
 		List<reviewDto> list = sqlSession.selectList(namespace + "getreview_qna", g_code);
-
 		return list;
 	}
 

@@ -52,9 +52,11 @@ WHERE RNUM BETWEEN #{startindex} AND #{endindex}
 
   <select id="getreview_qna"  parameterType="String" resultType="com.kh.finalPJ.review.reviewDto">
 
-  	 SELECT SEQ,ID,TITLE,CONTENT,WDATE,DEL,G_CODE,RATING
-    FROM review
-    WHERE G_CODE = #{g_code}
+  	 SELECT R.SEQ,R.ID,R.TITLE,R.CONTENT,R.WDATE,R.DEL,R.G_CODE,R.RATING,G.G_IMG
+    FROM REVIEW R
+    INNER JOIN GOODS G
+    ON R.G_CODE = G.G_CODE
+    WHERE R.G_CODE = #{g_code}
 
   </select>
 
