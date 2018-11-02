@@ -25,7 +25,7 @@
 
 <div class="in">
 <div class="box logo">
-<em>NANURI</em> <a href="/cm/appIntro.do" class="btnApp">모바일 앱 안내</a>
+<em>NANURI</em> <a class="btnApp">모바일 앱 안내</a>
 </div>
 <div class="box address">
 <div class="tit">나누리렌탈㈜</div>
