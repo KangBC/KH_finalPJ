@@ -87,7 +87,7 @@ ul{padding: 0}
 
 .detail_wrap{display: table;}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
-.detail_head .goods_title{font-size: 32px; color:#333;}
+.detail_head .goods_title{font-size: 26px; color:#333;}
 .detail_body {width: 780px;    float: left;margin-right: 25px;}
 .detail_body .top_box{display: table;border-bottom: 40px solid #ddd; width: 100%;}
 .detail_body .top_box .goods_img{width: 350px; height: 400px;float: left;margin-right: 15px;} 
