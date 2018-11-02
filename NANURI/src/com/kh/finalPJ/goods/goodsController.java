@@ -79,7 +79,7 @@ public class goodsController {
 					title = "유아동";
 				}
 				// 레저
-				else if (category.equals("LSC")) {
+				else if (category.equals("LS")) {
 					title = "레저";
 				}
 				// 패션
@@ -87,7 +87,7 @@ public class goodsController {
 					title = "패션";
 				}
 				// 리빙
-				else if (category.equals("LVC")) {
+				else if (category.equals("LV")) {
 					title = "리빙";
 				}
 
