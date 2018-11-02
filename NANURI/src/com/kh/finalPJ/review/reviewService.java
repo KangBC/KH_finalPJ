@@ -31,4 +31,7 @@ public interface reviewService {
 	/*해당상품으로 가기*/
 	public int getGoodsSeq(String g_code)throws Exception; 
 	
+	/*장바구니에서 상품디테일가기*/
+	public reviewDto goToDto(int seq)throws Exception;
+	
 }

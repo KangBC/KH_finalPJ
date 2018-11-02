@@ -34,11 +34,16 @@ public class reviewController {
 
 	/* 글 목록 */
 	@RequestMapping(value = "reviewlist.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String revlist(Model model, reviewParam param) throws Exception {
+	public String revlist(Model model, reviewParam param, HttpServletRequest req) throws Exception {
+		logger.info("Welcome reviewController revlist!! " + new Date());
 
-		logger.info("Welcome reviewController revlist!! " + new Date());	
+		if (param.getSeq() > 0) {
+			reviewDto goToDto = reviewSrevice.goToDto(param.getSeq());
+			System.out.println(goToDto.toString());
+			model.addAttribute("goToDto", goToDto);
+		}
 
-		//List<reviewDto> list = reviewSrevice.getreview();
+		// List<reviewDto> list = reviewSrevice.getreview();
 		// model.addAttribute("reviewlist", list);
 
 		// paging 처리
@@ -84,14 +89,14 @@ public class reviewController {
 	public String revwriteAF(HttpServletRequest request, Model model) throws Exception {
 
 		logger.info("Welcome reviewController revwriteAf!!!!! " + new Date());
-		
+
 		memberDto mem = null;
 		if (request.getSession().getAttribute("login") != null) {
-			mem =(memberDto) request.getSession().getAttribute("login");
-		}else{
+			mem = (memberDto) request.getSession().getAttribute("login");
+		} else {
 			return "redirect:login.do";
 		}
-		
+
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -106,7 +111,7 @@ public class reviewController {
 		revdto.setContent(content);
 		revdto.setRating(rating);
 
-		//System.out.println(revdto.toString());
+		// System.out.println(revdto.toString());
 
 		if (revdto.getContent().equals("<p>&nbsp;</p>") || revdto.getTitle().equals("")) {
 
@@ -116,30 +121,30 @@ public class reviewController {
 
 		return "redirect:reviewlist.do";
 	}
-	
-	/*해당상품으로 가기*/
+
+	/* 해당상품으로 가기 */
 	@ResponseBody
 	@RequestMapping(value = "getGoodsSeq.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public Map<Object, Object> getGoodsSeq(String g_code, Model model) throws Exception {
 		Map<Object, Object> seq = new HashMap<>();
-		
+
 		int g_seq = reviewSrevice.getGoodsSeq(g_code);
-		
+
 		seq.put("g_seq", g_seq);
-		
+
 		return seq;
 	}
-	
+
 	/* 글 삭제 */
 	@RequestMapping(value = "deleterev.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleterev(HttpServletRequest request, reviewDto dto, Model model) throws Exception {
 
 		logger.info("Welcome reviewController deleterev!!!!!!! " + new Date());
-		
+
 		memberDto mem = null;
 		if (request.getSession().getAttribute("login") != null) {
-			mem =(memberDto) request.getSession().getAttribute("login");
-		}else{
+			mem = (memberDto) request.getSession().getAttribute("login");
+		} else {
 			return "redirect:login.do";
 		}
 
@@ -164,11 +169,11 @@ public class reviewController {
 	public String reviewupdateAf(HttpServletRequest request, int seq, Model model) throws Exception {
 
 		logger.info("Welcome reviewController reviewupdateAf!!!!!!!!! " + new Date());
-			
+
 		memberDto mem = null;
 		if (request.getSession().getAttribute("login") != null) {
-			mem =(memberDto) request.getSession().getAttribute("login");
-		}else{
+			mem = (memberDto) request.getSession().getAttribute("login");
+		} else {
 			return "redirect:login.do";
 		}
 
