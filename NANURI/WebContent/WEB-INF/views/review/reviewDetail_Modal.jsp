@@ -11,7 +11,7 @@
 }
 </style>
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog"  style="max-width: 700px;">
+	<div class="modal-dialog"  style="max-width: 600px;">
 		<div class="modal-content" style="width: 500px; height: 740px;">
 			<!-- modal header -->
 			<div class="modal-header" style="display: table; height: 58px; background: #542f82;">
