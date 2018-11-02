@@ -172,7 +172,7 @@
 		<ul class="tab_title">
 			<li id="tab01" class="active">기본정보</li>
 			<li id="tab02">상품후기 (<%= list.size()%>)</li>
-			<li id="tab03">Q & A</li>
+			<li id="tab03">Q & A (<%=qalist.size() %>)</li>
 		</ul>
 		
 		<ul class="tab_contant">
@@ -199,42 +199,57 @@
 	
 	for(int i = 0; i < list.size(); i++){
 %>
-   <li>
+   <li data-toggle="modal" data-target="#viewModal"  onclick="modal_view('<%= list.get(i).getSeq()%>','<%= list.get(i).getG_img()%>',
+   '<%= list.get(i).getId()%>','<%= list.get(i).getWdate()%>','<%= list.get(i).getTitle()%>',
+   '<%= list.get(i).getRating()%>','<%= list.get(i).getContent()%>','<%=list.get(i).getG_code() %>')">
+   
+  	<!-- , list.get(i).getG_img(), list.get(i).getId(), list.get(i).getWdate(),list.get(i).getTitle(),list.get(i).getRating(),list.get(i).getContent() -->
   	<!--상품사진넣기  ////////////-->
        <div class="img">
-          <!-- <img alt="" src=""> -->
+          <img alt="" src="resources/img/main_img/<%=list.get(i).getG_img() %>" width="100%"> 
        </div>
     <!--/////////////////  -->
     
-       <div class="text_view" onclick="location.href='reviewdetail.do?seq=<%=list.get(i).getSeq()%>'" style="cursor: pointer;width: 520px;">
+       <div class="text_view" style="cursor: pointer;width: 520px;">
        	<div>
-             <a href="reviewdetail.do?seq=<%=list.get(i).getSeq()%>" class="title"><%=list.get(i).getTitle() %></a>
+             <a class="title"><%=list.get(i).getTitle() %></a>
              	
              	<!-- 별점 -->
              	<div class="star">별점수: <%=list.get(i).getRating() %></div>
 <!-- =======별이다======= -->
-<tr>
-	<td class="starRev">
- 		 <span class="starR1">1</span>
- 		 <span class="starR2">2</span>
- 		 <span class="starR1">3</span>
- 		 <span class="starR2">4</span>
- 		 <span class="starR1">5</span>
- 		 <span class="starR2">6</span>
- 		 <span class="starR1">7</span>
-		 <span class="starR2">8</span>
- 		 <span class="starR1">9</span>
- 		 <span class="starR2">10</span>
-	</td>
-<tr>
-<input type="hidden" name="rating" id="rating" value="0">
+<%
+for (int j = 1; j <= 10; j++) {
+		if (j % 2 == 1) {
+			if (j <= list.get(i).getRating()) {
+				%>
+				<span class='starR1 on'></span>
+				<% 
+			} else {
+				%>
+				<span class='starR1'></span>
+				<%
+			}
+		} else if (j % 2 == 0) {
+			if (j <= list.get(i).getRating()) {
+				 %>
+				<span class='starR2 on'></span>
+				<% 
+			} else {
+				%>
+				<span class='starR2'></span>
+				<%
+			}
+		}
+	}
+%>
+<input type="hidden" name="rating" id="rating" value="<%=list.get(i).getRating() %>">
       			
       			</div>
       			<!-- 별점 끝 -->
     	</div>
        <div class="idbox" style="padding-top: 10px;">
-          <p class="id" style="margin-bottom: 5px;"><%=list.get(i).getId() %></p>
-          <p class="wdate"><%=list.get(i).getWdate().substring(0,16) %></p>
+          <p class="id" style="margin-bottom: 5px;margin-top: 20px;"><%=list.get(i).getId() %></p>
+          <p class="wdate" style="    font-size: 12px;"><%=list.get(i).getWdate().substring(0,16) %></p>
        </div>
    </li>
 <%
@@ -243,7 +258,7 @@
 	else{
 		%>
 		
-		<div class="review_null">
+		<div class="review_null" style="text-align: center;">
 		
 			<p>등록된 리뷰가 없습니다.</p>
 			
@@ -644,8 +659,60 @@ $(function(){
     });
 });
 
+// 가격 변환
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//리뷰모달
+
+
+function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
+	$('#viewModal').on('show.bs.modal',function(event) {
+	$("#starRev").empty();
+	$("#modal_id").empty();
+	$("#modal_title").empty();
+	$("#modal_footer").empty();
+
+	if (g_img == null || g_img == "") {
+		$(".modal-body #g_img").attr('src',"http://k-startup.go.kr/images/homepage/prototype/noimage.gif");
+	} else {
+		$(".modal-body #g_img").attr('src',"resources/img/main_img/" + g_img);
+	}
+	$("#_seq").val(seq);
+	$(".modal-body #modal_id").append("<font style='font-weight: bold;'>ㅣ</font>작성자 : "+ id);
+	$(".modal-body #modal_wdate").text(wdate.toString().substring(0, 16));
+	$(".modal-body #modal_title").append("<p style='font-size: 1.3em; font-weight: bold'>"+ title + "</p>");
+	$(".modal-body #_rating").val(rating);
+	$(".modal-body #content").html(content);
+	$("#_g_code").val(g_code);
+
+	for (var i = 1; i <= 10; i++) {
+		if (i % 2 == 1) {
+			if (i <= rating) {
+				$("#starRev").append("<span class='starR1 on'></span>");
+			} else {
+				$("#starRev").append("<span class='starR1'></span>");
+			}
+		} else if (i % 2 == 0) {
+			if (i <= rating) {
+				$("#starRev").append("<span class='starR2 on'></span>");
+			} else {
+				$("#starRev").append("<span class='starR2'></span>");
+			}
+		}
+	}
+
+	$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='해당 상품으로' onclick='goodsdetail()'>");
+	if (id == $("#loginId").val()) {
+		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='수정' onclick='updateview()'>");
+		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='삭제' onclick='deletereview()'>");
+	}
+	$("#modal_footer").append("<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
+});
+		}
+
+
+
 </script>
+<jsp:include page="../review/reviewDetail_Modal.jsp" />

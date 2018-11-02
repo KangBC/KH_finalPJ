@@ -42,7 +42,7 @@ public class reviewController {
 			model.addAttribute("goToDto", goToDto);
 		}
 
-		// List<reviewDto> list = reviewSrevice.getreview();
+		 List<reviewDto> list = reviewSrevice.getreview();
 		// model.addAttribute("reviewlist", list);
 
 		// paging 처리

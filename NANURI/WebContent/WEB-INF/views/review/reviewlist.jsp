@@ -20,15 +20,20 @@
 		if (category == null) {
 			category = "";
 		}
+		
 	%>
+	<script type="text/javascript">
+	function goPage(pageNumber) {
+		$("#_pageNumber").val(pageNumber);
+		$("#_frmFormSearch").attr("target", "_self").attr("action",	"reviewlist.do").submit();
+	}
+	</script>
 	<input type="hidden" id="loginId" value="${login.id }">
 	<div class="startdiv">
 		<form id="_frmFormSearch" method="get" action="">
 			<!-- 페이징 -->
-			<input type="hidden" name="pageNumber" id="_pageNumber"
-				value="${(empty pageNumber)?0:pageNumber}" /> <input type="hidden"
-				name="recordCountPerPage" id="_recordCountPerPage"
-				value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
+			<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
+			<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage"	value="${(empty recordCountPerPage)?5:recordCountPerPage}" />
 
 			<!--검색부분 -->
 			<div align="center">
@@ -40,7 +45,7 @@
 				</select>
 				<input type="text" class="form-control" style="width: 200px; display: inline;" id="_s_keyword" name="s_keyword" value="${s_keyword}" />
 
-				<button type="button" id="_btnSearch" class="btn btn-purple">검색	</button>
+				<button type="button" id="_btnSearch" class="btn btn-purple">검색</button>
 			</div>
 		</form>
 		<br>
@@ -193,10 +198,7 @@ function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
 		}
 	</script>
 	<script type="text/javascript">
-		function goPage(pageNumber) {
-			$("#_pageNumber").val(pageNumber);
-			$("#_frmFormSearch").attr("target", "_self").attr("action",	"reviewlist.do").submit();
-		}
+
 
 		$("#_btnSearch").click(function() {
 			//alert('search');						
