@@ -79,6 +79,6 @@
 </select>
 
 <select id="goToDto" parameterType="Integer" resultType="com.kh.finalPJ.review.reviewDto">
-	SELECT * FROM REVIEW WHERE SEQ = #{seq}
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, DEL, GOODS.G_CODE, RATING, GOODS.G_IMG FROM REVIEW, GOODS WHERE REVIEW.G_CODE = GOODS.G_CODE AND SEQ=#{seq}
 </select>
 </mapper>
