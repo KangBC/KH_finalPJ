@@ -45,8 +45,8 @@
 			src="https://user-images.githubusercontent.com/38531104/47624703-88035d80-db62-11e8-9300-3ad9341a12d2.PNG"></a>
 		<table style="text-align: left; width: 100%;">
 			<colgroup>
-				<col width="15%">
-				<col width="85%">
+				<col width="30px%">
+				<col width="250px">
 			</colgroup>
 			<tbody>
 				<c:choose>
@@ -71,7 +71,8 @@
 												style="width: 50px; height: 50px">
 										</c:otherwise>
 									</c:choose></th>
-								<th><a href="reviewlist.do?seq=${reviewList.seq}">${reviewList.title}</a></th>
+								<th><a href="reviewlist.do?seq=${reviewList.seq}"><span
+										style=" text-overflow: ellipsis; overflow: hidden; White-space: norwap">${reviewList.title}</span></a></th>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -88,8 +89,8 @@
 		<div style="padding-top: 10px; border-top: solid 1px #CCCCCC;">
 			<table style="text-align: left; width: 100%;">
 				<colgroup>
-					<col width="15%">
-					<col width="85%">
+					<col width="30px%">
+				<col width="250px">
 				</colgroup>
 				<tbody>
 					<c:choose>
@@ -103,7 +104,8 @@
 							<c:forEach items="${qaList}" var="qaList" varStatus="status">
 								<tr>
 									<th>[공지]</th>
-									<th><a href="qnalist.do">${qaList.title}</a></th>
+									<th><a href="qnalist.do"><span
+											style="width:250px; text-overflow: ellipsis; overflow: hidden; White-space: norwap">${qaList.title}</span></a></th>
 								</tr>
 							</c:forEach>
 						</c:otherwise>

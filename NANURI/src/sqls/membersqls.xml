@@ -100,7 +100,8 @@
 
 	<select id="getAdminQaList" resultType="com.kh.finalPJ.qa.qaDto">
 		SELECT * FROM QA WHERE
-		ID='admin' AND DEL=0
+		ID='admin' AND DEL=0 AND REF = -1
+		ORDER BY WDATE DESC
 	</select>
 
 	<select id="getMyReviewList" parameterType="String"
