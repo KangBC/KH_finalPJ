@@ -50,6 +50,21 @@ var nickcheck = "false";
 var passwordcheck = "false";
 var emailcheck = "false";
 
+function phoneCheck() {
+	var phoneRule = /^\d{3}-\d{3,4}-\d{4}$/;
+	var phoneNum = $("#bf_phone").val();
+
+	if (!phoneRule.test(phoneNum)) {
+		$("#phoneCK").val("*예시 ) 000-0000-0000").css("color", "red");
+		$("#phone").val("");
+		return false;
+	} else {
+		$("#phoneCK").val("*올바른 전화번호입니다.").css("color", "green");
+		$("#phone").val(phoneNum);
+		return false;
+	}
+}
+
 function idcheck() {
 	var idRule = /^[A-Za-z0-9]{6,12}$/;
 	var id = $("#bf_id").val();
@@ -123,10 +138,10 @@ function regiAf() {
 
 	// 주소를 합쳐주기
 	var address = "";
-	
-	if($("#address_detail").val() != "" && $("#address_num").val() !=""){
+
+	if ($("#address_detail").val() != "" && $("#address_num").val() != "") {
 		address = $("#address_num").val() + "-" + $("#address_main").val()
-		+ "-" + $("#address_detail").val();
+				+ "-" + $("#address_detail").val();
 		$("#address").val(address);
 	}
 
@@ -192,8 +207,7 @@ function pwcheck() {
 
 	if (pw1 == pw2 && pw1 != "") {
 		if (!pwRule.test(pw1)) {
-			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color",
-					"red");
+			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color", "red");
 			passwordcheck = "false";
 			return;
 		}

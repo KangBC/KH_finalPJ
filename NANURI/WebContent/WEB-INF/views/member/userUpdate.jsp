@@ -127,13 +127,21 @@
 						</div>
 
 						<!-- Material input phone -->
-						<div class="md-form">
+						<div class="md-form row" style="margin-bottom: 0px">
 							<input type="hidden" name="phone" id="phone"
-								value="${login.phone}"> <i
-								class="fa fa-phone-square prefix grey-text"></i> <input
-								type="text" name="bf_phone" value="${login.phone}" id="bf_phone"
-								class="form-control" required> <label for="bf_phone"
-								class="font-weight-light">예시 ) 000-0000-0000</label>
+								value="${login.phone}">
+							<div class="col-md-6">
+								<i class="fa fa-phone-square prefix grey-text"></i> <input
+									type="text" onkeyup="phoneCheck()" name="bf_phone"
+									id="bf_phone" class="form-control" value="${login.phone}" required> <label
+									for="bf_phone" class="font-weight-light"
+									style="margin-left: 4em">Phone</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="phoneCK" class="form-control" value=""
+									placeholder="예시 ) 000-0000-0000" disabled
+									style="border-bottom: none">
+							</div>
 						</div>
 
 						<!-- Material input address -->
