@@ -67,6 +67,11 @@ public class goodsController {
 		// g_code 연결(rivew,qna)
 		List<reviewDto> code = goodsService.getreview_qna(g_code);
 		
+		for (int i = 0; i < code.size(); i++) {
+			System.out.println("-------------------");
+			System.out.println(code.get(i).getContent());
+			System.out.println("-------------------");
+		}
 		
 		List<qaDto> g_qalist = goodsService.getQnAlist_g(g_code); 
 		List<Integer> allref = goodsService.AllgetRef();

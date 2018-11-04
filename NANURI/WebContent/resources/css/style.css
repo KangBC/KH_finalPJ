@@ -140,7 +140,7 @@ ul{padding: 0}
 .review .text_view .content{font-size: 10px;    margin-top: 5px; width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
 .review .idbox{float: left; width: 120px;height: 100%;text-align: center; padding-top: 30px;}
-.review .idbox .id{font-weight: bold;}
+.review .idbox .id{font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .review .idbox .date{font-size: 12px; color: #999;}
 .reviewcontent img{width: 100%;margin: 20px 0;}
 
