@@ -7,8 +7,10 @@
 <fmt:requestEncoding value="utf-8" />
 <style>
 .modal_imgbox img{
-	width: 100%;
+	max-width: 100%;
 }
+.content p{word-break: break-all;}
+#modal_title p{word-break: break-all;}
 </style>
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog"  style="max-width: 600px;">
@@ -26,23 +28,22 @@
 			<form name="frmForm" class="_frmForm" id="_frmForm" method="post" action="reviewdetail.do">
 				<input type="hidden" id="_seq" name="_seq" />
 				<div class="modal-body modal_imgbox" >
+					<div style="padding: 0 20px;">
+								<div id="modal_title"></div>
+								<hr style="background-color: #eee;    margin-top: 6px;">
+							</div>
 					<div class="row">
 						<div class="col-md-4">
-							<img id="g_img" alt="" src="" style="width: 100%">
+							<img id="g_img" alt="" src="" style="max-width: 100%">
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8" style="    padding-top: 40px;">
 							<input type="hidden" name="_rating" id="_rating" />
-							<div class="row">
-								<div id="modal_wdate" style="width: 100%; margin-left: 10%; margin-right: 10%; text-align: right;"></div>
-							</div>
 							<div id="starRev" class="starRev"></div>
 							<div style="text-overflow: ellipsis; overflow: hidden; padding-top: 7px; margin-bottom: 5px">
 								<nobr id="modal_id" style="font-size: 0.9em; color: #CCCCCC;">
 								</nobr>
 							</div>
-							<div style="width: 100%; text-overflow: ellipsis; overflow: hidden;">
-								<nobr id="modal_title"></nobr>
-							</div>
+							<div id="modal_wdate" style="width: 100%;padding-right: 35px;text-align: right;"></div>
 						</div>
 					</div>
 
@@ -50,7 +51,7 @@
 				</div>
 				<!-- / modal body -->
 				<!-- modal footer -->
-				<div id="modal_footer" class="modal-footer" style="float: center"></div>
+				<div id="modal_footer" class="modal-footer" style="    background: #fff;"></div>
 				<!-- / modal footer -->
 			</form>
 		</div>

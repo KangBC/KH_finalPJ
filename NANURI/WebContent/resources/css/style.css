@@ -77,7 +77,7 @@ ul{padding: 0}
 .goods{ width: 240px; height: 350px; float: left;margin: 5px 15px; text-align: center;}
 .goods p {margin: 0}
 .goods .goods_img{height: 250px;}
-.goods .goods_title{margin: 5px 0;color: #888;font-weight: 700;font-size: 14; margin-top: 15px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.goods .goods_title{margin: 5px 0;color: #888;font-weight: 700;font-size: 14; margin-top: 15px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;    margin-top: 25px;}
 .goods .goods_content{color: #777;font-size: 14px;}
 .goods .goods_price{font-size: 16px;color: #cd1965;font-weight: bold;font-family: 'Spoqa Han Sans';
     letter-spacing: 0; margin-top: 4px;}
@@ -88,7 +88,7 @@ ul{padding: 0}
 
 .detail_wrap{display: table;}
 .detail_head .category {font-size: 12px; color: #888; margin: 0;}
-.detail_head .goods_title{font-size: 26px; color:#333;}
+.detail_head .goods_title{font-size: 32px; color:#333;}
 .detail_body {width: 780px;    float: left;margin-right: 25px;}
 .detail_body .top_box{display: table;border-bottom: 40px solid #ddd; width: 100%;}
 .detail_body .top_box .goods_img{width: 350px; height: 400px;float: left;margin-right: 15px;} 
@@ -140,7 +140,7 @@ ul{padding: 0}
 .review .text_view .content{font-size: 10px;    margin-top: 5px; width: 95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
 .review .idbox{float: left; width: 120px;height: 100%;text-align: center; padding-top: 30px;}
-.review .idbox .id{font-weight: bold;}
+.review .idbox .id{font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .review .idbox .date{font-size: 12px; color: #999;}
 .reviewcontent img{width: 100%;margin: 20px 0;}
 

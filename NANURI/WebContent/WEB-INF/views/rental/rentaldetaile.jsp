@@ -18,6 +18,12 @@
 	String title = (String)request.getAttribute("title");
 	List<reviewDto> list = (List<reviewDto>)request.getAttribute("reviewDto");
 	
+	String content = null;
+	for(int i = 0 ; i < list.size(); i++){
+		content = list.get(i).getContent(); 
+	}
+	
+	
 	List<Integer> allref = (List<Integer>) request.getAttribute("allref");   
 	List<Integer> reflist = (List<Integer>) request.getAttribute("reflist");
 	List<qaDto> qalist = (List<qaDto>) request.getAttribute("g_qalist");
@@ -199,11 +205,13 @@
 	
 	for(int i = 0; i < list.size(); i++){
 %>
-   <li data-toggle="modal" data-target="#viewModal"  onclick="modal_view('<%= list.get(i).getSeq()%>','<%= list.get(i).getG_img()%>',
-   '<%= list.get(i).getId()%>','<%= list.get(i).getWdate()%>','<%= list.get(i).getTitle()%>',
-   '<%= list.get(i).getRating()%>','<%= list.get(i).getContent()%>','<%=list.get(i).getG_code() %>')">
+   <li data-toggle="modal" data-target="#viewModal"  onclick='modal_view("<%= list.get(i).getSeq()%>","<%= list.get(i).getG_img()%>",
+   "<%= list.get(i).getId()%>","<%= list.get(i).getWdate()%>","<%= list.get(i).getTitle()%>",
+   "<%= list.get(i).getRating()%>","<%=list.get(i).getG_code() %>")'>
    
-  	<!-- , list.get(i).getG_img(), list.get(i).getId(), list.get(i).getWdate(),list.get(i).getTitle(),list.get(i).getRating(),list.get(i).getContent() -->
+   <!-- 상품 컨텐츠 -->
+   	<input type="hidden"  value='<%=list.get(i).getContent() %>' id="content">
+   
   	<!--상품사진넣기  ////////////-->
        <div class="img">
           <img alt="" src="resources/img/main_img/<%=list.get(i).getG_img() %>" width="100%"> 
@@ -667,7 +675,10 @@ function numberWithCommas(x) {
 //리뷰모달
 
 
-function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
+function modal_view(seq, g_img, id, wdate, title, rating,g_code) {
+	
+	var content = $("#content").val();
+	
 	$('#viewModal').on('show.bs.modal',function(event) {
 	$("#starRev").empty();
 	$("#modal_id").empty();
@@ -703,11 +714,7 @@ function modal_view(seq, g_img, id, wdate, title, rating, content,g_code) {
 		}
 	}
 
-	$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='해당 상품으로' onclick='goodsdetail()'>");
-	if (id == $("#loginId").val()) {
-		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='수정' onclick='updateview()'>");
-		$("#modal_footer").append("<input type='button' class='btn btn-outline-secondary waves-effect px-3' value='삭제' onclick='deletereview()'>");
-	}
+	
 	$("#modal_footer").append("<button type='button' class='btn btn-outline-secondary waves-effect px-3' data-dismiss='modal'>닫기</button>");
 });
 		}
