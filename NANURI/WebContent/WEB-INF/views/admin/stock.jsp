@@ -12,20 +12,20 @@
 <div>
     <table>
     <colgroup>
+      <col width="120px">
+      <col width="300px">
+      <col width="130px">
       <col width="150px">
-      <col width="150px">
-      <col width="150px">
-      <col width="150px">
-      <col width="150px">
-      <col width="150px">
+      <col width="100px">
+      <col width="100px">
     </colgroup>
 	<tr>
 	  <td>상품코드</td>
-  	  <td>상품명</td>
-  	  <td>렌트 가격</td>
-  	  <td>이미지</td>
-  	  <td>총 갯수</td>
-  	  <td>대여 중인 갯수</td>
+  	<td>상품명</td>
+  	<td>렌트 가격</td>
+  	<td>이미지</td>
+  	<td>총 갯수</td>
+  	<td>대여 중</td>
 	</tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="goodsS">
 	  <tr class="stock_col">
@@ -47,7 +47,7 @@
   </table>
   <br>
   
-  <form action="goodsRegist.do" enctype="multipart/form-data" method="post">
+  <form id="stockform" action="goodsRegist.do" enctype="multipart/form-data" method="post" onsubmit="return ckInput();">
   <table>
     <colgroup>
       <col width="150px">
@@ -57,21 +57,19 @@
       <col width="150px">
       <col width="150px">
     </colgroup>
-    <tr>
-	  <td><input name="g_code" type="text" placeholder="상품코드" style="width: 150px"></td>
-	  <td><input name="g_name" type="text" placeholder="상품명" style="width: 150px"></td>
-	  <td><input name="g_price" type="text" placeholder="가격" style="width: 150px"></td>
-  	  <td><input name="g_imgF" type="file" accept="image/gif,image/jpeg,image/png" style="width: 76px"></td>
+    <tr style="border-bottom: none;">
+	  <td><input name="g_code" type="text" title="상품코드" placeholder="상품코드" style="width: 150px"></td>
+	  <td><input name="g_name" type="text" title="상품명" placeholder="상품명" style="width: 150px"></td>
+	  <td><input name="g_price" type="text" title="가격" placeholder="가격" style="width: 150px"></td>
+  	  <td><input name="g_imgF" type="file" title="이미지" accept="image/gif,image/jpeg,image/png" style="width: 76px"></td>
   	  <td></td>
   	  <td><input type="submit" value="상품 추가"></td>
 		</tr>
   </table>
   </form>
   
-<p>검색 결과 : ${fn:length(goodsList)} </p>
 </div>
 <script type="text/javascript" src="resources/js/stock.js"></script>
-
 </fieldset>
-
+<p>검색 결과 : ${fn:length(goodsList)} </p>
 </div>
