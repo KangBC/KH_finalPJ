@@ -40,9 +40,13 @@ public class qaController {
 		
 		// 글의 갯수 
 		int totalRecordCount = QaService.getBbsCount(param);
-		
-		memberDto mem =(memberDto) req.getSession().getAttribute("login");
-		
+		memberDto mem = null;
+		if(req.getSession().getAttribute("login") != null) {
+			mem =(memberDto) req.getSession().getAttribute("login");
+		}else {	// 세션값이 없을때
+			mem = new memberDto();
+			mem.setId("null");
+		}
 		String id = mem.getId();
 		
 		List<Integer> allref = QaService.AllgetRef();
@@ -64,98 +68,170 @@ public class qaController {
 	}
 	
 	@RequestMapping(value = "qaWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String qaWrite() {
+	public String qaWrite(HttpServletRequest req, int g_seq,String g_code, Model model) {
 		
 		logger.info("qaController qaWrite" + new Date());
-
-		return "qaWrite.tiles";
+		
+		System.out.println("mmmmmmmmmmmmmg_seq" + g_seq);
+		if(req.getSession().getAttribute("login") != null) {			
+			
+			if(g_code != null || g_seq == -1) {			
+				model.addAttribute("g_code", g_code);
+				model.addAttribute("g_seq", g_seq);
+				return "qaWrite.tiles";
+			}else{			
+				return "qaWrite.tiles";
+			}
+		}else {	// 세션값이 없을때
+			return "login.do";
+		}		
 	}
 	
 	@RequestMapping(value = "qaWriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String qaWriteAf(HttpServletRequest req, qaDto dto) {
+	public String qaWriteAf(HttpServletRequest req, qaDto dto, int g_seq, Model model) {
 		
 		logger.info("qaController qaWriteAf" + new Date());
+				
+		if(req.getSession().getAttribute("login") != null) {			
+			boolean c = dto.isCheck(); // 체크박스 체크여부확인
+			
+			if(c) {
+				dto.setSecret(1);
+			}else {
+				dto.setSecret(0);
+			}
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  dto" + dto.toString());
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  g_seq" + g_seq);
 		
-		boolean c = dto.isCheck(); // 체크박스 체크여부확인
+			boolean b = QaService.QaWrite(dto);
+			if(b) {
+				if(dto.getG_code() != null && g_seq != -1) {
+					model.addAttribute("g_code", dto.getG_code());
+					model.addAttribute("seq", g_seq);
+					return "redirect:/goodsdetail.do";
+				}else {
+					return "redirect:/qnalist.do";
+				}
+			}else {
+				return "redirect:/qaWrite.do";
+			}
+		}else {	// 세션값이 없을때
+			return "login.do";
+		}		
 		
-		if(c) {
-			dto.setSecret(1);
-		}else {
-			dto.setSecret(0);
-		}
-		
-		boolean b = QaService.QaWrite(dto);
-		if(b) {
-		
-		return "redirect:/qnalist.do";
-		
-		}else {
-			return "redirect:/qaWrite.do";
-		}
 	} 
 	
 	// 디테일 후기 할때도 이함수 사용하면됨
 	@RequestMapping(value = "ansWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ansWrite(int ref,String g_code, int secret, Model model) {
+	public String ansWrite(HttpServletRequest req, int ref, String g_code, int secret, Model model) {
 		
 		logger.info("qaController ansWrite" + new Date());
 		
-		qaDto ansdto = new qaDto(ref, g_code, secret);
-		model.addAttribute("ansdto", ansdto);
-		
-		return "ansWrite.tiles";
+		if(req.getSession().getAttribute("login") != null) {			
+			
+			qaDto ansdto = new qaDto(ref, g_code, secret);
+			model.addAttribute("ansdto", ansdto);
+			
+			return "ansWrite.tiles";
+			
+		}else {	// 세션값이 없을때
+			return "login.do";
+		}
 	}	
 	
 	@RequestMapping(value = "ansWriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ansWriteAf(qaDto dto,Model model) {
+	public String ansWriteAf(HttpServletRequest req, qaDto dto, Model model) {
 		
 		logger.info("qaController ansWriteAf" + new Date());
-				
-		/*로그인 뷰랑 합치면 뷰에서 아이디 세션값 보내는거, qa.xml 쿼리문 아이디 바꾸기 */
-		boolean b = QaService.ansWrite(dto);
 		
-		if(b) {
-			return "redirect:/qnalist.do";
-		}else {
-			return "redirect:/ansWriteAf.do";
+		if(req.getSession().getAttribute("login") != null) {			
+			
+			boolean b = QaService.ansWrite(dto);
+			
+			if(b) {
+				return "redirect:/qnalist.do";
+			}else {
+				return "redirect:/ansWriteAf.do";
+			}
+			
+		}else {	// 세션값이 없을때
+			return "login.do";
 		}
 	}
 	
 	@RequestMapping(value = "qaAdminWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String qaAdminWrite(Model model) {
+	public String qaAdminWrite(HttpServletRequest req, Model model) {
 		
 		logger.info("qaController qaAdminWrite" + new Date());
 		
-		return "qaAdminWrite.tiles";
+		if(req.getSession().getAttribute("login") != null) {			
+			return "qaAdminWrite.tiles";
+		}else {	// 세션값이 없을때
+			return "login.do";
+		}		
 	}
 	
 	@RequestMapping(value = "qaAdminWriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })	
-	public String qaAdminWriteAf(qaDto dto,Model model) {
+	public String qaAdminWriteAf(HttpServletRequest req, qaDto dto,Model model) {
 		
 		logger.info("qaController qaAdminWriteAf" + new Date());
 		
-		boolean b = QaService.qaAdminWrite(dto);
-		
-		if(b) {		
-			return "redirect:/qnalist.do";
-		}else {
-			return "redirect:/qaAdminWriteAf.do";
+		if(req.getSession().getAttribute("login") != null) {			
+						
+			boolean b = QaService.qaAdminWrite(dto);
+			
+			if(b) {		
+				return "redirect:/qnalist.do";
+			}else {
+				return "redirect:/qaAdminWriteAf.do";
+			}
+			
+		}else {	// 세션값이 없을때
+			return "login.do";
 		}
 	}
 	
 	@RequestMapping(value = "delete.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String delete(int ref, Model model) {
+	public String delete(HttpServletRequest req, int ref, Model model) {
 		
 		logger.info("qaController delete" + new Date());
 		
-		boolean b = QaService.qaDelete(ref);
-		
-		if(b) {		
-			return "redirect:/qnalist.do";
-		}else {
-			return "redirect:/delete.do";
+		if(req.getSession().getAttribute("login") != null) {			
+			
+			boolean b = QaService.qaDelete(ref);
+			
+			if(b) {		
+				return "redirect:/qnalist.do";
+			}else {
+				return "redirect:/delete.do";
+			}
+			
+		}else {	// 세션값이 없을때
+			return "login.do";
 		}
+		
 	}
+	
+	@RequestMapping(value = "ansDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ansDelete(HttpServletRequest req, int seq, Model model) {
+		
+		logger.info("qaController ansDelete" + new Date());
+		
+		if(req.getSession().getAttribute("login") != null) {			
+			boolean b = QaService.ansDelete(seq);
+			
+			if(b) {
+				return "redirect:/qnalist.do";
+			}else {
+				return "redirect:/qnalist.do";
+			}
+			
+		}else {	// 세션값이 없을때
+			return "login.do";
+		}
+		
+		
+	}	
 }
 
 

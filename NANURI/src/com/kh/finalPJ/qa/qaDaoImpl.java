@@ -27,11 +27,18 @@ public class qaDaoImpl implements qaDao {
 	}
 
 	@Override
-	public boolean QaWrite(qaDto dto) {
-		int n = sqlSession.insert(namespace + "QaWrite", dto);
+	public boolean QaWriteN(qaDto dto) {
+		int n = sqlSession.insert(namespace + "QaWriteN", dto);
 		return n>0?true:false;
 	}	
 
+	@Override
+	public boolean QaWriteY(qaDto dto) {
+		System.out.println("--------------------"+dto.getG_code());
+		int n = sqlSession.insert(namespace + "QaWriteY", dto);
+		return n>0?true:false;
+	}
+	
 	@Override
 	public boolean ansWriteN(qaDto dto) {
 		int n = sqlSession.insert(namespace + "ansWriteN", dto);
@@ -80,6 +87,13 @@ public class qaDaoImpl implements qaDao {
 		List<qaDto> list = sqlSession.selectList(namespace + "getBbsPagingList", param);
 		return list;
 	}
+
+	@Override
+	public boolean ansDelete(int seq) {
+		int n = sqlSession.delete(namespace + "ansDelete", seq);
+		return n>0?true:false;
+	}
+
 
 }
 

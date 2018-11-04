@@ -1,66 +1,77 @@
+<%@page import="com.kh.finalPJ.review.reviewDto"%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
+<!-- smarteditor -->
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-<body>
-<div align="center">
+<div class="startdiv">
 <form name="frmForm" id="_frmForm" action="reviewwriteAf.do" method="post">
-<table>
+<input type="hidden" name="g_code" value="${g_code}">
 
-<colgroup>
-<col style="width:200px;" />
-<col style="width:auto;" />
-</colgroup>
-
-<tr>
-	<th>아이디</th>
+<table class="_table" style="width: 1080px">
+<th colspan="2" width="900px"></th>
+<tr height="50px" class="md-form">
+	<td>아이디: </td>
 	<td>
-		<input type="text" name="id" readonly="readonly" value="아이디" size="50">
+		<input type="text" name="id" readonly="readonly" id="inputIconEx2" class="form-control" value="${login.id }" size="30">
 	</td>
 </tr>
-
-<tr>
-	<th>제목</th>
+<tr height="50px" class="md-form">
+	<td>제목: </td>
 	<td>
-		<input type="text" name='title' id="title" size="50"/>
+		<input type="text" id="inputIconEx2" class="form-control" name='title' id="title" size="30"/>
 	</td>
 </tr>
-
+<!-- =======별이다======= -->
+<tr height="40px" class="md-form">
+	<td>별점: </td>
+	<td style="display: inline-block;" class="starRev">
+ 		 <span class="starR1">1</span>
+ 		 <span class="starR2">2</span>
+ 		 <span class="starR1">3</span>
+ 		 <span class="starR2">4</span>
+ 		 <span class="starR1">5</span>
+ 		 <span class="starR2">6</span>
+ 		 <span class="starR1">7</span>
+		 <span class="starR2">8</span>
+ 		 <span class="starR1">9</span>
+ 		 <span class="starR2">10</span>
+ 		 <p style="display: inline;" id="grade">&nbsp;&nbsp;0</p>
+	</td>
+</tr>
+<input type="hidden" name="rating" id="rating" value="0">
 </table>
 
-<!-- 스마트에디터 & 확인 취소버튼 -->
-<table style="margin-top: 10px; background-color:white;">
-	<col style="width: 100px"><col style="width: 1000px">
-     
+<table style="width: 1080px">
+<col style="width: 100px"><col style="width: 1080px">
 <tr>
-	<td colspan="2">
-		<textarea style="height: 600px; width: 1000px" name="content" id="content" ></textarea>      
+	<td>
+		<!--스마트에디터  -->
+		<textarea style="height: 500px; width: 1075px; overflow: scroll"" name="content" id="content"></textarea>
 	</td>
-        
 </tr>
-<tr style="height: 30px" align="center">
-	<td colspan="2">
-    	<input type="button" value="완료" id="savebutton">
-    	
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	
-        <input type="button" value="취소" onclick="location.href='reviewlist.do'">
-    </td>
+<tr>
+	<td height="2" bgcolor="#e7e7e7">
+</tr>
+<tr>
+	<td align="right"  style="width: 908px">
+	<input type="button" class='btn btn-outline-secondary waves-effect px-3' value="완료" id="savebutton">
+	<input type="button" class='btn btn-outline-secondary waves-effect px-3' value="취소" onclick="location.href='reviewlist.do'">
+	</td>
 </tr>
 </table>
-
 </form>
 </div>
 
-
 <script type="text/javascript">
 var oEditors = [];
+
+//별점
+var grade = 0;
 
 // 추가 글꼴 목록
 //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
@@ -99,7 +110,17 @@ $(document).ready(function () {
 	})	
 })
 
+/* 별점작동 */
+$('.starRev span').click(function(){
+	  $(this).parent().children('span').removeClass('on');
+	  $(this).addClass('on').prevAll('span').addClass('on');
+	  
+	  grade = $(this).text();
+	  $("#grade").html("&nbsp;&nbsp;" + $(this).text());
+	  
+	  $("#rating").val(grade);
+	  //alert(grade);
+	  
+	  return false;
+});
 </script>
-
-</body>
-</html>

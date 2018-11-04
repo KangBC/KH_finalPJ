@@ -1,6 +1,9 @@
 package com.kh.finalPJ.goods;
+
+import org.springframework.web.multipart.MultipartFile;
+
 /*
-CREATE TABLE GOODS(
+CREATE TABLE NA_GOODS(
     G_NAME VARCHAR2(50) NOT NULL,
     G_CODE VARCHAR2(50) PRIMARY KEY,
     G_IMG VARCHAR2(50),
@@ -17,17 +20,20 @@ public class goodsDto {
 	private int g_price;
 	private int g_quantity;
 	
+	private MultipartFile g_imgF;
+	
 	public goodsDto() {
 		super();
 	}
-
-	public goodsDto(String g_name, String g_code, String g_img, int g_price, int g_quantity) {
+	
+	public goodsDto(String g_name, String g_code, String g_img, int g_price, int g_quantity, MultipartFile g_imgF) {
 		super();
 		this.g_name = g_name;
 		this.g_code = g_code;
 		this.g_img = g_img;
 		this.g_price = g_price;
 		this.g_quantity = g_quantity;
+		this.g_imgF = g_imgF;
 	}
 
 	public String getG_name() {
@@ -63,10 +69,17 @@ public class goodsDto {
 		this.g_quantity = g_quantity;
 	}
 
+	public MultipartFile getG_imgF() {
+		return g_imgF;
+	}
+
+	public void setG_imgF(MultipartFile g_imgF) {
+		this.g_imgF = g_imgF;
+	}
+
 	@Override
 	public String toString() {
 		return "goodsDto [g_name=" + g_name + ", g_code=" + g_code + ", g_img=" + g_img + ", g_price=" + g_price
-				+ ", g_quantity=" + g_quantity + "]";
+				+ ", g_quantity=" + g_quantity + ", g_imgF=" + g_imgF + "]";
 	}
-	
 }

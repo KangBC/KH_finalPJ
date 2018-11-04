@@ -1,20 +1,29 @@
 package com.kh.finalPJ.member;
 
-//DROP TABLE MEMBER
-//CASCADE CONSTRAINTS;
-//
-//CREATE TABLE MEMBER (
-//	    ID VARCHAR2(50) PRIMARY KEY,
-//	    PWD VARCHAR2(50) NOT NULL,
-//	    NICKNAME VARCHAR2(50) UNIQUE,
-//	    EMAIL VARCHAR2(50) UNIQUE,
-//	   PHONE VARCHAR2(15) NOT NULL,
-//	   ADDRESS VARCHAR2(200) NOT NULL,
-//	   NAME VARCHAR2(50) NOT NULL,
-//	   AUTH NUMBER(1) NOT NULL
-//	);
-//    
-//INSERT INTO MEMBER VALUES('test11','test11','관리자','test@test.com','010-1234-1234','서울시','홍길동',0);
+/*
+DROP TABLE MEMBER
+CASCADE CONSTRAINTS;
+
+CREATE TABLE MEMBER (
+	ID VARCHAR2(50) PRIMARY KEY,
+	PWD VARCHAR2(50) NOT NULL,
+	NICKNAME VARCHAR2(50) UNIQUE NOT NULL,
+	EMAIL VARCHAR2(50) UNIQUE NOT NULL,
+	PHONE VARCHAR2(15) NOT NULL,
+	ADDRESS VARCHAR2(200) NOT NULL,
+	NAME VARCHAR2(50) NOT NULL,
+	AUTH NUMBER(1) NOT NULL
+);
+
+    
+INSERT INTO MEMBER VALUES('user','user','user','user','user','user','user',0);
+
+INSERT INTO MEMBER VALUES('delete01','delete01','delete01','delete01','delete01','delete01','delete01',1);
+
+INSERT INTO MEMBER VALUES('delete02','delete02','delete02','delete02','delete02','delete02','delete02',1);
+
+INSERT INTO MEMBER VALUES('admin','admin','admin','admin','admin','admin','admin',2);
+*/
 
 public class memberDto {
 	private String id;

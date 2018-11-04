@@ -23,7 +23,13 @@ public class qaServiceImpl implements qaService {
 
 	@Override
 	public boolean QaWrite(qaDto dto) {
-		return QaDao.QaWrite(dto);
+		if(dto.getG_code()== null) {
+			// 상품번호 없을때
+			return QaDao.QaWriteN(dto);			
+		}else {
+			//상품번호 있을때
+			return QaDao.QaWriteY(dto);
+		}
 	}
 
 	// 상품번호 있을때 없을때 둘다 사용가능
@@ -66,6 +72,11 @@ public class qaServiceImpl implements qaService {
 	@Override
 	public List<qaDto> getBbsPagingList(qaParam param) throws Exception {
 		return QaDao.getBbsPagingList(param);
+	}
+
+	@Override
+	public boolean ansDelete(int seq) {
+		return QaDao.ansDelete(seq);
 	}
 
 

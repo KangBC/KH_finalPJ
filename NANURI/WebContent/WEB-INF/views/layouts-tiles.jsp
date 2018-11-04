@@ -13,7 +13,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NANURI</title>
+<link rel="shortcut icon" href="resources/img/icon_title.png">
 <!-- meta -->
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
@@ -25,6 +26,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+<!-- 슬라이더배너 -->
+<link rel="stylesheet" href="resources/swiper/swiper.css">
 <!-- Font Awesome -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,29 +46,6 @@
 
 </head>
 <body>
-
-	<%-- <table border="1" style="width: 100%; height: 100%; border-color: Gray" >
-	<tr align="center">
-		<td height="10%" colspan="2">
-			<!-- 위쪽의 위치설정 (header).. (name에따라서 동작시키게 만듬)-->
-			<tiles:insertAttribute name="header"/>
-		</td>
-	</tr>
-	<tr> <!-- menu , content  -->
-		<td>
-			<!-- 70%에 해당하는 content -->
-			<tiles:insertAttribute name="content"/>
-		</td>
-	</tr>
-	<tr align="center">
-		<td height="10%" colspan="2">
-			<!-- footer -->
-			<tiles:insertAttribute name="footer"/>
-		</td>
-	</tr>
-	
-
-</table> --%>
 
 	<div class="header">
 		<tiles:insertAttribute name="header" />

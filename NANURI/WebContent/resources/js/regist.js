@@ -40,12 +40,6 @@ function sample6_execDaumPostcode() {
 
 			// 커서를 상세주소 필드로 이동한다.
 			document.getElementById('address_detail').focus();
-			
-			// 주소를 합쳐주기
-			var address = $("#address_num").val() + "-"
-					+ $("#address_main").val() + "-"
-					+ $("#address_detail").val();
-			$("#address").val(address);
 		}
 	}).open();
 }
@@ -55,6 +49,21 @@ var idok = "false";
 var nickcheck = "false";
 var passwordcheck = "false";
 var emailcheck = "false";
+
+function phoneCheck() {
+	var phoneRule = /^\d{3}-\d{3,4}-\d{4}$/;
+	var phoneNum = $("#bf_phone").val();
+
+	if (!phoneRule.test(phoneNum)) {
+		$("#phoneCK").val("*예시 ) 000-0000-0000").css("color", "red");
+		$("#phone").val("");
+		return false;
+	} else {
+		$("#phoneCK").val("*올바른 전화번호입니다.").css("color", "green");
+		$("#phone").val(phoneNum);
+		return false;
+	}
+}
 
 function idcheck() {
 	var idRule = /^[A-Za-z0-9]{6,12}$/;
@@ -127,6 +136,15 @@ function nickCheck() {
 
 function regiAf() {
 
+	// 주소를 합쳐주기
+	var address = "";
+
+	if ($("#address_detail").val() != "" && $("#address_num").val() != "") {
+		address = $("#address_num").val() + "-" + $("#address_main").val()
+				+ "-" + $("#address_detail").val();
+		$("#address").val(address);
+	}
+
 	if (idok == "false") {
 		alert("ID체크를 하세요");
 		return;
@@ -145,28 +163,28 @@ function regiAf() {
 	} else if ($("#phone").val().trim().length < 1) {
 		alert("전화번호를 확인하세요");
 		return;
-	} else if ($("#address").val().trim().length < 1) {
+	} else if (address.trim().length < 1) {
 		alert("주소를 확인하세요");
 		return;
 	}
-	
+
 	var data = {
-		id : $("#id").val(),
-		pwd : $("#pwd").val(),
-		nickname : $("#nickname").val(),
-		email : $("#email").val(),
-		phone : $("#phone").val(),
-		address : $("#address").val(),
-		name : $("#name").val(),
+		id : $("#id").val().trim(),
+		pwd : $("#pwd").val().trim(),
+		nickname : $("#nickname").val().trim(),
+		email : $("#email").val().trim(),
+		phone : $("#phone").val().trim(),
+		address : $("#address").val().trim(),
+		name : $("#name").val().trim(),
 		auth : 0,
 	};
-	
+
 	$.ajax({
-		dataType:'json',
+		dataType : 'json',
 		url : "regiAf.do",
 		type : "POST",
 		data : data,
-		async:true,
+		async : true,
 		success : function(data) {
 			if (data.cnt > 0) {
 				alert("회원가입에 성공하였습니다");
@@ -183,14 +201,13 @@ function regiAf() {
 }
 
 function pwcheck() {
-	var pwRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	var pwRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z]).*$/;
 	var pw1 = $("#pwd").val();
 	var pw2 = $("#pwd2").val();
 
 	if (pw1 == pw2 && pw1 != "") {
 		if (!pwRule.test(pw1)) {
-			$("#pwdResult").val("*비밀번호 (영어,특수문자,숫자를 포함한 8~15자)").css("color",
-					"red");
+			$("#pwdResult").val("*비밀번호 (영어,숫자를 포함한 8~15자)").css("color", "red");
 			passwordcheck = "false";
 			return;
 		}

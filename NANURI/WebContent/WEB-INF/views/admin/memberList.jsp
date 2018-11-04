@@ -4,8 +4,11 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
+<div class="admin_box">
 
-<h1>회원관리</h1>
+<div>
+
+<h1>회원정보</h1>
 <div>
   <table>
     <colgroup>
@@ -37,4 +40,6 @@
   </table>
   
   <p>검색 결과 : ${fn:length(memberlist)} </p>
+</div>
+</div>	
 </div>

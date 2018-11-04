@@ -22,5 +22,7 @@ public interface qaService {
 	
 	public int getBbsCount(qaParam param) throws Exception;
 	
-	public List<qaDto> getBbsPagingList(qaParam param) throws Exception;;
+	public List<qaDto> getBbsPagingList(qaParam param) throws Exception;
+	
+	public boolean ansDelete(int seq);
 }

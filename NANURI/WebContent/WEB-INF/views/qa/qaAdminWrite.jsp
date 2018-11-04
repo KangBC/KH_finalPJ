@@ -17,29 +17,42 @@
 
 <%memberDto mem = (memberDto)session.getAttribute("login"); %>
 <div class="startdiv">
-	<form action="qaAdminWriteAf.do" id="_frmForm" method="post">
-		<label>아이디</label>
-		<input type="text" name="id" value="<%=mem.getId()%>" readonly="readonly"><br> <!-- 나중에 로그인 세션값으로 수정 readonly-->
-		<label>제목</label>
-		<input type="text" name="title"><br>	
-		<label>내용</label>
-		<textarea rows="10" cols="50" name="content"></textarea><br>
-		<!-- <input type="submit" value="작성완료"> -->
-		<input type="submit"  value="공지사항 등록">
-	</form>	
+	<div style="font-style: italic; padding-left: 0px; font-size: 35; padding-bottom: 12px; font-size: 42px;">
+		Q&A 공지사항
+	</div>
+
+	<div style="width: 1080;; margin: 0px auto;">
+		<form action="qaAdminWriteAf.do" id="_frmForm" method="post">
+			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; padding-top: 8px;">
+				<label style="margin-left: -16;">아이디</label>
+				<input type="text" name="id" value="<%=mem.getId()%>" style="margin-left: 15; width: 189px; border-radius: 3px; border: 1px solid #ccc;" readonly="readonly"><br>
+			</div>
+			<div style="padding-left: 30px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 8px;
+	   					padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;">
+				<label style="margin-left: -16;">제목</label>
+				<input type="text" name="title" style="margin-left: 31px; width: 348px; border-left: none; border-radius: 3px; border: 1px solid #ccc;" required><br>								
+			</div>	
+			<label style="padding-left: 30px; margin-left: -16;" >내용</label>
+			<div style="padding-left: 30px;">
+				<textarea rows="10" cols="50" name="content" style="width: 1080px; text-decoration: none; outline: none; resize: none; border-radius: 3px; border: 1px solid #ccc; height: 404px;"  required ></textarea><br>
+			</div>
+			<div align="center" style="padding-top: 13px;">
+			<input type="submit" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" value="등록">
+			&nbsp;&nbsp;
+			<input type="button" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" onclick="cancel()" value="취소">	
+			</div>
+		</form>	
+	</div>
 </div>
+
+<script type="text/javascript">
+function cancel() {
+	location.href="qnalist.do";
+}
+</script>
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
