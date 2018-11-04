@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -58,7 +59,8 @@
 					<br>
 				</div>
 				<div align="center" style="padding-top: 12px;">
-					<input type="submit" value="완료">
+					<input type="submit" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" value="완료">
 					<%
 						if (g_code != null) {
 					%>
@@ -71,7 +73,9 @@
 					<%
 						}
 					%>
-					&nbsp;&nbsp; <input type="button" onclick="cancel()" value="취소">
+					&nbsp;&nbsp; <input type="button" onclick="cancel()" 
+					style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" value="취소">				
 				</div>
 			</form>
 		</div>

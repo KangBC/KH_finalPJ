@@ -37,9 +37,11 @@
 				<textarea rows="10" cols="50" name="content" style="width: 1080px; text-decoration: none; outline: none; resize: none; border-radius: 3px; border: 1px solid #ccc; height: 404px;"  required ></textarea><br>
 			</div>
 			<div align="center" style="padding-top: 13px;">
-			<input type="submit"  value="등록">
+			<input type="submit" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" value="등록">
 			&nbsp;&nbsp;
-			<input type="button" onclick="cancel()" value="취소">	
+			<input type="button" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 font-size: 13px; width: 89px; height: 34px;" onclick="cancel()" value="취소">	
 			</div>
 		</form>	
 	</div>

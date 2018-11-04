@@ -44,12 +44,15 @@
 					<br>
 				</div>
 				<div align="center" style="padding-top: 12px;">
-					<input type="submit" value="완료"> <input type="hidden"
-						name="ref" value="<%=ansdto.getRef()%>"> <input
-						type="hidden" name="g_code" value="<%=ansdto.getG_code()%>">
+					<input type="submit" style="background-color: #9d87b8; color: #fff; font-size: 13px;  border-radius: 5px;
+					 	font-size: 13px; width: 89px; height: 34px;" value="완료"> <input type="hidden"
+						name="ref" value="<%=ansdto.getRef()%>"> 
+					<input type="hidden" name="g_code" value="<%=ansdto.getG_code()%>">
 					<input type="hidden" name="secret" value="<%=ansdto.getSecret()%>">
 					<input type="hidden" name="id" value="<%=mem.getId()%>">
-					&nbsp;&nbsp; <input type="button" onclick="cancel()" value="취소">
+					&nbsp;&nbsp; 
+					<input type="button" style="background-color: #9d87b8; color: #fff; 
+						font-size: 13px;  border-radius: 5px; font-size: 13px; width: 89px; height: 34px;" onclick="cancel()" value="취소">
 				</div>
 			</form>
 		</div>		
