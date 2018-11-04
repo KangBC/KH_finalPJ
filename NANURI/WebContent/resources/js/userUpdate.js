@@ -50,6 +50,21 @@ $("#address_detail").focus(function() {
 
 var passwordcheck = "false";
 
+function phoneCheck() {
+	var phoneRule = /^\d{3}-\d{3,4}-\d{4}$/;
+	var phoneNum = $("#bf_phone").val();
+	
+	if(!phoneRule.test(phoneNum)){
+		$("#phoneCK").val("*예시 ) 000-0000-0000").css("color", "red");
+		$("#phone").val("");
+		return false;
+	}else{
+		$("#phoneCK").val("*올바른 전화번호입니다.").css("color", "green");
+		$("#phone").val(phoneNum);
+		return false;
+	}
+}
+
 function nickCheck() {
 	var nicknameRule = /^[가-힣a-zA-Z]+$/;
 	var bf_nickname = $("#bf_nickname").val();
