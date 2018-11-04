@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="row"
-	style="border-bottom: 1px solid #CCCCCC; padding-bottom: 20px; padding-top: 10px; height: 280px">
+	style="border-bottom: 1px solid #CCCCCC; padding-bottom: 20px; padding-top: 10px;">
 	<div class="col-md-4"
 		style="background: url('https://user-images.githubusercontent.com/38531104/47497903-89990100-d896-11e8-9240-f9e028b6a85a.png');">
 		<div class="row" style="margin-top: 10%">
@@ -88,10 +88,7 @@
 		</a>
 		<div style="padding-top: 10px; border-top: solid 1px #CCCCCC;">
 			<table style="text-align: left; width: 100%;">
-				<colgroup>
-					<col width="30px%">
-				<col width="250px">
-				</colgroup>
+				
 				<tbody>
 					<c:choose>
 						<c:when test="${empty qaList}">
@@ -103,9 +100,15 @@
 						<c:otherwise>
 							<c:forEach items="${qaList}" var="qaList" varStatus="status">
 								<tr>
-									<th>[공지]</th>
-									<th><a href="qnalist.do"><span
-											style="width:250px; text-overflow: ellipsis; overflow: hidden; White-space: norwap">${qaList.title}</span></a></th>
+									<th>
+									<p style="width: 40px;margin: 0;">[공지]</p>
+									</th>
+									<th>
+									<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 240px;">
+									<a href="qnalist.do">
+									<span>${qaList.title}</span></a>
+									</div>
+									</th>
 								</tr>
 							</c:forEach>
 						</c:otherwise>

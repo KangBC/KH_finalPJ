@@ -23,7 +23,7 @@ body {
 
 #report {
 	border-collapse: collapse;
-	width: 800px
+	width: 800px;
 }
 
 #report h4 {
@@ -118,7 +118,7 @@ th {
 		<br><br>
 		<div align="center">
 			<table id="report" class="ba_qna"
-				style="border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1; width: 85%;">
+				style="border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1;">
 				<%-- <col width="40px">
 					 <col width="450px">
 					 <col width="100px">
