@@ -26,7 +26,8 @@
 							style="margin-left: 3.5rem;">Your id</label>
 					</div>
 					<div class="col-md-4">
-						<button type="button" class="btn btn-outline-secondary waves-effect px-3"
+						<button type="button"
+							class="btn btn-outline-secondary waves-effect px-3"
 							onclick="idcheck()">
 							<i class="fa fa-check-square-o" aria-hidden="true"></i> 중복확인
 						</button>
@@ -69,7 +70,7 @@
 				<div class="md-form">
 					<i class="fa fa-user prefix grey-text"></i> <input type="text"
 						name="name" id="name" class="form-control" required> <label
-						for="name" class="font-weight-light">Name</label>
+						for="name" style="margin-left: 3em" class="font-weight-light">Name</label>
 				</div>
 
 				<!-- Material input nickname -->
@@ -106,11 +107,19 @@
 				</div>
 
 				<!-- Material input phone -->
-				<div class="md-form">
-					<i class="fa fa-phone-square prefix grey-text"></i> <input
-						type="text" name="phone" id="phone" class="form-control" required>
-					<label for="phone" class="font-weight-light">예시 )
-						000-0000-0000</label>
+				<div class="md-form row" style="margin-bottom: 0px">
+					<input type="hidden" name="phone" id="phone" value="">
+					<div class="col-md-6">
+						<i class="fa fa-phone-square prefix grey-text"></i> <input
+							type="text" onkeyup="phoneCheck()" name="bf_phone" id="bf_phone"
+							class="form-control" required> <label for="bf_phone"
+							class="font-weight-light" style="margin-left: 4em">Phone</label>
+					</div>
+					<div class="col-md-6">
+						<input type="text" id="phoneCK" class="form-control" value=""
+							placeholder="예시 ) 000-0000-0000" disabled
+							style="border-bottom: none">
+					</div>
 				</div>
 
 				<!-- Material input address -->
@@ -123,7 +132,8 @@
 							readonly="readonly" required style="border-bottom: none">
 					</div>
 					<div class="col-md-4">
-						<button type="button" class="btn btn-outline-secondary waves-effect px-3"
+						<button type="button"
+							class="btn btn-outline-secondary waves-effect px-3"
 							onclick="sample6_execDaumPostcode()">
 							<i class="fa fa-search" aria-hidden="true"></i> 주소찾기
 						</button>
@@ -140,14 +150,15 @@
 					<input class="form-control" type="text" id="address_detail"
 						name="address_detail" placeholder="Address Detail" required>
 				</div>
-				
+
 				<p style="font-size: 0.8em; color: gray">-아동(만 14세 미만)은 본인인증 후
 					부모님(법정대리인)동의가 필요합니다.</p>
 
 				<!-- Sign up -->
 				<div class="text-center py-4 mt-3">
-					<button type="button" class="btn btn-outline-secondary waves-effect px-3" onclick="regiAf()">Sign
-						Up</button>
+					<button type="button"
+						class="btn btn-outline-secondary waves-effect px-3"
+						onclick="regiAf()">Sign Up</button>
 				</div>
 
 			</div>
