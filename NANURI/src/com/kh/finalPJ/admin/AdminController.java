@@ -39,7 +39,7 @@ public class AdminController {
 	// 관리자 메인 화면
 	@RequestMapping(value="admin.do",method = RequestMethod.GET)
 	public String admin(Model model) throws Exception{
-		return "adminMain.tiles";
+		return "redirect:/manageMember.do";
 	}
 	
 	// 회원관리 뷰
