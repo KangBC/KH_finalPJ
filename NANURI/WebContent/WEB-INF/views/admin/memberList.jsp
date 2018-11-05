@@ -5,10 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <div class="admin_box">
-
-<div>
-
-<h1>회원정보</h1>
+<fieldset ><legend><h1>회원정보</h1></legend>  
 <div>
   <table>
     <colgroup>
@@ -39,7 +36,7 @@
     </c:forEach>
   </table>
   
-  <p>검색 결과 : ${fn:length(memberlist)} </p>
 </div>
-</div>	
+</fieldset>
+  <p>검색 결과 : ${fn:length(memberlist)} </p>
 </div>

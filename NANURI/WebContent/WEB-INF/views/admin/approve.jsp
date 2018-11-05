@@ -5,9 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <div class="admin_box">
-
-<h1>탈퇴승인</h1>
-<div>
+<fieldset ><legend><h1>탈퇴승인</h1></legend> 
   <table>
     <colgroup>
       <col width="150px">
@@ -18,7 +16,7 @@
       <col width="100px">
       <col width="100px">
     </colgroup>
-	<tr>
+	<tr class="admin_th">
 	  <td>ID</td>
   	<td>REASON</td>
   	<td>탈퇴 신청</td>
@@ -64,7 +62,6 @@
     </c:forEach>
   </table>
   
-  <p>검색 결과 : ${fn:length(secessionList)} </p>
   
 <script type="text/javascript">
   function dateCk(id){
@@ -82,5 +79,6 @@
   }
 
 </script>   
-</div>
+</fieldset>
+<p>검색 결과 : ${fn:length(secessionList)} </p>
 </div>

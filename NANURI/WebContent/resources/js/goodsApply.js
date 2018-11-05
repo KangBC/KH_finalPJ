@@ -11,3 +11,33 @@ $("document").ready(function() {
 		});
 	});
 });
+
+
+function ckInput() {
+	var inputObjs = $("#goodsApplyForm input");
+	var bEmpty = true;
+	var focus;
+	
+	if($("#select_gCode").val()==null){
+		alert("등록 가능한 상품이 없습니다.");
+		return false;
+	}
+	
+	 inputObjs.each(function(index) {
+	        if ($(this).val() == '') {
+	            focus = $(this);
+	            bEmpty = false;
+	 
+	            alert($(this).attr('title') + "은(는) 필수 입력사항입니다.");
+	            focus.focus();
+	 
+	            // 여기서는 each문을 탈출
+	            return false;
+	        }
+	    });
+	 
+	    // 필수입력사항에 누락이 있으면 진행금지
+	if (!bEmpty) return false;
+	 
+	return true;
+}
