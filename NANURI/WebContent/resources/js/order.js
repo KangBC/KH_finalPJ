@@ -22,7 +22,6 @@ $("document").ready(function() {
 	$("#test_btn").click(function () {
 		if(checkInput()){
 			var data = $("#data").val();
-			alert(data);
 			location.href="orderAf.do?data="+data;
 			alert("DB 저장 완료");
 		}
